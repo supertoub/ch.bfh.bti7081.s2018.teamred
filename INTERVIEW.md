@@ -14,7 +14,7 @@ Nur für die Dauer der Behandlung beim Arzt oder in der Klinik ist und nicht fü
 - Was ist eine Soziale Phobie / Angststörung, wie äussert sich diese?
 - Was für Ausprägungen, welche Grade der Krankheit gibt es?
 - Patientengruppe (Alter, sozialer Status, Geschlecht)?
-- Wie wird es behandel?
+- Wie wird es behandelt?
   - Medikamente
   - Therapien
   - Regelmässigkeit / Frequenz
