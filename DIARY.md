@@ -1,4 +1,11 @@
-- 16.3.2018 (twe) Generating githubrepo
+- 16.03.2018 (twe) Generating githubrepo
 - 23.03.2018 (team) Had a meeting with the entire team (defined scope and interview questions)
 - 23.03.2018 (team) Defined open tasks and assigned [issues](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/issues) to the team members.
 - 23.03.2018 (fzu) Added [interview questions](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/task1/INTERVIEW.md) and [github cheatsheet](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/task1/GITCHEATSHEET.md).
+- 24.03.2018 (iri) Interviewed psychology student, submited [results](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/43bec7ae7254d99ed6dfc4aa7de4ca4efef8f996) and improved [git cheatsheet](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/96b1048cd7d352d50b611c43dc08a5e6127e828b).
+- 30.03.2018 (tba) Submited [results for interview](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c592e79fba3d5b8e019761ed5d4ca11f7103408e) with psychologist and added [two storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/3961f2f1e28f902055a2f5f2454ee3440b85a924).
+- 04.04.2018 (fle) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/b3abb0d10e42ab918f8bb647b69a106beaa1164d).
+- 04.04.2018 (sth) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/72cac3297e639ea126846955fddc7ed1ca6862b6).
+- 04.04.2018 (iri) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/e734466455e318af1b871e574337e8b681582570).
+- 04.04.2018 (fzu) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c32f75cd4a7d3cd591e7b6cf3662411d3fbfd09a), and updated [diary](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/DIARY.md).
+- 04.04.2018 (team) Analyzed storyboards and created feature set for mockups.
