@@ -1,16 +1,16 @@
-##Persona
+## Persona
 
-###Jolanda Müller
+### Jolanda Müller
 
-####Alter:
+#### Alter:
 32
-####Beruf: 
+#### Beruf: 
 Kaufmännische Angestellte
-####Familienstand: 
+#### Familienstand: 
 Ledig
-####Wohnort:
+#### Wohnort:
 Köniz BE
-####Hobbies:
+#### Hobbies:
 Katzen, Bücher, Musik
 
 ---
