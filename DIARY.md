@@ -8,4 +8,5 @@
 - 04.04.2018 (sth) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/72cac3297e639ea126846955fddc7ed1ca6862b6).
 - 04.04.2018 (iri) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/e734466455e318af1b871e574337e8b681582570).
 - 04.04.2018 (fzu) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c32f75cd4a7d3cd591e7b6cf3662411d3fbfd09a), and updated [diary](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/DIARY.md).
-- 04.04.2018 (team) Analyzed storyboards and created feature set for mockups.
+- 04.04.2018 (team) Analyzed storyboards and created feature set for mockups
+- 06.04.2018 (twe) add [clickable Mockup](https://marvelapp.com/cd6e9a4/screen/40780231) for fearapp
