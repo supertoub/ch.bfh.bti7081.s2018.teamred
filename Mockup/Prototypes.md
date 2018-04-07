@@ -22,6 +22,7 @@ Aufgeteilt werden sie nach aktiv und abgeschlossenen Aufgaben.
 
 Im Details Fenster kann der Patient die Details dieser Aufgabe einsehen und diese Abschliessen nachdem er seinen Erfahrungsbericht eingetragen hat.
 
+Zusätzlich kann der Patient jederzeit neue Challanges erfassen.
 
 ![Feature 1 - Screen 2](../Mockup/Feature1_Screen2.jpg "Feature 1 / Screen 2")
 
