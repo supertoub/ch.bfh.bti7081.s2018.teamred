@@ -9,7 +9,23 @@ Unser Ziel mit diesem Prototype ist deshalb ein Tool bereitzustelllen was den Pa
 
 ![alt text](../Mockup/Feature1_Screen1.jpg "Feature 1 / Screen 1")
 
+### Levels
+
+Die Challanges sind in Levels aufgeteilt, sie sind indikatoren für den Fortschritt des Patienten und für den Schwierigkeitsgrad der Aufgabe.
+
+### Challanges
+
+Sie sind das Herzstück des Features und repräsentieren die "Hausaufgaben" des Patienten.
+Aufgeteilt werden sie nach Aktiv und Abgeschlossenen Aufgaben.
+
+### Details
+
+Im Details Fenster kann der Patient die Details dieser Aufgabe einsehen und diese Abschliessen nachdem er seinen Erfahrungsbericht eingetragen hat.
+
+
 ![alt text](../Mockup/Feature1_Screen2.jpg "Feature 1 / Screen 2")
+
+Hier wird der Screen für eine neue Aufgabe angezeigt.
 
 ## Feature 2
 
