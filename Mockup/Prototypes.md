@@ -37,3 +37,5 @@ Ein wichtiger Teil der Therapie ist das Tagebuch/Journal. In diesem halten die P
 ## Feature 3
 
 Wir konnten durch das Interview herausfinden, dass die Ängste der Patient sehr oft unbegründet sind. Deshalb haben wir uns gedacht diesem Problem mit fakten entgegen zu wirken. Dafür ist das 3te Feature gedacht.
+
+![alt text](../Mockup/Feature3_Fear1.jpg "Feature 3") ![alt text](../Mockup/Feature3_Fear2.jpg "Feature 3") ![alt text](../Mockup/Feature3_Fear3.jpg "Feature 3")
