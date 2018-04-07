@@ -29,4 +29,11 @@ Hier wird der Screen für eine neue Aufgabe angezeigt.
 
 ## Feature 2
 
+Ein wichtiger Teil der Therapie ist das Tagebuch/Journal. In diesem halten die Patienten ihren alltag fest und wann sie welche Schwierigkeiten hatten. Diese werden dann mit den Therapeuten besprochen. Züsätzlich haben wir für dieses Feature noch die Möglichkeit vorgesehen die persönliche Statistik einzusehen und sich Tipps zu holen.
+
+
+![alt text](../Mockup/Feature2.jpg "Feature 2")
+
 ## Feature 3
+
+Wir konnten durch das Interview herausfinden, dass die Ängste der Patient sehr oft unbegründet sind. Deshalb haben wir uns gedacht diesem Problem mit fakten entgegen zu wirken. Dafür ist das 3te Feature gedacht.
