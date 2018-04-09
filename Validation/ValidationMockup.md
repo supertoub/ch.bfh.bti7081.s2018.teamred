@@ -1,6 +1,6 @@
-#Validation der Mockup mit Psychologin
-##Thomas Baumann
-###5.4.2018
+# Validation der Mockup mit Psychologin
+## Thomas Baumann
+### 5.4.2018
 
 Challenge: Gute Idee die den Patienten unterstützen könnte.
 
