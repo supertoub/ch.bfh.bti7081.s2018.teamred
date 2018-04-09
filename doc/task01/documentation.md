@@ -8,6 +8,8 @@
 - Roland Roccaro
 - Tobias Weissert
 
+Eine Version dieses PDF mit hochauflösenden Bilder kann als online Version [hier](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/doc/task01/documentation.md) oder zum Download [hier](https://drive.google.com/file/d/1yHBJiTBTDupd2EBOuZrVilw_XtfY075X/view?usp=sharing) gefunden werden.
+
 ## Topic
 Ambulanter Pationent mit sozialer Phobie (sozialer Angststörung)
 
