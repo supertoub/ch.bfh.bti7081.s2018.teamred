@@ -104,7 +104,7 @@ Date, Time | Attendance | Minutes 
   - [ ] (fzu) 09.08.18 Finalize diary
   - [ ] (fzu) 09.08.18 Summarize documentation in one document
 
-#### 09.08.2018
+#### 09.04.2018
 - (iri, fzu) Finalized presentation
 - Todo:
   - [x] (iri, fzu) 09.08.18 Prepare presentation
