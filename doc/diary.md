@@ -106,7 +106,9 @@ Date, Time | Attendance | Minutes 
 
 #### 09.04.2018
 - (iri, fzu) Finalized presentation
+- (fzu) Finalized diary
+- (fzu) created final version of documentation
 - Todo:
   - [x] (iri, fzu) 09.08.18 Prepare presentation
-  - [ ] (fzu) 09.08.18 Finalize diary
-  - [ ] (fzu) 09.08.18 Summarize documentation in one document
+  - [x] (fzu) 09.08.18 Finalize diary
+  - [x] (fzu) 09.08.18 Summarize documentation in one document
