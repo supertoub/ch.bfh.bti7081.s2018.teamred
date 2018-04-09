@@ -19,11 +19,11 @@ Date, Time | Attendance | Minutes 
 06.04.18, 10:20 | tba, fle, sth, iri, rro, fzu | 90
 
 #### 16.03.2018
-- (twe) Generating githubrepo
+- (twe) Generating GitHub repo
 - (team) Project setup and kickoff meeting
 - Todo:
   - [x] (team) 16.03.18 Initialize project
-  - [ ] (fzu) 23.03.18 Add git cheatsheet
+  - [ ] (fzu) 23.03.18 Add Git cheatsheet
 
 #### 23.03.2018
 - (team) Had a meeting with the entire team (defined scope and interview questions)
@@ -33,27 +33,27 @@ Date, Time | Attendance | Minutes 
 - Todo:
   - [x] (fzu) 23.03.18 Add git cheatsheet
   - [x] (team) 23.03.18 Define interview questions
-  - [ ] (fzu) 04.04.18 Interview with general practicer
+  - [ ] (fzu) 04.04.18 Interview with general practitoner
   - [ ] (tba) 04.04.18 Interview with psychologist
   - [ ] (iri) 04.04.18 Interview with psychology student
   - [ ] (team) 04.04.18 Create two storyboards per person
 
 #### 24.03.2018
-- (iri) Interviewed psychology student, submited [results](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/43bec7ae7254d99ed6dfc4aa7de4ca4efef8f996)
+- (iri) Interviewed psychology student, submitted [results](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/43bec7ae7254d99ed6dfc4aa7de4ca4efef8f996)
 - (iri) Improved [git cheatsheet](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/96b1048cd7d352d50b611c43dc08a5e6127e828b)
 - Todo:
-  - [ ] (fzu) 04.04.18 Interview with general practicer
+  - [ ] (fzu) 04.04.18 Interview with general practitoner
   - [ ] (tba) 04.04.18 Interview with psychologist
   - [x] (iri) 04.04.18 Interview with psychology student
   - [ ] (team) 04.04.18 Create two storyboards per person
 
 #### 30.03.2018
-- (tba) Submited [results for interview](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c592e79fba3d5b8e019761ed5d4ca11f7103408e) with psychologist
+- (tba) Submitted [results for interview](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c592e79fba3d5b8e019761ed5d4ca11f7103408e) with psychologist
 - (tba) Added [two storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/3961f2f1e28f902055a2f5f2454ee3440b85a924)
 - Todo:
   - [ ] (fzu) 04.04.18 Interview with general practicer
   - [ ] (team) 04.04.18 Create two storyboards per person
-  - [ ] (team) 04.04.18 Analyse storyboards and create features in next meeting
+  - [ ] (team) 04.04.18 Analyze storyboards and create features in next meeting
 
 #### 04.04.2018
 - (fle) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/b3abb0d10e42ab918f8bb647b69a106beaa1164d)
@@ -63,15 +63,15 @@ Date, Time | Attendance | Minutes 
 - (fzu) Updated [diary](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/DIARY.md)
 - (team) Analyzed storyboards and created feature set for mockups.
 - Todo:
-  - [x] (fzu) 04.04.18 Interview with general practicer
+  - [x] (fzu) 04.04.18 Interview with general practitoner
   - [x] (team) 04.04.18 Create two storyboards per person
-  - [x] (team) 04.04.18 Analyse storyboards and create features
+  - [x] (team) 04.04.18 Analyze storyboards and create features
   - [ ] (twe) 06.04.18 Create mockup for [probability feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Probability.JPG)
   - [ ] (tba) 06.04.18 Create mockup for [journal feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Journal.JPG)
   - [ ] (fle) 06.04.18 Create mockup for [challenge feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Challenge.JPG)
   - [ ] (sth) 06.04.18 Create a persona
   - [ ] (rro) 06.04.18 Create a persona
-  - [ ] (tba) 06.04.18 Validate mockups with psycologist
+  - [ ] (tba) 06.04.18 Validate mockups with psychologist
 
 
 #### 06.04.2018
@@ -79,7 +79,7 @@ Date, Time | Attendance | Minutes 
 - (twe) Added [clickable mockup](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/tree/master/Mockup) for [probability feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Probability.JPG)
 - (rro) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/1c2edbdfad9b335bff7ee0bc90cc498e10101500)
 - (sth) Added [persona](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/0d88e75f65e7ac17d6daf5eae7c3f4d6dfd95c03)
-- (fle, tba) Submited [mockups](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c19b32b8269f92c4179690aa5634e31f7b89d4de)
+- (fle, tba) Submitted [mockups](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c19b32b8269f92c4179690aa5634e31f7b89d4de)
 - (rro) Added [persona](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/aa1489138594444b0e992989cc4b482d2ec44ff4)
 - (tba) [Validation](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/Validation/ValidationMockup.md) of mockup results
 - (tba) Created new [feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Fragebogen.jpg) according to validation feedback
@@ -89,7 +89,7 @@ Date, Time | Attendance | Minutes 
   - [x] (fle) 06.04.18 Create mockup for [challenge feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Challenge.JPG)
   - [x] (sth) 06.04.18 Create a persona
   - [x] (rro) 06.04.18 Create a persona
-  - [x] (tba) 06.04.18 Validate mockups with psycologist
+  - [x] (tba) 06.04.18 Validate mockups with psychologist
   - [x] (team) 06.04.18 New feature from validation feedback
   - [ ] (fle) 09.08.18 Describe features and mockups
   - [ ] (iri, fzu) 09.08.18 Prepare presentation
