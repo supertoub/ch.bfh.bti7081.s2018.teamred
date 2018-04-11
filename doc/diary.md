@@ -17,6 +17,7 @@ Date, Time | Attendance | Minutes 
 23.03.18, 10:20 | tba, fle, sth, iri, rro, twe, fzu | 90
 04.04.18, 16:15 | tba, fle, sth, iri, rro, twe, fzu | 120
 06.04.18, 10:20 | tba, fle, sth, iri, rro, fzu | 90
+11.04.18, 17:00 | tba, fle, sth, rro, twe, fzu | 45
 
 #### 16.03.2018
 - (twe) Generating GitHub repo
@@ -91,24 +92,37 @@ Date, Time | Attendance | Minutes 
   - [x] (rro) 06.04.18 Create a persona
   - [x] (tba) 06.04.18 Validate mockups with psychologist
   - [x] (team) 06.04.18 New feature from validation feedback
-  - [ ] (fle) 09.08.18 Describe features and mockups
-  - [ ] (iri, fzu) 09.08.18 Prepare presentation
-  - [ ] (fzu) 09.08.18 Finalize diary
-  - [ ] (fzu) 09.08.18 Summarize documentation in one document
+  - [ ] (fle) 09.04.18 Describe features and mockups
+  - [ ] (iri, fzu) 09.04.18 Prepare presentation
+  - [ ] (fzu) 09.04.18 Finalize diary
+  - [ ] (fzu) 09.04.18 Summarize documentation in one document
 
 #### 07.04.2018
 - (fle) Added description for features and mockups
 - Todo:
-  - [x] (fle) 09.08.18 Describe features and mockups
-  - [ ] (iri, fzu) 09.08.18 Prepare presentation
-  - [ ] (fzu) 09.08.18 Finalize diary
-  - [ ] (fzu) 09.08.18 Summarize documentation in one document
+  - [x] (fle) 09.04.18 Describe features and mockups
+  - [ ] (iri, fzu) 09.04.18 Prepare presentation
+  - [ ] (fzu) 09.04.18 Finalize diary
+  - [ ] (fzu) 09.04.18 Summarize documentation in one document
 
 #### 09.04.2018
 - (iri, fzu) Finalized presentation
 - (fzu) Finalized diary
 - (fzu) created final version of documentation
 - Todo:
-  - [x] (iri, fzu) 09.08.18 Prepare presentation
-  - [x] (fzu) 09.08.18 Finalize diary
-  - [x] (fzu) 09.08.18 Summarize documentation in one document
+  - [x] (iri, fzu) 09.04.18 Prepare presentation
+  - [x] (fzu) 09.04.18 Finalize diary
+ 
+#### 11.04.2018
+- (team) Disscussed task02 and defined subtasks for team
+- (fzu) Prepared repository and documentation for task02
+- Todo:
+  - [ ] (iri, fzu) 16.04.18 Prepare presentation
+  - [ ] (fzu) 16.04.18 Update diary
+  - [x] (fzu) 11.04.18 Create glossaries example
+  - [x] (fzu) 11.04.18 Create requirements document template
+  - [ ] (sth) 13.04.18 Testing
+  - [ ] (tba) 13.04.18 System Models
+  - [ ] (rro) 13.04.18 System architecture
+  - [ ] (twe) 13.04.18 System requirements
+  - [ ] (fle) 13.04.18 User requirements 
