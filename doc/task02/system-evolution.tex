@@ -5,23 +5,37 @@ Software Evolution in Zusammenhang mit diesen \href{https://en.wikipedia.org/wik
 Die Gesetze beschreiben ein Gleichgewicht zwischen den Kräften, die neue Entwicklungen vorantreiben, und den Kräften, die den Fortschritt verlangsamen. In den letzten Jahrzehnten wurden die Gesetze mehrfach überarbeitet und erweitert.
 
 \begin{table}[H]
- \caption{Use Case 1}
+ \caption{Lehmans Law}
  \begin{tabularx}{\textwidth}{|l|X|}
      \hline
-     \textbf{Law}       & \textbf{Description} \\
+     \textbf{Law}                               & \textbf{Description} \\
      \hline
-     Name                       & Challange erstellen \\
+     Continuing Change                          & An E-type system must be continually adapted or it becomes progressively less satisfactory. \\
      \hline
-     Nummer                     & 1 \\
+     Self Regulation                            & E-type system evolution processes are self-regulating with the distribution of product and process measures close to normal. \\
      \hline
-     Kurzbeschreibung           & Der Patient erfasst eine neue Challange. \\
+     Conservation of Organisational Stability   & The average effective global activity rate in an evolving E-type system is invariant over the product's lifetime. \\
      \hline
-     Beteiligte Akteure         & Benutzer \\
+     Conservation of Familiarity                & As an E-type system evolves, all associated with it, developers, sales personnel and users, for example, must maintain mastery of its content and behaviour to achieve satisfactory evolution. Excessive growth diminishes that mastery. Hence the average incremental growth remains invariant as the system evolves. \\
      \hline
-     Ausl\"{o}ser / Vorbedingung    & keine \\
+     Continuing Growth                          & The functional content of an E-type system must be continually increased to maintain user satisfaction over its lifetime. \\
      \hline
-     Ergebnisse / Nachbedingung & Die Challange erscheint im richtigen Level mit dem richtigen Status. Sie wird f\"{u}r die Statistik ber\"{u}cksichtigt. \\
+     Declining Quality                          & The quality of an E-type system will appear to be declining unless it is rigorously maintained and adapted to operational environment changes. \\
+     \hline
+     Feedback System                            & E-type evolution processes constitute multi-level, multi-loop, multi-agent feedback systems and must be treated as such to achieve significant improvement over any reasonable base. \\
      \hline
  \end{tabularx}
- \label{table: Use Case 1}
+ \label{table: Lehmans Law}
 \end{table}
+
+An E-program is written to perform some real-world activity; how it should behave is strongly linked to the environment in which it runs, and such a program needs to adapt to varying requirements and circumstances in that environment.
+
+\section{Was wir für unsere Anwendung beachten müssen im Design}
+
+\begin{itemize}
+    \item{Der Aufbau der Datenbank. Skalierbarkeit, Erweiterbarkeit und der Zugriff}
+    \item{Die Darstellung der App muss auf verschiedensten Geräten funktionieren. Falls Browser App, Darstellung auf Smartphone oder Tablet beachten.}
+    \item{Verschiedene Betriebssysteme. Mac und Windows, Linux ausgenommen.}
+    \item{Die Erweiterbarkeit des Journals falls vom Patienten oder Doktor erwünscht. Z.B. neue Punkte die er ins Journal aufnehmen will. Die Challenges erweitern, etc.}
+    \item{Sprachsteuerung mit Sprache zu Text Integration.}
+\end{itemize}
