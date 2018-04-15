@@ -33,19 +33,18 @@ Das System wird benötigt im Umgang mit Angststörungen bzw. Sozialen \gls{Phobi
 
 ## Kurzbeschreibung der Funktionen des Systems
 
-Unsere Applikation bietet über \gls{Gameification} einen Anreiz sich jeden Tag schrittweise an ein Ziel anzunähern. Die Applikation bietet die Möglichkeit, das der Patient zusammen mit dem Terapeuten \gls{Challenges} erstellt. Diese \gls{Challenges} sind Aufgaben welche der Patient anschliessend gestellt bekommt. Nach der Ausführung einer Challenge wird der Patient nach einer Beschreibung des Erlebnisses gefragt. Diese Bechreibungen sind für den Terapeuten zugänglich, später während den Terapiesitzungen können Sie besprochen werden.
+Unsere Applikation bietet über \gls{Gameification} einen Anreiz sich jeden Tag schrittweise an ein Ziel anzunähern. Die Applikation bietet die Möglichkeit, das der Patient zusammen mit dem Therapeuten \gls{Challenges} erstellt. Diese \gls{Challenges} sind Aufgaben welche der Patient anschliessend gestellt bekommt. Nach der Ausführung einer Challenge wird der Patient nach einer Beschreibung des Erlebnisses gefragt. Diese Bechreibungen sind für den Therapeuten zugänglich, später während den Therapiesitzungen können sie besprochen werden.
 
 ## Wie wird es mit anderen Systemen zusammen arbeiten
 
 Die Applikation wird selbst laufen bzw. keinen Zugang zu anderen Systemen benötigen. Es müssen keine Schnittstellen zu anderen Systemen für den Datenabgleich vorgesehen werden. 
-Die Applikation komuniziert nicht mit anderen Systemen. Die Verbindungen welche projektiert werden, sind Emails oder Push Nachrichten an den Therapeuten welche von unserer Applikation ausgelöst werden.
+Die Applikation komuniziert nicht mit anderen Systemen. Die Verbindungen welche projektiert werden, sind Emails oder Push Nachrichten an den Therapeuten, welche von unserer Applikation ausgelöst werden.
 
 
 # Übersicht der System Architektur
-
 
 Die Applikation wird als Webapplikation mit \gls{Vaadin} umgesetzt. Dabei wird ein hoher Wert auf die Simplizität auf Clientseite gesetzt. Sämtliche Daten werden auf dem Webserver abgelegt bzw. dessen verbundenen Datenbank. Auf der Clientsite werden keine Installationen durchgeführt.
 
 Alle Daten werden ausschliesslich von der Applikation verwendet und nicht Drittanbietern zur Verfügung gestellt. Die Applikation geht mit den Personendaten voll \gls{GDPR compliant} um.
 
-Der Server selbst wird in der Cloud positionier die Backups und Absicherung gegen Angriffe werden durch den Hoster des Servers durchgeführt.
+Der Server selbst wird in der Cloud positioniert, die Backups und Absicherung gegen Angriffe werden durch den Hoster des Servers durchgeführt.
