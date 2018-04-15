@@ -4,12 +4,12 @@
 
 | Bezeichnung | Beschreibung |
 | - | - |
-| Name | Neueer Journaleintrag |
+| Name | Neuer Journaleintrag |
 | Nummer | 2 |
-| Kurzbeschreibung | Der Patient erfasst einen neuen Journal eintrag. |
+| Kurzbeschreibung | Der Patient erfasst einen neuen Journaleintrag. |
 | Beteiligte Akteure | Benutzer |
 | Auslöser / Vorbedingung | keine |
-| Ergebnisse / Nachbedingung | Der Journal eintrag wird erstellt und ist in der Übersicht der Journal einträge ersichtlich. Der neue Journaleintrag wird für die Statistik berücksichtigts |
+| Ergebnisse / Nachbedingung | Der Journal eintrag wird erstellt und ist in der Übersicht der Journaleinträge ersichtlich. Der neue Journaleintrag wird für die Statistik berücksichtigts |
 
 ### Ablauf
 
