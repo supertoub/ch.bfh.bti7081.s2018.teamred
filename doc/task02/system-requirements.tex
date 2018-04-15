@@ -1,1 +1,5 @@
 \chapter{System requirements specification}
+\section{Data Flow}
+Da es sich um eine Webapplikation handelt werden keine Daten auf dem Gerät gespeichert, sondern werden jeweils direkt vom Server gelesen und geschrieben. Dadurch haben alle Geräte jeweils den aktuellen Stand der Daten. Beim speichern von neuen Daten werden Diese direkt auf Ihre Korrektheit überprüft und der Benutzer im Fehlerfall informiert.
+\section{Schnittstellen}
+Aktuell sind keine Schnittstellen in Fremdsysteme vorgesehen, die Applikation wird sowohl von Patienten wie auch vom Arzt standalone eingesetzt. Es kann aber nicht ausgeschlossen werden, dass eine solche Integration in Zukunft von einem Arzt gewünscht wird. Sodass er direkt in seinem Klinik Informationssystem den Status aller Challanges seiner Patienten prüfen kann.
