@@ -3,7 +3,7 @@
 Software Evolution in Zusammenhang mit diesen acht Gesetzen von Lehmans (https://en.wikipedia.org/wiki/Lehman%27s_laws_of_software_evolution).
 
 
-Die Gesetze beschreiben ein Gleichgewicht zwischen den Kräften, die neue Entwicklungen vorantreiben, und den Kräften, die den Fortschritt verlangsamen. In den letzten Jahrzehnten wurden die Gesetze mehrfach überarbeitet und erweitert.
+Die Gesetze beschreiben ein Gleichgewicht zwischen den Kr\"{a}ften, die neue Entwicklungen vorantreiben, und den Kr\"{a}ften, die den Fortschritt verlangsamen. In den letzten Jahrzehnten wurden die Gesetze mehrfach \"{u}berarbeitet und erweitert.
 
 
 Law | Description
@@ -21,14 +21,14 @@ Feedback System | E-type evolution processes constitute multi-level, multi-loop,
 An E-program is written to perform some real-world activity; how it should behave is strongly linked to the environment in which it runs, and such a program needs to adapt to varying requirements and circumstances in that environment
 
 
-### Was wir für unsere Anwendung beachten müssen im Design
+### Was wir f\"{u}r unsere Anwendung beachten m\"{u}ssen im Design
 
 * Der Aufbau der Datenbank. Skalierbarkeit, Erweiterbarkeit und der Zugriff
 
-* Die Darstellung der App muss auf verschiedensten Geräten funktionieren. Falls Browser App, Darstellung auf Smartphone oder Tablet beachten.
+* Die Darstellung der App muss auf verschiedensten Ger\"{a}ten funktionieren. Falls Browser App, Darstellung auf Smartphone oder Tablet beachten.
 
 * Verschiedene Betriebssysteme. Mac und Windows, Linux ausgenommen.
 
-* Die Erweiterbarkeit des Journals falls vom Patienten oder Doktor erwünscht. Z.B. neue Punkte die er ins Journal aufnehmen will. Die Challenges erweitern, etc.
+* Die Erweiterbarkeit des Journals falls vom Patienten oder Doktor erw\"{u}nscht. Z.B. neue Punkte die er ins Journal aufnehmen will. Die Challenges erweitern, etc.
 
 * Sprachsteuerung mit Sprache zu Text Integration.
