@@ -92,18 +92,18 @@ Date, Time | Attendance | Minutes 
   - [x] (rro) 06.04.18 Create a persona
   - [x] (tba) 06.04.18 Validate mockups with psychologist
   - [x] (team) 06.04.18 New feature from validation feedback
-  - [ ] (fle) 09.04.18 Describe features and mockups
-  - [ ] (iri, fzu) 09.04.18 Prepare presentation
-  - [ ] (fzu) 09.04.18 Finalize diary
-  - [ ] (fzu) 09.04.18 Summarize documentation in one document
+  - [x] (fle) 09.04.18 Describe features and mockups
+  - [x] (iri, fzu) 09.04.18 Prepare presentation
+  - [x] (fzu) 09.04.18 Finalize diary
+  - [x] (fzu) 09.04.18 Summarize documentation in one document
 
 #### 07.04.2018
 - (fle) Added description for features and mockups
 - Todo:
   - [x] (fle) 09.04.18 Describe features and mockups
-  - [ ] (iri, fzu) 09.04.18 Prepare presentation
-  - [ ] (fzu) 09.04.18 Finalize diary
-  - [ ] (fzu) 09.04.18 Summarize documentation in one document
+  - [x] (iri, fzu) 09.04.18 Prepare presentation
+  - [x] (fzu) 09.04.18 Finalize diary
+  - [x] (fzu) 09.04.18 Summarize documentation in one document
 
 #### 09.04.2018
 - (iri, fzu) Finalized presentation
@@ -117,12 +117,12 @@ Date, Time | Attendance | Minutes 
 - (team) Disscussed task02 and defined subtasks for team
 - (fzu) Prepared repository and documentation for task02
 - Todo:
-  - [ ] (iri, fzu) 16.04.18 Prepare presentation
-  - [ ] (fzu) 16.04.18 Update diary
+  - [x] (iri, fzu) 16.04.18 Prepare presentation
+  - [x] (fzu) 16.04.18 Update diary
   - [x] (fzu) 11.04.18 Create glossaries example
   - [x] (fzu) 11.04.18 Create requirements document template
-  - [ ] (sth) 13.04.18 Testing
-  - [ ] (tba) 13.04.18 System Models
-  - [ ] (rro) 13.04.18 System architecture
-  - [ ] (twe) 13.04.18 System requirements
-  - [ ] (fle) 13.04.18 User requirements 
+  - [x] (sth) 13.04.18 Testing
+  - [x] (tba) 13.04.18 System Models
+  - [x] (rro) 13.04.18 System architecture
+  - [x] (twe) 13.04.18 System requirements
+  - [x] (fle) 13.04.18 User requirements 
