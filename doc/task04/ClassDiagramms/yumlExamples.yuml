@@ -1,6 +1,5 @@
 // {type:class}
 // {direction:topDown}
-// {generate:true}
 [<<Abstract>>\nUser|Forename;Surname;EMail|Save()]
 
 [Artzt]1-*>[Patient]

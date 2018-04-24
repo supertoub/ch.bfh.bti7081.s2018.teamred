@@ -1,0 +1,8 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+[Patient]++1-1>[LevelLibrary]
+[LevelLibrary]1-*>[Level]
+[Level]1-*>[Challange]
+[Level]implements-.->[<<Interface>>\nObserver][Note: Vom Framework bereitgestellt]
+[Challange]implements-.->[<<Interface>>\nObservable][Note: Vom Framework bereitgestellt]
