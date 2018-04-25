@@ -30,7 +30,7 @@
 <!-- A2 -->
 <g id="node3" class="node"><title>A2</title>
 <polygon fill="none" stroke="black" points="138.03,-0.5 138.03,-36.5 192.03,-36.5 192.03,-0.5 138.03,-0.5"/>
-<text text-anchor="middle" x="165.03" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00">Artzt</text>
+<text text-anchor="middle" x="165.03" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00">Arzt</text>
 </g>
 <!-- A0&#45;&gt;A2 -->
 <g id="edge2" class="edge"><title>A0&#45;&gt;A2</title>

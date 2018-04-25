@@ -1,0 +1,5 @@
+// {type:class}
+// {direction:topDown}
+// {generate:true}
+[DataLayerFacade]uses-.->[DataWriter]
+[DataLayerFacade]uses-.->[DataReader]

@@ -30,7 +30,7 @@
 <!-- A2 -->
 <g id="node3" class="node"><title>A2</title>
 <polygon fill="none" stroke="black" points="121.004,-558.5 121.004,-594.5 175.004,-594.5 175.004,-558.5 121.004,-558.5"/>
-<text text-anchor="middle" x="147.782" y="-573.5" font-family="Helvetica,sans-Serif" font-size="10.00">Artzt</text>
+<text text-anchor="middle" x="147.893" y="-573.5" font-family="Helvetica,sans-Serif" font-size="10.00">Arzt</text>
 </g>
 <!-- A0&#45;&gt;A2 -->
 <g id="edge2" class="edge"><title>A0&#45;&gt;A2</title>
@@ -58,9 +58,9 @@
 <polygon fill="none" stroke="black" points="147.628,-352.5 147.628,-416.5 270.38,-416.5 270.38,-352.5 147.628,-352.5"/>
 <text text-anchor="middle" x="209.004" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00">LevelLibrary</text>
 <polyline fill="none" stroke="black" points="147.628,-396.5 270.38,-396.5 "/>
-<text text-anchor="middle" x="209.004" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">+addChallange(Level</text>
-<text text-anchor="middle" x="209.004" y="-371.5" font-family="Helvetica,sans-Serif" font-size="10.00">destLevel, Challange</text>
-<text text-anchor="middle" x="209.004" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">newChallange): void</text>
+<text text-anchor="middle" x="209.004" y="-383.5" font-family="Helvetica,sans-Serif" font-size="10.00">+addChallenge(Level</text>
+<text text-anchor="middle" x="209.004" y="-371.5" font-family="Helvetica,sans-Serif" font-size="10.00">destLevel, Challenge</text>
+<text text-anchor="middle" x="209.004" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">newChallenge): void</text>
 </g>
 <!-- A1&#45;&gt;A5 -->
 <g id="edge6" class="edge"><title>A1&#45;&gt;A5</title>
@@ -94,7 +94,7 @@
 <polygon fill="none" stroke="black" points="102.395,-261.5 102.395,-301.5 339.613,-301.5 339.613,-261.5 102.395,-261.5"/>
 <text text-anchor="middle" x="221.004" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00">Level</text>
 <polyline fill="none" stroke="black" points="102.395,-281.5 339.613,-281.5 "/>
-<text text-anchor="middle" x="221.004" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00">+addChallange(Challange newChallange): void</text>
+<text text-anchor="middle" x="221.004" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00">+addChallenge(Challenge newChallenge): void</text>
 </g>
 <!-- A5&#45;&gt;A6 -->
 <g id="edge7" class="edge"><title>A5&#45;&gt;A6</title>
@@ -106,7 +106,7 @@
 <!-- A7 -->
 <g id="node8" class="node"><title>A7</title>
 <polygon fill="none" stroke="black" points="152.499,-174.5 152.499,-210.5 225.51,-210.5 225.51,-174.5 152.499,-174.5"/>
-<text text-anchor="middle" x="189.004" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">Challange</text>
+<text text-anchor="middle" x="189.004" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00">Challenge</text>
 </g>
 <!-- A6&#45;&gt;A7 -->
 <g id="edge8" class="edge"><title>A6&#45;&gt;A7</title>

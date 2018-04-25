@@ -1,0 +1,5 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:true}
+[Patient]++1-1>[JournalLibrary]
+[JournalLibrary]1-*>[LibraryEntry]

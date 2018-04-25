@@ -8,11 +8,11 @@ Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt
 
 [Package Diagramm Details](./PackageDiagramm/PackageDiagramm.md)
 
-## Klassen Diagramme
+## Domain Diagramm
 
-![Class Diagramm](./ClassDiagramms/Full.svg)
+![Class Diagramm](./DomainDiagramms/Full.svg)
 
-[Klassen Diagramm Details](./ClassDiagramms/ClassDiagramm.md)
+[Klassen Diagramm Details](./DomainDiagramms/DomainDiagramm.md)
 
 ## Sequenz Diagramme
 
@@ -25,3 +25,9 @@ Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt
 ![Create Challenge](./SequenzDiagramm/NoEntry.svg)
 
 [Sequenz Diagramm Details](./SequenzDiagramm/SequenzDiagramm.md)
+
+## Klassen Diagramme
+
+![Class Diagramm](./ClassDiagramms/Full.svg)
+
+[Klassen Diagramm Details](./ClassDiagramms/ClassDiagramm.md)
