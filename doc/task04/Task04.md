@@ -10,18 +10,18 @@ Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt
 
 ## Klassen Diagramme
 
-![Klass Diagramm](./ClassDiagramms/Full.svg)
+![Class Diagramm](./ClassDiagramms/Full.svg)
 
 [Klassen Diagramm Details](./ClassDiagramms/ClassDiagramm.md)
 
 ## Sequenz Diagramme
 
-### Challange erstellen
+### Challenge erstellen
 
 ![Create Challange](./SequenzDiagramm/CreateChallange.svg)
 
 ### Kein täglicher Journaleintrag vorhanden
 
-![Create Challange](./SequenzDiagramm/NoEntry.svg)
+![Create Challenge](./SequenzDiagramm/NoEntry.svg)
 
 [Sequenz Diagramm Details](./SequenzDiagramm/SequenzDiagramm.md)
