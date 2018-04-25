@@ -1,8 +1,6 @@
 // {type:sequence}
 // {generate:true}
-[]addChallange()>[User1: Patient]
 [User1: Patient]addChallange(currentLevel, newChallange)>[User1Library: LevelLibrary]
 [User1Library: LevelLibrary]addChallange(newChallange)>[level2: Level]
 [level2: Level].>[User1Library: LevelLibrary]
 [User1Library: LevelLibrary].>[User1: Patient]
-[User1: Patient]success.>[]

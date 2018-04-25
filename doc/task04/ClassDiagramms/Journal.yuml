@@ -1,5 +1,5 @@
 // {type:class}
 // {direction:leftToRight}
 // {generate:true}
-[Patient]++1-1>[JournalLibrary]
+[Patient]++1-1>[JournalLibrary|-checkDailyEvent: boolean]
 [JournalLibrary]1-*>[LibraryEntry]

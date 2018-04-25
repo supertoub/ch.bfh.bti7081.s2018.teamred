@@ -1,6 +1,6 @@
 // {type:class}
 // {direction:leftToRight}
 // {generate:true}
-[<<Abstract>>\nUser]^[Patient]
+[<<Abstract>>\nUser]^[Patient|onNoDailyEntry()]
 [<<Abstract>>\nUser]^[Artzt]
 [Artzt]1-*>[Patient]
