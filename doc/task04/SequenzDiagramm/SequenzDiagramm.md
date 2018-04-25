@@ -6,7 +6,7 @@
 
 ![Create Challange](./CreateChallange.svg)
 
-Dieses Sequenz Diagramm beschreibt den Ablauf und die genutzten Klassen wenn der User eine neuen Challange erstellt.
+Dieses Sequenz Diagramm beschreibt den Ablauf und die genutzten Klassen wenn der User eine neue Challenge erstellt.
 
 ## Kein Journal Eintrag für den heutigen Tag
 
