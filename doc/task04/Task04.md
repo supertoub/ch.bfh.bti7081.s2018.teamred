@@ -20,7 +20,7 @@ Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt
 
 ![Create Challange](./SequenzDiagramm/CreateChallange.svg)
 
-### Kein täglicher Journaleintrag vorhanden
+### Noch kein täglicher Journaleintrag vorhanden
 
 ![Create Challenge](./SequenzDiagramm/NoEntry.svg)
 
