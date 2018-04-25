@@ -4,7 +4,7 @@
 
 ## Erstellen einer neuen Challenge
 
-![Create Challenge](./CreateChallenge.svg)
+![Create Challenge](./CreateChallange.svg)
 
 Dieses Sequenz Diagramm beschreibt den Ablauf und die genutzten Klassen wenn der User eine neue Challenge erstellt.
 
