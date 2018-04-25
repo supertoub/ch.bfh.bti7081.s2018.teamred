@@ -1,6 +1,6 @@
 // {type:sequence}
 // {generate:true}
-[User1: Patient]addChallange(currentLevel, newChallange)>[User1Library: LevelLibrary]
-[User1Library: LevelLibrary]addChallange(newChallange)>[level2: Level]
+[User1: Patient]addChallenge(currentLevel, newChallenge)>[User1Library: LevelLibrary]
+[User1Library: LevelLibrary]addChallenge(newChallenge)>[level2: Level]
 [level2: Level].>[User1Library: LevelLibrary]
 [User1Library: LevelLibrary].>[User1: Patient]
