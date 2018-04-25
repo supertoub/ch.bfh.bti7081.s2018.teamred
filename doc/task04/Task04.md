@@ -6,7 +6,7 @@ Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt
 
 ![Package Diagramm](./PackageDiagramm/PackageDiagramm.svg)
 
-[Klassen Diagramm Details](./PackageDiagramm/PackageDiagramm.md)
+[Package Diagramm Details](./PackageDiagramm/PackageDiagramm.md)
 
 ## Klassen Diagramme
 
@@ -16,7 +16,11 @@ Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt
 
 ## Sequenz Diagramme
 
+### Challange erstellen
+
 ![Create Challange](./SequenzDiagramm/CreateChallange.svg)
+
+### Keine Täglicher Journaleintrag vorhanden
 
 ![Create Challange](./SequenzDiagramm/NoEntry.svg)
 
