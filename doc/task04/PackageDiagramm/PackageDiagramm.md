@@ -2,7 +2,7 @@
 
 [<Taks 04](../Task04.md)
 
-Wir haben uns ein Package Diagramm überlegt, welches uns ermöglichen soll möglichst flexibel Packages zu ersetzten/hinzufügen, ohne dass die Hauptlogik (enthalten im "Business Layer" und im "Common Layer") verändert werden muss.
+Wir haben uns ein Package Diagramm überlegt, welches uns ermöglichen soll möglichst flexibel Packages zu ersetzen/hinzufügen, ohne dass die Hauptlogik (enthalten im "Business Layer" und im "Common Layer") verändert werden muss.
 
 ![Package Diagramm](./PackageDiagramm.svg)
 
@@ -16,8 +16,8 @@ Im Business Layer wird die gesammte Logik der Applikation abgebildet.
 
 ## Data Layer
 
-Das Data Layer ist für die Speicherung und für das Abrufen von Daten zuständig.
+Der Data Layer ist für die Speicherung und für das Abrufen von Daten zuständig.
 
 ## Common Layer
 
-Im Common Layer sind die Klassen bzw. Models enthalten die in allen anderen Packages verwendet werden. Z.B: die User Klasse oder die Challange Klasse.
+Im Common Layer sind die Klassen bzw. Models enthalten die in allen anderen Packages verwendet werden. Z.B: die User Klasse oder die Challenge Klasse.
