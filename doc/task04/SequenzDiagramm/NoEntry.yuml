@@ -1,0 +1,8 @@
+// {type:sequence}
+// {generate:true}
+[]create()>[JournalLibrary]
+[JournalLibrary]checkDalyEntry()>[JournalLibrary]
+[JournalLibrary]false.>[JournalLibrary]
+[JournalLibrary]noDaylieEntryEvent.>[User]
+[User]showMessage()>[UI]
+[UI].>[User]

@@ -10,6 +10,6 @@ Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt
 
 ## Klassen Diagramme
 
-![Klass Diagramm](./ClassDiagramms/ClassDiagrammFull.svg)
+![Klass Diagramm](./ClassDiagramms/Full.svg)
 
 [Klassen Diagramm Details](./ClassDiagramms/ClassDiagramm.md)
