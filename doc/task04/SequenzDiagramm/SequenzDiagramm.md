@@ -8,7 +8,7 @@
 
 Dieses Sequenz Diagramm beschreibt den Ablauf und die genutzten Klassen wenn der User eine neue Challenge erstellt.
 
-## Kein Journal Eintrag für den heutigen Tag
+## Noch kein Journal Eintrag für den heutigen Tag
 
 ![No Entry](./NoEntry.svg)
 
