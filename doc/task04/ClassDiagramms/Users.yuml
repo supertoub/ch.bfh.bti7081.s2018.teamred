@@ -2,5 +2,5 @@
 // {direction:leftToRight}
 // {generate:true}
 [<<Abstract>>\nUser]^[Patient|onNoDailyEntry()]
-[<<Abstract>>\nUser]^[Artzt]
-[Artzt]1-*>[Patient]
+[<<Abstract>>\nUser]^[Arzt]
+[Arzt]1-*>[Patient]
