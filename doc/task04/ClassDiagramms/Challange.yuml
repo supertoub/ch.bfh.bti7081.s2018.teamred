@@ -1,8 +1,8 @@
 // {type:class}
 // {direction:leftToRight}
 // {generate:true}
-[Patient]++1-1>[LevelLibrary|+addChallange(Level destLevel, Challange newChallange): void]
-[LevelLibrary]1-*>[Level|+addChallange(Challange newChallange): void]
-[Level]1-*>[Challange]
+[Patient]++1-1>[LevelLibrary|+addChallenge(Level destLevel, Challenge newChallenge): void]
+[LevelLibrary]1-*>[Level|+addChallenge(Challenge newChallenge): void]
+[Level]1-*>[Challenge]
 [Level]implements-.->[<<Interface>>\nObserver][Note: Vom Framework bereitgestellt]
-[Challange]implements-.->[<<Interface>>\nObservable][Note: Vom Framework bereitgestellt]
+[Challenge]implements-.->[<<Interface>>\nObservable][Note: Vom Framework bereitgestellt]
