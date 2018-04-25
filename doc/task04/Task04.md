@@ -13,3 +13,11 @@ Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt
 ![Klass Diagramm](./ClassDiagramms/Full.svg)
 
 [Klassen Diagramm Details](./ClassDiagramms/ClassDiagramm.md)
+
+## Sequenz Diagramme
+
+![Create Challange](./SequenzDiagramm/CreateChallange.svg)
+
+![Create Challange](./SequenzDiagramm/NoEntry.svg)
+
+[Sequenz Diagramm Details](./SequenzDiagramm/SequenzDiagramm.md)
