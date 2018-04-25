@@ -2,9 +2,9 @@
 
 [<Taks 04](../Task04.md)
 
-## Erstellen einer neuen Challange
+## Erstellen einer neuen Challenge
 
-![Create Challange](./CreateChallange.svg)
+![Create Challenge](./CreateChallenge.svg)
 
 Dieses Sequenz Diagramm beschreibt den Ablauf und die genutzten Klassen wenn der User eine neue Challenge erstellt.
 
