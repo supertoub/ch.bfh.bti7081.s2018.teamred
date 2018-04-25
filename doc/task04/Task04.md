@@ -1,6 +1,6 @@
 # Task 04
 
-Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt. [Extension Details](https://marketplace.visualstudio.com/items?itemName=JaimeOlivares.yuml), [Extension Wiki](https://github.com/jaime-olivares/vscode-yuml/wiki)
+Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt. [Extension Details](https://marketplace.visualstudio.com/items?itemName=JaimeOlivares.yuml), [Extension Wiki](https://github.com/jaime-olivares/vscode-yuml/wiki)
 
 ## Package Diagramm
 
@@ -20,7 +20,7 @@ Notiz: Alle Diagramme wurden mit hilfe von yUML für Visual Studio Code erstellt
 
 ![Create Challange](./SequenzDiagramm/CreateChallange.svg)
 
-### Keine Täglicher Journaleintrag vorhanden
+### Kein täglicher Journaleintrag vorhanden
 
 ![Create Challange](./SequenzDiagramm/NoEntry.svg)
 
