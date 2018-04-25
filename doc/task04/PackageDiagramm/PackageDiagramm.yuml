@@ -1,0 +1,5 @@
+// {type:package}
+// {generate:true}
+[UI Layer]->[Business Layer]
+[Business Layer]->[Data Layer]
+[Common Layer]-[Note: The Common Layer is used from every other Package. It contains all the globally used classes.]

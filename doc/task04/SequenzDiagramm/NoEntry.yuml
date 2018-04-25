@@ -1,0 +1,9 @@
+// {type:sequence}
+// {generate:true}
+[]create>[JournalLibrary]
+[JournalLibrary]checkDailyEntry(): boolean>[JournalLibrary]
+[JournalLibrary]false.>[JournalLibrary]
+[JournalLibrary]noDailyEntryEvent.>[Patient]
+[Patient]showMessage()>[UI]
+[UI].>[Patient]
+[JournalLibrary].>[]

@@ -1,0 +1,16 @@
+// {type:class}
+// {direction:topDown}
+// {generate:true}
+[<<Abstract>>\nUser]^[Patient|onNoDailyEntry()]
+[<<Abstract>>\nUser]^[Arzt]
+[Arzt]1-*>[Patient]
+[Patient]++1-1>[JournalLibrary|-checkDailyEvent: boolean]
+[JournalLibrary]1-*>[LibraryEntry]
+[Patient]++1-1>[LevelLibrary|+addChallenge(Level destLevel, Challenge newChallenge): void]
+[LevelLibrary]1-*>[Level|+addChallenge(Challenge newChallenge): void]
+[Level]1-*>[Challenge]
+[Level]implements-.->[<<Interface>>\nObserver]
+[<<Interface>>\nObserver]-[Note: Vom Framework bereitgestellt]
+[Challenge]implements-.->[<<Interface>>\nSubject]
+[<<Interface>>\nSubject]-[Note: Vom Framework bereitgestellt]
+[UI|showMessage(): void]
