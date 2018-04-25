@@ -2,4 +2,4 @@
 // {generate:true}
 [UI Layer]->[Business Layer]
 [Business Layer]->[Data Layer]
-[Common Layer]-[Note: The Common Layer is used from every other Package. It conatains all the globaly used classes.]
+[Common Layer]-[Note: The Common Layer is used from every other Package. It contains all the globally used classes.]
