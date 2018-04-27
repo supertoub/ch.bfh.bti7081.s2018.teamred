@@ -18,6 +18,8 @@ Date, Time | Attendance | Minutes 
 04.04.18, 16:15 | tba, fle, sth, iri, rro, twe, fzu | 120
 06.04.18, 10:20 | tba, fle, sth, iri, rro, fzu | 90
 11.04.18, 17:00 | tba, fle, sth, rro, twe, fzu | 45
+16.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 45
+23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 
 #### 16.03.2018
 - (twe) Generating GitHub repo
@@ -112,7 +114,7 @@ Date, Time | Attendance | Minutes 
 - Todo:
   - [x] (iri, fzu) 09.04.18 Prepare presentation
   - [x] (fzu) 09.04.18 Finalize diary
- 
+
 #### 11.04.2018
 - (team) Disscussed task02 and defined subtasks for team
 - (fzu) Prepared repository and documentation for task02
@@ -125,4 +127,26 @@ Date, Time | Attendance | Minutes 
   - [x] (tba) 13.04.18 System Models
   - [x] (rro) 13.04.18 System architecture
   - [x] (twe) 13.04.18 System requirements
-  - [x] (fle) 13.04.18 User requirements 
+  - [x] (fle) 13.04.18 User requirements
+
+#### 16.04.2018
+  - (team) Reviewed RS for team green and submitted feedback
+  - Todo:
+    - [x] (team) Review RS and give feedback for team green
+
+#### 23.04.2018
+  - (team) Team meeting with discussion and first draft for the sequence diagram and domain model
+  - Todo:
+    - [ ] (fzu) Update diary
+    - [ ] (fle, tba) Finish domain model and sequence diagram
+    - [ ] (fzu) Create documentation
+    - [ ] (twe) Prepare presentation of diagrams
+
+#### 27.04.2018
+  - (fle, tba) Updated final version of diagrams
+  - (fzu) Updated diary and documentation
+  - Todo:
+    - [x] (fzu) Update diary
+    - [x] (fle, twe) Finish domain model and sequence diagram
+    - [ ] (fzu) Create documentation
+    - [x] (twe) Prepare presentation of diagrams
