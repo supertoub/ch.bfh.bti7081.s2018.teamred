@@ -1,6 +1,6 @@
 # Sequenz Diagramm
 
-[Taks 04](../Task04.md)
+[<Taks 04](../Task04.md)
 
 ## Erstellen einer neuen Challenge
 
