@@ -20,6 +20,7 @@ Date, Time | Attendance | Minutes 
 11.04.18, 17:00 | tba, fle, sth, rro, twe, fzu | 45
 16.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 45
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
+27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
 
 #### 16.03.2018
 - (twe) Generating GitHub repo
@@ -143,10 +144,11 @@ Date, Time | Attendance | Minutes 
     - [ ] (twe) Prepare presentation of diagrams
 
 #### 27.04.2018
+  - (team) Discussed presentation, last review of documentation
   - (fle, tba) Updated final version of diagrams
   - (fzu) Updated diary and documentation
   - Todo:
     - [x] (fzu) Update diary
     - [x] (fle, twe) Finish domain model and sequence diagram
-    - [ ] (fzu) Create documentation
+    - [x] (fzu) Create documentation
     - [x] (twe) Prepare presentation of diagrams
