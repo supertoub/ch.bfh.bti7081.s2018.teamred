@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 521 364" style="enable-background:new 0 0 521 364;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;}
+	.st1{font-family:'Helvetica';}
+	.st2{font-size:13px;}
+	.st3{fill:none;stroke:#000000;stroke-dasharray:7,4;}
+	.st4{fill:#FFFFFF;}
+</style>
+<title>NoEntry</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1">
+	<g id="NoEntry" transform="translate(1.000000, 1.000000)">
+		<rect id="Rectangle-path" class="st0" width="20" height="38"/>
+		<rect id="Rectangle-path_1_" y="324" class="st0" width="20" height="38"/>
+		<path id="Shape" class="st0" d="M10,38v286"/>
+		<rect id="Rectangle-path_2_" x="40" class="st0" width="139" height="38"/>
+		<text transform="matrix(1 0 0 1 68 19)" class="st1 st2">JournalLibrary</text>
+		<rect id="Rectangle-path_3_" x="40" y="324" class="st0" width="139" height="38"/>
+		<text transform="matrix(1 0 0 1 68 343)" class="st1 st2">JournalLibrary</text>
+		<path id="Shape_1_" class="st0" d="M109.5,38v286"/>
+		<rect id="Rectangle-path_4_" x="330.8" class="st0" width="79.5" height="38"/>
+		<text transform="matrix(1 0 0 1 350 19)" class="st1 st2">Patient</text>
+		<rect id="Rectangle-path_5_" x="330.8" y="324" class="st0" width="79.5" height="38"/>
+		<text transform="matrix(1 0 0 1 350 343)" class="st1 st2">Patient</text>
+		<path id="Shape_2_" class="st0" d="M370.5,38v286"/>
+		<rect id="Rectangle-path_6_" x="482.5" class="st0" width="37" height="38"/>
+		<text transform="matrix(1 0 0 1 494.5 19)" class="st1 st2">UI</text>
+		<rect id="Rectangle-path_7_" x="482.5" y="324" class="st0" width="37" height="38"/>
+		<text transform="matrix(1 0 0 1 494.5 343)" class="st1 st2">UI</text>
+		<path id="Shape_3_" class="st0" d="M501,38v286"/>
+		<text transform="matrix(1 0 0 1 41.25 63)" class="st1 st2">create</text>
+		<g id="Shape_4_">
+			<g>
+				<line class="st0" x1="10" y1="76" x2="102.3" y2="76"/>
+				<g>
+					<polygon points="100.9,81 109.5,76 100.9,71 					"/>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 138 90)" class="st1 st2">checkDailyEntry(): boolean</text>
+		<g id="Shape_5_">
+			<g>
+				<path class="st0" d="M112.5,91c37.4,0,39.8,28.9,7.2,32.6"/>
+				<g>
+					<polygon points="120.8,118.5 112.5,124 121.4,128.4 					"/>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 151 143)" class="st1 st2">false</text>
+		<g id="Shape_6_">
+			<g>
+				<path class="st3" d="M113.5,129c37.4,0,39.8,28.9,7.2,32.6"/>
+				<g>
+					<polygon points="121.8,156.5 113.5,162 122.4,166.4 					"/>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 186.5 177)" class="st1 st2">noDailyEntryEvent</text>
+		<g id="Shape_7_">
+			<g>
+				<line class="st3" x1="109.5" y1="190" x2="363.3" y2="190"/>
+				<g>
+					<polygon points="361.9,195 370.5,190 361.9,185 					"/>
+				</g>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 389.75 178)" class="st1 st2">showMessage()</text>
+		<g id="Shape_8_">
+			<g>
+				<line class="st0" x1="370.5" y1="191" x2="493.8" y2="191"/>
+				<g>
+					<polygon points="492.4,196 501,191 492.4,186 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Shape_9_">
+			<g>
+				<line class="st3" x1="501" y1="266" x2="377.7" y2="266"/>
+				<g>
+					<polygon points="379.1,261 370.5,266 379.1,271 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Shape_10_">
+			<g>
+				<line class="st3" x1="109.5" y1="304" x2="17.2" y2="304"/>
+				<g>
+					<polygon points="18.6,299 10,304 18.6,309 					"/>
+				</g>
+			</g>
+		</g>
+		<g id="Rectangle">
+			<g>
+				<rect id="path-1" x="368" y="191" class="st4" width="6" height="76"/>
+			</g>
+			<rect x="368.5" y="191.5" class="st0" width="5" height="75"/>
+		</g>
+		<g id="Rectangle_1_">
+			<g>
+				<rect id="path-2" x="7" y="76" class="st4" width="6" height="229"/>
+			</g>
+			<rect x="7.5" y="76.5" class="st0" width="5" height="228"/>
+		</g>
+		<g id="Rectangle_2_">
+			<g>
+				<rect id="path-3" x="107" y="76" class="st4" width="6" height="229"/>
+			</g>
+			<rect x="107.5" y="76.5" class="st0" width="5" height="228"/>
+		</g>
+		<g id="Rectangle_3_">
+			<g>
+				<rect id="path-4" x="498" y="191" class="st4" width="6" height="75"/>
+			</g>
+			<rect x="498.5" y="191.5" class="st0" width="5" height="74"/>
+		</g>
+	</g>
+</g>
+</svg>

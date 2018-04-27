@@ -18,11 +18,11 @@ Notiz: Alle Diagramme wurden mit Hilfe von yUML für Visual Studio Code erstellt
 
 ### Challenge erstellen
 
-![Create Challange](./SequenzDiagramm/CreateChallange.svg)
+![Create Challange](./SequenzDiagramm/CreateChallangeCorrected.svg)
 
 ### Noch kein täglicher Journaleintrag vorhanden
 
-![Create Challenge](./SequenzDiagramm/NoEntry.svg)
+![Create Challenge](./SequenzDiagramm/NoEntryCorrected.svg)
 
 [Sequenz Diagramm Details](./SequenzDiagramm/SequenzDiagramm.md)
 
