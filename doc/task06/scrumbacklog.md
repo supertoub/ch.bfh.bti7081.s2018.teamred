@@ -1,6 +1,7 @@
 # Scrum backlog
 ## Project team
 Name | GitHub Alias
+--- | ---
 Thomas Baumann| lopof
 Frédéric Lehmann | frediLehmann
 Severin Thalmann | manfred00
