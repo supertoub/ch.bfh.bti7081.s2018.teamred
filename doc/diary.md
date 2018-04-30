@@ -21,7 +21,7 @@ Date, Time | Attendance | Minutes 
 16.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 45
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
-30.04.18, 20:30 | tba, sth, iri, rro, fzu | 90
+30.04.18, 20:30 | tba, fle, sth, iri, rro, fzu | 90
 
 #### 16.03.2018
 - (twe) Generating GitHub repo
