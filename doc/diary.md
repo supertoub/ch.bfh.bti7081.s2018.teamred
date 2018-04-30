@@ -22,6 +22,16 @@ Date, Time | Attendance | Minutes 
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
 
+### Evaluation
+Task | Grade
+---------|---------
+Task 1 Design Thinking | 18/20
+Task 1 Design Thinking Presentation | 4/5
+Task 2 Requirements Specification Document | 10/15
+Task 3 Requirements Review | 4/5
+Task 4 | 
+**Total** | 81%
+
 #### 16.03.2018
 - (twe) Generating GitHub repo
 - (team) Project setup and kickoff meeting
