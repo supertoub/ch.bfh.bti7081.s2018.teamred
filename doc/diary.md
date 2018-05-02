@@ -21,6 +21,7 @@ Date, Time | Attendance | Minutes 
 16.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 45
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
+30.04.18, 20:30 | tba, fle, sth, iri, rro, fzu | 90
 
 ### Evaluation
 Task | Grade
@@ -162,3 +163,16 @@ Task 4 |
     - [x] (fle, twe) Finish domain model and sequence diagram
     - [x] (fzu) Create documentation
     - [x] (twe) Prepare presentation of diagrams
+
+#### 30.04.2018
+  - (team) Defined product backlog in product planing meeting with product owner
+  - (team) Started sprint planning meeting and defined tasks for sprint 1
+  - (fzu) Updated diary
+  - Todo:
+    - [x] (fzu) Update diary
+    - [x] (team) Define product backlog with product owner
+    - [ ] (team) Finish sprint planning
+    - [ ] (team) Draw high-level UML component and deployment diagram
+    - [ ] (team) Draw detailed class diagram for main view
+    - [ ] (team) Prepare presentation
+
