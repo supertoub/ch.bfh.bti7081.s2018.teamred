@@ -37,7 +37,7 @@ Task 4 |
 - (team) Project setup and kickoff meeting
 - Todo:
   - [x] (team) 16.03.18 Initialize project
-  - [ ] (fzu) 23.03.18 Add Git cheatsheet
+  - [x] (fzu) 23.03.18 Add Git cheatsheet
 
 #### 23.03.2018
 - (team) Had a meeting with the entire team (defined scope and interview questions)
@@ -47,27 +47,27 @@ Task 4 |
 - Todo:
   - [x] (fzu) 23.03.18 Add git cheatsheet
   - [x] (team) 23.03.18 Define interview questions
-  - [ ] (fzu) 04.04.18 Interview with general practitoner
-  - [ ] (tba) 04.04.18 Interview with psychologist
-  - [ ] (iri) 04.04.18 Interview with psychology student
-  - [ ] (team) 04.04.18 Create two storyboards per person
+  - [x] (fzu) 04.04.18 Interview with general practitoner
+  - [x] (tba) 04.04.18 Interview with psychologist
+  - [x] (iri) 04.04.18 Interview with psychology student
+  - [x] (team) 04.04.18 Create two storyboards per person
 
 #### 24.03.2018
 - (iri) Interviewed psychology student, submitted [results](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/43bec7ae7254d99ed6dfc4aa7de4ca4efef8f996)
 - (iri) Improved [git cheatsheet](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/96b1048cd7d352d50b611c43dc08a5e6127e828b)
 - Todo:
-  - [ ] (fzu) 04.04.18 Interview with general practitoner
-  - [ ] (tba) 04.04.18 Interview with psychologist
+  - [x] (fzu) 04.04.18 Interview with general practitoner
+  - [x] (tba) 04.04.18 Interview with psychologist
   - [x] (iri) 04.04.18 Interview with psychology student
-  - [ ] (team) 04.04.18 Create two storyboards per person
+  - [x] (team) 04.04.18 Create two storyboards per person
 
 #### 30.03.2018
 - (tba) Submitted [results for interview](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/c592e79fba3d5b8e019761ed5d4ca11f7103408e) with psychologist
 - (tba) Added [two storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/3961f2f1e28f902055a2f5f2454ee3440b85a924)
 - Todo:
-  - [ ] (fzu) 04.04.18 Interview with general practicer
-  - [ ] (team) 04.04.18 Create two storyboards per person
-  - [ ] (team) 04.04.18 Analyze storyboards and create features in next meeting
+  - [x] (fzu) 04.04.18 Interview with general practicer
+  - [x] (team) 04.04.18 Create two storyboards per person
+  - [x] (team) 04.04.18 Analyze storyboards and create features in next meeting
 
 #### 04.04.2018
 - (fle) Added two [storyboards](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/commit/b3abb0d10e42ab918f8bb647b69a106beaa1164d)
@@ -80,12 +80,12 @@ Task 4 |
   - [x] (fzu) 04.04.18 Interview with general practitoner
   - [x] (team) 04.04.18 Create two storyboards per person
   - [x] (team) 04.04.18 Analyze storyboards and create features
-  - [ ] (twe) 06.04.18 Create mockup for [probability feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Probability.JPG)
-  - [ ] (tba) 06.04.18 Create mockup for [journal feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Journal.JPG)
-  - [ ] (fle) 06.04.18 Create mockup for [challenge feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Challenge.JPG)
-  - [ ] (sth) 06.04.18 Create a persona
-  - [ ] (rro) 06.04.18 Create a persona
-  - [ ] (tba) 06.04.18 Validate mockups with psychologist
+  - [x] (twe) 06.04.18 Create mockup for [probability feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Probability.JPG)
+  - [x] (tba) 06.04.18 Create mockup for [journal feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Journal.JPG)
+  - [x] (fle) 06.04.18 Create mockup for [challenge feature](https://github.com/supertoub/ch.bfh.bti7081.s2018.teamred/blob/master/FEATURES/Challenge.JPG)
+  - [x] (sth) 06.04.18 Create a persona
+  - [x] (rro) 06.04.18 Create a persona
+  - [x] (tba) 06.04.18 Validate mockups with psychologist
 
 
 #### 06.04.2018
@@ -148,10 +148,10 @@ Task 4 |
 #### 23.04.2018
   - (team) Team meeting with discussion and first draft for the sequence diagram and domain model
   - Todo:
-    - [ ] (fzu) Update diary
-    - [ ] (fle, tba) Finish domain model and sequence diagram
-    - [ ] (fzu) Create documentation
-    - [ ] (twe) Prepare presentation of diagrams
+    - [x] (fzu) Update diary
+    - [x] (fle, tba) Finish domain model and sequence diagram
+    - [x] (fzu) Create documentation
+    - [x] (twe) Prepare presentation of diagrams
 
 #### 27.04.2018
   - (team) Discussed presentation, last review of documentation
@@ -162,3 +162,9 @@ Task 4 |
     - [x] (fle, twe) Finish domain model and sequence diagram
     - [x] (fzu) Create documentation
     - [x] (twe) Prepare presentation of diagrams
+
+### 02.05.2018
+   - [ ] (fle) Update Package diagram
+   - [ ] (twe) split storys in smaller taks
+   - [ ] (team) define team rolls
+   - [ ] (tba) update class diagram
