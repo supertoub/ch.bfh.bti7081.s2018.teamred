@@ -13,10 +13,10 @@ Tobias Weissert | supertoub
 ## Product Backlog
 ID | Storyname | Description | Priority | Effort plan original | Effort plan updated | Effort acutal | Status
 --- | --- | --- | --- | --- | --- | --- | ---
- 1 | Challenge Board | Als Entwickler möchte ich dem Anwender auf einer Seite eine Übersicht zu den Challenges mit ihrer Beschreibung, ihrem Status und den verfügbaren Levels bieten. | High | 63 | - | - | Open
- 2 | Journal | Als Entwicker möchte ich dem Anwender die Möglichkeit geben einen Journaleintrag zu einem Erlebnis oder einer Challenge zu erfassen. | Medium | 80 | - | - | Open
- 3 | Statistik | Als Entwickler möchte ich dem Anwender die Möglichkeit geben eine Auswertung seiner abgeschlossenen Challenges darzustellen. | Low | 10 | - | - | Open
- 4 | Challenges verwalten | Als Entwickler möchte ich dem Anwender die Möglichkeit geben neue Challenges zu erfassen, bestehende Challenges zu bearbeiten oder abzuschliessen und zu bewerten. | High | 57  | - | - | Open
+ 1 | Challenge Board | Als Patient möchte ich auf einer Seite eine Übersicht aller Challenges mit ihrer Beschreibung, ihrem Status und den verfügbaren Levels sehen, so dass er sich einen Überblick über alle seine Challenges machen kann. | High | 63 | - | - | Open
+ 2 | Journal | Als Patient möchte ich die Möglichkeit haben einen Journaleintrag zu einem Erlebnis oder einer Challenge zu erfassen, damit er seinen aktuellen Heilungsprozess dokumentieren kann. | Medium | 80 | - | - | Open
+ 3 | Statistik | Als Arzt möchte ich die Möglichkeit haben eine Auswertung aller abgeschlossenen Challenges eines Patienten darzustellen, sodass er den aktuellen Fortschritt eines Patienten besser bewerten kann. | Low | 10 | - | - | Open
+ 4 | Challenges verwalten | Als Patient möchte ich Möglichkeit haben neue Challenges für sich zu erfassen, bestehende Challenges zu bearbeiten oder abzuschliessen und zu bewerten, sodass der Patient lernt sich seinen Ängsten zu stellen . | High | 57  | - | - | Open
 ## Sprint Backlog
 ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Effort plan original | Effort plan updated | Effort actual | Status
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
