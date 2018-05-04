@@ -25,10 +25,10 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.3 | 1 | Farbschema CSS |  | | TWE | RRO | Low | 3 | - | - | Open
 1.4 | 1 | Font/Icon Schema |  | | TWE | RRO | Low | 3 | - | - | Open
 1.5 | 1 | Level Layout |  | <ul><li>Challengebaord</li></ul> | FLE | TWE | High | 3 | - | - | Open
-1.6 | 1 | Level List |  | <ul><li>Challengebaord</li></ul> | FLE | IRI | High | 3 | - | - | Open
-1.7 | 1 | Level Details |  | <ul><li>Challengebaord</li></ul> | IRI | FLE | High | 3 | - | - | Open
-1.8 | 1 | Minimale Funktionalität für die Level |  | <ul><li>Challengebaord</li></ul> | IRI | FLE | High | 3 | - | - | Open
-1.9 | 1 | Challenge Layout (Aktiv/Abgeschlossen) |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | IRI | FZU | High | 3 | - | - | Open
+1.6 | 1 | Level List | | <ul><li>Challengebaord</li></ul> | FLE | IRI | High | 3 | - | - | Open
+1.7 | 1 | Level Details | Die Levels werden mit den Challenges verknüpft, damit man wenn man auf ein Level klickt die jeweiligen Challenges ersichtlich werden. | <ul><li>Challengebaord</li></ul> | IRI | FLE | High | 3 | - | - | Open
+1.8 | 1 | Minimale Funktionalität für die Level | Damit man weiss welches Level aktiv und passiv ist, werden sie anhand des Attributes entsprechend angezeigt.  | <ul><li>Challengebaord</li></ul> | IRI | FLE | High | 3 | - | - | Open
+1.9 | 1 | Challenge Layout (Aktiv/Abgeschlossen) | Die Challanges werden an der richtigen Ort platziert anhand ihres Status (Aktiv/Abgeschlossen). | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | IRI | FZU | High | 3 | - | - | Open
 1.10 | 1 | Challenge Aktiv |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.11 | 1 | Challenge Abgeschlossen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.12 | 1 | Funktionalität für Challenges aktivieren/abzuschliessen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
