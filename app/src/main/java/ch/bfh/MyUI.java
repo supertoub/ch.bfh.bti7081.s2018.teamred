@@ -2,6 +2,7 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
+import UserInterface.ChallangeBoardView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -24,7 +25,7 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
+       /* final VerticalLayout layout = new VerticalLayout();
         
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
@@ -36,8 +37,11 @@ public class MyUI extends UI {
         });
         
         layout.addComponents(name, button);
-        
-        setContent(layout);
+        */
+       ChallangeBoardView cbv = new ChallangeBoardView();
+
+        setContent(new ChallangeBoardView());
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
