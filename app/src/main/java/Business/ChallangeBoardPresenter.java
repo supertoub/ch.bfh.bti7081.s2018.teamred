@@ -1,6 +1,7 @@
 package Business;
 
-public class ChallangeBoardPresenter extends UserInterface.ChallangeBoardView {
+public class ChallangeBoardPresenter  {
+
 
     void addClick(){}
 
