@@ -33,8 +33,7 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.11 | 1 | Challenge Abgeschlossen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.12 | 1 | Funktionalität für Challenges aktivieren/abzuschliessen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.13 | 1 | Startseite Layout | Erstellen der Startview in der, der User auswählen kann ob er auf das Challengeboard oder auf das Journalboard springen möchte. | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
-1.14 | 1 | Funktionalität Startseite (Butons/Links) | Bei Klick auf Challenge wird die Challengeboardview angezeigt.
-Welcome Message mit Name des Users. | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
+1.14 | 1 | Funktionalität Startseite (Butons/Links) | Bei Klick auf Challenge wird die Challengeboardview angezeigt. Welcome Message mit Name des Users. | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
 1.15 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 1.16 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 1.17 | 1 | Maven Infrastructure Setup | Die Infrastrukturkomponenten (Datenbank und Applikationsserver) sollen mit Hilfe von Maven automatisiert gestartet werden um so das Testen und Demonstrieren der Entwickelten einfacher zu machen. | | FZU | TWE | High | 3 | - | - | Open
