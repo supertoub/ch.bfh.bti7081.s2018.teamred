@@ -34,20 +34,32 @@ public class MyUI extends UI {
 
         layout.addComponents(name, button);
         */
-       ChallangeBoardView cbv = new ChallangeBoardView();
+
+        ChallangeBoardView cbv = new ChallangeBoardView();
+
         Panel activeP = new Panel("1. Active Challenge");
         activeP.setContent(new Label("blablabla"));
         activeP.setSizeFull();
+        cbv.getChallBoaChallActiveLayout().addComponent(activeP);
+        cbv.getChallBoaChallActiveLayout().setComponentAlignment(activeP, Alignment.TOP_LEFT);
+
         Panel activeP2 = new Panel("2. Active Challenge");
         activeP2.setContent(new Label("blablabla"));
         activeP2.setSizeFull();
+        cbv.getChallBoaChallActiveLayout().addComponent(activeP2);
+
         Panel passiveP = new Panel("1. Passive Challenge");
         passiveP.setContent(new Label("blablablaBlubberrr"));
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP);
-        cbv.getChallBoaChallActiveLayout().setComponentAlignment(activeP,Alignment.TOP_LEFT);
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP2);
         cbv.getChallBoaChallPassiveLayout().addComponent(passiveP);
-        cbv.getChallBoaChallPassiveLayout().setComponentAlignment(passiveP,Alignment.TOP_CENTER);
+        cbv.getChallBoaChallPassiveLayout().setComponentAlignment(passiveP, Alignment.TOP_CENTER);
+
+        Button level;
+        for (int i = 1; i <= 15; i++){
+            level = new Button("Level " + i);
+            level.setWidth("100%");
+            cbv.getChallBoaLevelLayout().addComponent(level);
+        }
+
         setContent(cbv);
 
     }
