@@ -2,6 +2,7 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
+import Business.ChallangeBoardPresenter;
 import UserInterface.ChallangeBoardView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -21,47 +22,8 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-       /* final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue()
-                    + ", it works!"));
-        });
-
-        layout.addComponents(name, button);
-        */
-
-        ChallangeBoardView cbv = new ChallangeBoardView();
-
-        Panel activeP = new Panel("1. Active Challenge");
-        activeP.setContent(new Label("blablabla"));
-        activeP.setSizeFull();
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP);
-        cbv.getChallBoaChallActiveLayout().setComponentAlignment(activeP, Alignment.TOP_LEFT);
-
-        Panel activeP2 = new Panel("2. Active Challenge");
-        activeP2.setContent(new Label("blablabla"));
-        activeP2.setSizeFull();
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP2);
-
-        Panel passiveP = new Panel("1. Passive Challenge");
-        passiveP.setContent(new Label("blablablaBlubberrr"));
-        cbv.getChallBoaChallPassiveLayout().addComponent(passiveP);
-        cbv.getChallBoaChallPassiveLayout().setComponentAlignment(passiveP, Alignment.TOP_CENTER);
-
-        Button level;
-        for (int i = 1; i <= 15; i++){
-            level = new Button("Level " + i);
-            level.setWidth("100%");
-            cbv.getChallBoaLevelLayout().addComponent(level);
-        }
-
-        setContent(cbv);
-
+        ChallangeBoardPresenter presenter = ChallangeBoardPresenter.getInstance();
+        setContent(presenter.getBoardView());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

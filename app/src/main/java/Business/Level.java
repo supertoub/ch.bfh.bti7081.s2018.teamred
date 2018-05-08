@@ -3,8 +3,17 @@ package Business;
 import java.util.List;
 
 class Level {
-    List<Challange> challanges;
-    LevelState levelState;
+    private List<Challange> challanges;
+    private LevelState levelState;
+    private String levelLabel;
+
+    String getLevelLabel(){
+        return levelLabel;
+    }
+
+    Level(String label){
+        this.levelLabel = label;
+    }
 
     void createChallange(){}
 
