@@ -18,5 +18,5 @@ class LevelLibrary {
         levels.add(new Level("Level " + (levels.size()+1)));
     }
 
-    void delete(Challange challange){}
+    void delete(Challenge challenge){}
 }

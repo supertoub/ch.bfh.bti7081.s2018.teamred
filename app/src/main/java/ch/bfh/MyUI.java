@@ -2,8 +2,7 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
-import Business.ChallangeBoardPresenter;
-import UserInterface.ChallangeBoardView;
+import Business.ChallengeBoardPresenter;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -22,7 +21,7 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        ChallangeBoardPresenter presenter = ChallangeBoardPresenter.getInstance();
+        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
         setContent(presenter.getBoardView());
     }
 

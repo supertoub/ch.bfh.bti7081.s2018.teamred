@@ -1,19 +1,20 @@
 package Business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Level {
-    private List<Challange> challanges;
+    private List<Challenge> challenges;
     private LevelState levelState;
     private String levelLabel;
 
     String getLevelLabel(){
         return levelLabel;
     }
-
+    List<Challenge> getChallenges() {return challenges;}
     LevelState getLevelState() { return levelState; }
 
-    // TODO: Korrektes Level State handling
+    // TODO: Korrektes Level ChallengeState handling
     Level(String label){
         this.levelLabel = label;
         this.levelState = LevelState.closed;
@@ -24,9 +25,15 @@ class Level {
         this.levelState = state;
     }
 
-    void createChallange(){}
+    Level(){
+        challenges = new ArrayList<>();
+    }
 
-    void deleteChallagne(Challange challange){}
+    void createChallenge(){
+        challenges.add(new Challenge("Challenge " + (challenges.size()+1),"test", ChallengeState.closed,4));
+    }
+
+    void deleteChallenge(Challenge challenge){}
 
 
 }
