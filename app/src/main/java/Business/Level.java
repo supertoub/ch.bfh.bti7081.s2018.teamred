@@ -13,6 +13,7 @@ class Level {
 
     LevelState getLevelState() { return levelState; }
 
+    // TODO: Korrektes Level State handling
     Level(String label){
         this.levelLabel = label;
         this.levelState = LevelState.closed;
