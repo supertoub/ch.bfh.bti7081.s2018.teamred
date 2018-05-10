@@ -11,8 +11,16 @@ class Level {
         return levelLabel;
     }
 
+    LevelState getLevelState() { return levelState; }
+
     Level(String label){
         this.levelLabel = label;
+        this.levelState = LevelState.closed;
+    }
+
+    Level(String label, LevelState state){
+        this.levelLabel = label;
+        this.levelState = state;
     }
 
     void createChallange(){}

@@ -45,7 +45,7 @@ public class ChallangeBoardPresenter  {
     private void updateLevelView(){
         List<Level> levels = lvlLibrary.getLevels();
         for (Level level : levels){
-            boardView.addLevel(level.getLevelLabel());
+            boardView.addLevel(level.getLevelLabel(), level.getLevelState());
         }
     }
 
