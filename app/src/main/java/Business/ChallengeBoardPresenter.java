@@ -36,15 +36,21 @@ public class ChallengeBoardPresenter {
     private ChallengeBoardPresenter(){
         boardView = new ChallengeBoardView();
         lvlLibrary = new LevelLibrary();
-        lvlChallenges = new Level();
         for (int i = 1; i <= 15; i++){
             lvlLibrary.createNewLevel();
         }
-        for (int i = 1; i <= 5; i++){
-            lvlChallenges.createChallenge();
+        lvlLibrary.getLevels().get(0).setLevelState(LevelState.open);
+        //add 6 Challanges for each Level
+        for (int i = 0; i <= lvlLibrary.getLevels().size()-1; i++) {
+            for (int j = 1; j < 7; j++) {
+                lvlLibrary.getLevels().get(i).createChallenge();
+                if (j % 2 == 0) {
+                    lvlLibrary.getLevels().get(i).getChallenges().get(j - 1).setChallengeState(ChallengeState.open);
+                }
+            }
         }
+
         updateLevelView();
-        updateChallengeView();
     }
 
     //</editor-fold>
@@ -53,16 +59,18 @@ public class ChallengeBoardPresenter {
         List<Level> levels = lvlLibrary.getLevels();
         for (Level level : levels){
             boardView.addLevel(level.getLevelLabel(), level.getLevelState());
+            //um das Layout anzuschauen, sollte mit button click kommen auf challange
+            if(level.getLevelState()==LevelState.open) {
+                updateChallengeView(level);
+            }
         }
-
     }
 
-    private void updateChallengeView(){
-        List<Challenge> challenges = lvlChallenges.getChallenges();
-        for (Challenge challenge : challenges){
-            boardView.addChallenge(challenge.getChallengeTitle(), challenge.getChallengeDesc(),challenge.getChallengeState(),challenge.getChallengeLevelOfAnxiety());
+    private void updateChallengeView(Level level){
+        List <Challenge> challenges = level.getChallenges();
+        for (Challenge challenge: challenges){
+            boardView.addChallenge(challenge.getChallengeTitle(),challenge.getChallengeDesc(),challenge.getChallengeState(),challenge.getChallengeLevelOfAnxiety());
         }
-
     }
 
     void addClick(){}

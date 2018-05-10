@@ -8,6 +8,10 @@ class Level {
     private LevelState levelState;
     private String levelLabel;
 
+    public void setLevelState(LevelState levelState) {
+        this.levelState = levelState;
+    }
+
     String getLevelLabel(){
         return levelLabel;
     }
@@ -18,14 +22,6 @@ class Level {
     Level(String label){
         this.levelLabel = label;
         this.levelState = LevelState.closed;
-    }
-
-    Level(String label, LevelState state){
-        this.levelLabel = label;
-        this.levelState = state;
-    }
-
-    Level(){
         challenges = new ArrayList<>();
     }
 

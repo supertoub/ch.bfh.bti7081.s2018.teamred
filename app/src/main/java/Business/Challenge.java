@@ -6,6 +6,22 @@ class Challenge {
     private ChallengeState challengeState;
     private int levelOfAnxiety;
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setChallengeState(ChallengeState challengeState) {
+        this.challengeState = challengeState;
+    }
+
+    public void setLevelOfAnxiety(int levelOfAnxiety) {
+        this.levelOfAnxiety = levelOfAnxiety;
+    }
+
     String getChallengeTitle(){
         return title;
     }
