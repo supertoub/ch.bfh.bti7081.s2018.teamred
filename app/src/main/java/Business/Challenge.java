@@ -1,6 +1,6 @@
 package Business;
 
-class Challenge {
+public class Challenge {
     private String title;
     private String desc;
     private ChallengeState challengeState;

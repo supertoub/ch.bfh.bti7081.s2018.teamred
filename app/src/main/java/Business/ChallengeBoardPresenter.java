@@ -1,11 +1,21 @@
 package Business;
 
+
+import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 
 import java.util.List;
 
 // implemented as singleton
-public class ChallengeBoardPresenter {
+public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener{
+
+    public void buttonClick(char operation){
+        if(operation=='L'){
+            lvlLibrary.createNewLevel();
+            updateLevelView();
+        }
+    }
+
 
     private static ChallengeBoardPresenter instance;
 
@@ -35,8 +45,9 @@ public class ChallengeBoardPresenter {
 
     private ChallengeBoardPresenter(){
         boardView = new ChallengeBoardView();
+        boardView.addListener(this);
         lvlLibrary = new LevelLibrary();
-        for (int i = 1; i <= 15; i++){
+        for (int i = 1; i <= 5; i++){
             lvlLibrary.createNewLevel();
         }
         lvlLibrary.getLevels().get(0).setLevelState(LevelState.open);
@@ -72,6 +83,7 @@ public class ChallengeBoardPresenter {
             boardView.addChallenge(challenge.getChallengeTitle(),challenge.getChallengeDesc(),challenge.getChallengeState(),challenge.getChallengeLevelOfAnxiety());
         }
     }
+
 
     void addClick(){}
 
