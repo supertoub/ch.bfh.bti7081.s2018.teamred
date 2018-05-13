@@ -35,7 +35,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public void buttonClick(Button.ClickEvent event) {
         for (ChallengeBoardViewListener listener: listeners)
-            listener.buttonClick(event.getButton().getCaption().charAt(0));
+            listener.buttonClick(event.getButton().getCaption());
     }
 
 
@@ -89,7 +89,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
     //</editor-fold>
 
     public void addLevel(String levelLabel, LevelState state) {
-        Button level = new Button(levelLabel);
+        Button level = new Button(levelLabel, this::buttonClick);
         level.setWidth("100%");
         if (state == LevelState.closed){
             level.setEnabled(false);
@@ -119,10 +119,15 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             this.challBoaChallActiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
-
         }
-
-
+    }
+    public void removeChallanges(){
+        this.challBoaChallActiveLayout.removeAllComponents();
+        this.challBoaChallActiveLayout.addComponent(challBoaActiveLabel);
+        this.challBoaChallActiveLayout.setComponentAlignment(challBoaActiveLabel,Alignment.TOP_CENTER);
+        this.challBoaChallPassiveLayout.removeAllComponents();
+        this.challBoaChallPassiveLayout.addComponent(challBoaPassivLabel);
+        this.challBoaChallPassiveLayout.setComponentAlignment(challBoaPassivLabel,Alignment.TOP_CENTER);
     }
 
 
