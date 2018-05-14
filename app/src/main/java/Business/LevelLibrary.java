@@ -1,11 +1,22 @@
 package Business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class LevelLibrary {
-    List<Level> levels;
+    private List<Level> levels;
 
-    void createLevel(){}
+    List<Level> getLevels(){
+        return levels;
+    }
 
-    void delete(Challange challange){}
+    LevelLibrary(){
+        levels = new ArrayList<>();
+    }
+
+    void createNewLevel(){
+        levels.add(new Level("Level " + (levels.size()+1)));
+    }
+
+    void delete(Challenge challenge){}
 }

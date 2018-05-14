@@ -2,7 +2,7 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
-import UserInterface.ChallangeBoardView;
+import Business.ChallengeBoardPresenter;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -21,35 +21,8 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-       /* final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Click Me");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue()
-                    + ", it works!"));
-        });
-
-        layout.addComponents(name, button);
-        */
-       ChallangeBoardView cbv = new ChallangeBoardView();
-        Panel activeP = new Panel("1. Active Challenge");
-        activeP.setContent(new Label("blablabla"));
-        activeP.setSizeFull();
-        Panel activeP2 = new Panel("2. Active Challenge");
-        activeP2.setContent(new Label("blablabla"));
-        activeP2.setSizeFull();
-        Panel passiveP = new Panel("1. Passive Challenge");
-        passiveP.setContent(new Label("blablablaBlubberrr"));
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP);
-        cbv.getChallBoaChallActiveLayout().setComponentAlignment(activeP,Alignment.TOP_LEFT);
-        cbv.getChallBoaChallActiveLayout().addComponent(activeP2);
-        cbv.getChallBoaChallPassiveLayout().addComponent(passiveP);
-        cbv.getChallBoaChallPassiveLayout().setComponentAlignment(passiveP,Alignment.TOP_CENTER);
-        setContent(cbv);
-
+        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
+        setContent(presenter.getBoardView());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

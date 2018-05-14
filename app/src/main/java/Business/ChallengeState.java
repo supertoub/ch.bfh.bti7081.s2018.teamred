@@ -1,6 +1,6 @@
 package Business;
 
-public enum State {
+public enum ChallengeState {
     open,
     closed
 }
