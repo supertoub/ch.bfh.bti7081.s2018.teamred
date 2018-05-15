@@ -9,6 +9,7 @@ import com.vaadin.ui.declarative.Design;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.StringContent;
 
@@ -29,13 +30,19 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
     private List<ChallengeBoardViewListener> listeners =
             new ArrayList<ChallengeBoardViewListener>();
 
+
     public void addListener(ChallengeBoardViewListener listener) {
         listeners.add(listener);
     }
 
+
     public void buttonClick(Button.ClickEvent event) {
         for (ChallengeBoardViewListener listener: listeners)
             listener.buttonClick(event.getButton().getCaption());
+    }
+    public void closeOpen(Button.ClickEvent event) {
+        for (ChallengeBoardViewListener listener: listeners)
+            listener.buttonClick(event.getButton());
     }
 
 
@@ -113,12 +120,17 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             this.challBoaChallPassiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
+            Button reOpen = new Button("reopen",this::closeOpen);
+            contentLayout.addComponent(reOpen);
 
         }
         if (challengeState == challengeState.open){
             this.challBoaChallActiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
+            Button close = new Button("close",this::closeOpen);
+            contentLayout.addComponent(close);
+
         }
     }
     public void removeChallanges(){

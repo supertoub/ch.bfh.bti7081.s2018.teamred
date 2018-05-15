@@ -23,13 +23,35 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         }
     }
 
+    @Override
+    public void buttonClick(Button openClose) {
+        Challenge c = findChallenge(openClose.getParent().getParent().getCaption());
+        if(openClose.getCaption() == "close"){
+            c.setChallengeState(ChallengeState.closed);
+        }
+        else{
+            c.setChallengeState(ChallengeState.open);
+        }
+        boardView.removeChallanges();
+        updateChallengeView(clickedLevel);
+    }
+
+
     private Level findClickedLevel(String buttonTitle) {
-        for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
+        for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
             if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
                 return lvlLibrary.getLevels().get(i);
             }
         }
         return null; //hier Exception machen falls es das LVL nicht findet
+    }
+    private Challenge findChallenge(String panelName){
+        for (int i = 0; i < clickedLevel.getChallenges().size();i++){
+            if(clickedLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
+                return clickedLevel.getChallenges().get(i);
+            }
+        }
+        return null; //hier Exception machen falls es das challenge nicht findet
     }
 
 
