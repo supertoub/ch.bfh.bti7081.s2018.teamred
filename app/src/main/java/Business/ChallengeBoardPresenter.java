@@ -13,11 +13,11 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     public void buttonClick(String buttonTitle) {
         // same Button was clicked before
         if(clickedLevel.getLevelLabel().equals(buttonTitle)){
-            boardView.removeChallanges();
+            boardView.removeChallenges();
             clickedLevel=new Level("");
         }
         else{
-            boardView.removeChallanges();
+            boardView.removeChallenges();
             clickedLevel = findClickedLevel(buttonTitle);
             updateChallengeView(clickedLevel);
         }
@@ -32,7 +32,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         else{
             c.setChallengeState(ChallengeState.open);
         }
-        boardView.removeChallanges();
+        boardView.removeChallenges();
         updateChallengeView(clickedLevel);
     }
 
