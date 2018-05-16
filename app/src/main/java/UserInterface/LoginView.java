@@ -1,5 +1,7 @@
 package UserInterface;
 
+import com.vaadin.ui.Button;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.declarative.Design;
@@ -12,7 +14,7 @@ public class LoginView {
     private TextField usernameTextField;
     private TextField pwdTextField;
     private TextField returnMessageTextField;
-    private button LoginButton;
+    private Button LoginButton;
     public Label getusernameLabel() {
         return usernameLabel;
     }
@@ -23,11 +25,11 @@ public class LoginView {
     public TextField getusernameTextField() { return usernameTextField; }
     public TextField getpwdTextField() { return pwdTextField; }
     public TextField getreturnMessageTextField() { return returnMessageTextField; }
-    public button getLoginButton() { return LoginButton; }
+    public Button getLoginButton() { return LoginButton; }
 
-    public LoginView() {
-        Design.read(this);
-    }
+    //public LoginView() {
+    //    Design.read(this);
+    //}
     public VerticalLayout getLoginViewLayout() {
         return LoginViewLayout;
     }
