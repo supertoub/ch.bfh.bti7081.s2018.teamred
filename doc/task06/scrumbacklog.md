@@ -34,8 +34,8 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.12 | 1 | Funktionalität für Challenges aktivieren/abzuschliessen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.13 | 1 | Startseite Layout |  | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
 1.14 | 1 | Funktionalität Startseite (Butons/Links) |  | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
-1.15 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
-1.16 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
+1.15 | 1 | Loginseite Layout | Erstellung der Startseite mit allen zugehörigen Elementen Loginname/Password/Logo/Return Message | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
+1.16 | 1 | Loginseite Layout | Hinzufügen der Funktionalität, Passwortprüfung, Fehlermeldungen, Weitergabe eines Loginobjekts an Startseite | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 1.17 | 1 | Maven Infrastructure Setup | Die Infrastrukturkomponenten (Datenbank und Applikationsserver) sollen mit Hilfe von Maven automatisiert gestartet werden um so das Testen und Demonstrieren der Entwickelten einfacher zu machen. | | FZU | TWE | High | 3 | - | - | Open
 1.18 | 1 | Database Setup | Evaluieren und vorbereiten einer Lösung für einen Datenbankserver und die Einbindung in die Entwicklungsumgebung. Die Datenbank soll beim starten mit Beispielwerten befüllt werden, so dass die Entwickler die Anbindung testen können. | | FZU | IRI | High | 3 | - | - | Open
 1.19 | 1 | App-Server Setup | Evaluieren und vorbereiten einer Lösung für einen Applikationsserver und die Einbindung in die Entwicklungsumgebung. | | FZU | IRI | High | 3 | - | - | Open
