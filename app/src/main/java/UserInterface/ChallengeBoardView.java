@@ -79,8 +79,6 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
         challenge.setHeight("100%");
         challenge.setWidth("100%");
 
-        // TODO: Hier den Clicklistener einfügen um Challengedetails anzuzeigen
-        //challenge.addClickListener(clickEvent -> challenge.showDetails());
 
         if (challengeState == challengeState.closed){
             this.challBoaChallPassiveLayout.addComponent(challenge);
@@ -99,7 +97,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
         }
     }
-    public void removeChallanges(){
+    public void removeChallenges(){
         this.challBoaChallActiveLayout.removeAllComponents();
         this.challBoaChallActiveLayout.addComponent(challBoaActiveLabel);
         this.challBoaChallActiveLayout.setComponentAlignment(challBoaActiveLabel,Alignment.TOP_CENTER);
