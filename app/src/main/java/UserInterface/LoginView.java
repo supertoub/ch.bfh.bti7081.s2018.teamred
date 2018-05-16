@@ -27,9 +27,9 @@ public class LoginView {
     public TextField getreturnMessageTextField() { return returnMessageTextField; }
     public Button getLoginButton() { return LoginButton; }
 
-    public LoginView() {
-        Design.read(this);
-    }
+    //public LoginView() {
+    //    Design.read(this);
+    //}
     public VerticalLayout getLoginViewLayout() {
         return LoginViewLayout;
     }
