@@ -18,11 +18,11 @@ public class NavigatorUI extends UI {
         navigator = new Navigator(this, this);
 
         // Create and register the views
-<<<<<<< HEAD
+
         navigator.addView("", new StartpageView());
-=======
+
         //navigator.addView("", new StartView());
->>>>>>> 12e8cf654c44cdfd9c1ebe7b8d07d667958e1926
+
         navigator.addView(MAINVIEW, new StartpageView());
         navigator.addView("ChallengeBoardView", new ChallengeBoardView());
     }
