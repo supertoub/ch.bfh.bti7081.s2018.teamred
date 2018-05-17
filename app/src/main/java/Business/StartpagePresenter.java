@@ -2,16 +2,19 @@ package Business;
 
 import UserInterface.IUI;
 import UserInterface.StartpageView;
+import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
 
 ;
 
 public class StartpagePresenter implements IUI.IUIListener {
+/*
     public void buttonClick() {
             ChallengesClick();
-
     }
+*/
     private static StartpagePresenter instance;
+
     private StartpageView StartView;
 
     public StartpageView getStartView() {
@@ -25,14 +28,27 @@ public class StartpagePresenter implements IUI.IUIListener {
 
         return instance;
     }
+
     private StartpagePresenter() {
         StartView = new StartpageView();
         StartView.addListener(this);
+        StartView.addButtons();
 
     }
+
     @Override
-    public void ChallengesClick() {
-        UI.getCurrent().getNavigator().navigateTo("ChallengeBoardView)");
+    public void buttonClick(String buttonTitle) {
+        if(buttonTitle.equals("Challenges")){
+            UI.getCurrent().getNavigator().navigateTo("ChallengeBoardView)");
+
+        }
+        /*
+        if(buttonTitle.equals("Challenges")){
+            StartView.setVisible(false);
+        }
+        else{StartView.setVisible(false);
+        }
+        */
     }
 
     @Override

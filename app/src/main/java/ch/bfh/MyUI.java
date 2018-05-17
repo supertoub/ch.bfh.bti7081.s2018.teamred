@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 
 import Business.ChallengeBoardPresenter;
 import Business.StartpagePresenter;
+import UserInterface.NavigatorUI;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
