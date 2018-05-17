@@ -18,7 +18,7 @@ public class NavigatorUI extends UI {
         navigator = new Navigator(this, this);
 
         // Create and register the views
-        navigator.addView("", new StartView());
+        navigator.addView("", new StartpageView());
         navigator.addView(MAINVIEW, new StartpageView());
         navigator.addView("ChallengeBoardView", new ChallengeBoardView());
     }
