@@ -3,17 +3,11 @@ package ch.bfh;
 import javax.servlet.annotation.WebServlet;
 
 import Business.ChallengeBoardPresenter;
-<<<<<<< HEAD
 import Business.StartpagePresenter;
-<<<<<<< HEAD
-=======
 import Business.LoginViewPagePresenter;
->>>>>>> origin/Roland_Login
-=======
 import UserInterface.ChallengeBoardView;
 import UserInterface.NavigatorUI;
 import UserInterface.StartpageView;
->>>>>>> 12e8cf654c44cdfd9c1ebe7b8d07d667958e1926
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;

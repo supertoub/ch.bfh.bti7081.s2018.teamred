@@ -14,6 +14,13 @@ public class LoginViewPagePresenter implements LoginViewPage.ChallengeBoardViewL
 
     }
 
+    @Override
+    public void buttonClick(Button button) {
+        // same Button was clicked before
+        //check the login credentials given
+
+    }
+
     public LoginViewPage getLoginViewPage() {
         return loginview;
     }
@@ -25,7 +32,6 @@ public class LoginViewPagePresenter implements LoginViewPage.ChallengeBoardViewL
         if (instance == null) {
             instance = new LoginViewPagePresenter();
         }
-
         return instance;
     }
 
