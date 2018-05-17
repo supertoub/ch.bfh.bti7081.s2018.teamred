@@ -22,4 +22,5 @@ public class NavigatorUI extends UI {
         navigator.addView(MAINVIEW, new StartpageView());
         navigator.addView("ChallengeBoardView", new ChallengeBoardView());
     }
+
 }

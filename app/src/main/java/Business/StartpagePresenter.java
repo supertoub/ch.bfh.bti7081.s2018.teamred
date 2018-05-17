@@ -1,6 +1,7 @@
 package Business;
 
 import UserInterface.IUI;
+import UserInterface.NavigatorUI;
 import UserInterface.StartpageView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
@@ -39,16 +40,8 @@ public class StartpagePresenter implements IUI.IUIListener {
     @Override
     public void buttonClick(String buttonTitle) {
         if(buttonTitle.equals("Challenges")){
-            UI.getCurrent().getNavigator().navigateTo("ChallengeBoardView)");
-
+            UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
         }
-        /*
-        if(buttonTitle.equals("Challenges")){
-            StartView.setVisible(false);
-        }
-        else{StartView.setVisible(false);
-        }
-        */
     }
 
     @Override
