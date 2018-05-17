@@ -29,9 +29,10 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class StartpageView extends GridLayout implements IUI, View {
 
-    private Button startChallButton = new Button("Challenges", this::buttonClick);
+
+    private Button startLogoutButton = new Button("Challenges", this::buttonClick);
     private Button startJouButton = new Button("Journal", this::buttonClick);
-    private Button startLogoutButton = new Button("Logout", this::buttonClick);
+    private Button startChallButton = new Button("Logout", this::buttonClick);
     private Label startWelcomeLabel;
     private Label startUserLabel;
 

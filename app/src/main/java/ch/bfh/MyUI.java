@@ -40,7 +40,7 @@ public class MyUI extends UI {
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
    // public static final String JOURNALVIEW ="Journal";
-   public static final String LOGINVIEW ="Logout";
+   //public static final String LOGINVIEW ="Logout";
 
     @Override
     protected void init(VaadinRequest request) {
@@ -48,7 +48,7 @@ public class MyUI extends UI {
         ChallengeBoardPresenter presenter2 = ChallengeBoardPresenter.getInstance();
         StartpagePresenter presenter = StartpagePresenter.getInstance();
         //JournalLibraryPresenter presenter3 = JournalLibraryPresenter.getInstance();
-        LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
+        //LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
         setContent(presenter.getStartView());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
         //navigator = new Navigator(UI.getCurrent(), presenter.getStartView());
@@ -56,7 +56,7 @@ public class MyUI extends UI {
         navigator.addView(STARTPAGEVIEW, presenter.getStartView());
         navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
-        navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
+        //navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
 
     }
 
