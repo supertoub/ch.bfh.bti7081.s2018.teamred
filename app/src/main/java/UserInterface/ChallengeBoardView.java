@@ -63,6 +63,12 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     //</editor-fold>
 
+    public void addBackButton(){
+        Button Back = new Button("Back", this::buttonClick);
+        Back.setWidth("100%");
+        challBoaChallDetailLayout.addComponent(Back);
+    }
+
     public void addLevel(String levelLabel, LevelState state) {
         Button level = new Button(levelLabel, this::buttonClick);
         level.setWidth("100%");
