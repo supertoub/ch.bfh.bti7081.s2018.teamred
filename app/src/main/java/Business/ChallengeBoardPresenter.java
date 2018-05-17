@@ -3,7 +3,9 @@ package Business;
 
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
+import ch.bfh.MyUI;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.UI;
 
 import java.util.List;
 
@@ -12,6 +14,9 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     public void buttonClick(String buttonTitle) {
         // same Button was clicked before
+        if(buttonTitle.equals("Back")){
+            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
+        }
         if(clickedLevel.getLevelLabel().equals(buttonTitle)){
             boardView.removeChallenges();
             clickedLevel=new Level("");
@@ -85,6 +90,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         boardView = new ChallengeBoardView();
         boardView.addListener(this);
         lvlLibrary = new LevelLibrary();
+        boardView.addBackButton();
         for (int i = 1; i <= 5; i++) {
             lvlLibrary.createNewLevel();
         }
