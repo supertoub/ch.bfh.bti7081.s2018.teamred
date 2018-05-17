@@ -3,6 +3,7 @@ package ch.bfh;
 import javax.servlet.annotation.WebServlet;
 
 import Business.ChallengeBoardPresenter;
+import Business.LoginViewPagePresenter;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -21,8 +22,12 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
-        setContent(presenter.getBoardView());
+        //ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
+        //setContent(presenter.getBoardView());
+
+        LoginViewPagePresenter presenter = LoginViewPagePresenter.getInstance();
+        setContent(presenter.getloginView());
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
