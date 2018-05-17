@@ -1,18 +1,20 @@
 package Business;
 
+import UserInterface.ChallengeBoard;
+import UserInterface.ILoginView;
 import UserInterface.IUI;
 import UserInterface.LoginViewPage;
+import ch.bfh.MyUI;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 
-public class LoginViewPagePresenter implements IUI.IUIListener {
-    @Override
-    public void buttonClick(String buttonTitle) {
-        // same Button was clicked before
-        //check the login credentials given
+import java.util.ArrayList;
+import java.util.List;
 
-    }
-    private LoginViewPage loginview;
+public class LoginViewPagePresenter implements ILoginView.LoginListener {
+
+
+
     public LoginViewPage getLoginViewPage() {
         return loginview;
     }
@@ -28,25 +30,33 @@ public class LoginViewPagePresenter implements IUI.IUIListener {
         return instance;
     }
 
+    private LoginViewPage loginview;
 
     private LoginViewPagePresenter() {
         loginview = new LoginViewPage();
-        loginview.addListener((Component.Listener) this);
-        VerticalLayout LoginPageVerticalLayout = getLoginViewPage();
-
-
-        loginview.addComponent(LoginPageVerticalLayout);
-
+        loginview.addListener((ILoginView.LoginListener) listeners);
+        loginview.addLoginComponents();
     }
 
-    @Override
-    public void JournalClick() {
+    public void buttonClick(String buttonTitle) {
+        if(buttonTitle.equals("Login")){
+            {
+                boolean login = true;
 
+            }
+            {
+                boolean login = false;
+            }
+            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
+        }
     }
 
-    @Override
-    public void LogoutClick() {
+    private List<ILoginView.LoginListener> listeners =
+            new ArrayList<ILoginView.LoginListener>();
 
+    public void addListener(ILoginView.LoginListener listener) {
+        listeners.add(listener);
     }
+
 }
 
