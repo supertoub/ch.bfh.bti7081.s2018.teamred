@@ -6,7 +6,23 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.declarative.Design;
 
-public class LoginView {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LoginView implements ChallengeBoard {
+    // TODO: Disscuss how to implement listeners
+    private List<ChallengeBoardViewListener> listeners =
+            new ArrayList<ChallengeBoardViewListener>();
+
+    public void addListener(ChallengeBoardViewListener listener) {
+        listeners.add(listener);
+    }
+
+    public void buttonClick(Button.ClickEvent event) {
+        for (ChallengeBoardViewListener listener: listeners)
+            listener.buttonClick(event.getButton().getCaption());
+    }
+
     private VerticalLayout LoginViewLayout;
     private Label usernameLabel;
     private Label pwdLabel;
@@ -33,6 +49,7 @@ public class LoginView {
     public VerticalLayout getLoginViewLayout() {
         return LoginViewLayout;
     }
+
 
 
 }

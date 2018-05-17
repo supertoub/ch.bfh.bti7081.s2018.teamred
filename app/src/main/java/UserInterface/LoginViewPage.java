@@ -21,4 +21,5 @@ public class LoginViewPage extends VerticalLayout {
     public LoginViewPage() {
         Design.read(this);
     }
+
 }
