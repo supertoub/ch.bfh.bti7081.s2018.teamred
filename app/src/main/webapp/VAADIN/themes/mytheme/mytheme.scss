@@ -42,3 +42,25 @@
 .captionActive .v-panel-content {
   background: #33ba59;
 }
+
+#challBoaLevelLayout {
+  border-right: solid 1px #666666;
+  background: white;
+  -webkit-box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
+  -moz-box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
+  box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
+}
+
+#challBoaChallActiveLayout {
+  border-right: solid 1px #666666;
+  background: #efefef;
+}
+
+#challBoaChallPassiveLayout {
+  border-right: solid 1px #666666;
+  background: #F6F6F6;
+}
+
+#challBoaChallDetailLayout {
+  background: #EEEEEE;
+}
