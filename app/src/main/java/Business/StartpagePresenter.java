@@ -42,6 +42,14 @@ public class StartpagePresenter implements IUI.IUIListener {
         if(buttonTitle.equals("Challenges")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
         }
+        /*
+        else if (buttonTitle.equals("Journal")){
+            UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
+        } */
+
+        else if (buttonTitle.equals("Logout")){
+            UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
+        }
     }
 
     @Override

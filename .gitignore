@@ -20,3 +20,7 @@
 *.glo
 *.gls
 *.glsdefs
+
+
+# projectfiles
+.idea/

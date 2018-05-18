@@ -31,5 +31,4 @@ class Level {
 
     void deleteChallenge(Challenge challenge){}
 
-
 }

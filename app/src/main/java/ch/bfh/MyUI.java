@@ -3,10 +3,24 @@ package ch.bfh;
 import javax.servlet.annotation.WebServlet;
 
 import Business.ChallengeBoardPresenter;
+
+
+import Business.JournalLibraryPresenter;
 import Business.StartpagePresenter;
+
+import Business.LoginViewPagePresenter;
+
 import UserInterface.ChallengeBoardView;
 import UserInterface.NavigatorUI;
 import UserInterface.StartpageView;
+
+
+import Business.StartpagePresenter;
+import Business.LoginViewPagePresenter;
+import UserInterface.ChallengeBoardView;
+import UserInterface.NavigatorUI;
+import UserInterface.StartpageView;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -33,18 +47,24 @@ public class MyUI extends UI {
 
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
+   // public static final String JOURNALVIEW ="Journal";
+    public static final String LOGINVIEW ="Logout";
 
     @Override
     protected void init(VaadinRequest request) {
 
         ChallengeBoardPresenter presenter2 = ChallengeBoardPresenter.getInstance();
         StartpagePresenter presenter = StartpagePresenter.getInstance();
-        setContent(presenter.getStartView());
+        //JournalLibraryPresenter presenter3 = JournalLibraryPresenter.getInstance();
+        LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
+        setContent(presenter4.getLoginViewPage());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
         //navigator = new Navigator(UI.getCurrent(), presenter.getStartView());
         navigator = new Navigator(this, this);
         navigator.addView(STARTPAGEVIEW, presenter.getStartView());
         navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
+        //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
+        navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
 
     }
 
@@ -56,8 +76,17 @@ public class MyUI extends UI {
     /*
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+<<<<<<< HEAD
         StartpagePresenter presenter = StartpagePresenter.getInstance();
         setContent(presenter.getStartView());
+=======
+        //ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
+        //setContent(presenter.getBoardView());
+
+        LoginViewPagePresenter presenter = LoginViewPagePresenter.getInstance();
+        setContent(presenter.getloginView());
+
+>>>>>>> origin/Roland_Login
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

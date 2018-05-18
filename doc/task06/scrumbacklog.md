@@ -30,6 +30,7 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.8 | 1 | Minimale Funktionalität für die Level | Damit man weiss welches Level aktiv und passiv ist, werden sie anhand des Attributes entsprechend angezeigt.  | <ul><li>Challengebaord</li></ul> | IRI | FLE | High | 3 | - | - | Open
 1.9 | 1 | Challenge Layout (Aktiv/Abgeschlossen) | Die Challanges werden an der richtigen Ort platziert anhand ihres Status (Aktiv/Abgeschlossen). | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | IRI | FZU | High | 3 | - | - | Open
 <<<<<<< HEAD
+<<<<<<< HEAD
 1.10 | 1 | Challenge Aktiv |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.11 | 1 | Challenge Abgeschlossen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.12 | 1 | Funktionalität für Challenges aktivieren/abzuschliessen |  | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
@@ -38,6 +39,8 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.15 | 1 | Loginseite Layout | Erstellung der Startseite mit allen zugehörigen Elementen Loginname/Password/Logo/Return Message | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 1.16 | 1 | Loginseite Layout | Hinzufügen der Funktionalität, Passwortprüfung, Fehlermeldungen, Weitergabe eines Loginobjekts an Startseite | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 =======
+=======
+>>>>>>> origin/Roland_Login
 1.10 | 1 | Challenge Aktiv | Die aktive Challenge wird grün angezeigt. Funktionalität bei klick auf Challenge. | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.11 | 1 | Challenge Abgeschlossen | Die abgeschlossene Challenge wird ausgegraut angezeigt. Funktionalität bei klick auf Challenge. | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
 1.12 | 1 | Funktionalität für Challenges aktivieren/abzuschliessen | Jede aktive Challenge kann mit einem klick als abgeschlossen markiert werden. Damit wird sie von der aktiv Spalte in die Abgeschlossene verschoben. | <ul><li>Challengeboard</li><li>Challengdetail</li></ul> | TBA | STH | High | 3 | - | - | Open
@@ -45,7 +48,10 @@ ID | Sprint | Name | Description | Components | Owner | Reviewer | Priority | Ef
 1.14 | 1 | Funktionalität Startseite (Butons/Links) | Bei Klick auf Challenge wird die Challengeboardview angezeigt. Welcome Message mit dem Namen des Users. | <ul><li>Startview</li></ul> | STH | RRO | Medium | 3 | - | - | Open
 1.15 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
 1.16 | 1 | Loginseite Layout |  | <ul><li>Loginview</li></ul> | RRO | STH | Low | 3 | - | - | Open
+<<<<<<< HEAD
 >>>>>>> origin/task06
+=======
+>>>>>>> origin/Roland_Login
 1.17 | 1 | Maven Infrastructure Setup | Die Infrastrukturkomponenten (Datenbank und Applikationsserver) sollen mit Hilfe von Maven automatisiert gestartet werden um so das Testen und Demonstrieren der Entwickelten einfacher zu machen. | | FZU | TWE | High | 3 | - | - | Open
 1.18 | 1 | Database Setup | Evaluieren und vorbereiten einer Lösung für einen Datenbankserver und die Einbindung in die Entwicklungsumgebung. Die Datenbank soll beim starten mit Beispielwerten befüllt werden, so dass die Entwickler die Anbindung testen können. | | FZU | IRI | High | 3 | - | - | Open
 1.19 | 1 | App-Server Setup | Evaluieren und vorbereiten einer Lösung für einen Applikationsserver und die Einbindung in die Entwicklungsumgebung. | | FZU | IRI | High | 3 | - | - | Open
