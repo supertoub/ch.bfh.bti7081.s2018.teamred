@@ -1,7 +1,6 @@
 package Business;
 
 import UserInterface.IUI;
-import UserInterface.NavigatorUI;
 import UserInterface.StartpageView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;

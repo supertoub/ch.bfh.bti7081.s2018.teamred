@@ -43,12 +43,12 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
 
     private Level findClickedLevel(String buttonTitle) {
-        for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
+        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
             if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
                 return lvlLibrary.getLevels().get(i);
             }
         }
-        return null; //hier Exception machen falls es das LVL nicht findet
+        return new Level(""); //hier Exception machen falls es das LVL nicht findet
     }
     private Challenge findChallenge(String panelName){
         for (int i = 0; i < clickedLevel.getChallenges().size();i++){

@@ -13,9 +13,6 @@ import java.util.List;
 
 public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
-
-
-
     public void buttonClick(Button button) {
         // same Button was clicked before
         //check the login credentials given
