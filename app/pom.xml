@@ -122,7 +122,19 @@
 				<version>${jetty.plugin.version}</version>
 				<configuration>
 					<scanIntervalSeconds>2</scanIntervalSeconds>
+					<jettyXml>jetty/jetty.xml</jettyXml>
+					<webApp>
+						<extraClasspath>${basedir}/jetty/classpath</extraClasspath>
+					</webApp>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.hsqldb</groupId>
+						<artifactId>hsqldb</artifactId>
+						<version>2.4.0</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
