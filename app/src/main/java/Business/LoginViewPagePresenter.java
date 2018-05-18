@@ -15,6 +15,13 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
 
 
+    @Override
+    public void buttonClick(Button button) {
+        // same Button was clicked before
+        //check the login credentials given
+
+    }
+
     public LoginViewPage getLoginViewPage() {
         return loginview;
     }
@@ -26,7 +33,6 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
         if (instance == null) {
             instance = new LoginViewPagePresenter();
         }
-
         return instance;
     }
 

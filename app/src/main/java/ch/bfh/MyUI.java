@@ -3,6 +3,7 @@ package ch.bfh;
 import javax.servlet.annotation.WebServlet;
 
 import Business.ChallengeBoardPresenter;
+<<<<<<< HEAD
 
 import Business.JournalLibraryPresenter;
 import Business.StartpagePresenter;
@@ -13,6 +14,13 @@ import UserInterface.ChallengeBoardView;
 import UserInterface.NavigatorUI;
 import UserInterface.StartpageView;
 
+=======
+import Business.StartpagePresenter;
+import Business.LoginViewPagePresenter;
+import UserInterface.ChallengeBoardView;
+import UserInterface.NavigatorUI;
+import UserInterface.StartpageView;
+>>>>>>> bad01d5d82be33df877f4650f41b8bb97779e8b3
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
