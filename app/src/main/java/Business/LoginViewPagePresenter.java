@@ -15,7 +15,7 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
 
 
-    @Override
+
     public void buttonClick(Button button) {
         // same Button was clicked before
         //check the login credentials given
@@ -40,19 +40,12 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
     private LoginViewPagePresenter() {
         loginview = new LoginViewPage();
-        loginview.addListener((ILoginView.LoginListener) listeners);
+        loginview.addListener(this);
         loginview.addLoginComponents();
     }
 
     public void buttonClick(String buttonTitle) {
-        if(buttonTitle.equals("Login")){
-            {
-                boolean login = true;
-
-            }
-            {
-                boolean login = false;
-            }
+        if(buttonTitle.equals("Login")) {
             UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
         }
     }
