@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+    <New id="social-anxiety-app-ds" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg></Arg>
+        <Arg>jdbc/social-anxiety-app</Arg>
+        <Arg>
+            <New class="org.hsqldb.jdbc.JDBCDataSource">
+                <Set name="DatabaseName">file:database/application</Set>
+                <Set name="User">user</Set>
+                <Set name="Password">user</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>
