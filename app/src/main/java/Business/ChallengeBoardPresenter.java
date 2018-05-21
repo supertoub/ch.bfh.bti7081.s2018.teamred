@@ -1,12 +1,14 @@
 package Business;
 
 
+import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // implemented as singleton
@@ -30,15 +32,32 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     @Override
     public void buttonClick(Button openClose) {
-        Challenge c = findChallenge(openClose.getParent().getParent().getCaption());
-        if(openClose.getCaption() == "close"){
-            c.setChallengeState(ChallengeState.closed);
+        if(openClose.getId()=="newChall"){
+            newWindowAddChall();
         }
-        else{
-            c.setChallengeState(ChallengeState.open);
+        else if (openClose.getId()=="close" || openClose.getId()=="reOpen"){
+            if(openClose.getId()=="close") findChallenge(openClose.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            else findChallenge(openClose.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            boardView.removeChallenges();
+            updateChallengeView(clickedLevel);
         }
-        boardView.removeChallenges();
-        updateChallengeView(clickedLevel);
+    }
+
+    private void newWindowAddChall() {
+        List<String> lvls = new ArrayList<>();
+        for (int i=0;i<lvlLibrary.getLevels().size();i++){
+            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
+        }
+        AddChallenge aC = new AddChallenge(lvls);
+        aC.addListener(this);
+        // Add it to the root component
+        UI.getCurrent().addWindow(aC);
+    }
+
+    @Override
+    public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
+        Level level = findClickedLevel(levelTitle);
+       level.createChallenge(levelTitle,cTitle,cDesc,lOfAx);
     }
 
 
@@ -91,6 +110,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         boardView.addListener(this);
         lvlLibrary = new LevelLibrary();
         boardView.addBackButton();
+        boardView.addChallengeButton();
         for (int i = 1; i <= 5; i++) {
             lvlLibrary.createNewLevel();
         }

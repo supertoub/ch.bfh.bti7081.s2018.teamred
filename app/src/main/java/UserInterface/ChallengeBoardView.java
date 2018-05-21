@@ -63,9 +63,15 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
     //</editor-fold>
 
     public void addBackButton(){
-        Button Back = new Button("Back", this::buttonClick);
-        Back.setWidth("100%");
-        challBoaChallDetailLayout.addComponent(Back);
+        Button back = new Button("Back", this::buttonClick);
+        back.setWidth("100%");
+        challBoaChallDetailLayout.addComponent(back);
+    }
+    public void addChallengeButton() {
+        Button newChall = new Button("Make new challenge", this::closeOpen);
+        newChall.setWidth("100%");
+        challBoaChallDetailLayout.addComponent(newChall);
+        newChall.setId("newChall");
     }
 
     public void addLevel(String levelLabel, LevelState state) {
@@ -77,6 +83,8 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
         this.challBoaLevelLayout.addComponent(level);
     }
+
+
 
     public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
         Panel challenge = new Panel(title);
@@ -92,6 +100,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
             Button reOpen = new Button("reopen",this::closeOpen);
+            reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
 
         }
@@ -100,6 +109,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
             Button close = new Button("close",this::closeOpen);
+            close.setId("close");
             contentLayout.addComponent(close);
 
         }

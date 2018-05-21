@@ -50,7 +50,7 @@ public class MyUI extends UI {
         navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
         navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
-        navigator.navigateTo(LOGINVIEW);
+        navigator.navigateTo(CHALLENGEVIEW);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
