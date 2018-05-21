@@ -21,7 +21,7 @@ import com.vaadin.ui.UI;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    // TODO: Navigator auslagern
+    // TODO: Navigator auslagern in eigene Klasse
     private Navigator navigator;
 
     public static final String STARTPAGEVIEW = "Start";

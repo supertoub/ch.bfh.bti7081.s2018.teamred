@@ -11,6 +11,20 @@ public class  Challenge {
 
     //endregion
 
+    //region Getter
+
+    String getChallengeTitle(){
+        return title;
+    }
+
+    ChallengeState getChallengeState() { return challengeState; }
+
+    String getChallengeDesc() {return desc;}
+
+    int getChallengeLevelOfAnxiety() {return levelOfAnxiety;}
+
+    //endregion
+
     //region Setter
 
     public void setTitle(String title) {
@@ -28,20 +42,6 @@ public class  Challenge {
     public void setLevelOfAnxiety(int levelOfAnxiety) {
         this.levelOfAnxiety = levelOfAnxiety;
     }
-
-    //endregion
-
-    //region Getter
-
-    String getChallengeTitle(){
-        return title;
-    }
-
-    ChallengeState getChallengeState() { return challengeState; }
-
-    String getChallengeDesc() {return desc;}
-
-    int getChallengeLevelOfAnxiety() {return levelOfAnxiety;}
 
     //endregion
 

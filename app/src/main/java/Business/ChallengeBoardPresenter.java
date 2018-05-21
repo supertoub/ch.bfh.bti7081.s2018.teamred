@@ -1,12 +1,10 @@
 package Business;
 
-
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
-
 import java.util.List;
 
 public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
@@ -47,12 +45,15 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     private ChallengeBoardPresenter() {
         boardView = new ChallengeBoardView();
         boardView.addListener(this);
-        lvlLibrary = new LevelLibrary();
         boardView.addBackButton();
+
+        lvlLibrary = new LevelLibrary();
         for (int i = 1; i <= 5; i++) {
             lvlLibrary.createNewLevel();
         }
+
         lvlLibrary.getLevels().get(3).setLevelState(LevelState.closed);
+
         //add 6 Challanges for each Level
         for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
             for (int j = 1; j < 7; j++) {
@@ -79,6 +80,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     void changeClick() {
     }
 
+    // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
         for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
             if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
@@ -88,6 +90,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         return null; //hier Exception machen falls es das LVL nicht findet
     }
 
+    // TODO: Event in Challange handeln
     private Challenge findChallenge(String panelName){
         for (int i = 0; i < clickedLevel.getChallenges().size();i++){
             if(clickedLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
