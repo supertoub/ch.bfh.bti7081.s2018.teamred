@@ -1,37 +1,15 @@
 package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
-
 import Business.ChallengeBoardPresenter;
-
-
-import Business.JournalLibraryPresenter;
-import Business.StartpagePresenter;
-
-import Business.LoginViewPagePresenter;
-
-import UserInterface.ChallengeBoardView;
-import UserInterface.NavigatorUI;
-import UserInterface.StartpageView;
-
-
 import Business.StartpagePresenter;
 import Business.LoginViewPagePresenter;
-import UserInterface.ChallengeBoardView;
-import UserInterface.NavigatorUI;
-import UserInterface.StartpageView;
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.*;
-
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -43,6 +21,7 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
+    // TODO: Navigator auslagern
     private Navigator navigator;
 
     public static final String STARTPAGEVIEW = "Start";
@@ -53,18 +32,18 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
 
-        ChallengeBoardPresenter presenter2 = ChallengeBoardPresenter.getInstance();
-        StartpagePresenter presenter = StartpagePresenter.getInstance();
+        ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
+        StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
         //JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
-        LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
-        setContent(presenter4.getLoginViewPage());
+        LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
+        setContent(loginViewPagePresenter.getLoginViewPage());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
         //navigator = new Navigator(UI.getCurrent(), presenter.getStartView());
         navigator = new Navigator(this, this);
-        navigator.addView(STARTPAGEVIEW, presenter.getStartView());
-        navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
+        navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
+        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
-        navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
+        navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
         navigator.navigateTo(STARTPAGEVIEW);
     }
 

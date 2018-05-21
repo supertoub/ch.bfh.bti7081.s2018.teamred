@@ -57,5 +57,9 @@ public class  Challenge {
 
     //endregion
 
+    //region Methoden
+
     void change(){}
+
+    //endregion
 }

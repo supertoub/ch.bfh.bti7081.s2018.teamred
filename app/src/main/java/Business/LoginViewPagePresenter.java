@@ -1,11 +1,8 @@
 package Business;
 
-import UserInterface.ChallengeBoard;
 import UserInterface.ILoginView;
-import UserInterface.IUI;
 import UserInterface.LoginViewPage;
 import ch.bfh.MyUI;
-import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 
 import java.util.ArrayList;

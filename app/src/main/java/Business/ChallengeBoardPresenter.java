@@ -9,7 +9,6 @@ import com.vaadin.ui.UI;
 
 import java.util.List;
 
-// implemented as singleton
 public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
 
     //region Variablen
