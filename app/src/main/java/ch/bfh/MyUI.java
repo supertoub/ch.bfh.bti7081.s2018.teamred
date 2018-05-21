@@ -43,7 +43,7 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    public Navigator navigator;
+    private Navigator navigator;
 
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
@@ -55,7 +55,7 @@ public class MyUI extends UI {
 
         ChallengeBoardPresenter presenter2 = ChallengeBoardPresenter.getInstance();
         StartpagePresenter presenter = StartpagePresenter.getInstance();
-        //JournalLibraryPresenter presenter3 = JournalLibraryPresenter.getInstance();
+        //JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
         LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
         setContent(presenter4.getLoginViewPage());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
@@ -65,7 +65,7 @@ public class MyUI extends UI {
         navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
         navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
-
+        navigator.navigateTo(STARTPAGEVIEW);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

@@ -13,21 +13,23 @@ import java.util.List;
 
 public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
+    //region Variablen
 
+    //implements singleton
+    private static LoginViewPagePresenter instance;
 
+    private LoginViewPage loginview;
 
-    public void buttonClick(Button button) {
-        // same Button was clicked before
-        //check the login credentials given
+    private List<ILoginView.LoginListener> listeners =
+            new ArrayList<>();
 
-    }
+    //endregion
+
+    //region Getter
 
     public LoginViewPage getLoginViewPage() {
         return loginview;
     }
-
-    //implements singleton
-    private static LoginViewPagePresenter instance;
 
     public static LoginViewPagePresenter getInstance() {
         if (instance == null) {
@@ -36,12 +38,32 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
         return instance;
     }
 
-    private LoginViewPage loginview;
+    //endregion
+
+    //region Konstruktoren
 
     private LoginViewPagePresenter() {
         loginview = new LoginViewPage();
         loginview.addListener(this);
         loginview.addLoginComponents();
+    }
+
+    //endregion
+
+    //region Methoden
+
+    public void addListener(ILoginView.LoginListener listener) {
+        listeners.add(listener);
+    }
+
+    //endregion
+
+    //region Events
+
+    public void buttonClick(Button button) {
+        // same Button was clicked before
+        //check the login credentials given
+
     }
 
     public void buttonClick(String buttonTitle) {
@@ -50,12 +72,8 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
         }
     }
 
-    private List<ILoginView.LoginListener> listeners =
-            new ArrayList<ILoginView.LoginListener>();
 
-    public void addListener(ILoginView.LoginListener listener) {
-        listeners.add(listener);
-    }
+    //endregion
 
 }
 

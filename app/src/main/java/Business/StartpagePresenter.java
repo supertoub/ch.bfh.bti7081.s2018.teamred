@@ -6,17 +6,17 @@ import UserInterface.StartpageView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
 
-;
-
 public class StartpagePresenter implements IUI.IUIListener {
-/*
-    public void buttonClick() {
-            ChallengesClick();
-    }
-*/
+
+    //region Variablen
+
     private static StartpagePresenter instance;
 
     private StartpageView StartView;
+
+    //endregion
+
+    //region Getter
 
     public StartpageView getStartView() {
         return StartView;
@@ -30,12 +30,20 @@ public class StartpagePresenter implements IUI.IUIListener {
         return instance;
     }
 
+    //endregion
+
+    //region Kontruktoren
+
     private StartpagePresenter() {
         StartView = new StartpageView();
         StartView.addListener(this);
         StartView.addButtons();
 
     }
+
+    //endregion
+
+    //region Events
 
     @Override
     public void buttonClick(String buttonTitle) {
@@ -61,4 +69,6 @@ public class StartpagePresenter implements IUI.IUIListener {
     public void LogoutClick() {
 
     }
+
+    //endregion
 }
