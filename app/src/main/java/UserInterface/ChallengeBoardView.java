@@ -11,7 +11,7 @@ import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Label;
-import jdk.internal.org.objectweb.asm.commons.SerialVersionUIDAdder;
+import com.vaadin.ui.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +30,13 @@ import java.util.List;
 public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoard, View {
     private VerticalLayout challBoaLevelLayout;
     private Label challBoaLevelLabel;
+    private Button addLevel;
     private VerticalLayout challBoaChallActiveLayout;
     private Label challBoaActiveLabel;
     private VerticalLayout challBoaChallPassiveLayout;
     private Label challBoaPassivLabel;
     private VerticalLayout challBoaChallDetailLayout;
     private Label challBoaChallDetailsLabel;
-
     private List<ChallengeBoardViewListener> listeners = new ArrayList<>();
 
     public void addListener(ChallengeBoardViewListener listener) {
@@ -75,7 +75,9 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             level.setIcon(VaadinIcons.UNLOCK);
         }
 
-        this.challBoaLevelLayout.addComponent(level);
+        // Getting index for new element
+        int compCount = this.challBoaLevelLayout.getComponentCount() - 1;
+        this.challBoaLevelLayout.addComponent(level, compCount);
     }
 
     public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
@@ -120,6 +122,10 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public Label getChallBoaLevelLabel() {
         return challBoaLevelLabel;
+    }
+
+    public Button getAddLevel() {
+        return addLevel;
     }
 
     public VerticalLayout getChallBoaChallActiveLayout() {
