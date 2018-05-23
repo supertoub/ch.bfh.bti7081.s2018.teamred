@@ -2,14 +2,12 @@ package Business;
 
 
 
-import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
@@ -49,7 +47,6 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         boardView = new ChallengeBoardView();
         boardView.addListener(this);
         boardView.addBackButton();
-        boardView.addChallengeButton();
         lvlLibrary = new LevelLibrary();
         for (int i = 1; i <= 5; i++) {
             lvlLibrary.createNewLevel();
@@ -83,16 +80,6 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     void changeClick() {
     }
 
-    private void newWindowAddChall() {
-        List<String> lvls = new ArrayList<>();
-        for (int i=0;i<lvlLibrary.getLevels().size();i++){
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-        }
-        AddChallenge aC = new AddChallenge(lvls);
-        aC.addListener(this);
-        // Add it to the root component
-        UI.getCurrent().addWindow(aC);
-    }
 
     // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
@@ -158,9 +145,6 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
             }
         }
 
-        else if(clickedButton.getId()=="newChall"){
-            newWindowAddChall();
-        }
         else if (clickedButton.getId()=="close" || clickedButton.getId()=="reOpen"){
             if(clickedButton.getId()=="close") findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
             else findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
@@ -168,12 +152,6 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
             updateChallengeView(clickedLevel);
         }
 
-    }
-
-    @Override
-    public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
-        Level level = findClickedLevel(levelTitle);
-        level.createChallenge(levelTitle,cTitle,cDesc,lOfAx);
     }
 
     //endregion
