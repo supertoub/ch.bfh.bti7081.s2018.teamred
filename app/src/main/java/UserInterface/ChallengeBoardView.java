@@ -44,10 +44,6 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public void buttonClick(Button.ClickEvent event) {
         for (ChallengeBoardViewListener listener: listeners)
-            listener.buttonClick(event.getButton().getCaption());
-    }
-    public void closeOpen(Button.ClickEvent event) {
-        for (ChallengeBoardViewListener listener: listeners)
             listener.buttonClick(event.getButton());
     }
 
@@ -57,11 +53,12 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public void addBackButton(){
         Button back = new Button("Back", this::buttonClick);
+        back.setId("back");
         back.setWidth("100%");
         challBoaChallDetailLayout.addComponent(back);
     }
     public void addChallengeButton() {
-        Button newChall = new Button("Make new challenge", this::closeOpen);
+        Button newChall = new Button("Make new challenge", this::buttonClick);
         newChall.setWidth("100%");
         challBoaChallDetailLayout.addComponent(newChall);
         newChall.setId("newChall");
@@ -69,6 +66,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public void addLevel(String levelLabel, LevelState state) {
         Button level = new Button(levelLabel, this::buttonClick);
+        level.setId("level");
         level.setWidth("100%");
         if (state == LevelState.closed){
             level.setEnabled(false);
@@ -92,7 +90,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             this.challBoaChallPassiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
-            Button reOpen = new Button("reopen",this::closeOpen);
+            Button reOpen = new Button("reopen",this::buttonClick);
             reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
 
@@ -102,7 +100,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             this.challBoaChallActiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
-            Button close = new Button("close",this::closeOpen);
+            Button close = new Button("close",this::buttonClick);
             close.setId("close");
             contentLayout.addComponent(close);
 
