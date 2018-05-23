@@ -7,7 +7,6 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 import com.vaadin.ui.declarative.Design;
-
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Label;
@@ -36,8 +35,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
     private VerticalLayout challBoaChallDetailLayout;
     private Label challBoaChallDetailsLabel;
 
-    private List<ChallengeBoardViewListener> listeners =
-            new ArrayList<ChallengeBoardViewListener>();
+    private List<ChallengeBoardViewListener> listeners = new ArrayList<>();
 
     public void addListener(ChallengeBoardViewListener listener) {
         listeners.add(listener);
@@ -53,14 +51,9 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             listener.buttonClick(event.getButton());
     }
 
-
-    //</editor-fold>
-
     public ChallengeBoardView() {
         Design.read(this);
     }
-
-    //</editor-fold>
 
     public void addBackButton(){
         Button back = new Button("Back", this::buttonClick);
@@ -104,6 +97,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             contentLayout.addComponent(reOpen);
 
         }
+
         if (challengeState == challengeState.open){
             this.challBoaChallActiveLayout.addComponent(challenge);
             challenge.setEnabled(true);

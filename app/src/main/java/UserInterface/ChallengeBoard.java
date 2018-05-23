@@ -9,5 +9,11 @@ public interface ChallengeBoard {
         void buttonClick(Button button);
         void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) ;
     }
+<<<<<<< HEAD
     public void addListener(ChallengeBoardViewListener listener);
+=======
+
+    void addListener(ChallengeBoardViewListener listener);
+
+>>>>>>> master
 }

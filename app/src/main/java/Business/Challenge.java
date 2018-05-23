@@ -1,10 +1,31 @@
 package Business;
 
-public class Challenge {
+public class  Challenge {
+
+    //region Variablen
+
     private String title;
     private String desc;
     private ChallengeState challengeState;
     private int levelOfAnxiety;
+
+    //endregion
+
+    //region Getter
+
+    String getChallengeTitle(){
+        return title;
+    }
+
+    ChallengeState getChallengeState() { return challengeState; }
+
+    String getChallengeDesc() {return desc;}
+
+    int getChallengeLevelOfAnxiety() {return levelOfAnxiety;}
+
+    //endregion
+
+    //region Setter
 
     public void setTitle(String title) {
         this.title = title;
@@ -22,13 +43,9 @@ public class Challenge {
         this.levelOfAnxiety = levelOfAnxiety;
     }
 
-    String getChallengeTitle(){
-        return title;
-    }
-    ChallengeState getChallengeState() { return challengeState; }
-    String getChallengeDesc() {return desc;}
-    int getChallengeLevelOfAnxiety() {return levelOfAnxiety;}
+    //endregion
 
+    //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
     Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety){
@@ -38,6 +55,11 @@ public class Challenge {
         this.levelOfAnxiety = levelOfAnxiety;
     }
 
+    //endregion
+
+    //region Methoden
 
     void change(){}
+
+    //endregion
 }

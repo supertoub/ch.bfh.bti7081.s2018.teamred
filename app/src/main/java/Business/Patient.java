@@ -1,4 +1,5 @@
 package Business;
+
 import java.util.Date;
 
 class Patient extends User {

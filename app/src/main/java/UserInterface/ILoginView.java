@@ -1,6 +1,5 @@
 package UserInterface;
 
-import com.vaadin.ui.Button;
 
 public interface ILoginView {
 
@@ -8,7 +7,8 @@ public interface ILoginView {
         void buttonClick(String buttonTitle);
 
     }
-    public void addListener(LoginListener listener);
+
+    void addListener(LoginListener listener);
 
 
 }
