@@ -1,16 +1,18 @@
 package Business;
 
+
+
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
+
 import java.util.List;
 
 public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
-
     //region Variablen
-
+    
     private static ChallengeBoardPresenter instance;
 
     private ChallengeBoardView boardView;
@@ -46,7 +48,6 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         boardView = new ChallengeBoardView();
         boardView.addListener(this);
         boardView.addBackButton();
-
         lvlLibrary = new LevelLibrary();
         for (int i = 1; i <= 5; i++) {
             lvlLibrary.createNewLevel();
@@ -79,6 +80,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     void changeClick() {
     }
+
 
     // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
@@ -122,48 +124,35 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     //region Events
 
-    public void buttonClick(String buttonTitle) {
-        // same Button was clicked before
-        if(buttonTitle.equals("Back")){
+    @Override
+    public void buttonClick(Button clickedButton) {
+        if(clickedButton.getId()=="back"){
             UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
         }
-
-        if (clickedLevel == null){
-            return;
-        }
-
-        if(clickedLevel.getLevelLabel().equals(buttonTitle)){
-            boardView.removeChallenges();
-            clickedLevel=new Level("");
-        }
-        else{
-            boardView.removeChallenges();
-            clickedLevel = findClickedLevel(buttonTitle);
-
-            if (clickedLevel == null){
-                return;
+        else if(clickedButton.getId()=="level"){
+            if(clickedLevel.getLevelLabel().equals(clickedButton.getCaption())){
+                boardView.removeChallenges();
+                clickedLevel=new Level("");
             }
+            else{
+                boardView.removeChallenges();
+                clickedLevel = findClickedLevel(clickedButton.getCaption());
 
+                if (clickedLevel == null){
+                    return;
+                }
+
+                updateChallengeView(clickedLevel);
+            }
+        }
+
+        else if (clickedButton.getId()=="close" || clickedButton.getId()=="reOpen"){
+            if(clickedButton.getId()=="close") findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            else findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            boardView.removeChallenges();
             updateChallengeView(clickedLevel);
         }
-    }
 
-    @Override
-    public void buttonClick(Button openClose) {
-        Challenge c = findChallenge(openClose.getParent().getParent().getCaption());
-
-        if (c == null){
-            return;
-        }
-
-        if(openClose.getCaption().equals("close")){
-            c.setChallengeState(ChallengeState.closed);
-        }
-        else{
-            c.setChallengeState(ChallengeState.open);
-        }
-        boardView.removeChallenges();
-        updateChallengeView(clickedLevel);
     }
 
     //endregion
