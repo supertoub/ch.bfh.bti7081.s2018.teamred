@@ -1,20 +1,13 @@
 package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
-
 import Business.ChallengeBoardPresenter;
-
-
 import Business.StartpagePresenter;
-
 import Business.LoginViewPagePresenter;
-
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.UI;
 
@@ -28,7 +21,8 @@ import com.vaadin.ui.UI;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    public Navigator navigator;
+    // TODO: Navigator auslagern in eigene Klasse
+    private Navigator navigator;
 
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
@@ -37,20 +31,20 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-        getPage().setTitle("Social Anxiety APP");
-        navigator = new Navigator(this, this);
-        ChallengeBoardPresenter presenter2 = ChallengeBoardPresenter.getInstance();
-        StartpagePresenter presenter = StartpagePresenter.getInstance();
-        //JournalLibraryPresenter presenter3 = JournalLibraryPresenter.getInstance();
-        LoginViewPagePresenter presenter4 = LoginViewPagePresenter.getInstance();
-      //  setContent(presenter4.getLoginViewPage());
+
+        ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
+        StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
+        //JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
+        LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
+        setContent(loginViewPagePresenter.getLoginViewPage());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
         //navigator = new Navigator(UI.getCurrent(), presenter.getStartView());
-        navigator.addView(STARTPAGEVIEW, presenter.getStartView());
-        navigator.addView(CHALLENGEVIEW, presenter2.getBoardView());
+        navigator = new Navigator(this, this);
+        navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
+        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
-        navigator.addView(LOGINVIEW, presenter4.getLoginViewPage());
-        navigator.navigateTo(LOGINVIEW);
+        navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
+        navigator.navigateTo(STARTPAGEVIEW);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

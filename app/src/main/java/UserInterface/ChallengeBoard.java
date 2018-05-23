@@ -8,6 +8,7 @@ public interface ChallengeBoard {
         void buttonClick(String buttonTitle);
         void buttonClick(Button button);
     }
-    public void addListener(ChallengeBoardViewListener listener);
+
+    void addListener(ChallengeBoardViewListener listener);
 
 }

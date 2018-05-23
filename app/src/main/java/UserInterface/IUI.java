@@ -1,7 +1,5 @@
 package UserInterface;
 
-import com.vaadin.ui.Button;
-
 public interface IUI {
 
     interface IUIListener {
@@ -9,8 +7,8 @@ public interface IUI {
         void JournalClick();
         void LogoutClick();
     }
-    public void addListener(IUIListener listener);
 
+    void addListener(IUIListener listener);
 
 }
 
