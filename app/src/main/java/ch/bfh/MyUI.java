@@ -43,6 +43,7 @@ public class MyUI extends UI {
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
         navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
         //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
+
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
         navigator.navigateTo(STARTPAGEVIEW);
     }
