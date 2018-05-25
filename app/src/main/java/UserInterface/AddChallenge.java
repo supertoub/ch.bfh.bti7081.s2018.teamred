@@ -2,6 +2,10 @@ package UserInterface;
 
 import com.vaadin.data.Binder;
 import com.vaadin.data.validator.StringLengthValidator;
+import com.vaadin.server.ErrorMessage;
+import com.vaadin.server.Page;
+import com.vaadin.server.UserError;
+import com.vaadin.shared.Position;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.*;
 
@@ -19,9 +23,8 @@ public class AddChallenge extends Window  implements ChallengeBoard{
     private Label counterTitle;
     private Label counterDesc;
     private Label selectL;
-    private Binder<String> b;
-    private String validate="";
-
+    private int lenTitle;
+    private int lenDesc;
     //endregion
 
     //region Getter
@@ -34,7 +37,6 @@ public class AddChallenge extends Window  implements ChallengeBoard{
 
     public AddChallenge(List<String> lvls) {
         createWindow(lvls);
-        createBinders();
         this.center();
     }
 
@@ -78,8 +80,8 @@ public class AddChallenge extends Window  implements ChallengeBoard{
                 " of " + tfTitle.getMaxLength());
         // Display the current length interactively in the counter
         tfTitle.addValueChangeListener(event -> {
-            int len = event.getValue().length();
-            counterTitle.setValue(len + " of " + tfTitle.getMaxLength());
+            lenTitle = event.getValue().length();
+            counterTitle.setValue(lenTitle + " of " + tfTitle.getMaxLength());
         });
         tfTitle.setValueChangeMode(ValueChangeMode.EAGER);
     }
@@ -96,14 +98,15 @@ public class AddChallenge extends Window  implements ChallengeBoard{
                 " of " + tADesc.getMaxLength());
         // Display the current length interactively in the counter
         tADesc.addValueChangeListener(event -> {
-            int len = event.getValue().length();
-            counterDesc.setValue(len + " of " + tADesc.getMaxLength());
+            lenDesc = event.getValue().length();
+            counterDesc.setValue(lenDesc + " of " + tADesc.getMaxLength());
         });
     }
     private void createComboBox(List<String> lvls) {
         selectL = new Label();
         // Create a selection component with some items
         select = new ComboBox<>("Select Level");
+        select.setEmptySelectionAllowed(false);
         select.setItems(lvls);
         // Handle selection event
         select.addSelectionListener(event ->
@@ -115,16 +118,14 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         rbglOA =
                 new RadioButtonGroup<>("Level of Anxiety");
         rbglOA.setItems("1", "2", "3","4","5");
+        rbglOA.setSelectedItem("1");
     }
 
-    private void createBinders() {
-        b = new Binder();
-        b.forField(tfTitle)
-                .withValidator(new StringLengthValidator("Must be between 1 and 20 characters long", 2, 20))
-                .bind(s -> this.validate, (s, v) -> this.validate = v);
-        b.forField(tADesc)
-                .withValidator(new StringLengthValidator("Must be between 1 and 200 characters long", 2, 200))
-                .bind(s -> this.validate, (s, v) -> this.validate = v);
+    private void createNotification(String mainMessage, String subMessage, Notification.Type notificationType, int ms) {
+        Notification notif = new Notification(mainMessage,subMessage,notificationType);
+        notif.setDelayMsec(ms);
+        notif.setPosition(Position.MIDDLE_CENTER);
+        notif.show(Page.getCurrent());
     }
 
 
@@ -140,18 +141,28 @@ public class AddChallenge extends Window  implements ChallengeBoard{
     //region Events
 
     public void buttonClick(Button.ClickEvent event, String levelTitle, String cTitle, String cDesc, int lOfAx) {
-        if(b.validate().hasErrors()){
-            Notification.show("asdf",
-                    cTitle,
-                    Notification.Type.HUMANIZED_MESSAGE);
+
+        select.setComponentError(null);
+        tfTitle.setComponentError(null);
+        tADesc.setComponentError(null);
+
+        if(levelTitle == null){
+            createNotification("No Level Chosen","please select a level",Notification.Type.ERROR_MESSAGE, 2000);
+            select.setComponentError(new UserError("No Level Chosen"));
+        }
+        else if (cTitle == null || lenTitle < 1){
+            createNotification("No Title Entered","please add title",Notification.Type.ERROR_MESSAGE, 2000);
+            tfTitle.setComponentError(new UserError("No Title Entered"));
+        }
+        else if (cDesc == null || lenDesc < 1){
+            createNotification("No Description Entered","please add description",Notification.Type.ERROR_MESSAGE, 2000);
+            tADesc.setComponentError(new UserError("No Title Entered"));
         }
         else{
+            createNotification("Add challenge to "+levelTitle,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
             for (ChallengeBoardViewListener listener: listeners)
                 listener.buttonClick(levelTitle,cTitle,cDesc,lOfAx);
             close();
-            Notification.show("Add challenge to "+levelTitle,
-                    cTitle,
-                    Notification.Type.HUMANIZED_MESSAGE);
         }
 
     }
