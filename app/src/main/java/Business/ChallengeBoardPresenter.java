@@ -14,6 +14,8 @@ import java.util.List;
 
 public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
 
+    //region Variablen
+
     private static ChallengeBoardPresenter instance;
 
     private ChallengeBoardView boardView;
