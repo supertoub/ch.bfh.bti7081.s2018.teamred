@@ -15,6 +15,7 @@ public class Level {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="challenge_id")
+
     private List<Challenge> challenges;
 
     @Enumerated(EnumType.STRING)
@@ -66,7 +67,9 @@ public class Level {
     void createChallenge(String level){
         challenges.add(new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.closed,4));
     }
+    void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
+        challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx));
+    }
 
     void deleteChallenge(Challenge challenge){}
-
 }

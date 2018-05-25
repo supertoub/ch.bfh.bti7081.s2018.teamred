@@ -1631,6 +1631,36 @@ div.v-layout.v-horizontal.v-widget {
 	vertical-align: top;
 }
 
+.captionPassive .v-panel-content {
+	background: rgba(140, 112, 162, 0.44);
+}
+
+.captionActive .v-panel-content {
+	background: #33ba59;
+}
+
+#challBoaLevelLayout {
+	border-right: solid 1px #666666;
+	background: white;
+	-webkit-box-shadow: 5px 0px 10px 0px #999999;
+	-moz-box-shadow: 5px 0px 10px 0px #999999;
+	box-shadow: 5px 0px 10px 0px #999999;
+}
+
+#challBoaChallActiveLayout {
+	border-right: solid 1px #666666;
+	background: #efefef;
+}
+
+#challBoaChallPassiveLayout {
+	border-right: solid 1px #666666;
+	background: #F6F6F6;
+}
+
+#challBoaChallDetailLayout {
+	background: #EEEEEE;
+}
+
 .mytheme.v-app, .mytheme.v-app-loading {
 	font: 300 16px/1.55 "Open Sans", sans-serif;
 	color: #464646;
