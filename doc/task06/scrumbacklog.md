@@ -67,14 +67,13 @@ ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan
 2.5 | Testuser anlegen | mehrere Testuser auf der Datenbank anlegen | | FZU | | | | | | open
 2.6 | Challengedetail anzeigen | Als Patient kann ich beim klick auf eine Challange die Details jeder Challange sehen. | <ul><li>Challengeboard</li></ul> | TBA | | | | | | open
 2.7 | Challenge bearbeiten | Als Patient möchte ich eine Challenge bearbeiten können, sodass ich nach dem erreichen einer Challenge bewerten kann, wie ich mich dabeu gefühlt habe. | <ul><li>Challengeboard</li></ul> | TBA | | | | | | open
-2.8 | Challenge bearbeiten | Als Patient möchte ich eine Challenge bearbeiten können, sodass ich nach dem erreichen einer Challenge bewerten kann, wie ich mich dabeu gefühlt habe. | <ul><li>Challengeboard</li></ul> | FLE | | | | | | open
-2.9 | Level erstellen | Als Patient möchte ich ein neues Level erstellen können, welches auch auf der Datenbank gesichert wird. | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
-2.10 | Level Status anzeigen | Auf dem Level möchte ich sehen, wie viele Challanges ich schon erledigt habe und wie viele noch offen sind. | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
-2.11 | Level als gesperrt anzeigen | Wenn ich in einem Level weniger als 80% der Challanges erfüllt habe, sind alle zukünftigen Levels mit einem Schloss gesperrt. Bei einem Klick auf ein Level kann ich dieses zwar ansehen aber keine Challanges erledigen.  | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
-2.12 | Startscreen Name einfügen | Auf der Startseite solle der Patient mit seinem Namen begrüsst werden. Der aktuell angemeldete Benutzer soll ich Header angezeigt werden. | <ul><li>Startview</li><li>Headerview</li></ul> | STH | | | | | | open
-2.13 | Startscreen aufräumen | Die Startseite soll über den Designer gemacht werden, dass sie besser gestylet werden kann und aufgeräumter aussieht. | <ul><li>Startview</li></ul> | STH | | | | | | open
-2.14 | Journal vorbereiten | Vorbereiten des Journals für Sprint 3 | <ul><li>Journalview</li></ul> | STH | | | | | | open
-2.15 | Seiten aufbau über den Designer machen | Als Entwickler möchte ich, dass die Views im Designer aufgebaut werden um diese einfacher anyupassen | <ul><li>Journalview</li></ul> | FLE | | | | | | open
-2.16 | Styling | Als Benutzer soll das ganze Projekt obtisch ansprechend sein. | <ul><li>Journalview</li></ul> | TWE | | | | | | open
+2.8 | Level erstellen | Als Patient möchte ich ein neues Level erstellen können, welches auch auf der Datenbank gesichert wird. | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
+2.9 | Level Status anzeigen | Auf dem Level möchte ich sehen, wie viele Challanges ich schon erledigt habe und wie viele noch offen sind. | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
+2.10 | Level als gesperrt anzeigen | Wenn ich in einem Level weniger als 80% der Challanges erfüllt habe, sind alle zukünftigen Levels mit einem Schloss gesperrt. Bei einem Klick auf ein Level kann ich dieses zwar ansehen aber keine Challanges erledigen.  | <ul><li>Levelboard</li></ul> | FLE | | | | | | open
+2.11 | Startscreen Name einfügen | Auf der Startseite solle der Patient mit seinem Namen begrüsst werden. Der aktuell angemeldete Benutzer soll ich Header angezeigt werden. | <ul><li>Startview</li><li>Headerview</li></ul> | STH | | | | | | open
+2.12 | Startscreen aufräumen | Die Startseite soll über den Designer gemacht werden, dass sie besser gestylet werden kann und aufgeräumter aussieht. | <ul><li>Startview</li></ul> | STH | | | | | | open
+2.13 | Journal vorbereiten | Vorbereiten des Journals für Sprint 3 | <ul><li>Journalview</li></ul> | STH | | | | | | open
+2.14 | Seiten aufbau über den Designer machen | Als Entwickler möchte ich, dass die Views im Designer aufgebaut werden um diese einfacher anyupassen | <ul><li>Journalview</li></ul> | FLE | | | | | | open
+2.15 | Styling | Als Benutzer soll das ganze Projekt obtisch ansprechend sein. | <ul><li>Journalview</li></ul> | TWE | | | | | | open
 Task 1 | Projekt aufräumen | | | FLE | | | | | | open
 Task 2 | Backlog Sprint 2 erstellen | | | TWE | | | | | 1h | done
