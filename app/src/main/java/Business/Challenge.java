@@ -1,6 +1,10 @@
 package Business;
 
-public class  Challenge {
+import javax.security.auth.Subject;
+import java.util.Observable;
+import java.util.Observer;
+
+public class  Challenge extends Observable {
 
     //region Variablen
 
@@ -37,6 +41,8 @@ public class  Challenge {
 
     public void setChallengeState(ChallengeState challengeState) {
         this.challengeState = challengeState;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void setLevelOfAnxiety(int levelOfAnxiety) {
@@ -48,11 +54,12 @@ public class  Challenge {
     //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
-    Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety){
+    Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety, Observer observer){
         this.title = title;
         this.desc = desc;
         this.challengeState = challengeState;
         this.levelOfAnxiety = levelOfAnxiety;
+        this.addObserver(observer);
     }
 
     //endregion

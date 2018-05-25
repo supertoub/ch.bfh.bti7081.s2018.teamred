@@ -30,19 +30,19 @@ import java.util.List;
 public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoard, View {
     private VerticalLayout challBoaLevelLayout;
     private Label challBoaLevelLabel;
-    private Button addLevel;
+    private Button addLevelButton;
     private VerticalLayout challBoaChallActiveLayout;
     private Label challBoaActiveLabel;
     private VerticalLayout challBoaChallPassiveLayout;
     private Label challBoaPassivLabel;
     private VerticalLayout challBoaChallDetailLayout;
     private Label challBoaChallDetailsLabel;
+
     private List<ChallengeBoardViewListener> listeners = new ArrayList<>();
 
     public void addListener(ChallengeBoardViewListener listener) {
         listeners.add(listener);
     }
-
 
     public void buttonClick(Button.ClickEvent event) {
         for (ChallengeBoardViewListener listener: listeners)
@@ -51,6 +51,24 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
 
     public ChallengeBoardView() {
         Design.read(this);
+
+        this.addLevelButton.addClickListener(this::buttonClick);
+        this.addLevelButton.setId("AddLevelButton");
+    }
+
+    public void clearLevels(){
+        for (int i = challBoaLevelLayout.getComponentCount() - 1; i >= 0; i--){
+            Component comp = challBoaLevelLayout.getComponent(i);
+            if (comp.getId() == "level") {
+                challBoaLevelLayout.removeComponent(comp);
+            }
+        }
+    }
+
+    public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount){
+        String labelText = closedCount + " von " + neededToBeClosed + ", Gesammt: " + allCount;
+        Label newLabel = new Label(labelText);
+        this.challBoaLevelLayout.addComponent(newLabel, 1);
     }
 
     public void addBackButton(){
@@ -78,8 +96,6 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
         this.challBoaLevelLayout.addComponent(level, compCount);
     }
 
-
-
     public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
         Panel challenge = new Panel(title);
         final VerticalLayout contentLayout = new VerticalLayout();
@@ -96,7 +112,6 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             Button reOpen = new Button("reopen",this::buttonClick);
             reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
-
         }
 
         if (challengeState == challengeState.open){
@@ -106,9 +121,9 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
             Button close = new Button("close",this::buttonClick);
             close.setId("close");
             contentLayout.addComponent(close);
-
         }
     }
+
     public void removeChallenges(){
         this.challBoaChallActiveLayout.removeAllComponents();
         this.challBoaChallActiveLayout.addComponent(challBoaActiveLabel);
@@ -126,8 +141,8 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
         return challBoaLevelLabel;
     }
 
-    public Button getAddLevel() {
-        return addLevel;
+    public Button getAddLevelButton() {
+        return addLevelButton;
     }
 
     public VerticalLayout getChallBoaChallActiveLayout() {
