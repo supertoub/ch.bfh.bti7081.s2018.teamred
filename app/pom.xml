@@ -22,6 +22,21 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- If there are no local customizations, this can also be "fetch" or "cdn" -->
 		<vaadin.widgetset.mode>local</vaadin.widgetset.mode>
+		<hibernate.version>5.3.0.Final</hibernate.version>
+		<hsqldb.version>2.4.0</hsqldb.version>
+		<junit.version>4.12</junit.version>
+		<hamcrest.version>1.3</hamcrest.version>
+        <ejb.version>2.1</ejb.version>
+		<ejb-api.version>3.2</ejb-api.version>
+		<spring.version>5.0.6.RELEASE</spring.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <dbcp.version>1.4</dbcp.version>
+        <logback.version>1.2.3</logback.version>
+		<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+		<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
+		<jdbc.url>jdbc:hsqldb:file:consoledb;shutdown=true</jdbc.url>
+		<jdbc.username>sa</jdbc.username>
+		<jdbc.password></jdbc.password>
 	</properties>
 
 	<repositories>
@@ -66,6 +81,80 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>${ejb-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${dbcp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -120,7 +209,7 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.plugin.version}</version>
-				<configuration>
+				<!-- <configuration>
 					<scanIntervalSeconds>2</scanIntervalSeconds>
 					<jettyXml>jetty/jetty.xml</jettyXml>
 					<webApp>
@@ -134,7 +223,7 @@
 						<version>2.4.0</version>
 						<scope>runtime</scope>
 					</dependency>
-				</dependencies>
+				</dependencies>-->
 			</plugin>
 		</plugins>
 	</build>

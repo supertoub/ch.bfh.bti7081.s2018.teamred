@@ -1,28 +1,66 @@
 package Business;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Level {
+import static javax.persistence.GenerationType.AUTO;
+
+@Entity
+public class Level {
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    @Column(name = "level_id")
+    private long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="challenge_id")
     private List<Challenge> challenges;
+
+    @Enumerated(EnumType.STRING)
     private LevelState levelState;
+
     private String levelLabel;
+
+    public Level() {}
+
+    // TODO: Korrektes Level ChallengeState handling
+    public Level(String label){
+        this.levelLabel = label;
+        this.levelState = LevelState.open;
+        challenges = new ArrayList<>();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Challenge> getChallenges() {
+        return challenges;
+    }
+
+    public void setChallenges(List<Challenge> challenges) {
+        this.challenges = challenges;
+    }
+
+    public LevelState getLevelState() {
+        return levelState;
+    }
 
     public void setLevelState(LevelState levelState) {
         this.levelState = levelState;
     }
 
-    String getLevelLabel(){
+    public String getLevelLabel() {
         return levelLabel;
     }
-    List<Challenge> getChallenges() {return challenges;}
-    LevelState getLevelState() { return levelState; }
 
-    // TODO: Korrektes Level ChallengeState handling
-    Level(String label){
-        this.levelLabel = label;
-        this.levelState = LevelState.open;
-        challenges = new ArrayList<>();
+    public void setLevelLabel(String levelLabel) {
+        this.levelLabel = levelLabel;
     }
 
     void createChallenge(String level){
@@ -30,6 +68,5 @@ class Level {
     }
 
     void deleteChallenge(Challenge challenge){}
-
 
 }

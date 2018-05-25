@@ -1,17 +1,42 @@
 package Business;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class LevelLibrary {
+import static javax.persistence.GenerationType.AUTO;
+
+@Entity
+public class LevelLibrary {
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    @Column(name = "levellibrary_id")
+    private long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="level_id")
     private List<Level> levels;
 
-    List<Level> getLevels(){
+    public LevelLibrary() {}
+
+    public LevelLibrary(List<Level> levels) {
+        this.levels = levels;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Level> getLevels() {
         return levels;
     }
 
-    LevelLibrary(){
-        levels = new ArrayList<>();
+    public void setLevels(List<Level> levels) {
+        this.levels = levels;
     }
 
     void createNewLevel(){
@@ -19,4 +44,5 @@ class LevelLibrary {
     }
 
     void delete(Challenge challenge){}
+
 }

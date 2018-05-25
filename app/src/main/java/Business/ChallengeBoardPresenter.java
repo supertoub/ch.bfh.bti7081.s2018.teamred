@@ -96,7 +96,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     private void updateChallengeView(Level level) {
         List<Challenge> challenges = level.getChallenges();
         for (Challenge challenge : challenges) {
-            boardView.addChallenge(challenge.getChallengeTitle(), challenge.getChallengeDesc(), challenge.getChallengeState(), challenge.getChallengeLevelOfAnxiety());
+            boardView.addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
         }
     }
 
