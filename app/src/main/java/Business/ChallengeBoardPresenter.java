@@ -109,7 +109,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     // TODO: Event in Challange handeln
     private Challenge findChallenge(String panelName){
         for (int i = 0; i < clickedLevel.getChallenges().size();i++){
-            if(clickedLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
+            if(clickedLevel.getChallenges().get(i).getTitle().equals(panelName)){
                 return clickedLevel.getChallenges().get(i);
             }
         }
