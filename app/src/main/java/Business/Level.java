@@ -1,48 +1,68 @@
 package Business;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Level {
+import static javax.persistence.GenerationType.AUTO;
 
-    //region Variablen
+@Entity
+public class Level {
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    @Column(name = "level_id")
+    private long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="challenge_id")
 
     private List<Challenge> challenges;
+
+    @Enumerated(EnumType.STRING)
     private LevelState levelState;
+
     private String levelLabel;
 
-    //endregion
-
-    //region Getter
-
-    String getLevelLabel(){
-        return levelLabel;
-    }
-    List<Challenge> getChallenges() {return challenges;}
-    LevelState getLevelState() { return levelState; }
-
-    //endregion
-
-    //region Setter
-
-    public void setLevelState(LevelState levelState) {
-        this.levelState = levelState;
-    }
-
-    //endregion
-
-    //region Konstruktoren
+    public Level() {}
 
     // TODO: Korrektes Level ChallengeState handling
-    Level(String label){
+    public Level(String label){
         this.levelLabel = label;
         this.levelState = LevelState.open;
         challenges = new ArrayList<>();
     }
 
-    //endregion
+    public long getId() {
+        return id;
+    }
 
-    //region Methoden
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Challenge> getChallenges() {
+        return challenges;
+    }
+
+    public void setChallenges(List<Challenge> challenges) {
+        this.challenges = challenges;
+    }
+
+    public LevelState getLevelState() {
+        return levelState;
+    }
+
+    public void setLevelState(LevelState levelState) {
+        this.levelState = levelState;
+    }
+
+    public String getLevelLabel() {
+        return levelLabel;
+    }
+
+    public void setLevelLabel(String levelLabel) {
+        this.levelLabel = levelLabel;
+    }
 
     void createChallenge(String level){
         challenges.add(new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.closed,4));
@@ -52,7 +72,4 @@ class Level {
     }
 
     void deleteChallenge(Challenge challenge){}
-
-    //endregion
-
 }

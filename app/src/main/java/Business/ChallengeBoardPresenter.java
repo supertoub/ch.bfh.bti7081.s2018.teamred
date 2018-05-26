@@ -109,7 +109,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     // TODO: Event in Challange handeln
     private Challenge findChallenge(String panelName){
         for (int i = 0; i < clickedLevel.getChallenges().size();i++){
-            if(clickedLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
+            if(clickedLevel.getChallenges().get(i).getTitle().equals(panelName)){
                 return clickedLevel.getChallenges().get(i);
             }
         }
@@ -130,7 +130,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     private void updateChallengeView(Level level) {
         List<Challenge> challenges = level.getChallenges();
         for (Challenge challenge : challenges) {
-            boardView.addChallenge(challenge.getChallengeTitle(), challenge.getChallengeDesc(), challenge.getChallengeState(), challenge.getChallengeLevelOfAnxiety());
+            boardView.addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
         }
     }
 
