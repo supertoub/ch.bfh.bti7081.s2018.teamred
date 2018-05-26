@@ -17,7 +17,9 @@ public class LevelLibrary {
     @JoinColumn(name="level_id")
     private List<Level> levels;
 
-    public LevelLibrary() {}
+    LevelLibrary(){
+        levels = new ArrayList<>();
+    }
 
     public LevelLibrary(List<Level> levels) {
         this.levels = levels;
