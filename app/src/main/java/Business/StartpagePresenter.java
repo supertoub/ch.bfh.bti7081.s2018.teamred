@@ -1,7 +1,7 @@
 package Business;
 
 import UserInterface.IUI;
-import UserInterface.StartpageView;
+import UserInterface.StartView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
 
@@ -11,14 +11,14 @@ public class StartpagePresenter implements IUI.IUIListener {
 
     private static StartpagePresenter instance;
 
-    private StartpageView StartView;
+    private StartView startView;
 
     //endregion
 
     //region Getter
 
-    public StartpageView getStartView() {
-        return StartView;
+    public StartView getStartView() {
+        return startView;
     }
 
     public static StartpagePresenter getInstance() {
@@ -34,10 +34,7 @@ public class StartpagePresenter implements IUI.IUIListener {
     //region Kontruktoren
 
     private StartpagePresenter() {
-        StartView = new StartpageView();
-        StartView.addListener(this);
-        StartView.addButtons();
-
+        startView = new StartView();
     }
 
     //endregion
@@ -49,11 +46,9 @@ public class StartpagePresenter implements IUI.IUIListener {
         if(buttonTitle.equals("Challenges")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
         }
-        /*
         else if (buttonTitle.equals("Journal")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
-        } */
-
+        }
         else if (buttonTitle.equals("Logout")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
         }

@@ -1627,36 +1627,6 @@ div.v-layout.v-horizontal.v-widget {
 	vertical-align: top;
 }
 
-.captionPassive .v-panel-content {
-	background: rgba(140, 112, 162, 0.44);
-}
-
-.captionActive .v-panel-content {
-	background: #33ba59;
-}
-
-#challBoaLevelLayout {
-	border-right: solid 1px #666666;
-	background: white;
-	-webkit-box-shadow: 5px 0px 10px 0px #999999;
-	-moz-box-shadow: 5px 0px 10px 0px #999999;
-	box-shadow: 5px 0px 10px 0px #999999;
-}
-
-#challBoaChallActiveLayout {
-	border-right: solid 1px #666666;
-	background: #efefef;
-}
-
-#challBoaChallPassiveLayout {
-	border-right: solid 1px #666666;
-	background: #F6F6F6;
-}
-
-#challBoaChallDetailLayout {
-	background: #EEEEEE;
-}
-
 .mytheme.v-app, .mytheme.v-app-loading {
 	font: 300 16px/1.55 "Open Sans", sans-serif;
 	color: #464646;
@@ -15078,4 +15048,83 @@ div.v-layout.v-horizontal.v-widget {
 	display: inline-block;
 	width: 19px;
 	overflow: hidden;
+}
+
+.mytheme .captionPassive .v-panel-content {
+	background: rgba(140, 112, 162, 0.44);
+}
+
+.mytheme .captionActive .v-panel-content {
+	background: #33ba59;
+}
+
+.mytheme #challBoaLevelLayout {
+	border-right: solid 1px #666666;
+	background: white;
+	-webkit-box-shadow: 5px 0 10px 0 #999999;
+	-moz-box-shadow: 5px 0 10px 0 #999999;
+	box-shadow: 5px 0 10px 0 #999999;
+}
+
+.mytheme #challBoaChallActiveLayout {
+	border-right: solid 1px #666666;
+	background: #efefef;
+}
+
+.mytheme #challBoaChallPassiveLayout {
+	border-right: solid 1px #666666;
+	background: #F6F6F6;
+}
+
+.mytheme #challBoaChallDetailLayout {
+	background: #EEEEEE;
+}
+
+.mytheme #loginView, .mytheme #startView {
+	background: url("./images/background.png");
+	background-size: 40%;
+}
+
+.mytheme #loginWrapper {
+	margin-top: 100px;
+	margin-left: calc(50% - 150px);
+	margin-right: calc(50% - 150px);
+	vertical-align: center;
+	background: white;
+	padding: 20px;
+	border: solid 1px #aaaaaa;
+}
+
+.mytheme #loginButton {
+	margin-top: 20px;
+}
+
+.mytheme #welcomeLabel {
+	font-weight: bold;
+	text-align: center;
+}
+
+.mytheme #navigationWrapper {
+	margin-left: calc(50% - 200px);
+	margin-right: calc(50% - 200px);
+	border: solid 1px #aaaaaa;
+}
+
+.mytheme #journalWrapper, .mytheme #challengeWrapper {
+	background: white;
+	padding: 20px;
+}
+
+.mytheme #journalImg {
+	background: url("./images/journal.png") center center no-repeat;
+	background-size: 50%;
+}
+
+.mytheme #challengeImg {
+	background: url("./images/challenge.png") center center no-repeat;
+	background-size: 50%;
+}
+
+.mytheme #challengeButton, .mytheme #journalButton {
+	margin-top: 30px;
 }

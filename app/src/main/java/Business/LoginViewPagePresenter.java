@@ -1,7 +1,7 @@
 package Business;
 
 import UserInterface.ILoginView;
-import UserInterface.LoginViewPage;
+import UserInterface.LoginView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.*;
 
@@ -15,7 +15,7 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
     //implements singleton
     private static LoginViewPagePresenter instance;
 
-    private LoginViewPage loginview;
+    private LoginView loginview;
 
     private List<ILoginView.LoginListener> listeners =
             new ArrayList<>();
@@ -24,7 +24,7 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
     //region Getter
 
-    public LoginViewPage getLoginViewPage() {
+    public LoginView getLoginViewPage() {
         return loginview;
     }
 
@@ -40,9 +40,7 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
     //region Konstruktoren
 
     private LoginViewPagePresenter() {
-        loginview = new LoginViewPage();
-        loginview.addListener(this);
-        loginview.addLoginComponents();
+        loginview = new LoginView();
     }
 
     //endregion
@@ -56,12 +54,6 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
     //endregion
 
     //region Events
-
-    public void buttonClick(Button button) {
-        // same Button was clicked before
-        //check the login credentials given
-
-    }
 
     public void buttonClick(String buttonTitle) {
         if(buttonTitle.equals("Login")) {

@@ -6,6 +6,14 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full></vaadin-vertical-layout>
+  <vaadin-css-layout id="loginView" size-full>
+   <vaadin-css-layout id="loginWrapper" width="300px" height="220px">
+    <vaadin-text-field caption="Benutzername" placeholder="Benutzername" width-full _id="usernameField"></vaadin-text-field>
+    <vaadin-password-field caption="Passwort" placeholder="Passwort" width-full _id="passwordField"></vaadin-password-field>
+    <vaadin-button style-name="primary" id="loginButton" width-full plain-text _id="loginButton">
+      Anmelden 
+    </vaadin-button>
+   </vaadin-css-layout>
+  </vaadin-css-layout>
  </body>
 </html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.1.5">
+ </head>
+ <body>
+  <vaadin-css-layout id="startView" size-full>
+   <vaadin-label style-name="h1" id="welcomeLabel" width-full plain-text>
+     Hallo User 
+   </vaadin-label>
+   <vaadin-horizontal-split-panel id="navigationWrapper" width="400px" height="200px">
+    <vaadin-css-layout id="journalWrapper" size-full>
+     <vaadin-image id="journalImg" width-full height="100px"></vaadin-image>
+     <vaadin-button style-name="primary" id="journalButton" width-full plain-text>
+       Journals 
+     </vaadin-button>
+    </vaadin-css-layout>
+    <vaadin-css-layout id="challengeWrapper" size-full>
+     <vaadin-image id="challengeImg" width-full height="100px"></vaadin-image>
+     <vaadin-button style-name="primary" id="challengeButton" width-full plain-text>
+       Challenges 
+     </vaadin-button>
+    </vaadin-css-layout>
+   </vaadin-horizontal-split-panel>
+  </vaadin-css-layout>
+ </body>
+</html>
