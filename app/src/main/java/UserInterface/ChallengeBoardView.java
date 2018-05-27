@@ -77,6 +77,12 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
         back.setWidth("100%");
         challBoaChallDetailLayout.addComponent(back);
     }
+    public void addChallengeButton() {
+        Button newChall = new Button("Make new challenge", this::buttonClick);
+        newChall.setWidth("100%");
+        challBoaChallDetailLayout.addComponent(newChall);
+        newChall.setId("newChall");
+    }
 
     public void addLevel(String levelLabel, LevelState state) {
         Button level = new Button(levelLabel, this::buttonClick);

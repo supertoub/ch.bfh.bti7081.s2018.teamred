@@ -61,7 +61,7 @@ ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan
 ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan original | Effort plan updated | Effort actual | Status
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
 2.1 | Login prüfen auf DB | Als Benutzer möchte ich, dass ich mich mit meinem Passwort (aus der DB) einloggen kann, sodass nur ich und mein Therapeuten Zugriff auf meine Daten hat. | <ul><li>LoginView</li></ul> | RRO | | | | | | open
-2.2 | Challange erstellen | Als Patient möchte ich, eine neue Challenge erstellen, sodass ich die mit meinem Therapeuten vereinbarten Challanges tracken kann. | <ul><li>Challengeboard</li></ul> | IRI | | | | | | open
+2.2 | Challange erstellen | Als Patient möchte ich, eine neue Challenge erstellen, sodass ich die mit meinem Therapeuten vereinbarten Challanges tracken kann. | <ul><li>Challengeboard</li></ul> | IRI | | | | | | done
 2.3 | Challange in der DB persistieren | Als Patient möchte ich, dass die Challange auf der DB persistiert wird, sodass meine Challanges auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | | | | | | open
 2.4 | Level in DB persistieren | Als Patient möchte ich, dass die Levels auf der DB persistiert wird, sodass meine Levels auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | | | | | | open
 2.5 | Testuser anlegen | mehrere Testuser auf der Datenbank anlegen | | FZU | | | | | | open
