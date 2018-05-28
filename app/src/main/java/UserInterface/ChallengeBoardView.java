@@ -29,6 +29,10 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
 
     private List<ChallengeBoardViewListener> listeners = new ArrayList<>();
 
+    public ChallengeBoardView() {
+        super();
+    }
+
     public void addListener(ChallengeBoardViewListener listener) {
         listeners.add(listener);
     }
@@ -39,20 +43,17 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
             listener.buttonClick(event.getButton());
     }
 
-    public ChallengeBoardView() {
-        Design.read(this);
-    }
 
     public void addBackButton(){
         Button back = new Button("Back", this::buttonClick);
         back.setId("back");
         back.setWidth("100%");
-        challBoaChallDetailLayout.addComponent(back);
+        //this.getChallBoaChallDetailLayout().addComponent(back);
     }
     public void addChallengeButton() {
         Button newChall = new Button("Make new challenge", this::buttonClick);
         newChall.setWidth("100%");
-        challBoaChallDetailLayout.addComponent(newChall);
+        //this.getChallBoaChallDetailLayout().addComponent(newChall);
         newChall.setId("newChall");
     }
 
@@ -64,7 +65,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
             level.setEnabled(false);
         }
 
-        this.challBoaLevelLayout.addComponent(level);
+        //this.getChallBoaLevelLayout().addComponent(level);
     }
 
 
@@ -79,7 +80,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
 
 
         if (challengeState == challengeState.closed){
-            this.challBoaChallPassiveLayout.addComponent(challenge);
+            this.getChallBoaChallPassiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
             Button reOpen = new Button("reopen",this::buttonClick);
@@ -89,7 +90,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         }
 
         if (challengeState == challengeState.open){
-            this.challBoaChallActiveLayout.addComponent(challenge);
+            this.getChallBoaChallActiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
             Button close = new Button("close",this::buttonClick);
@@ -99,11 +100,11 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         }
     }
     public void removeChallenges(){
-        this.challBoaChallActiveLayout.removeAllComponents();
-        this.challBoaChallActiveLayout.addComponent(challBoaActiveLabel);
-        this.challBoaChallActiveLayout.setComponentAlignment(challBoaActiveLabel,Alignment.TOP_CENTER);
-        this.challBoaChallPassiveLayout.removeAllComponents();
-        this.challBoaChallPassiveLayout.addComponent(challBoaPassivLabel);
-        this.challBoaChallPassiveLayout.setComponentAlignment(challBoaPassivLabel,Alignment.TOP_CENTER);
+        this.getChallBoaChallActiveLayout().removeAllComponents();
+        this.getChallBoaChallActiveLayout().addComponent(this.getChallBoaActiveLabel());
+        this.getChallBoaChallActiveLayout().setComponentAlignment(this.getChallBoaActiveLabel(),Alignment.TOP_CENTER);
+        this.getChallBoaChallPassiveLayout().removeAllComponents();
+        this.getChallBoaChallPassiveLayout().addComponent(this.getChallBoaPassivLabel());
+        this.getChallBoaChallPassiveLayout().setComponentAlignment(this.getChallBoaPassivLabel(),Alignment.TOP_CENTER);
     }
 }

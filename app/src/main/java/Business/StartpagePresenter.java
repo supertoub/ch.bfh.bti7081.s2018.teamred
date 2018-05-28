@@ -1,11 +1,10 @@
 package Business;
 
-import UserInterface.IUI;
 import UserInterface.StartView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
 
-public class StartpagePresenter implements IUI.IUIListener {
+public class StartpagePresenter {
 
     //region Variablen
 
@@ -41,7 +40,6 @@ public class StartpagePresenter implements IUI.IUIListener {
 
     //region Events
 
-    @Override
     public void buttonClick(String buttonTitle) {
         if(buttonTitle.equals("Challenges")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
@@ -52,16 +50,6 @@ public class StartpagePresenter implements IUI.IUIListener {
         else if (buttonTitle.equals("Logout")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
         }
-    }
-
-    @Override
-    public void JournalClick() {
-
-    }
-
-    @Override
-    public void LogoutClick() {
-
     }
 
     //endregion

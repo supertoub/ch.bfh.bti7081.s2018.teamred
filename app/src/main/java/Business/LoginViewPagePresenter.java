@@ -1,14 +1,10 @@
 package Business;
 
-import UserInterface.ILoginView;
 import UserInterface.LoginView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class LoginViewPagePresenter implements ILoginView.LoginListener {
+public class LoginViewPagePresenter {
 
     //region Variablen
 
@@ -17,14 +13,11 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
 
     private LoginView loginview;
 
-    private List<ILoginView.LoginListener> listeners =
-            new ArrayList<>();
-
     //endregion
 
     //region Getter
 
-    public LoginView getLoginViewPage() {
+    public LoginView getLoginView() {
         return loginview;
     }
 
@@ -46,10 +39,6 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
     //endregion
 
     //region Methoden
-
-    public void addListener(ILoginView.LoginListener listener) {
-        listeners.add(listener);
-    }
 
     //endregion
 

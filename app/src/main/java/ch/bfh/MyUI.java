@@ -36,9 +36,9 @@ public class MyUI extends UI {
         ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
 //        JournalPresenter journalPresenter = JournalPresenter.getInstance();
 
-        setContent(loginViewPagePresenter.getLoginViewPage());
+        setContent(loginViewPagePresenter.getLoginView());
         navigator = new Navigator(this, this);
-        navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
+        navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
         navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
 //        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
