@@ -4,6 +4,7 @@ import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
@@ -48,6 +49,9 @@ public class ChallengeBoardPresenter implements Observer, ChallengeBoard.Challen
 
     private ChallengeBoardPresenter() {
         boardView = new ChallengeBoardView();
+        //boardView.setHeight("100%");
+        //boardView.setWidth("100%");
+        //boardView.setWidth("100%");
         boardView.addListener(this);
         boardView.addBackButton();
         lvlLibrary = new LevelLibrary(this);
@@ -168,6 +172,10 @@ public class ChallengeBoardPresenter implements Observer, ChallengeBoard.Challen
         } else if (clickedButton.getId().equals("AddLevelButton")) {
             Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
             this.addLevelToLevelView(createdLevel);
+        }
+        else if (clickedButton.getId()=="details"){
+            boardView.removeChallengeDetails();
+            boardView.addChallengeDetails(findChallenge(clickedButton.getParent().getParent().getCaption()));
         }
 
     }

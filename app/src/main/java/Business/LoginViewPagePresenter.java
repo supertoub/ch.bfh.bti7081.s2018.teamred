@@ -43,6 +43,8 @@ public class LoginViewPagePresenter implements ILoginView.LoginListener {
         loginview = new LoginViewPage();
         loginview.addListener(this);
         loginview.addLoginComponents();
+        loginview.setHeight("100%");
+        loginview.setWidth("100%");
     }
 
     //endregion
