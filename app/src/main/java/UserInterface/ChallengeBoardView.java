@@ -59,15 +59,29 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
     public void clearLevels(){
         for (int i = challBoaLevelLayout.getComponentCount() - 1; i >= 0; i--){
             Component comp = challBoaLevelLayout.getComponent(i);
-            if (comp.getId() == "level") {
+            if (comp.getId().equals("level")) {
                 challBoaLevelLayout.removeComponent(comp);
             }
         }
     }
 
     public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount){
+        Label newLabel = null;
+        for (int i = this.challBoaLevelLayout.getComponentCount() - 1; i >= 0; i--) {
+            Component comp = this.challBoaLevelLayout.getComponent(i);
+            if (comp.getId().equals("lvlInfoLbl")){
+                newLabel = (Label) comp;
+            }
+        }
+
         String labelText = closedCount + " von " + neededToBeClosed + ", Gesammt: " + allCount;
-        Label newLabel = new Label(labelText);
+
+        if (newLabel == null){
+            newLabel = new Label("");
+            newLabel.setId("lvlInfoLbl");
+        }
+
+        newLabel.setValue(labelText);
         this.challBoaLevelLayout.addComponent(newLabel, 1);
     }
 
@@ -77,6 +91,7 @@ public class ChallengeBoardView extends HorizontalLayout implements ChallengeBoa
         back.setWidth("100%");
         challBoaChallDetailLayout.addComponent(back);
     }
+
     public void addChallengeButton() {
         Button newChall = new Button("Make new challenge", this::buttonClick);
         newChall.setWidth("100%");
