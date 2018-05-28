@@ -15,5 +15,4 @@ public class LoginView extends LoginViewPage implements View {
     public void loginButtonClick(Button.ClickEvent event) {
         UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
     }
-
 }

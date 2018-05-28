@@ -11,6 +11,7 @@ public class StartView extends StartViewPage implements View {
         super();
         journalButton.addClickListener(this::journalButtonClick);
         challangeButton.addClickListener(this::challangeButtonClick);
+        logoutButton.addClickListener(this::logoutButtonClick);
     }
 
     public void challangeButtonClick(Button.ClickEvent event) {
@@ -19,5 +20,9 @@ public class StartView extends StartViewPage implements View {
 
     public void journalButtonClick(Button.ClickEvent event) {
         UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
+    }
+
+    public void logoutButtonClick(Button.ClickEvent event) {
+        UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
     }
 }

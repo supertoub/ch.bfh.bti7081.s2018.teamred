@@ -15058,6 +15058,10 @@ div.v-layout.v-horizontal.v-widget {
 	background: #33ba59;
 }
 
+.mytheme .mytheme .v-label-undef-w {
+	white-space: normal;
+}
+
 .mytheme #challBoaLevelLayout {
 	border-right: solid 1px #666666;
 	background: white;
