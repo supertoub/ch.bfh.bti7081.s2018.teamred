@@ -1,16 +1,29 @@
 package Business;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import static javax.persistence.GenerationType.AUTO;
 class Level extends Observable implements Observer{
 
-    //region Variablen
+@Entity
+public class Level {
+    @Id
+    @GeneratedValue(strategy = AUTO)
+    @Column(name = "level_id")
+    private long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="challenge_id")
 
     private List<Challenge> challenges;
+
+    @Enumerated(EnumType.STRING)
     private LevelState levelState;
+
     private String levelLabel;
     private int levelDoneCount;
     private int levelCount;
@@ -43,8 +56,10 @@ class Level extends Observable implements Observer{
     //endregion
 
     //region Konstruktoren
+    public Level() {}
 
     // TODO: Korrektes Level ChallengeState handling
+    public Level(String label){
     Level(String label, int count, Observer observer){
         this.levelLabel = label;
         this.levelState = LevelState.open;
@@ -54,9 +69,37 @@ class Level extends Observable implements Observer{
         this.addObserver(observer);
     }
 
-    //endregion
+    public long getId() {
+        return id;
+    }
 
-    //region Methoden
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Challenge> getChallenges() {
+        return challenges;
+    }
+
+    public void setChallenges(List<Challenge> challenges) {
+        this.challenges = challenges;
+    }
+
+    public LevelState getLevelState() {
+        return levelState;
+    }
+
+    public void setLevelState(LevelState levelState) {
+        this.levelState = levelState;
+    }
+
+    public String getLevelLabel() {
+        return levelLabel;
+    }
+
+    public void setLevelLabel(String levelLabel) {
+        this.levelLabel = levelLabel;
+    }
 
     void createChallenge(String level){
         Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);

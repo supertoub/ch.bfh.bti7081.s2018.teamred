@@ -109,6 +109,9 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
         for (int i = 0; i < currentLevel.getChallenges().size();i++){
             if(currentLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
                 return currentLevel.getChallenges().get(i);
+        for (int i = 0; i < clickedLevel.getChallenges().size();i++){
+            if(clickedLevel.getChallenges().get(i).getTitle().equals(panelName)){
+                return clickedLevel.getChallenges().get(i);
             }
         }
         return null; //hier Exception machen falls es das challenge nicht findet
@@ -133,7 +136,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
     private void updateChallengeView(Level level) {
         List<Challenge> challenges = level.getChallenges();
         for (Challenge challenge : challenges) {
-            boardView.addChallenge(challenge.getChallengeTitle(), challenge.getChallengeDesc(), challenge.getChallengeState(), challenge.getChallengeLevelOfAnxiety());
+            boardView.addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
         }
     }
 

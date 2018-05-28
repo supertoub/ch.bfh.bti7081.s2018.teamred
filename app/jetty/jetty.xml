@@ -7,9 +7,9 @@
         <Arg>jdbc/social-anxiety-app</Arg>
         <Arg>
             <New class="org.hsqldb.jdbc.JDBCDataSource">
-                <Set name="DatabaseName">file:database/application</Set>
-                <Set name="User">user</Set>
-                <Set name="Password">user</Set>
+                <Set name="DatabaseName">file:target/social-anxiety-db</Set>
+                <Set name="User">sa</Set>
+                <Set name="Password"></Set>
             </New>
         </Arg>
     </New>
