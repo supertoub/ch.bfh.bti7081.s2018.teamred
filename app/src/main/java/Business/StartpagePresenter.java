@@ -37,6 +37,8 @@ public class StartpagePresenter implements IUI.IUIListener {
         StartView = new StartpageView();
         StartView.addListener(this);
         StartView.addButtons();
+        //StartView.setHeight("100%");
+        //StartView.setWidth("1000%");
 
     }
 
