@@ -1,11 +1,15 @@
 package Business;
 
+import javax.security.auth.Subject;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class Challenge {
+public class  Challenge extends Observable {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "challenge_id")
@@ -60,6 +64,8 @@ public class Challenge {
 
     public void setChallengeState(ChallengeState challengeState) {
         this.challengeState = challengeState;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getLevelOfAnxiety() {
@@ -69,6 +75,23 @@ public class Challenge {
     public void setLevelOfAnxiety(int levelOfAnxiety) {
         this.levelOfAnxiety = levelOfAnxiety;
     }
+
+    //endregion
+
+    //region Konstruktoren
+
+    // TODO: Korrektes Level ChallengeState handling
+    Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety, Observer observer){
+        this.title = title;
+        this.desc = desc;
+        this.challengeState = challengeState;
+        this.levelOfAnxiety = levelOfAnxiety;
+        this.addObserver(observer);
+    }
+
+    //endregion
+
+    //region Methoden
 
     void change(){}
 

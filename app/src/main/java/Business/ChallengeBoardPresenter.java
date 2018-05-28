@@ -1,7 +1,5 @@
 package Business;
 
-
-
 import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
@@ -11,8 +9,9 @@ import com.vaadin.ui.UI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
-public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardViewListener {
+public class ChallengeBoardPresenter implements Observer, ChallengeBoard.ChallengeBoardViewListener {
 
     //region Variablen
 
@@ -22,7 +21,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     private LevelLibrary lvlLibrary;
 
-    private Level clickedLevel = new Level("");
+    private Level currentLevel;
 
     //endregion
 
@@ -51,10 +50,12 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         boardView = new ChallengeBoardView();
         boardView.addListener(this);
         boardView.addBackButton();
+        lvlLibrary = new LevelLibrary(this);
         boardView.addChallengeButton();
-        lvlLibrary = new LevelLibrary();
         for (int i = 1; i <= 5; i++) {
-            lvlLibrary.createNewLevel();
+            if (i == 1) lvlLibrary.createNewLevel(LevelState.open);
+            else lvlLibrary.createNewLevel(LevelState.closed);
+
         }
 
         lvlLibrary.getLevels().get(3).setLevelState(LevelState.closed);
@@ -62,10 +63,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
         //add 6 Challanges for each Level
         for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
             for (int j = 1; j < 7; j++) {
-                lvlLibrary.getLevels().get(i).createChallenge("lvl "+(i+1)+":");
-                if (j % 2 == 0) {
-                    lvlLibrary.getLevels().get(i).getChallenges().get(j - 1).setChallengeState(ChallengeState.open);
-                }
+                lvlLibrary.getLevels().get(i).createChallenge("lvl " + (i + 1) + ":");
             }
         }
 
@@ -87,7 +85,7 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     private void newWindowAddChall() {
         List<String> lvls = new ArrayList<>();
-        for (int i=0;i<lvlLibrary.getLevels().size();i++){
+        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
             lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
         }
         AddChallenge aC = new AddChallenge(lvls);
@@ -107,16 +105,17 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
     }
 
     // TODO: Event in Challange handeln
-    private Challenge findChallenge(String panelName){
-        for (int i = 0; i < clickedLevel.getChallenges().size();i++){
-            if(clickedLevel.getChallenges().get(i).getTitle().equals(panelName)){
-                return clickedLevel.getChallenges().get(i);
+    private Challenge findChallenge(String panelName) {
+        for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
+            if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
+                return currentLevel.getChallenges().get(i);
             }
         }
         return null; //hier Exception machen falls es das challenge nicht findet
     }
 
     private void updateLevelView() {
+        boardView.clearLevels();
         List<Level> levels = lvlLibrary.getLevels();
         for (Level level : levels) {
             boardView.addLevel(level.getLevelLabel(), level.getLevelState());
@@ -125,6 +124,10 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
             //    updateChallengeView(level);
             //}
         }
+    }
+
+    private void addLevelToLevelView(Level levelToAdd) {
+        boardView.addLevel(levelToAdd.getLevelLabel(), levelToAdd.getLevelState());
     }
 
     private void updateChallengeView(Level level) {
@@ -140,42 +143,46 @@ public class ChallengeBoardPresenter implements ChallengeBoard.ChallengeBoardVie
 
     @Override
     public void buttonClick(Button clickedButton) {
-        if(clickedButton.getId()=="back"){
+        if (clickedButton.getId().equals("back")) {
             UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-        else if(clickedButton.getId()=="level"){
-            if(clickedLevel.getLevelLabel().equals(clickedButton.getCaption())){
-                boardView.removeChallenges();
-                clickedLevel=new Level("");
-            }
-            else{
-                boardView.removeChallenges();
-                clickedLevel = findClickedLevel(clickedButton.getCaption());
-
-                if (clickedLevel == null){
-                    return;
-                }
-
-                updateChallengeView(clickedLevel);
-            }
-        }
-
-        else if(clickedButton.getId()=="newChall"){
-            newWindowAddChall();
-        }
-        else if (clickedButton.getId()=="close" || clickedButton.getId()=="reOpen"){
-            if(clickedButton.getId()=="close") findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
-            else findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+        } else if (clickedButton.getId().equals("level")) {
+            currentLevel = findClickedLevel(clickedButton.getCaption());
             boardView.removeChallenges();
-            updateChallengeView(clickedLevel);
+
+            if (currentLevel == null) {
+                return;
+            }
+
+            boardView.setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
+            updateChallengeView(currentLevel);
+        } else if (clickedButton.getId().equals("newChall")) {
+            newWindowAddChall();
+        } else if (clickedButton.getId().equals("close") || clickedButton.getId() == "reOpen") {
+            if (clickedButton.getId().equals("close"))
+                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            else
+                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            boardView.removeChallenges();
+            boardView.setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
+            updateChallengeView(currentLevel);
+        } else if (clickedButton.getId().equals("AddLevelButton")) {
+            Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
+            this.addLevelToLevelView(createdLevel);
         }
 
     }
 
     @Override
+    public void update(java.util.Observable o, Object arg) {
+        if (o instanceof LevelLibrary) {
+            this.updateLevelView();
+        }
+    }
+
+    @Override
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
-        level.createChallenge(levelTitle,cTitle,cDesc,lOfAx);
+        level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
     }
 
     //endregion
