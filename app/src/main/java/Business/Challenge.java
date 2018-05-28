@@ -4,13 +4,12 @@ import javax.security.auth.Subject;
 import java.util.Observable;
 import java.util.Observer;
 
-public class  Challenge extends Observable {
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class Challenge {
+public class  Challenge extends Observable {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "challenge_id")

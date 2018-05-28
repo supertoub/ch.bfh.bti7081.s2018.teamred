@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
-public class ChallengeBoardPresenter implements Observer,ChallengeBoard.ChallengeBoardViewListener {
+public class ChallengeBoardPresenter implements Observer, ChallengeBoard.ChallengeBoardViewListener {
 
     //region Variablen
 
@@ -53,7 +53,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
         lvlLibrary = new LevelLibrary(this);
         boardView.addChallengeButton();
         for (int i = 1; i <= 5; i++) {
-            if (i == 1)lvlLibrary.createNewLevel(LevelState.open);
+            if (i == 1) lvlLibrary.createNewLevel(LevelState.open);
             else lvlLibrary.createNewLevel(LevelState.closed);
 
         }
@@ -63,7 +63,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
         //add 6 Challanges for each Level
         for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
             for (int j = 1; j < 7; j++) {
-                lvlLibrary.getLevels().get(i).createChallenge("lvl "+(i+1)+":");
+                lvlLibrary.getLevels().get(i).createChallenge("lvl " + (i + 1) + ":");
             }
         }
 
@@ -85,7 +85,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
 
     private void newWindowAddChall() {
         List<String> lvls = new ArrayList<>();
-        for (int i=0;i<lvlLibrary.getLevels().size();i++){
+        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
             lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
         }
         AddChallenge aC = new AddChallenge(lvls);
@@ -105,13 +105,10 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
     }
 
     // TODO: Event in Challange handeln
-    private Challenge findChallenge(String panelName){
-        for (int i = 0; i < currentLevel.getChallenges().size();i++){
-            if(currentLevel.getChallenges().get(i).getChallengeTitle().equals(panelName)){
+    private Challenge findChallenge(String panelName) {
+        for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
+            if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
                 return currentLevel.getChallenges().get(i);
-        for (int i = 0; i < clickedLevel.getChallenges().size();i++){
-            if(clickedLevel.getChallenges().get(i).getTitle().equals(panelName)){
-                return clickedLevel.getChallenges().get(i);
             }
         }
         return null; //hier Exception machen falls es das challenge nicht findet
@@ -129,7 +126,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
         }
     }
 
-    private void addLevelToLevelView(Level levelToAdd){
+    private void addLevelToLevelView(Level levelToAdd) {
         boardView.addLevel(levelToAdd.getLevelLabel(), levelToAdd.getLevelState());
     }
 
@@ -146,32 +143,29 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
 
     @Override
     public void buttonClick(Button clickedButton) {
-        if(clickedButton.getId().equals("back")){
+        if (clickedButton.getId().equals("back")) {
             UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-        else if(clickedButton.getId().equals("level")){
+        } else if (clickedButton.getId().equals("level")) {
             currentLevel = findClickedLevel(clickedButton.getCaption());
             boardView.removeChallenges();
 
-            if (currentLevel == null){
-               return;
+            if (currentLevel == null) {
+                return;
             }
 
             boardView.setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
             updateChallengeView(currentLevel);
-        }
-
-        else if(clickedButton.getId().equals("newChall")){
+        } else if (clickedButton.getId().equals("newChall")) {
             newWindowAddChall();
-        }
-        else if (clickedButton.getId().equals("close") || clickedButton.getId()=="reOpen"){
-            if(clickedButton.getId().equals("close")) findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
-            else findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+        } else if (clickedButton.getId().equals("close") || clickedButton.getId() == "reOpen") {
+            if (clickedButton.getId().equals("close"))
+                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            else
+                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
             boardView.removeChallenges();
             boardView.setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
             updateChallengeView(currentLevel);
-        }
-        else if(clickedButton.getId().equals("AddLevelButton")){
+        } else if (clickedButton.getId().equals("AddLevelButton")) {
             Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
             this.addLevelToLevelView(createdLevel);
         }
@@ -180,7 +174,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
 
     @Override
     public void update(java.util.Observable o, Object arg) {
-        if (o instanceof LevelLibrary){
+        if (o instanceof LevelLibrary) {
             this.updateLevelView();
         }
     }
@@ -188,7 +182,7 @@ public class ChallengeBoardPresenter implements Observer,ChallengeBoard.Challeng
     @Override
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
-        level.createChallenge(levelTitle,cTitle,cDesc,lOfAx);
+        level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
     }
 
     //endregion

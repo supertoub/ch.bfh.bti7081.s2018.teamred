@@ -7,10 +7,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
-class Level extends Observable implements Observer{
-
 @Entity
-public class Level {
+public class Level extends Observable implements Observer{
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "level_id")
@@ -59,8 +57,7 @@ public class Level {
     public Level() {}
 
     // TODO: Korrektes Level ChallengeState handling
-    public Level(String label){
-    Level(String label, int count, Observer observer){
+    public Level(String label, int count, Observer observer){
         this.levelLabel = label;
         this.levelState = LevelState.open;
         this.challenges = new ArrayList<>();
@@ -77,24 +74,8 @@ public class Level {
         this.id = id;
     }
 
-    public List<Challenge> getChallenges() {
-        return challenges;
-    }
-
     public void setChallenges(List<Challenge> challenges) {
         this.challenges = challenges;
-    }
-
-    public LevelState getLevelState() {
-        return levelState;
-    }
-
-    public void setLevelState(LevelState levelState) {
-        this.levelState = levelState;
-    }
-
-    public String getLevelLabel() {
-        return levelLabel;
     }
 
     public void setLevelLabel(String levelLabel) {

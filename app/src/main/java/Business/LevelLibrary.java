@@ -9,7 +9,7 @@ import java.util.Observer;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class LevelLibrary {
+public class LevelLibrary extends Observable implements Observer {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "levellibrary_id")
@@ -17,7 +17,7 @@ public class LevelLibrary {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="level_id")
-class LevelLibrary extends Observable implements Observer {
+
     private List<Level> levels;
 
     List<Level> getLevels(){
@@ -29,11 +29,13 @@ class LevelLibrary extends Observable implements Observer {
         this.levels = new ArrayList<>();
     }
 
-    Level createNewLevel(){
+    Level createNewLevel() {
         int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size()+1), levelCount, this);
+        Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this);
         levels.add(newLevel);
         return newLevel;
+    }
+
     LevelLibrary(){
         levels = new ArrayList<>();
     }
@@ -50,16 +52,10 @@ class LevelLibrary extends Observable implements Observer {
         this.id = id;
     }
 
-    public List<Level> getLevels() {
-        return levels;
-    }
-
     public void setLevels(List<Level> levels) {
         this.levels = levels;
     }
 
-    void createNewLevel(){
-        levels.add(new Level("Level " + (levels.size()+1)));
     Level createNewLevel(LevelState levelState){
         int levelCount = levels.size();
         Level newLevel = new Level("Level " + (levels.size()+1), levelCount, this);
