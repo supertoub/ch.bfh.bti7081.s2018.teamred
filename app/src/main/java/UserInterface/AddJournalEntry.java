@@ -74,7 +74,7 @@ public class AddJournalEntry extends Window  implements Journal{
 
     private void createInlineDateField() {
         idfDate = new InlineDateField();
-        
+
     }
 
     private void createTextField() {
