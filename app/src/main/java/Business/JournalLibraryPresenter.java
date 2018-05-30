@@ -1,18 +1,16 @@
 package Business;
 
-import UserInterface.AddJournalEntry;
-import UserInterface.Journal;
-import UserInterface.JournalView;
+import UserInterface.*;
 import ch.bfh.MyUI;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.UI;
+import com.vaadin.navigator.View;
+import com.vaadin.ui.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
 
-public class JournalLibraryPresenter implements Journal.JournalViewListener {
+public class JournalLibraryPresenter extends JournalViewPage implements View {
 
 
 
@@ -20,7 +18,7 @@ public class JournalLibraryPresenter implements Journal.JournalViewListener {
 
     private static JournalLibraryPresenter instance;
 
-    private JournalView JournalView;
+    private JournalViewPage JournalViewPage;
     private JournalLibrary jourLibrary;
     private Journal currentEntry;
 
@@ -28,8 +26,8 @@ public class JournalLibraryPresenter implements Journal.JournalViewListener {
 
 
 
-    public JournalView getJournalView() {
-        return JournalView;
+    public JournalViewPage getJournalView() {
+        return JournalViewPage;
     }
 
     public static JournalLibraryPresenter getInstance() {
@@ -46,9 +44,10 @@ public class JournalLibraryPresenter implements Journal.JournalViewListener {
     void changeClick(){}
 
     private JournalLibraryPresenter() {
-        JournalView = new JournalView();
-        JournalView.addListener(this);
-        JournalView.addBackButton();
+        super();
+        JournalViewPage = new JournalViewPage();
+        backButton.addClickListener(this::backButtonClick);
+        newEntryButton.addClickListener(this::newEntryButtonClick);
         //JournalView.addListener(this);
         //JournalView.addButtons();
         //StartView.setHeight("100%");
@@ -56,25 +55,31 @@ public class JournalLibraryPresenter implements Journal.JournalViewListener {
 
     }
 
-    private void newWindowAddEntry() {
+    public void backButtonClick(Button.ClickEvent event) {
+        UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
+    }
+
+    public void newEntryButtonClick(Button.ClickEvent event) {
+        newWindowAddEntry();
+    }
+
+
+    public void addJournalEntry(String title, String desc) {
+        Panel journal = new Panel(title);
+        final VerticalLayout contentLayout = new VerticalLayout();
+        contentLayout.addComponent(new Label(desc));
+        journal.setContent(contentLayout);
+        journal.setHeight("100%");
+        journal.setWidth("100%");
+    }
+    public void newWindowAddEntry() {
         List<String> entrys = new ArrayList<>();
 
         AddJournalEntry aJ = new AddJournalEntry(entrys);
-        aJ.addListener(this);
+
         // Add it to the root component
         UI.getCurrent().addWindow(aJ);
     }
-    @Override
-    public void buttonClick(Button button) {
-        if (button.getId().equals("back")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }else if (button.getId().equals("newEntryButton")) {
-            newWindowAddEntry();
-        }
-    }
 
-    @Override
-    public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
 
-    }
 }

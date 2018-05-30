@@ -6,7 +6,6 @@ import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
 import Business.StartpagePresenter;
 import Business.LoginViewPagePresenter;
-import UserInterface.JournalView;
 
 
 import Business.*;
@@ -40,50 +39,21 @@ public class MyUI extends UI {
     protected void init(VaadinRequest request) {
 
 
-        ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-        StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
-        JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
+
 
         LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
         StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
         ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-//        JournalPresenter journalPresenter = JournalPresenter.getInstance();
+       JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
 
         setContent(loginViewPagePresenter.getLoginView());
         navigator = new Navigator(this, this);
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
         navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
+        navigator.addView(JOURNALVIEW, journalPresenter);
 
-        navigator.addView(JOURNALVIEW, presenter3.getJournalView());
-
-        navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
         navigator.navigateTo(STARTPAGEVIEW);
-    }
-
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
-
-    /*
-    @Override
-    protected void init(VaadinRequest vaadinRequest) {
-<<<<<<< HEAD
-        StartpagePresenter presenter = StartpagePresenter.getInstance();
-        setContent(presenter.getStartView());
-=======
-        //ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
-        //setContent(presenter.getBoardView());
-
-        LoginViewPagePresenter presenter = LoginViewPagePresenter.getInstance();
-        setContent(presenter.getloginView());
-
->>>>>>> origin/Roland_Login
-=======
-//        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
-        navigator.navigateTo(LOGINVIEW);
->>>>>>> master
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
