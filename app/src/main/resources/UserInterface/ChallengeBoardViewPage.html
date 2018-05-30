@@ -6,27 +6,34 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-horizontal-layout spacing="false" id="challboaFirstLayer" size-full _id="challboaFirstLayer" :expand>
+  <vaadin-horizontal-layout spacing="false" id="challboaFirstLayer" size-full>
    <vaadin-vertical-layout style-name="levelNavigation" spacing="false" id="challBoaLevelLayout" size-full _id="challBoaLevelLayout" :expand>
     <vaadin-label id="challBoaLevelLabel" plain-text _id="challBoaLevelLabel" :center>
-      Level
+      Level 
     </vaadin-label>
-    <vaadin-button icon="fonticon://Vaadin-Icons/e7fe" width="12px" height="25px" plain-text _id="addLevelButton" :bottom :center></vaadin-button>
+    <vaadin-button id="back" plain-text _id="back">
+      Back 
+    </vaadin-button>
+    <vaadin-button id="newChall" plain-text _id="newChall">
+      Make new challenge 
+    </vaadin-button>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e7fe" id="addLevelButton" width="12px" height="25px" plain-text _id="addLevelButton" :bottom :center></vaadin-button>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout style-name="activeLine" spacing="false" id="challBoaChallActiveLayout" size-full _id="challBoaChallActiveLayout" :expand>
     <vaadin-label id="challBoaActiveLabel" plain-text _id="challBoaActiveLabel" :center>
-      Aktiv
+      Aktiv 
     </vaadin-label>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout style-name="doneLine" spacing="false" id="challBoaChallPassiveLayout" size-full _id="challBoaChallPassiveLayout" :expand>
     <vaadin-label id="challBoaPassivLabel" plain-text _id="challBoaPassivLabel" :center>
-      Abgeschlossen
+      Abgeschlossen 
     </vaadin-label>
    </vaadin-vertical-layout>
    <vaadin-vertical-layout style-name="detailView" spacing="false" id="challBoaChallDetailLayout" size-full _id="challBoaChallDetailLayout" :expand>
     <vaadin-label id="challBoaChallDetailsLabel" plain-text _id="challBoaChallDetailsLabel" :center>
-      Details
+      Details 
     </vaadin-label>
+    <vaadin-panel caption="Details" id="details" size-auto _id="details"></vaadin-panel>
    </vaadin-vertical-layout>
   </vaadin-horizontal-layout>
  </body>

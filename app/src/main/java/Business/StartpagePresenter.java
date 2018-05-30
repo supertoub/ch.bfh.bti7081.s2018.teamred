@@ -1,24 +1,23 @@
 package Business;
 
-import UserInterface.IUI;
-import UserInterface.StartpageView;
+import UserInterface.StartView;
 import ch.bfh.MyUI;
 import com.vaadin.ui.UI;
 
-public class StartpagePresenter implements IUI.IUIListener {
+public class StartpagePresenter {
 
     //region Variablen
 
     private static StartpagePresenter instance;
 
-    private StartpageView StartView;
+    private StartView startView;
 
     //endregion
 
     //region Getter
 
-    public StartpageView getStartView() {
-        return StartView;
+    public StartView getStartView() {
+        return startView;
     }
 
     public static StartpagePresenter getInstance() {
@@ -34,41 +33,31 @@ public class StartpagePresenter implements IUI.IUIListener {
     //region Kontruktoren
 
     private StartpagePresenter() {
-        StartView = new StartpageView();
-        StartView.addListener(this);
-        StartView.addButtons();
-        //StartView.setHeight("100%");
-        //StartView.setWidth("1000%");
-
+        startView = new StartView();
     }
 
     //endregion
 
     //region Events
 
-    @Override
     public void buttonClick(String buttonTitle) {
         if(buttonTitle.equals("Challenges")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
         }
+<<<<<<< HEAD
 
         else if (buttonTitle.equals("Journal")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
         }
 
+=======
+        else if (buttonTitle.equals("Journal")){
+            UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
+        }
+>>>>>>> master
         else if (buttonTitle.equals("Logout")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
         }
-    }
-
-    @Override
-    public void JournalClick() {
-
-    }
-
-    @Override
-    public void LogoutClick() {
-
     }
 
     //endregion
