@@ -17,7 +17,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * JPA Hibernate implementation of the GenericDAO
+ *
+ * Copied from:
+ * <a href="https://github.com/jeffbeard/generic-jpa-dao/blob/master/src/main/java/org/firebyte/generic/dao/jpa/GenericDAOJPA.java">GenericDAOJPA.java</a>
+ * @author <a href="mailto:jeff@firebyte.org">Jeff Beard</a>
+ *
+ */
 public class GenericDataFacadeJPA<T, ID extends Serializable> implements GenericDataFacade<T, ID> {
 
 
