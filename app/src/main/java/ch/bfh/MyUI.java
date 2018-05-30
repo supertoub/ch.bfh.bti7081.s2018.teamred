@@ -2,8 +2,10 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 import Business.ChallengeBoardPresenter;
+import Business.JournalLibraryPresenter;
 import Business.StartpagePresenter;
 import Business.LoginViewPagePresenter;
+import UserInterface.JournalView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -26,7 +28,7 @@ public class MyUI extends UI {
 
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
-   // public static final String JOURNALVIEW ="Journal";
+    public static final String JOURNALVIEW ="Journal";
     public static final String LOGINVIEW ="Logout";
 
     @Override
@@ -34,7 +36,7 @@ public class MyUI extends UI {
 
         ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
         StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
-        //JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
+        JournalLibraryPresenter  presenter3 = JournalLibraryPresenter.getInstance();
         LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
         setContent(loginViewPagePresenter.getLoginViewPage());
         //ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(presenter.getStartView());
@@ -42,7 +44,7 @@ public class MyUI extends UI {
         navigator = new Navigator(this, this);
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
         navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-        //navigator.addView(JOURNALVIEW, presenter3.getJournalView());
+        navigator.addView(JOURNALVIEW, presenter3.getJournalView());
 
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginViewPage());
         navigator.navigateTo(STARTPAGEVIEW);
