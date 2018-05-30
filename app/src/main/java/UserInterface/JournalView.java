@@ -1,4 +1,4 @@
 package UserInterface;
 
-public class JournalView {
+public class JournalView extends JournalViewPage {
 }

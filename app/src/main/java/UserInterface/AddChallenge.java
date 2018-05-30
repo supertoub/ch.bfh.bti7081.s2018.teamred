@@ -130,7 +130,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
 
 
     private List<ChallengeBoardViewListener> listeners =
-            new ArrayList<>();
+            new ArrayList<ChallengeBoardViewListener>();
 
     public void addListener(ChallengeBoardViewListener listener) {
         listeners.add(listener);

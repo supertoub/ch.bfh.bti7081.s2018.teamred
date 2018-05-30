@@ -34,37 +34,86 @@
 @mixin mytheme {
   @include valo;
 
-  // Insert your own theme rules heres
-}
-.captionPassive .v-panel-content {
-  background: rgba(140, 112, 162, 0.44);
-}
-.captionActive .v-panel-content {
-  background: #33ba59;
-}
+  .captionPassive .v-panel-content {
+    background: rgba(140, 112, 162, 0.44);
+  }
+  .captionActive .v-panel-content {
+    background: #33ba59;
+  }
 
 .mytheme .v-label-undef-w {
-  white-space: normal;
+white-space: normal;
 }
 
-#challBoaLevelLayout {
-  border-right: solid 1px #666666;
-  background: white;
-  -webkit-box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
-  -moz-box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
-  box-shadow: 5px 0px 10px 0px rgba(153,153,153,1);
-}
 
-#challBoaChallActiveLayout {
-  border-right: solid 1px #666666;
-  background: #efefef;
-}
+  #challBoaLevelLayout {
+    border-right: solid 1px #666666;
+    background: white;
+    -webkit-box-shadow: 5px 0 10px 0 rgba(153,153,153,1);
+    -moz-box-shadow: 5px 0 10px 0 rgba(153,153,153,1);
+    box-shadow: 5px 0 10px 0 rgba(153,153,153,1);
+  }
 
-#challBoaChallPassiveLayout {
-  border-right: solid 1px #666666;
-  background: #F6F6F6;
-}
+  #challBoaChallActiveLayout {
+    border-right: solid 1px #666666;
+    background: #efefef;
+  }
 
-#challBoaChallDetailLayout {
-  background: #EEEEEE;
+  #challBoaChallPassiveLayout {
+    border-right: solid 1px #666666;
+    background: #F6F6F6;
+  }
+
+  #challBoaChallDetailLayout {
+    background: #EEEEEE;
+  }
+
+  #loginView, #startView {
+    background: url("./images/background.png");
+    background-size: 40%;
+  }
+
+  #loginWrapper {
+    margin-top: 100px;
+    margin-left: calc(50% - 150px);
+    margin-right: calc(50% - 150px);
+    vertical-align: center;
+    background: white;
+    padding: 20px;
+    border: solid 1px #aaaaaa;
+  }
+
+  #loginButton {
+    margin-top: 20px;
+  }
+
+  #welcomeLabel {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #navigationWrapper {
+    margin-left: calc(50% - 200px);
+    margin-right: calc(50% - 200px);
+    border: solid 1px #aaaaaa;
+  }
+
+  #journalWrapper, #challengeWrapper {
+    background: white;
+    padding: 20px;
+  }
+
+  #journalImg {
+    background: url("./images/journal.png") center center no-repeat;
+    background-size: 50%;
+  }
+
+  #challengeImg {
+    background: url("./images/challenge.png") center center no-repeat;
+    background-size: 50%;
+  }
+
+  #challengeButton, #journalButton {
+    margin-top: 30px;
+  }
 }
