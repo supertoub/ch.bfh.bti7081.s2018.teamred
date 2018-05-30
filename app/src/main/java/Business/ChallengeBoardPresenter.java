@@ -49,13 +49,8 @@ public class ChallengeBoardPresenter implements Observer, ChallengeBoard.Challen
 
     private ChallengeBoardPresenter() {
         boardView = new ChallengeBoardView();
-        //boardView.setHeight("100%");
-        //boardView.setWidth("100%");
-        //boardView.setWidth("100%");
         boardView.addListener(this);
-        boardView.addBackButton();
         lvlLibrary = new LevelLibrary(this);
-        boardView.addChallengeButton();
         for (int i = 1; i <= 5; i++) {
             if (i == 1) lvlLibrary.createNewLevel(LevelState.open);
             else lvlLibrary.createNewLevel(LevelState.closed);
