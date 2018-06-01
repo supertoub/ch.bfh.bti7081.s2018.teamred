@@ -367,8 +367,10 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
         level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
-        removeChallenges();
-        updateChallengeView(level);
+        if (level.getLevelState()==LevelState.open) {
+            removeChallenges();
+            updateChallengeView(level);
+        }
     }
 
     //endregion
