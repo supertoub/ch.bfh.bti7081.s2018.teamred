@@ -40,7 +40,8 @@ public class MyUI extends UI {
         navigator = new Navigator(this, this);
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
-        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
+        //navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
+        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getInstance());
 //        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
         navigator.navigateTo(LOGINVIEW);
     }
