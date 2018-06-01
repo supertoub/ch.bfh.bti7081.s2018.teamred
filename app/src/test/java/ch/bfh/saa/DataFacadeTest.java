@@ -22,6 +22,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Date;
 import java.util.logging.Level;
 
+/**
+ * Copied from:
+ * <a href="https://github.com/jeffbeard/generic-jpa-dao/blob/master/src/test/java/org/firebyte/generic/dao/jpa/GenericDAOJPATest.java">GenericDAOJPATest.java</a>
+ * @author <a href="mailto:jeff.beard@datalogix.com">Jeff Beard</a>
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationcontext.xml")
 @Transactional

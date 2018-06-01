@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddChallenge extends Window  implements ChallengeBoard{
+public class AddJournalEntry extends Window  implements Journal{
     //region Variablen
 
     private TextField tfTitle;
+    private InlineDateField idfDate;
     private TextArea tADesc;
     private ComboBox<String> select;
     private RadioButtonGroup<String> rbglOA;
@@ -35,7 +36,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
 
     //region Konstruktoren
 
-    public AddChallenge(List<String> lvls) {
+    public AddJournalEntry(List<String> lvls) {
         createWindow(lvls);
         this.center();
     }
@@ -49,13 +50,14 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         HorizontalLayout titleLayout = new HorizontalLayout();
         HorizontalLayout descLayout = new HorizontalLayout();
 
+        createInlineDateField();
         createTextField();
         createTextArea();
         createComboBox(lvls);
         createRadioButton();
 
         setContent(subContent);
-        subContent.addComponent(new Label("Add new challenge"));
+        subContent.addComponent(new Label("Add new Journal entry"));
         subContent.addComponent(select);
         subContent.addComponent(titleLayout);
         titleLayout.addComponent(tfTitle);
@@ -64,9 +66,14 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
         subContent.addComponent(rbglOA);
-        subContent.addComponent(new Button("Add Challenge", event -> buttonClick(event,select.getValue(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
+        subContent.addComponent(new Button("Add Entry", event -> buttonClick(event,select.getValue(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
         subContent.addComponent(new Button("Close", event -> close()));
         subContent.addComponent(selectL);
+
+    }
+
+    private void createInlineDateField() {
+        idfDate = new InlineDateField();
 
     }
 
@@ -129,10 +136,10 @@ public class AddChallenge extends Window  implements ChallengeBoard{
     }
 
 
-    private List<ChallengeBoardViewListener> listeners =
-            new ArrayList<ChallengeBoardViewListener>();
+    private List<JournalViewListener> listeners =
+            new ArrayList<>();
 
-    public void addListener(ChallengeBoardViewListener listener) {
+    public void addListener(JournalViewListener listener) {
         listeners.add(listener);
     }
 
@@ -160,12 +167,16 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         }
         else{
             createNotification("Add challenge to "+levelTitle,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
-            for (ChallengeBoardViewListener listener: listeners)
+            for (JournalViewListener listener: listeners)
                 listener.buttonClick(levelTitle,cTitle,cDesc,lOfAx);
             close();
         }
 
     }
+
+
+
+
     //endregion
 
 }

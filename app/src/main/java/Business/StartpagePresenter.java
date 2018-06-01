@@ -44,11 +44,9 @@ public class StartpagePresenter {
         if(buttonTitle.equals("Challenges")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
         }
+
         else if (buttonTitle.equals("Journal")){
             UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
-        }
-        else if (buttonTitle.equals("Logout")){
-            UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
         }
     }
 

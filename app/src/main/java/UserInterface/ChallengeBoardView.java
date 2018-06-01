@@ -13,14 +13,15 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Button;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ChallengeBoardView extends ChallengeBoardViewPage implements ChallengeBoard, View {
+public class ChallengeBoardView extends ChallengeBoardViewPage implements View {
 
-    private List<ChallengeBoardViewListener> listeners;
-
+   // private List<ChallengeBoardViewListener> listeners;
+/*
     public ChallengeBoardView() {
         this.listeners = new ArrayList<>();
         this.getBack().addClickListener(this::buttonClick);
@@ -36,7 +37,8 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         for (ChallengeBoardViewListener listener: this.listeners)
             listener.buttonClick(event.getButton());
     }
-
+*/
+/*
     public void clearLevels(){
         for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--){
             Component comp = this.getChallBoaLevelLayout().getComponent(i);
@@ -45,7 +47,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
             }
         }
     }
-
+/*
     public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount){
         Label newLabel = null;
         for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
@@ -65,7 +67,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         newLabel.setValue(labelText);
         this.getChallBoaLevelLayout().addComponent(newLabel, 1);
     }
-
+/*
     public void addLevel(String levelLabel, LevelState state) {
         Button level = new Button(levelLabel, this::buttonClick);
         level.setId("level");
@@ -84,6 +86,10 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         this.getChallBoaLevelLayout().addComponent(level, compCount);
     }
 
+    //void buttonClick(Button.ClickEvent event){
+
+    }
+/*
     public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
         Panel challenge = new Panel(title);
         final VerticalLayout contentLayout = new VerticalLayout();
@@ -116,7 +122,7 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
 
         }
     }
-
+/*
     public void addChallengeDetails(Challenge challenge) {
         this.getDetails().setWidth("100%");
         final VerticalLayout content = new VerticalLayout();
@@ -136,11 +142,11 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         this.getDetails().setDescription("Challenge Details");
 
     }
-
+/*
     public void removeChallengeDetails(){
         this.getChallBoaChallDetailLayout().removeComponent(this.getDetails());
     }
-
+/*
     public void removeChallenges(){
         this.getChallBoaChallActiveLayout().removeAllComponents();
         this.getChallBoaChallActiveLayout().addComponent(this.getChallBoaActiveLabel());
@@ -150,4 +156,5 @@ public class ChallengeBoardView extends ChallengeBoardViewPage implements Challe
         this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(),Alignment.TOP_CENTER);
     }
 
+ */
 }

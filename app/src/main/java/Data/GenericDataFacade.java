@@ -5,6 +5,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Generic DAO interface for common data access functionality
+ * 
+ * Copied from:
+ * <a href="https://github.com/jeffbeard/generic-jpa-dao/blob/master/src/main/java/org/firebyte/generic/dao/GenericDAO.java">GenericDAO.java</a>
+ * @author <a href="mailto:jeff@firebyte.org">Jeff Beard</a>
+ *
+ */
 public interface GenericDataFacade<T, PK extends Serializable> {
 
     /**

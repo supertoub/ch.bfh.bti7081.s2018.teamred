@@ -2,7 +2,14 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
+import Business.ChallengeBoardPresenter;
+import Business.JournalLibraryPresenter;
+import Business.StartpagePresenter;
+import Business.LoginViewPagePresenter;
+
+
 import Business.*;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -23,26 +30,22 @@ public class MyUI extends UI {
     // TODO: Navigator auslagern in eigene Klasse
     private Navigator navigator;
 
+    public static final String LOGINVIEW ="Logout";
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
     public static final String JOURNALVIEW ="Journal";
-    public static final String LOGINVIEW ="Logout";
 
     @Override
     protected void init(VaadinRequest request) {
-
         LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
-        StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
-        ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-//        JournalPresenter journalPresenter = JournalPresenter.getInstance();
-
         setContent(loginViewPagePresenter.getLoginView());
         navigator = new Navigator(this, this);
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
-        navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
-        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-//        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
-        navigator.navigateTo(LOGINVIEW);
+        this.getNavigator().navigateTo(LOGINVIEW);
+    }
+
+    public Navigator getNavigator() {
+        return this.navigator;
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
