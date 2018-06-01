@@ -1,10 +1,20 @@
 package UserInterface;
 
+import Business.ChallengeBoardPresenter;
+import Business.JournalLibraryPresenter;
+import Business.Patient;
+import Business.StartpagePresenter;
+import Data.GenericDataFacade;
+import Data.GenericDataFacadeJPA;
 import ch.bfh.MyUI;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.*;
-import Business.*;
+import com.vaadin.server.VaadinSession;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
+
+import static ch.bfh.MyUI.CHALLENGEVIEW;
 
 public class LoginView extends LoginViewPage implements View {
 
@@ -12,18 +22,26 @@ public class LoginView extends LoginViewPage implements View {
         super();
         loginButton.addClickListener(this::LoginbuttonClick);
     }
-/*
-    public void LoginButtonClick(Button.ClickEvent event) {
-       UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-    }*/
         /*
     based on Login Example:
     source: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-login-example/
      */
+//
+//    @PersistenceContext
+//    private EntityManager entityManager;
+//    @Test
+//    public void genericDAOShouldSaveAChallengeEntity() throws Exception {
+//        // Save a person
+//        GenericDataFacade<Patient, String> patientDao = new GenericDataFacadeJPA<>(Patient.class);
+//
+//        patientDao.setEntityManager(entityManager);
+//        Patient patient = new Patient("Roccaro", "Roland","Pass",null,null,null);
+//        patient = patientDao.save(patient);
+//        Patient anotherPatient = patientDao.get(patient.getName());
+//    }
 
-
-    private String username = "testTest";
-    private String password = "testTest";
+    private String username = "RoccaroR";
+    private String password = "SavePW_1";
 
     private void setUsername(String username) {
         this.username = username;
@@ -50,14 +68,36 @@ public class LoginView extends LoginViewPage implements View {
         }
     }
 
-    public void LoginbuttonClick(Button.ClickEvent event) {
 
+/* TODO, reuse this code to do the login using DB
+    public Boolean authenticate(String username, String password){
+      GenericDataFacade<Patient, String> userDao = new GenericDataFacadeJPA<>(Patient.class);
+      String DBpassword = userDao.get(username).getPwd();
+
+       if(password.equals(DBpassword)){
+
+        //if(true){
+            return true;
+        }else{
+            return false;
+
+        }
+    }
+*/
+    public void LoginbuttonClick(Button.ClickEvent event) {
             if(authenticate(usernameField.getValue(), passwordField.getValue())){
-                //LoginView.AUTH.authenticate(usernameField.getValue(), passwordField.getValue())
-                //VaadinSession.getCurrent().setAttribute("user", username.getValue());
-                //getUI().getNavigator().addView(SecurePage.NAME, SecurePage.class);
-                //getUI().getNavigator().addView(OtherSecurePage.NAME, OtherSecurePage.class);
-                //Page.getCurrent().setUriFragment("!"+SecurePage.NAME);
+
+           // if(this.authenticate(usernameField.getValue(), passwordField.getValue())){
+                VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
+
+                StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
+                ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
+                //JournalPresenter journalPresenter = JournalLibraryPresenter.getInstance();
+
+                getUI().getNavigator().addView(MyUI.STARTPAGEVIEW, startpagePresenter.getStartView());
+                getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
+                //getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter.getJournalView());
+
                 UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
             }else{
                 Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);

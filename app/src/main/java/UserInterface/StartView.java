@@ -2,6 +2,7 @@ package UserInterface;
 
 import ch.bfh.MyUI;
 import com.vaadin.navigator.View;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
 
@@ -12,6 +13,7 @@ public class StartView extends StartViewPage implements View {
         journalButton.addClickListener(this::journalButtonClick);
         challangeButton.addClickListener(this::challangeButtonClick);
         logoutButton.addClickListener(this::logoutButtonClick);
+        welcomeLabel.setValue("Welcome " + VaadinSession.getCurrent().getAttribute("user") +" how are you feeling today?");
     }
 
     public void challangeButtonClick(Button.ClickEvent event) {
