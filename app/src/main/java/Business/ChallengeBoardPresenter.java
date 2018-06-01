@@ -232,7 +232,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
             }
         }
 
-        String labelText = closedCount + " von " + neededToBeClosed + ", Gesammt: " + allCount;
+        String labelText = closedCount + " of " + neededToBeClosed + ", Total: " + allCount;
 
         if (newLabel == null){
             newLabel = new Label("");
@@ -367,6 +367,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
         level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
+        removeChallenges();
         updateChallengeView(level);
     }
 
