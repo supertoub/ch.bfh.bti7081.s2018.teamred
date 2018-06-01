@@ -2,7 +2,14 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
+import Business.ChallengeBoardPresenter;
+import Business.JournalLibraryPresenter;
+import Business.StartpagePresenter;
+import Business.LoginViewPagePresenter;
+
+
 import Business.*;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;

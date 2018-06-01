@@ -6,6 +6,24 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full></vaadin-vertical-layout>
+  <vaadin-horizontal-layout spacing="false" size-full>
+   <vaadin-vertical-layout size-auto _id="journalNavigationLayout">
+    <vaadin-inline-date-field _id="journalDate" :middle :center></vaadin-inline-date-field>
+    <vaadin-button width="150px" plain-text _id="newEntryButton" :middle :center>
+      Neuer Eintrag 
+    </vaadin-button>
+    <vaadin-button enabled="false" width="150px" plain-text _id="statisticsButton" :middle :center>
+      Statistik 
+    </vaadin-button>
+    <vaadin-button enabled="false" width="150px" plain-text _id="tippsButton" :middle :center>
+      Tipps 
+    </vaadin-button>
+    <vaadin-button width="150px" plain-text _id="backButton" :middle :center>
+      Back 
+    </vaadin-button>
+   </vaadin-vertical-layout>
+   <vaadin-vertical-layout size-auto _id="journalEntrysLayout"></vaadin-vertical-layout>
+   <vaadin-vertical-layout size-auto _id="journalDetailsLayout"></vaadin-vertical-layout>
+  </vaadin-horizontal-layout>
  </body>
 </html>

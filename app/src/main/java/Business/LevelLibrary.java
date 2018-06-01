@@ -20,7 +20,7 @@ public class LevelLibrary extends Observable implements Observer {
 
     private List<Level> levels;
 
-    List<Level> getLevels(){
+    public List<Level> getLevels(){
         return levels;
     }
 
@@ -36,14 +36,14 @@ public class LevelLibrary extends Observable implements Observer {
         return newLevel;
     }
 
-    LevelLibrary(){
+    public LevelLibrary(){
         levels = new ArrayList<>();
     }
 
     public LevelLibrary(List<Level> levels) {
         this.levels = levels;
     }
-
+    
     public long getId() {
         return id;
     }

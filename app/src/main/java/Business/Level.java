@@ -31,7 +31,7 @@ public class Level extends Observable implements Observer{
 
     //region Getter
 
-    String getLevelLabel(){return levelLabel;}
+    public String getLevelLabel(){return levelLabel;}
 
     List<Challenge> getChallenges() {return challenges;}
 
@@ -82,12 +82,12 @@ public class Level extends Observable implements Observer{
         this.levelLabel = levelLabel;
     }
 
-    void createChallenge(String level){
+    public void createChallenge(String level){
         Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
         challenges.add(newChallange);
     }
 
-    void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
+    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
         challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
     }
 
