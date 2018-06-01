@@ -60,20 +60,20 @@ ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan
 ## Backlog Sprint 2
 ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan original | Effort plan updated | Effort actual | Status
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-2.1 | Login prüfen auf DB | Als Benutzer möchte ich, dass ich mich mit meinem Passwort (aus der DB) einloggen kann, sodass nur ich und mein Therapeuten Zugriff auf meine Daten hat. | <ul><li>LoginView</li></ul> | RRO | IRI | 11.4 | | 11.4 | | open
-2.2 | Challange erstellen | Als Patient möchte ich, eine neue Challenge erstellen, sodass ich die mit meinem Therapeuten vereinbarten Challanges tracken kann. | <ul><li>Challengeboard</li></ul> | IRI | TBA | high | 11.4 | | 11.4 | done
-2.3 | Challange in der DB persistieren | Als Patient möchte ich, dass die Challange auf der DB persistiert wird, sodass meine Challanges auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | TBA | 3.8 | | | | open
-2.4 | Level in DB persistieren | Als Patient möchte ich, dass die Levels auf der DB persistiert wird, sodass meine Levels auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | TBA | 3.8 | | | | open
-2.5 | Testuser anlegen | mehrere Testuser auf der Datenbank anlegen | | FZU | STH | 3.8 | | 3.8 | | done
-2.6 | Challengedetail anzeigen | Als Patient kann ich beim klick auf eine Challange die Details jeder Challange sehen. | <ul><li>Challengeboard</li></ul> | TBA | FZU | 5.7 | | 8 | | done
-2.7 | Challenge bearbeiten | Als Patient möchte ich eine Challenge bearbeiten können, sodass ich nach dem erreichen einer Challenge bewerten kann, wie ich mich dabeu gefühlt habe. | <ul><li>Challengeboard</li></ul> | TBA | FZU | 5.7 | | | | open
-2.8 | Level erstellen | Als Patient möchte ich ein neues Level erstellen können, welches auch auf der Datenbank gesichert wird. | <ul><li>Levelboard</li></ul> | FLE | STH | 2.8 | | 2.6 | | done
-2.9 | Level Status anzeigen | Auf dem Level möchte ich sehen, wie viele Challanges ich schon erledigt habe und wie viele noch offen sind. | <ul><li>Levelboard</li></ul> | FLE | TWE | 2.8 | | 2.9 | | done
-2.10 | Level als gesperrt anzeigen | Wenn ich in einem Level weniger als 80% der Challanges erfüllt habe, sind alle zukünftigen Levels mit einem Schloss gesperrt. Bei einem Klick auf ein Level kann ich dieses zwar ansehen aber keine Challanges erledigen.  | <ul><li>Levelboard</li></ul> | FLE | TWE | 2.8 | | 3 | | done
-2.11 | Startscreen Name einfügen | Auf der Startseite solle der Patient mit seinem Namen begrüsst werden. Der aktuell angemeldete Benutzer soll ich Header angezeigt werden. | <ul><li>Startview</li><li>Headerview</li></ul> | STH | RRO | 3.8 | | 4 | | done
-2.12 | Startscreen aufräumen | Die Startseite soll über den Designer gemacht werden, dass sie besser gestylet werden kann und aufgeräumter aussieht. | <ul><li>Startview</li></ul> | STH | RRO | 3.8 | | 3.6 | | done
-2.13 | Journal vorbereiten | Vorbereiten des Journals für Sprint 3 | <ul><li>Journalview</li></ul> | STH | TWE | 3.8 | | 3.8 | | done
-2.14 | Seiten aufbau über den Designer machen | Als Entwickler möchte ich, dass die Views im Designer aufgebaut werden um diese einfacher anyupassen | <ul><li>Journalview</li></ul> | FLE | TWE | 2.8 | | 3 | | done
-2.15 | Styling | Als Benutzer soll das ganze Projekt optisch ansprechend sein. | <ul><li>Journalview</li></ul> | TWE | IRI | 10 | | 10 | | done
-Task 1 | Projekt aufräumen | | | FLE | IRI | 2 | | 2 | | done
-Task 2 | Backlog Sprint 2 erstellen | | | TWE | IRI | 1 | | | 1 | done
+2.1 | Login prüfen auf DB | Als Benutzer möchte ich, dass ich mich mit meinem Passwort (aus der DB) einloggen kann, sodass nur ich und mein Therapeuten Zugriff auf meine Daten hat. | <ul><li>LoginView</li></ul> | RRO | IRI | High| 11.4 | - | 11.4 | open
+2.2 | Challange erstellen | Als Patient möchte ich, eine neue Challenge erstellen, sodass ich die mit meinem Therapeuten vereinbarten Challanges tracken kann. | <ul><li>Challengeboard</li></ul> | IRI | TBA | high | 11.4 | - | 11.4 | done
+2.3 | Challange in der DB persistieren | Als Patient möchte ich, dass die Challange auf der DB persistiert wird, sodass meine Challanges auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | TBA | High | 3.8 | - | | open
+2.4 | Level in DB persistieren | Als Patient möchte ich, dass die Levels auf der DB persistiert wird, sodass meine Levels auch nach eines reboots des Servers noch da sind. | <ul><li>Challengeboard</li></ul> | FZU | TBA | High | 3.8 | - | | open
+2.5 | Testuser anlegen | mehrere Testuser auf der Datenbank anlegen | | FZU | STH | High | 3.8 | - | 3.8 | done
+2.6 | Challengedetail anzeigen | Als Patient kann ich beim klick auf eine Challange die Details jeder Challange sehen. | <ul><li>Challengeboard</li></ul> | TBA | FZU | High | 5.7 |  | 8 | done
+2.7 | Challenge bearbeiten | Als Patient möchte ich eine Challenge bearbeiten können, sodass ich nach dem erreichen einer Challenge bewerten kann, wie ich mich dabeu gefühlt habe. | <ul><li>Challengeboard</li></ul> | TBA | FZU | High | 5.7 | - | | open
+2.8 | Level erstellen | Als Patient möchte ich ein neues Level erstellen können, welches auch auf der Datenbank gesichert wird. | <ul><li>Levelboard</li></ul> | FLE | STH | High | 2.8 | - | 2.6 | done
+2.9 | Level Status anzeigen | Auf dem Level möchte ich sehen, wie viele Challanges ich schon erledigt habe und wie viele noch offen sind. | <ul><li>Levelboard</li></ul> | FLE | TWE | High | 2.8 | - | 2.9 | done
+2.10 | Level als gesperrt anzeigen | Wenn ich in einem Level weniger als 80% der Challanges erfüllt habe, sind alle zukünftigen Levels mit einem Schloss gesperrt. Bei einem Klick auf ein Level kann ich dieses zwar ansehen aber keine Challanges erledigen.  | <ul><li>Levelboard</li></ul> | FLE | TWE | High | 2.8 | - | 3 | done
+2.11 | Startscreen Name einfügen | Auf der Startseite solle der Patient mit seinem Namen begrüsst werden. Der aktuell angemeldete Benutzer soll ich Header angezeigt werden. | <ul><li>Startview</li><li>Headerview</li></ul> | STH | RRO | High | 3.8 | - | 4 | done
+2.12 | Startscreen aufräumen | Die Startseite soll über den Designer gemacht werden, dass sie besser gestylet werden kann und aufgeräumter aussieht. | <ul><li>Startview</li></ul> | STH | RRO | High | 3.8 | - | 3.6 | done
+2.13 | Journal vorbereiten | Vorbereiten des Journals für Sprint 3 | <ul><li>Journalview</li></ul> | STH | TWE | High | 3.8 | - | 3.8 | done
+2.14 | Seiten aufbau über den Designer machen | Als Entwickler möchte ich, dass die Views im Designer aufgebaut werden um diese einfacher anyupassen | <ul><li>Journalview</li></ul> | FLE | TWE | High | 2.8 | - | 3 | done
+2.15 | Styling | Als Benutzer soll das ganze Projekt optisch ansprechend sein. | <ul><li>Journalview</li></ul> | TWE | IRI | High | 10 | - | 10 | done
+Task 1 | Projekt aufräumen | | | FLE | IRI | High | 2 | - | 2 | done
+Task 2 | Backlog Sprint 2 erstellen | | | TWE | IRI | High | 1 | - | 1 | done
