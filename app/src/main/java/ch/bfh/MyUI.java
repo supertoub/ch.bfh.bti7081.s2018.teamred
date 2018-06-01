@@ -2,7 +2,14 @@ package ch.bfh;
 
 import javax.servlet.annotation.WebServlet;
 
+import Business.ChallengeBoardPresenter;
+import Business.JournalLibraryPresenter;
+import Business.StartpagePresenter;
+import Business.LoginViewPagePresenter;
+
+
 import Business.*;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -31,19 +38,29 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
 
+
+
+
         LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
         StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
         ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-//        JournalPresenter journalPresenter = JournalPresenter.getInstance();
+       JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
 
         setContent(loginViewPagePresenter.getLoginView());
         navigator = new Navigator(this, this);
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
         navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
+
+        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter);
+        navigator.addView(JOURNALVIEW, journalPresenter);
+
+        navigator.navigateTo(STARTPAGEVIEW);
+
         //navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getInstance());
+       // navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getInstance());
 //        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
-        navigator.navigateTo(LOGINVIEW);
+        //navigator.navigateTo(LOGINVIEW);
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
