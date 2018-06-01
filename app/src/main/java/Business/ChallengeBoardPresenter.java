@@ -20,7 +20,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
 
     //private ChallengeBoardViewPage boardView;
 
-    private LevelLibrary lvlLibrary;
+    public LevelLibrary lvlLibrary;
 
     private Level currentLevel;
 
@@ -91,7 +91,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         }
         AddChallenge aC = new AddChallenge(lvls);
 
-        //aC.addListener(this);
+        aC.addListener(this);
         // Add it to the root component
         UI.getCurrent().addWindow(aC);
     }

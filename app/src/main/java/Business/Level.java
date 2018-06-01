@@ -31,7 +31,7 @@ public class Level extends Observable implements Observer{
 
     //region Getter
 
-    String getLevelLabel(){return levelLabel;}
+    public String getLevelLabel(){return levelLabel;}
 
     List<Challenge> getChallenges() {return challenges;}
 
