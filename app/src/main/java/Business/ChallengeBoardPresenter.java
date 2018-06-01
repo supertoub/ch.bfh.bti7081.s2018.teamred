@@ -1,5 +1,6 @@
 package Business;
 
+import Data.LevelPersistence;
 import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
@@ -191,6 +192,7 @@ public class ChallengeBoardPresenter implements Observer, ChallengeBoard.Challen
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
         level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
+        LevelPersistence.getInstance().persist(level);
     }
 
     //endregion
