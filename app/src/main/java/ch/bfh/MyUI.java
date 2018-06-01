@@ -30,37 +30,22 @@ public class MyUI extends UI {
     // TODO: Navigator auslagern in eigene Klasse
     private Navigator navigator;
 
+    public static final String LOGINVIEW ="Logout";
     public static final String STARTPAGEVIEW = "Start";
     public static final String CHALLENGEVIEW = "Challenge";
     public static final String JOURNALVIEW ="Journal";
-    public static final String LOGINVIEW ="Logout";
 
     @Override
     protected void init(VaadinRequest request) {
-
-
-
-
         LoginViewPagePresenter loginViewPagePresenter = LoginViewPagePresenter.getInstance();
-        StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
-        ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-       JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
-
         setContent(loginViewPagePresenter.getLoginView());
         navigator = new Navigator(this, this);
         navigator.addView(LOGINVIEW, loginViewPagePresenter.getLoginView());
-        navigator.addView(STARTPAGEVIEW, startpagePresenter.getStartView());
+        this.getNavigator().navigateTo(LOGINVIEW);
+    }
 
-        navigator.addView(CHALLENGEVIEW, challangeBoardPresenter);
-        navigator.addView(JOURNALVIEW, journalPresenter);
-
-        navigator.navigateTo(STARTPAGEVIEW);
-
-        //navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-       // navigator.addView(CHALLENGEVIEW, challangeBoardPresenter.getInstance());
-//        navigator.addView(JOURNALVIEW, journalPresenter.getJournalView());
-        //navigator.navigateTo(LOGINVIEW);
-
+    public Navigator getNavigator() {
+        return this.navigator;
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
