@@ -189,6 +189,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
             reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
             Button details = new Button("Details",this::detailsClick);
+            details.setId("details");
+            contentLayout.addComponent(details);
+
         }
 
         if (challengeState == challengeState.open){
