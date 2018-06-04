@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" strict="true" name="XMLConfigTest"
+               packages="org.apache.logging.log4j.test">
+    <Properties>
+        <Property name="filename">${sys:user.home}/log/social-anxiety-app.log</Property>
+    </Properties>
+    <Filter type="ThresholdFilter" level="trace"/>
+
+    <Appenders>
+        <Appender type="File" name="File" fileName="${filename}">
+            <ThresholdFilter level="debug"/>
+            <Layout type="PatternLayout">
+                <Pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="List" name="List">
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace">
+            <appender-ref ref="File" level="debug"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
