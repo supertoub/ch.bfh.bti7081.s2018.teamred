@@ -92,11 +92,11 @@ public class LoginView extends LoginViewPage implements View {
 
                 StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
                 ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-                //JournalPresenter journalPresenter = JournalLibraryPresenter.getInstance();
+                JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
 
                 getUI().getNavigator().addView(MyUI.STARTPAGEVIEW, startpagePresenter.getStartView());
-                getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-                //getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter.getJournalView());
+                getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challangeBoardPresenter);
+                getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter);
 
                 UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
             }else{
