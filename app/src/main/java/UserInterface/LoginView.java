@@ -4,8 +4,6 @@ import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
 import Business.Patient;
 import Business.StartpagePresenter;
-import Data.GenericDataFacade;
-import Data.GenericDataFacadeJPA;
 import ch.bfh.MyUI;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -60,12 +58,7 @@ public class LoginView extends LoginViewPage implements View {
     }
 
     public Boolean authenticate(String username, String password){
-        if(username.equals(getUsername()) && password.equals(getPassword())){
-            return true;
-        }else{
-            return false;
-
-        }
+        return username.equals(getUsername()) && password.equals(getPassword());
     }
 
 

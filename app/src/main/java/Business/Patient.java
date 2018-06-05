@@ -4,6 +4,9 @@ import java.util.Date;
 
 @Entity
 public class Patient extends User {
+
+    //region Variablen
+
     private Date lastEntryWritten;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -14,6 +17,10 @@ public class Patient extends User {
     @JoinColumn(name="levellibrary_id")
     private LevelLibrary levelLibrary;
 
+    //endregion
+
+    //region Konstruktor
+
     public Patient(String name, String surname, String pwd, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
         super(name, surname, pwd);
         this.lastEntryWritten = lastEntryWritten;
@@ -21,30 +28,38 @@ public class Patient extends User {
         this.levelLibrary = levelLibrary;
     }
 
-    public Patient() {
-    }
+    //endregion
+
+    //region Getter
 
     public Date getLastEntryWritten() {
         return lastEntryWritten;
-    }
-
-    public void setLastEntryWritten(Date lastEntryWritten) {
-        this.lastEntryWritten = lastEntryWritten;
     }
 
     public JournalLibrary getJournalLibrary() {
         return journalLibrary;
     }
 
-    public void setJournalLibrary(JournalLibrary journalLibrary) {
-        this.journalLibrary = journalLibrary;
-    }
-
     public LevelLibrary getLevelLibrary() {
         return levelLibrary;
+    }
+
+    //endregion
+
+    //region Setter
+
+    public void setLastEntryWritten(Date lastEntryWritten) {
+        this.lastEntryWritten = lastEntryWritten;
+    }
+
+    public void setJournalLibrary(JournalLibrary journalLibrary) {
+        this.journalLibrary = journalLibrary;
     }
 
     public void setLevelLibrary(LevelLibrary levelLibrary) {
         this.levelLibrary = levelLibrary;
     }
+
+    //endregion
+
 }

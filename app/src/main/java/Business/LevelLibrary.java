@@ -10,6 +10,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class LevelLibrary extends Observable implements Observer {
+
+    //region Variablen
+
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "levellibrary_id")
@@ -17,36 +20,23 @@ public class LevelLibrary extends Observable implements Observer {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="level_id")
-
     private List<Level> levels;
+
+    //endregion
+
+    //region Getter
 
     public List<Level> getLevels(){
         return levels;
     }
 
-    LevelLibrary(Observer observer){
-        this.addObserver(observer);
-        this.levels = new ArrayList<>();
-    }
-
-    Level createNewLevel() {
-        int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this);
-        levels.add(newLevel);
-        return newLevel;
-    }
-
-    public LevelLibrary(){
-        levels = new ArrayList<>();
-    }
-
-    public LevelLibrary(List<Level> levels) {
-        this.levels = levels;
-    }
-    
     public long getId() {
         return id;
     }
+
+    //endregion
+
+    //region Setter
 
     public void setId(long id) {
         this.id = id;
@@ -54,6 +44,26 @@ public class LevelLibrary extends Observable implements Observer {
 
     public void setLevels(List<Level> levels) {
         this.levels = levels;
+    }
+
+    //endregion
+
+    //region Konstruktor
+
+    public LevelLibrary(Observer observer){
+        this.addObserver(observer);
+        this.levels = new ArrayList<>();
+    }
+
+    //endregion
+
+    //region Methoden
+
+    Level createNewLevel() {
+        int levelCount = levels.size();
+        Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this);
+        levels.add(newLevel);
+        return newLevel;
     }
 
     Level createNewLevel(LevelState levelState){
@@ -64,7 +74,7 @@ public class LevelLibrary extends Observable implements Observer {
         return newLevel;
     }
 
-    void delete(Challenge challenge){}
+    //endregion
 
     //region Events
 

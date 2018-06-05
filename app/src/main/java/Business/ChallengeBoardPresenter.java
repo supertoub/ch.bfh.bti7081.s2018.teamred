@@ -21,7 +21,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
 
     //private ChallengeBoardViewPage boardView;
 
-    public LevelLibrary lvlLibrary;
+    private LevelLibrary lvlLibrary;
 
     private Level currentLevel;
 
@@ -76,14 +76,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     //endregion
 
     //region Methoden
-
-
-    // TODO: Methoden löschen?
-    void deleteClick(Object sender) {
-    }
-
-    void changeClick() {
-    }
 
     private void newWindowAddChall() {
         List<String> lvls = new ArrayList<>();
