@@ -9,11 +9,12 @@ import ch.bfh.MyUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
-public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements Observer, View, ChallengeBoard.ChallengeBoardViewListener {
+public class ChallengeBoardPresenter extends ChallengeBoardView implements Observer, View, ChallengeBoard.ChallengeBoardViewListener {
 
     //region Variablen
 
@@ -86,35 +87,58 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     }
 
     private void newWindowAddChall() {
-        List<String> lvls = new ArrayList<>();
-        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-        }
-        AddChallenge aC = new AddChallenge(lvls);
+        try {
+            List<String> lvls = new ArrayList<>();
+            for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
+                lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
+            }
+            AddChallenge aC = new AddChallenge(lvls);
 
-        aC.addListener(this);
-        // Add it to the root component
-        UI.getCurrent().addWindow(aC);
+            aC.addListener(this);
+            // Add it to the root component
+            UI.getCurrent().addWindow(aC);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("newWindowAddChall: too much levels in list");
+            this.createNotification("For the moment you cannot create new Challenges",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        } catch (NullPointerException e) {
+            System.out.print("newWindowAddChall: lvlLibrary cannot be null at this point");
+            this.createNotification("For the moment you cannot create new Challenges",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
     }
 
     // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
-        for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
-            if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
-                return lvlLibrary.getLevels().get(i);
+        try {
+            for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
+                if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
+                    return lvlLibrary.getLevels().get(i);
+                }
             }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("findClickLevel: too much levels in list");
+        } catch (NullPointerException e) {
+            System.out.print("findClickLevel: lvlLibrary cannot be null at this point");
         }
-        return null; //hier Exception machen falls es das LVL nicht findet
+
+        return null;
     }
 
     // TODO: Event in Challange handeln
     private Challenge findChallenge(String panelName) {
-        for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
-            if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
-                return currentLevel.getChallenges().get(i);
+        try {
+            for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
+                if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
+                    return currentLevel.getChallenges().get(i);
+                }
             }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("findChallenge: too much challenges in list");
+        } catch (NullPointerException e) {
+            System.out.print("findChallenge: currentLevel cannot be null at this point");
         }
-        return null; //hier Exception machen falls es das challenge nicht findet
+        return null;
     }
 
     private void updateLevelView() {
@@ -140,16 +164,16 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         }
     }
 
-    public void removeChallenges(){
+    public void removeChallenges() {
         this.getChallBoaChallActiveLayout().removeAllComponents();
         this.getChallBoaChallActiveLayout().addComponent(this.getChallBoaActiveLabel());
         this.getChallBoaChallActiveLayout().setComponentAlignment(this.getChallBoaActiveLabel(), Alignment.TOP_CENTER);
         this.getChallBoaChallPassiveLayout().removeAllComponents();
         this.getChallBoaChallPassiveLayout().addComponent(this.getChallBoaPassivLabel());
-        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(),Alignment.TOP_CENTER);
+        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(), Alignment.TOP_CENTER);
     }
 
-    public void removeChallengeDetails(){
+    public void removeChallengeDetails() {
         this.getChallBoaChallDetailLayout().removeComponent(this.getDetails());
     }
 
@@ -163,7 +187,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         //content.addComponent(new Label(challenge.getDesc(), ContentMode.TEXT));
         content.addComponent(new Label(challenge.getChallengeState().toString()));
         String levelAnx = Integer.toString(challenge.getLevelOfAnxiety());
-        content.addComponent(new Label("Level of Anxiety: "+levelAnx));
+        content.addComponent(new Label("Level of Anxiety: " + levelAnx));
         Label Description = new Label(challenge.getDesc());
         Description.setWidth("100%");
         //Description.setHeight("100%");
@@ -182,27 +206,27 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         challenge.setWidth("100%");
 
 
-        if (challengeState == challengeState.closed){
+        if (challengeState == challengeState.closed) {
             this.getChallBoaChallPassiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
-            Button reOpen = new Button("reopen",this::reOpenClick);
+            Button reOpen = new Button("reopen", this::reOpenClick);
             reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
-            Button details = new Button("Details",this::detailsClick);
+            Button details = new Button("Details", this::detailsClick);
             details.setId("details");
             contentLayout.addComponent(details);
 
         }
 
-        if (challengeState == challengeState.open){
+        if (challengeState == challengeState.open) {
             this.getChallBoaChallActiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
-            Button close = new Button("close",this::closeClick);
+            Button close = new Button("close", this::closeClick);
             close.setId("close");
             contentLayout.addComponent(close);
-            Button details = new Button("Details",this::detailsClick);
+            Button details = new Button("Details", this::detailsClick);
             details.setId("details");
             contentLayout.addComponent(details);
 
@@ -217,8 +241,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         if (state == LevelState.closed) {
             level.setIcon(VaadinIcons.LOCK);
             level.setEnabled(false);
-        }
-        else{
+        } else {
             level.setIcon(VaadinIcons.UNLOCK);
         }
 
@@ -227,18 +250,18 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         this.getChallBoaLevelLayout().addComponent(level, compCount);
     }
 
-    public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount){
+    public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount) {
         Label newLabel = null;
         for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
             Component comp = this.getChallBoaLevelLayout().getComponent(i);
-            if (comp.getId().equals("lvlInfoLbl")){
+            if (comp.getId().equals("lvlInfoLbl")) {
                 newLabel = (Label) comp;
             }
         }
 
         String labelText = closedCount + " of " + neededToBeClosed + ", Total: " + allCount;
 
-        if (newLabel == null){
+        if (newLabel == null) {
             newLabel = new Label("");
             newLabel.setId("lvlInfoLbl");
         }
@@ -247,15 +270,14 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         this.getChallBoaLevelLayout().addComponent(newLabel, 1);
     }
 
-    public void clearLevels(){
-        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--){
+    public void clearLevels() {
+        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
             Component comp = this.getChallBoaLevelLayout().getComponent(i);
             if (comp.getId().equals("level")) {
                 this.getChallBoaLevelLayout().removeComponent(comp);
             }
         }
     }
-
 
 
     //endregion
@@ -278,8 +300,13 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     public void reOpenClick(Button.ClickEvent event) {
         findChallenge(event.getButton().getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
         removeChallenges();
-        setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
-        updateChallengeView(currentLevel);
+        try {
+            setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
+            updateChallengeView(currentLevel);
+        } catch (NullPointerException e) {
+            System.out.print("reOpenClick: Level cannot be null at this point");
+        }
+
     }
 
     public void detailsClick(Button.ClickEvent event) {
@@ -290,76 +317,25 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     public void closeClick(Button.ClickEvent event) {
         findChallenge(event.getButton().getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
         removeChallenges();
-        setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
-        updateChallengeView(currentLevel);
+        try {
+            setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
+            updateChallengeView(currentLevel);
+        } catch (NullPointerException e) {
+            System.out.print("closeClick: currentLevel cannot be null at this point");
+        }
     }
 
     public void AddLevelClick(Button.ClickEvent event) {
         currentLevel = findClickedLevel(event.getButton().getCaption());
         removeChallenges();
-
-        if (currentLevel == null) {
-            return;
-        }
-
-        setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
-        updateChallengeView(currentLevel);
-
-    }
-
-    /*
-    private List<ChallengeBoardViewListener> listeners;
-
-    public void addListener(ChallengeBoardViewListener listener) {
-        this.listeners.add(listener);
-    }
-
-    public void buttonClick(Button.ClickEvent event) {
-        for (ChallengeBoardViewListener listener: this.listeners)
-            listener.buttonClick(event.getButton());
-    }
-    */
-
-
-
-
-    /*
-
-    @Override
-    public void buttonClick(Button clickedButton) {
-        if (clickedButton.getId().equals("back")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        } else if (clickedButton.getId().equals("level")) {
-            currentLevel = findClickedLevel(clickedButton.getCaption());
-            removeChallenges();
-
-            if (currentLevel == null) {
-                return;
-            }
-
+        try {
             setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
             updateChallengeView(currentLevel);
-        } else if (clickedButton.getId().equals("newChall")) {
-            newWindowAddChall();
-        } else if (clickedButton.getId().equals("close") || clickedButton.getId() == "reOpen") {
-            if (clickedButton.getId().equals("close"))
-                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
-            else
-                findChallenge(clickedButton.getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
-            removeChallenges();
-            setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
-            updateChallengeView(currentLevel);
-        } else if (clickedButton.getId().equals("AddLevelButton")) {
-            Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
-            this.addLevelToLevelView(createdLevel);
+        } catch (NullPointerException e) {
+            System.out.print("AddLevelClick: currentLevel cannot be null at this point");
         }
-        else if (clickedButton.getId()=="details"){
-            removeChallengeDetails();
-            addChallengeDetails(findChallenge(clickedButton.getParent().getParent().getCaption()));
-        }
-
     }
-*/
+
     @Override
     public void update(java.util.Observable o, Object arg) {
         if (o instanceof LevelLibrary) {
@@ -370,13 +346,19 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     @Override
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
-        level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
-        if (level.getLevelState()==LevelState.open) {
-            removeChallenges();
-            updateChallengeView(level);
+        try {
+            level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
+            if (level.getLevelState() == LevelState.open) {
+                removeChallenges();
+                updateChallengeView(level);
+            }
+        } catch (NullPointerException e) {
+            System.out.print("Add Challenge: Level cannot be null at this point");
+            this.createNotification("We could not save your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
-    }
 
+    }
     //endregion
 
 }

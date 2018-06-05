@@ -2,12 +2,8 @@ package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
-import Business.Patient;
 import Business.StartpagePresenter;
-import Data.GenericDataFacade;
-import Data.GenericDataFacadeJPA;
 import ch.bfh.MyUI;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
@@ -40,8 +36,8 @@ public class LoginView extends LoginViewPage implements View {
 //        Patient anotherPatient = patientDao.get(patient.getName());
 //    }
 
-    private String username = "RoccaroR";
-    private String password = "SavePW_1";
+    private String username = "test";
+    private String password = "test";
 
     private void setUsername(String username) {
         this.username = username;
