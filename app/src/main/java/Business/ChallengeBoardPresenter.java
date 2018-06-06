@@ -6,9 +6,12 @@ import UserInterface.ChallengeBoard;
 import UserInterface.ChallengeBoardView;
 import UserInterface.ChallengeBoardViewPage;
 import ch.bfh.MyUI;
+import com.vaadin.event.LayoutEvents;
+import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -132,16 +135,16 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         }
     }
 
-    public void removeChallenges(){
+    public void removeChallenges() {
         this.getChallBoaChallActiveLayout().removeAllComponents();
         this.getChallBoaChallActiveLayout().addComponent(this.getChallBoaActiveLabel());
         this.getChallBoaChallActiveLayout().setComponentAlignment(this.getChallBoaActiveLabel(), Alignment.TOP_CENTER);
         this.getChallBoaChallPassiveLayout().removeAllComponents();
         this.getChallBoaChallPassiveLayout().addComponent(this.getChallBoaPassivLabel());
-        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(),Alignment.TOP_CENTER);
+        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(), Alignment.TOP_CENTER);
     }
 
-    public void removeChallengeDetails(){
+    public void removeChallengeDetails() {
         this.getChallBoaChallDetailLayout().removeComponent(this.getDetails());
     }
 
@@ -155,7 +158,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         //content.addComponent(new Label(challenge.getDesc(), ContentMode.TEXT));
         content.addComponent(new Label(challenge.getChallengeState().toString()));
         String levelAnx = Integer.toString(challenge.getLevelOfAnxiety());
-        content.addComponent(new Label("Level of Anxiety: "+levelAnx));
+        content.addComponent(new Label("Level of Anxiety: " + levelAnx));
         Label Description = new Label(challenge.getDesc());
         Description.setWidth("100%");
         //Description.setHeight("100%");
@@ -167,36 +170,40 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
 
     public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
         Panel challenge = new Panel(title);
+        challenge.addClickListener(e -> challengeClick1(e));
         final VerticalLayout contentLayout = new VerticalLayout();
-        contentLayout.addComponent(new Label(desc));
+        contentLayout.addLayoutClickListener(e -> challengeClick(e));
+        //contentLayout.addComponent(new Label(desc));
+        contentLayout.setWidth("100%");
+        contentLayout.setHeight("100%");
         challenge.setContent(contentLayout);
         challenge.setHeight("100%");
         challenge.setWidth("100%");
 
 
-        if (challengeState == challengeState.closed){
+        if (challengeState == challengeState.closed) {
             this.getChallBoaChallPassiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionPassive");
-            Button reOpen = new Button("reopen",this::reOpenClick);
+            Button reOpen = new Button("reopen", this::reOpenClick);
             reOpen.setId("reOpen");
             contentLayout.addComponent(reOpen);
-            Button details = new Button("Details",this::detailsClick);
-            details.setId("details");
-            contentLayout.addComponent(details);
+            //Button details = new Button("Details",this::detailsClick);
+            //details.setId("details");
+            //contentLayout.addComponent(details);
 
         }
 
-        if (challengeState == challengeState.open){
+        if (challengeState == challengeState.open) {
             this.getChallBoaChallActiveLayout().addComponent(challenge);
             challenge.setEnabled(true);
             challenge.addStyleName("captionActive");
-            Button close = new Button("close",this::closeClick);
+            Button close = new Button("close", this::closeClick);
             close.setId("close");
             contentLayout.addComponent(close);
-            Button details = new Button("Details",this::detailsClick);
-            details.setId("details");
-            contentLayout.addComponent(details);
+            //Button details = new Button("Details",this::detailsClick);
+            //details.setId("details");
+            //contentLayout.addComponent(details);
 
         }
     }
@@ -209,8 +216,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         if (state == LevelState.closed) {
             level.setIcon(VaadinIcons.LOCK);
             level.setEnabled(false);
-        }
-        else{
+        } else {
             level.setIcon(VaadinIcons.UNLOCK);
         }
 
@@ -219,18 +225,18 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         this.getChallBoaLevelLayout().addComponent(level, compCount);
     }
 
-    public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount){
+    public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount) {
         Label newLabel = null;
         for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
             Component comp = this.getChallBoaLevelLayout().getComponent(i);
-            if (comp.getId().equals("lvlInfoLbl")){
+            if (comp.getId().equals("lvlInfoLbl")) {
                 newLabel = (Label) comp;
             }
         }
 
         String labelText = closedCount + " of " + neededToBeClosed + ", Total: " + allCount;
 
-        if (newLabel == null){
+        if (newLabel == null) {
             newLabel = new Label("");
             newLabel.setId("lvlInfoLbl");
         }
@@ -239,15 +245,14 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         this.getChallBoaLevelLayout().addComponent(newLabel, 1);
     }
 
-    public void clearLevels(){
-        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--){
+    public void clearLevels() {
+        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
             Component comp = this.getChallBoaLevelLayout().getComponent(i);
             if (comp.getId().equals("level")) {
                 this.getChallBoaLevelLayout().removeComponent(comp);
             }
         }
     }
-
 
 
     //endregion
@@ -299,6 +304,18 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
 
     }
 
+    public void challengeClick(LayoutEvents.LayoutClickEvent event) {
+        removeChallengeDetails();
+        addChallengeDetails(findChallenge(event.getComponent().getParent().getCaption()));
+
+    }
+
+    public void challengeClick1(MouseEvents.ClickEvent event) {
+        removeChallengeDetails();
+        addChallengeDetails(findChallenge(event.getComponent().getCaption()));
+
+    }
+
     /*
     private List<ChallengeBoardViewListener> listeners;
 
@@ -311,8 +328,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
             listener.buttonClick(event.getButton());
     }
     */
-
-
 
 
     /*
@@ -363,7 +378,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
         level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
-        if (level.getLevelState()==LevelState.open) {
+        if (level.getLevelState() == LevelState.open) {
             removeChallenges();
             updateChallengeView(level);
         }
