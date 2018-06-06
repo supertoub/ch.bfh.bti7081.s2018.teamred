@@ -9,6 +9,9 @@ import java.util.Observer;
 import static javax.persistence.GenerationType.AUTO;
 @Entity
 public class Level extends Observable implements Observer{
+
+    //region Variablen
+
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "level_id")
@@ -16,7 +19,6 @@ public class Level extends Observable implements Observer{
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="challenge_id")
-
     private List<Challenge> challenges;
 
     @Enumerated(EnumType.STRING)
@@ -43,31 +45,16 @@ public class Level extends Observable implements Observer{
 
     int getClosedChallengesCount(){return (int) this.challenges.stream().filter(cha -> cha.getChallengeState() == ChallengeState.closed).count();}
 
+    public long getId() {
+        return id;
+    }
+
     //endregion
 
     //region Setter
 
     public void setLevelState(LevelState levelState) {
         this.levelState = levelState;
-    }
-
-    //endregion
-
-    //region Konstruktoren
-    public Level() {}
-
-    // TODO: Korrektes Level ChallengeState handling
-    public Level(String label, int count, Observer observer){
-        this.levelLabel = label;
-        this.levelState = LevelState.open;
-        this.challenges = new ArrayList<>();
-        this.levelCount = count;
-        this.levelDoneCount = (count + 1) * 2;
-        this.addObserver(observer);
-    }
-
-    public long getId() {
-        return id;
     }
 
     public void setId(long id) {
@@ -82,6 +69,24 @@ public class Level extends Observable implements Observer{
         this.levelLabel = levelLabel;
     }
 
+    //endregion
+
+    //region Konstruktoren
+
+    // TODO: Korrektes Level ChallengeState handling
+    public Level(String label, int count, Observer observer){
+        this.levelLabel = label;
+        this.levelState = LevelState.open;
+        this.challenges = new ArrayList<>();
+        this.levelCount = count;
+        this.levelDoneCount = (count + 1) * 2;
+        this.addObserver(observer);
+    }
+
+    //endregion
+
+    //region Methoden
+
     public void createChallenge(String level){
         Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
         challenges.add(newChallange);
@@ -90,8 +95,6 @@ public class Level extends Observable implements Observer{
     public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
         challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
     }
-
-    void deleteChallenge(Challenge challenge){}
 
     //endregion
 

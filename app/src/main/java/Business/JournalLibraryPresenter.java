@@ -12,8 +12,6 @@ import java.util.Observer;
 
 public class JournalLibraryPresenter extends JournalViewPage implements View {
 
-
-
     //region Variablen
 
     private static JournalLibraryPresenter instance;
@@ -23,8 +21,6 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     private Journal currentEntry;
 
     //endregion
-
-
 
     public JournalViewPage getJournalView() {
         return JournalViewPage;
@@ -37,6 +33,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
         return instance;
     }
+
     void addClick(){}
 
     void deleteClick(Object sender){}
@@ -63,7 +60,6 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         newWindowAddEntry();
     }
 
-
     public void addJournalEntry(String title, String desc) {
         Panel journal = new Panel(title);
         final VerticalLayout contentLayout = new VerticalLayout();
@@ -72,6 +68,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         journal.setHeight("100%");
         journal.setWidth("100%");
     }
+
     public void newWindowAddEntry() {
         List<String> entrys = new ArrayList<>();
 
@@ -80,6 +77,5 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         // Add it to the root component
         UI.getCurrent().addWindow(aJ);
     }
-
 
 }
