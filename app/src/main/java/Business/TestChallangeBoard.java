@@ -14,7 +14,6 @@ public class TestChallangeBoard {
         ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
         Challenge currentChallenge = new Challenge("", "Test", ChallengeState.open, 1, presenter);
         currentChallenge = new Challenge("Test", "", ChallengeState.open, 1, presenter);
-        currentChallenge = new Challenge("Test", "Test", null, 1, presenter);
         currentChallenge = new Challenge("Test", "Test", ChallengeState.open, 2147483647, presenter);
         currentChallenge = new Challenge("Test", "Test", ChallengeState.open, -2147483647, presenter);
     }
@@ -43,7 +42,6 @@ public class TestChallangeBoard {
 
         presenter.addLevel("", LevelState.open);
         presenter.addLevel("Test", LevelState.open);
-        presenter.addLevel("Test", null);
         // Crazy
         presenter.addLevel("<script>alet('test');</script>", LevelState.open);
 
@@ -56,8 +54,6 @@ public class TestChallangeBoard {
         Challenge currentChallenge = new Challenge("", "Test", ChallengeState.open, 1, presenter);
         presenter.addChallengeDetails(currentChallenge);
         currentChallenge = new Challenge("Test", "", ChallengeState.open, 1, presenter);
-        presenter.addChallengeDetails(currentChallenge);
-        currentChallenge = new Challenge("Test", "Test", null, 1, presenter);
         presenter.addChallengeDetails(currentChallenge);
         currentChallenge = new Challenge("Test", "Test", ChallengeState.open, 2147483647, presenter);
         presenter.addChallengeDetails(currentChallenge);
@@ -80,7 +76,6 @@ public class TestChallangeBoard {
     public void levelHandling(){
         LevelLibrary lib = new LevelLibrary(ChallengeBoardPresenter.getInstance());
         lib.createNewLevel(LevelState.open);
-        lib.createNewLevel(null);
         lib.createNewLevel();
 
         assert lib.getLevels().size() == 3;
