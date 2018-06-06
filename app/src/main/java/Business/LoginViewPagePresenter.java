@@ -21,13 +21,6 @@ public class LoginViewPagePresenter {
         return loginview;
     }
 
-    public static LoginViewPagePresenter getInstance() {
-        if (instance == null) {
-            instance = new LoginViewPagePresenter();
-        }
-        return instance;
-    }
-
     //endregion
 
     //region Konstruktoren
@@ -40,16 +33,16 @@ public class LoginViewPagePresenter {
 
     //region Methoden
 
+    public static LoginViewPagePresenter getInstance() {
+        if (instance == null) {
+            instance = new LoginViewPagePresenter();
+        }
+        return instance;
+    }
+
     //endregion
 
     //region Events
-/*
-    public void buttonClick(String buttonTitle) {
-        if(buttonTitle.equals("Login")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-    }
-*/
 
     //endregion
 
