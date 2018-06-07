@@ -10,7 +10,6 @@ import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -80,6 +79,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     //region Methoden
 
     private void newWindowAddChall() {
+
         try {
             List<String> lvls = new ArrayList<>();
             for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
@@ -103,6 +103,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     private void newWindowChangeChall(Challenge challenge) {
+
         List<String> lvls = new ArrayList<>();
         try {
             for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
@@ -124,6 +125,19 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
                     "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
 
+    }
+
+    private void newWindowChangeChall(Challenge challenge) {
+        List<String> lvls = new ArrayList<>();
+        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
+            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
+        }
+
+        ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
+
+        cC.addListener(this);
+        // Add it to the root component
+        UI.getCurrent().addWindow(cC);
     }
 
     // TODO: Event in Level handeln
@@ -156,6 +170,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         } catch (NullPointerException e) {
             System.out.print("findChallenge: currentLevel cannot be null at this point");
         }
+        return null;
+    }
+
+    // TODO: Challenge Liste dem ChangeChallenge übergeben, damit der Titel nicht zweimal vorkommt
+    private List<Challenge> ChallengeLibrary() {
         return null;
     }
 
@@ -216,8 +235,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         this.getDetails().setWidth("100%");
         final VerticalLayout content = new VerticalLayout();
         final HorizontalLayout buttons = new HorizontalLayout();
-
-
         content.setWidth("100%");
         this.getDetails().setContent(content);
         this.getChallBoaChallDetailLayout().addComponent(this.getDetails());
@@ -349,6 +366,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
             System.out.print("findChallenge: too much challenges in list");
         }
     }
+
     //endregion
 
     //region Events
@@ -373,6 +391,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         } catch (NullPointerException e) {
             System.out.print("detailsClick: Could not find challenge");
         }
+
         removeChallenges();
         try {
             setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
@@ -419,6 +438,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void challengeClick(LayoutEvents.LayoutClickEvent event) {
         removeChallengeDetails();
+
         try {
             addChallengeDetails(findChallenge(event.getComponent().getParent().getCaption()));
         } catch (NullPointerException e) {
@@ -448,7 +468,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
                     "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
     }
-
     @Override
     public void update(java.util.Observable o, Object arg) {
         if (o instanceof LevelLibrary) {
@@ -459,6 +478,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     @Override
     public void newChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = findClickedLevel(levelTitle);
+
         try {
             level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
             if (level.getLevelState() == LevelState.open) {
@@ -489,7 +509,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
 
     }
-
     public void deleteChallenge(Button.ClickEvent event) {
         try {
             findChallenge(event.getButton().getParent().getParent().getCaption());
@@ -511,8 +530,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         updateChallengeView(currentLevel);
         removeChallengeDetails();
 
-
     }
+
 
 }
 //endregion
