@@ -25,10 +25,6 @@ public class JournalLibrary {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public List<JournalEntry> getJournalEntries() {
         return journalEntries;
     }
@@ -37,7 +33,8 @@ public class JournalLibrary {
         this.journalEntries = journalEntries;
     }
 
-    void createEntry(){}
+    void createEntry(){
+    }
 
     void deleteEntry(JournalEntry entry){}
 

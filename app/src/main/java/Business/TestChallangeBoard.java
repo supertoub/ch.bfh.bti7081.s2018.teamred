@@ -1,71 +1,88 @@
 package Business;
 
 import UserInterface.ChallengeBoard;
+import com.vaadin.ui.Button;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TestChallangeBoard {
 
-    //region Challange
+    //region User
 
     @Test
-    public void createChallenge(){
-        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
-        Challenge currentChallenge = new Challenge("", "Test", ChallengeState.open, 1, presenter);
-        currentChallenge = new Challenge("Test", "", ChallengeState.open, 1, presenter);
-        currentChallenge = new Challenge("Test", "Test", ChallengeState.open, 2147483647, presenter);
-        currentChallenge = new Challenge("Test", "Test", ChallengeState.open, -2147483647, presenter);
+    public void testArzt(){
+        List<Patient> patienten = new ArrayList<>();
+        patienten.add(new Patient("Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
+        Arzt arzt = new Arzt("Test", "Arzt", "Test", patienten);
+
+        assert arzt.getPatients().size() == 1;
+
+        patienten.add(new Patient("Test 2", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
+        arzt.setPatients(patienten);
+
+        assert arzt.getPatients().size() == 2;
     }
 
     @Test
-    public void setChallengeState(){
-        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
-        Challenge currentChallenge = new Challenge("Title", "Description", ChallengeState.closed, 1, presenter);
-        currentChallenge.setChallengeState(ChallengeState.open);
-        assert currentChallenge.getChallengeState() == ChallengeState.open;
-
-        currentChallenge.setChallengeState(ChallengeState.open);
-        assert currentChallenge.getChallengeState() == ChallengeState.open;
+    public void testPatient(){
+        Patient patient = new Patient("Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance()));
+        patient.setJournalLibrary(new JournalLibrary());
+        assert patient.getJournalLibrary() != null;
+        patient.setLastEntryWritten(new Date());
+        assert patient.getLastEntryWritten() != null;
+        patient.setLevelLibrary(new LevelLibrary(ChallengeBoardPresenter.getInstance()));
+        assert patient.getLevelLibrary() != null;
     }
 
     //endregion
 
-    //region ChallangeBoardPresenter
+    //region Challange
 
     @Test
-    public void challengeHandling(){
+    public void testChallange(){
+        Level lvl = new Level("Test", 1, ChallengeBoardPresenter.getInstance());
+        Challenge currentChallenge = new Challenge("Test", "Test", ChallengeState.open,1,  lvl);
+        assert currentChallenge.getLevelOfAnxiety() == 1;
+        assert currentChallenge.getChallengeState().equals(ChallengeState.open);
+        assert currentChallenge.getDesc().equals("Test");
+        assert currentChallenge.getTitle().equals("Test");
+        long someId = currentChallenge.getId();
+
+        currentChallenge.setChallengeState(ChallengeState.closed);
+        assert currentChallenge.getChallengeState().equals(ChallengeState.closed);
+        currentChallenge.setDesc("Test 2");
+        assert currentChallenge.getDesc().equals("Test 2");
+        currentChallenge.setLevelOfAnxiety(2);
+        assert currentChallenge.getLevelOfAnxiety() == 2;
+        currentChallenge.setTitle("Test 2");
+        assert currentChallenge.getTitle().equals("Test 2");
+    }
+
+    //endregion
+
+    //region ChallangeBoard ChallangeBoardPresenter
+
+    @Test
+    public void testChallengeBoardPresenter(){
         ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
-        presenter.removeChallenges();
-        presenter.removeChallengeDetails();
-        presenter.clearLevels();
-
-        presenter.addLevel("", LevelState.open);
+        presenter.setLevelInfoLabel(1, 2, 3);
         presenter.addLevel("Test", LevelState.open);
-        // Crazy
-        presenter.addLevel("<script>alet('test');</script>", LevelState.open);
-
-        presenter.setLevelInfoLabel(1, 1, 1);
-        presenter.setLevelInfoLabel(2147483647, 1, 1);
-        presenter.setLevelInfoLabel(1, 2147483647, 1);
-        presenter.setLevelInfoLabel(1, 1, 2147483647);
-        presenter.setLevelInfoLabel(2147483647, 2147483647, 2147483647);
-
-        Challenge currentChallenge = new Challenge("", "Test", ChallengeState.open, 1, presenter);
-        presenter.addChallengeDetails(currentChallenge);
-        currentChallenge = new Challenge("Test", "", ChallengeState.open, 1, presenter);
-        presenter.addChallengeDetails(currentChallenge);
-        currentChallenge = new Challenge("Test", "Test", ChallengeState.open, 2147483647, presenter);
-        presenter.addChallengeDetails(currentChallenge);
-
-        presenter.addChallenge("", "Test", ChallengeState.open, 1);
-        presenter.addChallenge("Test", "", ChallengeState.open, 1);
-        presenter.addChallenge("Test", "Test", ChallengeState.open, 1);
-        presenter.addChallenge("Test", "Test", ChallengeState.open, 2147483647);
-
+        presenter.clearLevels();
+        presenter.addChallengeDetails(new Challenge("Test", "Test", ChallengeState.closed, 1, ChallengeBoardPresenter.getInstance()));
         presenter.removeChallengeDetails();
         presenter.removeChallenges();
-        presenter.clearLevels();
+        //presenter.detailsClick(new Button.ClickEvent(new Button()));
+        presenter.AddLevelButtonClick(new Button.ClickEvent(new Button()));
+        //presenter.AddLevelClick(new Button.ClickEvent(new Button()));
+        //presenter.BackClick(new Button.ClickEvent(new Button()));
+        //presenter.closeClick(new Button.ClickEvent(new Button()));
+        //presenter.NewChallClick(new Button.ClickEvent(new Button()));
+        //presenter.reOpenClick(new Button.ClickEvent(new Button()));
+        //presenter.buttonClick("Test", "Test Ch", "Desc Ch", 1);
+        presenter.update(new Level("Test", 1, presenter), new Object());
     }
 
     //endregion
@@ -76,23 +93,34 @@ public class TestChallangeBoard {
     public void levelHandling(){
         LevelLibrary lib = new LevelLibrary(ChallengeBoardPresenter.getInstance());
         lib.createNewLevel(LevelState.open);
-        lib.createNewLevel();
-
-        assert lib.getLevels().size() == 3;
+        assert lib.getLevels().size() == 1;
+        assert lib.getLevels().get(0).getLevelState().equals(LevelState.open);
+        lib.getLevels().get(0).setLevelState(LevelState.closed);
+        assert lib.getLevels().get(0).getLevelState().equals(LevelState.closed);
 
         Level currentLevel = new Level("Test", 1, lib);
-        currentLevel.createChallenge("blablabla");
-        currentLevel.createChallenge("");
-        currentLevel.createChallenge("blablabla", "blablabla", "blabla", 1);
-        currentLevel.createChallenge("", "blablabla", "blabla", 1);
-        currentLevel.createChallenge("Test", "", "blabla", 1);
-        currentLevel.createChallenge("Test", "Test", "", 1);
-        currentLevel.createChallenge("Test", "Test", "Test", 2147483647);
-        currentLevel.createChallenge("Test", "Test", "Test", -2147483647);
+        currentLevel.createChallenge("Test", "Test", "blabla", 1);
 
         List<Challenge> challenges = currentLevel.getChallenges();
-        assert challenges.size() == 8;
-        assert challenges.stream().filter(a -> a.getTitle() == "Test").count() == 1;
+        assert challenges.size() == 1;
+    }
+
+    //endregion
+
+    //region JournalLibrary Journal
+
+    @Test
+    public void testJournalLibrary(){
+        JournalLibrary lib = new JournalLibrary();
+        lib.createEntry();
+
+        List<JournalEntry> entries = lib.getJournalEntries();
+        assert lib.getJournalEntries().size() == 1;
+        lib.createEntry();
+        assert lib.getJournalEntries().size() == 2;
+        lib.deleteEntry(lib.getJournalEntries().get(1));
+        assert lib.getJournalEntries().size() == 1;
+        assert lib.getId() > 0;
     }
 
     //endregion
