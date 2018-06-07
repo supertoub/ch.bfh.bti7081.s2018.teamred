@@ -36,8 +36,8 @@ public class LoginView extends LoginViewPage implements View {
 //        Patient anotherPatient = patientDao.get(patient.getName());
 //    }
 
-    private String username = "test";
-    private String password = "test";
+    private String username = "RoccaroR";
+    private String password = "SavePW_1";
 
     private void setUsername(String username) {
         this.username = username;

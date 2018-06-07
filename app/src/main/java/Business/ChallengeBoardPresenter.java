@@ -11,7 +11,6 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
 
-import javax.print.attribute.IntegerSyntax;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -105,15 +104,26 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     private void newWindowChangeChall(Challenge challenge) {
         List<String> lvls = new ArrayList<>();
-        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
+        try {
+            for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
+                lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
+            }
+
+            ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
+
+            cC.addListener(this);
+            // Add it to the root component
+            UI.getCurrent().addWindow(cC);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("newWindowAddChall: too much levels in list");
+            this.createNotification("For the moment you cannot create new Challenges",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        } catch (NullPointerException e) {
+            System.out.print("newWindowAddChall: lvlLibrary cannot be null at this point");
+            this.createNotification("For the moment you cannot create new Challenges",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
 
-        ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
-
-        cC.addListener(this);
-        // Add it to the root component
-        UI.getCurrent().addWindow(cC);
     }
 
     // TODO: Event in Level handeln
@@ -206,8 +216,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         this.getDetails().setWidth("100%");
         final VerticalLayout content = new VerticalLayout();
         final HorizontalLayout buttons = new HorizontalLayout();
-
-
 
 
         content.setWidth("100%");
@@ -331,7 +339,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void clearLevels() {
         try {
-        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
+            for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
                 Component comp = this.getChallBoaLevelLayout().getComponent(i);
                 if (comp.getId().equals("level")) {
                     this.getChallBoaLevelLayout().removeComponent(comp);
@@ -341,8 +349,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
             System.out.print("findChallenge: too much challenges in list");
         }
     }
-
-
     //endregion
 
     //region Events
@@ -401,20 +407,47 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         currentLevel = findClickedLevel(event.getButton().getCaption());
         removeChallenges();
         try {
+            setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
+            updateChallengeView(currentLevel);
+        } catch (NullPointerException e) {
+            System.out.print("AddLevelClick: currentLevel cannot be null at this point");
+            this.createNotification("We could not add a new level",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
+
+    }
+
     public void challengeClick(LayoutEvents.LayoutClickEvent event) {
         removeChallengeDetails();
-        addChallengeDetails(findChallenge(event.getComponent().getParent().getCaption()));
+        try {
+            addChallengeDetails(findChallenge(event.getComponent().getParent().getCaption()));
+        } catch (NullPointerException e) {
+            System.out.print("challengeClick: could not find Challenge");
+            this.createNotification("We cannot show your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
+    }
+
     public void challengeClick1(MouseEvents.ClickEvent event) {
         removeChallengeDetails();
-        addChallengeDetails(findChallenge(event.getComponent().getCaption()));
-    }
-    public void changeChallenge(Button.ClickEvent event) {
-        //findChallenge(event.getButton().getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
-        newWindowChangeChall(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
-    }
-        } else if (clickedButton.getId().equals("AddLevelButton")) {
-            Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
+        try {
+            addChallengeDetails(findChallenge(event.getComponent().getCaption()));
+        } catch (NullPointerException e) {
+            System.out.print("challengeClick: could not find Challenge");
+            this.createNotification("We could not change your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
+    }
+
+    public void changeChallenge(Button.ClickEvent event) {
+        try {
+            newWindowChangeChall(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+        } catch (NullPointerException e) {
+            System.out.print("challengeClick: could not find Challenge");
+            this.createNotification("We could not change your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
+    }
 
     @Override
     public void update(java.util.Observable o, Object arg) {
@@ -428,37 +461,60 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         Level level = findClickedLevel(levelTitle);
         try {
             level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
-        if (level.getLevelState() == LevelState.open) {
+            if (level.getLevelState() == LevelState.open) {
                 removeChallenges();
                 updateChallengeView(level);
             }
+        } catch (NullPointerException e) {
+            System.out.print("Add Challenge: Level cannot be null at this point");
+            this.createNotification("We could not save your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
     }
 
     @Override
     public void changeChallengeClick(String cTitleOld, String cTitle, String cDesc, int lOfAx) {
-        findChallenge(cTitleOld).setTitle(cTitle);
-        findChallenge(cTitle).setDesc(cDesc);
-        findChallenge(cTitle).setLevelOfAnxiety(lOfAx);
-        removeChallenges();
-        updateChallengeView(currentLevel);
-        removeChallengeDetails();
-        addChallengeDetails(findChallenge(cTitle));
+        try {
+            findChallenge(cTitleOld).setTitle(cTitle);
+            findChallenge(cTitle).setDesc(cDesc);
+            findChallenge(cTitle).setLevelOfAnxiety(lOfAx);
+            removeChallenges();
+            updateChallengeView(currentLevel);
+            removeChallengeDetails();
+            addChallengeDetails(findChallenge(cTitle));
+        } catch (NullPointerException e) {
+            System.out.print("Add Challenge: Level cannot be null at this point");
+            this.createNotification("We could not save your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        }
+
     }
 
-    public void deleteChallenge(Button.ClickEvent event){
-        findChallenge(event.getButton().getParent().getParent().getCaption());
-        for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
-            for (int j = 1; j < 7; j++) {
-                lvlLibrary.getLevels().get(i).deleteChallenge(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+    public void deleteChallenge(Button.ClickEvent event) {
+        try {
+            findChallenge(event.getButton().getParent().getParent().getCaption());
+            for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
+                for (int j = 1; j < 7; j++) {
+                    lvlLibrary.getLevels().get(i).deleteChallenge(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+                }
             }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("deleteChallenge: too much levels in list");
+            this.createNotification("We could delete your challengel",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
+        } catch (NullPointerException e) {
+            System.out.print("deleteChallenge: Level or lvlLibrary cannot be null at this point");
+            this.createNotification("We could delete your challenge",
+                    "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
         removeChallenges();
         updateChallengeView(currentLevel);
         removeChallengeDetails();
 
-        }
 
     }
-    //endregion
 
 }
+//endregion
+
+
