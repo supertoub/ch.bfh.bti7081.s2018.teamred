@@ -1,8 +1,5 @@
 package UserInterface;
 
-import com.vaadin.data.Binder;
-import com.vaadin.data.validator.StringLengthValidator;
-import com.vaadin.server.ErrorMessage;
 import com.vaadin.server.Page;
 import com.vaadin.server.UserError;
 import com.vaadin.shared.Position;
@@ -39,8 +36,6 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         createWindow(lvls);
         this.center();
     }
-
-
     //endregion
 
     //region Methoden
@@ -58,6 +53,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         subContent.addComponent(new Label("Add new challenge"));
         subContent.addComponent(select);
         subContent.addComponent(titleLayout);
+
         titleLayout.addComponent(tfTitle);
         titleLayout.addComponent(counterTitle);
         subContent.addComponent(descLayout);
@@ -141,7 +137,6 @@ public class AddChallenge extends Window  implements ChallengeBoard{
     //region Events
 
     public void buttonClick(Button.ClickEvent event, String levelTitle, String cTitle, String cDesc, int lOfAx) {
-
         select.setComponentError(null);
         tfTitle.setComponentError(null);
         tADesc.setComponentError(null);
@@ -161,7 +156,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         else{
             createNotification("Add challenge to "+levelTitle,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
             for (ChallengeBoardViewListener listener: listeners)
-                listener.buttonClick(levelTitle,cTitle,cDesc,lOfAx);
+                listener.newChallenge(levelTitle,cTitle,cDesc,lOfAx);
             close();
         }
 
