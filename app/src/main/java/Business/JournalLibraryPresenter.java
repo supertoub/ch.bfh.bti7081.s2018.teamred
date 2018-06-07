@@ -5,10 +5,8 @@ import ch.bfh.MyUI;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Observer;
+import java.time.LocalDate;
+import java.util.*;
 
 
 public class JournalLibraryPresenter extends JournalViewPage implements View {
@@ -21,6 +19,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     private JournalLibrary jourLibrary;
     private JournalLibrary currentEntry;
     private Panel Details;
+    private LocalDate selectedDate;
     //endregion
     public Panel getDetails() {
         return Details;
@@ -38,17 +37,20 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         return instance;
     }
 
-    void addClick(){}
-
     void deleteClick(Object sender){}
 
-    void changeClick(){}
+
 
     private JournalLibraryPresenter() {
         super();
+        Date today = java.sql.Date.valueOf(LocalDate.now());
         JournalViewPage = new JournalViewPage();
+        journalDate.setValue(LocalDate.now());
+        journalDate.setLocale(new Locale("de", "DE"));
+        journalDate.addValueChangeListener(event -> selectedDate = (event.getValue()));
         backButton.addClickListener(this::backButtonClick);
         newEntryButton.addClickListener(this::newEntryButtonClick);
+        updateJournalView(today);
         //JournalView.addListener(this);
         //JournalView.addButtons();
         //StartView.setHeight("100%");
@@ -106,7 +108,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
     }
     private void updateJournalView(Date date) {
-        List<JournalEntry> entries = JournalLibrary.getJournalEntries();
+        List<JournalEntry> entries = JournalLibrary.getJournalEntries().getDate().equals(date);
         for (JournalEntry journalEntry : entries) {
             addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
         }
