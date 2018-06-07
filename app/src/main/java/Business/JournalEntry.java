@@ -22,6 +22,4 @@ class JournalEntry {
     private String desc;
 
     private Date date;
-
-    void change(){}
 }

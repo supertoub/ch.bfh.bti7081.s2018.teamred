@@ -56,12 +56,7 @@ public class LoginView extends LoginViewPage implements View {
     }
 
     public Boolean authenticate(String username, String password){
-        if(username.equals(getUsername()) && password.equals(getPassword())){
-            return true;
-        }else{
-            return false;
-
-        }
+        return username.equals(getUsername()) && password.equals(getPassword());
     }
 
 

@@ -7,16 +7,19 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
+
 @Entity
-public class Level extends Observable implements Observer{
+public class Level extends Observable implements Observer {
+
+    //region Variablen
+
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "level_id")
     private long id;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="challenge_id")
-
+    @JoinColumn(name = "challenge_id")
     private List<Challenge> challenges;
 
     @Enumerated(EnumType.STRING)
@@ -31,17 +34,33 @@ public class Level extends Observable implements Observer{
 
     //region Getter
 
-    public String getLevelLabel(){return levelLabel;}
+    public String getLevelLabel() {
+        return levelLabel;
+    }
 
-    List<Challenge> getChallenges() {return challenges;}
+    List<Challenge> getChallenges() {
+        return challenges;
+    }
 
-    LevelState getLevelState() { return levelState; }
+    LevelState getLevelState() {
+        return levelState;
+    }
 
-    int getLevelCount(){return levelCount;}
+    int getLevelCount() {
+        return levelCount;
+    }
 
-    int getLevelDoneCount(){return this.levelDoneCount;}
+    int getLevelDoneCount() {
+        return this.levelDoneCount;
+    }
 
-    int getClosedChallengesCount(){return (int) this.challenges.stream().filter(cha -> cha.getChallengeState() == ChallengeState.closed).count();}
+    int getClosedChallengesCount() {
+        return (int) this.challenges.stream().filter(cha -> cha.getChallengeState() == ChallengeState.closed).count();
+    }
+
+    public long getId() {
+        return id;
+    }
 
     //endregion
 
@@ -49,25 +68,6 @@ public class Level extends Observable implements Observer{
 
     public void setLevelState(LevelState levelState) {
         this.levelState = levelState;
-    }
-
-    //endregion
-
-    //region Konstruktoren
-    public Level() {}
-
-    // TODO: Korrektes Level ChallengeState handling
-    public Level(String label, int count, Observer observer){
-        this.levelLabel = label;
-        this.levelState = LevelState.open;
-        this.challenges = new ArrayList<>();
-        this.levelCount = count;
-        this.levelDoneCount = (count + 1) * 2;
-        this.addObserver(observer);
-    }
-
-    public long getId() {
-        return id;
     }
 
     public void setId(long id) {
@@ -82,16 +82,36 @@ public class Level extends Observable implements Observer{
         this.levelLabel = levelLabel;
     }
 
-    public void createChallenge(String level){
-        Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
+    //endregion
+
+    //region Konstruktoren
+
+    // TODO: Korrektes Level ChallengeState handling
+    public Level(String label, int count, Observer observer) {
+        this.levelLabel = label;
+        this.levelState = LevelState.open;
+        this.challenges = new ArrayList<>();
+        this.levelCount = count;
+        this.levelDoneCount = (count + 1) * 2;
+        this.addObserver(observer);
+    }
+
+    //endregion
+
+    //region Methoden
+
+    public void createChallenge(String level) {
+        Challenge newChallange = new Challenge(level + " Challenge " + (challenges.size() + 1), "Go shopping at Migros and get all the answers the saleswoman asks. Also talk to a stranger and ask them if they know where the coffee is.", ChallengeState.open, 4, this);
         challenges.add(newChallange);
     }
 
-    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
-        challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
+    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
+        challenges.add(new Challenge(levelTitle + " " + cTitle, cDesc, ChallengeState.open, lOfAx, this));
     }
 
-    void deleteChallenge(Challenge challenge){}
+    public void deleteChallenge(Challenge challenge){
+        challenges.remove(challenge);
+    }
 
     //endregion
 
@@ -100,7 +120,7 @@ public class Level extends Observable implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         int countClosedChallanges = (int) this.challenges.stream().filter(ch -> ch.getChallengeState() == ChallengeState.closed).count();
-        if (countClosedChallanges >= levelDoneCount){
+        if (countClosedChallanges >= levelDoneCount) {
             this.isDone = true;
             this.setChanged();
             this.notifyObservers();
