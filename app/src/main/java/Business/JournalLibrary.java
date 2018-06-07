@@ -1,12 +1,15 @@
 package Business;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class JournalLibrary {
+public class JournalLibrary extends Observable implements Observer {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "journallibrary_id")
@@ -36,9 +39,15 @@ public class JournalLibrary {
     public void setJournalEntries(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
     }
+    //region Methoden
 
-    void createEntry(){}
-
+    public void createJournalEntry(Date Date, String jTitle, String jDesc){
+        journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc, this));
+    }
     void deleteEntry(JournalEntry entry){}
+    //endregion
+
+
+
 
 }
