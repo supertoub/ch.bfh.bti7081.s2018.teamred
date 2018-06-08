@@ -1,7 +1,5 @@
 package Data;
 
-import Business.Level;
-import Business.LevelLibrary;
 import Business.Patient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
