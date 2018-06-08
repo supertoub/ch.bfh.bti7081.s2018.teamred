@@ -9,7 +9,7 @@ import java.util.Observer;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class JournalLibrary extends Observable implements Observer {
+public class JournalLibrary /*extends Observable implements Observer*/ {
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "journallibrary_id")
@@ -42,7 +42,7 @@ public class JournalLibrary extends Observable implements Observer {
     //region Methoden
 
     public void createJournalEntry(Date Date, String jTitle, String jDesc){
-        journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc, this));
+        journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc));
     }
     void deleteEntry(JournalEntry entry){}
     //endregion

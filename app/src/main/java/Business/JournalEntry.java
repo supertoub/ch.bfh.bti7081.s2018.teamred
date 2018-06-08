@@ -12,7 +12,7 @@ import java.util.Observable;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-class JournalEntry extends Observable implements Observer{
+class JournalEntry /*extends Observable implements Observer*/{
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "journalentry_id")
@@ -48,11 +48,11 @@ class JournalEntry extends Observable implements Observer{
     //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
-    public JournalEntry(Date date, String title, String desc, Observer observer){
+    public JournalEntry(Date date, String title, String desc){
         this.title = title;
         this.desc = desc;
         this.date = date;
-        this.addObserver(observer);
+        //this.addObserver(observer);
     }
 
     //endregion
