@@ -13,9 +13,9 @@ import org.apache.logging.log4j.LogManager;
  *
  * Abstract class to use and manage a database with JPA
  *
- * @date 30.03.2016
+ * @date 01.06.2018
  *
- * @author Elias Eggenschwiler
+ * @author Fridolin Zurlinden
  *
  * @param <T>
  *            Generic Type of a persistence class
