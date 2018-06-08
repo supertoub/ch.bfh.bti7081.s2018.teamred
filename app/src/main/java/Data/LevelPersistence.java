@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class to manage Challenge objects on database layer
+ * Class to manage Level objects on database layer
  *
  * @date 01.06.2018
  *
@@ -23,7 +23,7 @@ public class LevelPersistence extends GenericPersistence<Level, Long>{
 
     }
 
-    //returns the current instance of ChallengePersistence
+    //returns the current instance of LevelPersistence
     public static LevelPersistence getInstance() {
         if (singleton == null) {
             singleton = new LevelPersistence();
