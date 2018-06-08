@@ -127,19 +127,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     }
 
-    private void newWindowChangeChall(Challenge challenge) {
-        List<String> lvls = new ArrayList<>();
-        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-        }
-
-        ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
-
-        cC.addListener(this);
-        // Add it to the root component
-        UI.getCurrent().addWindow(cC);
-    }
-
     // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
         try {
@@ -170,11 +157,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         } catch (NullPointerException e) {
             System.out.print("findChallenge: currentLevel cannot be null at this point");
         }
-        return null;
-    }
-
-    // TODO: Challenge Liste dem ChangeChallenge übergeben, damit der Titel nicht zweimal vorkommt
-    private List<Challenge> ChallengeLibrary() {
         return null;
     }
 
