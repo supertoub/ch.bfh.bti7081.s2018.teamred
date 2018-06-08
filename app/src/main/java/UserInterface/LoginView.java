@@ -2,10 +2,8 @@ package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
-import Business.Patient;
 import Business.StartpagePresenter;
-import Data.GenericDataFacade;
-import Data.GenericDataFacadeJPA;
+
 import ch.bfh.MyUI;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
@@ -86,24 +84,21 @@ public class LoginView extends LoginViewPage implements View {
 */
     public void LoginbuttonClick(Button.ClickEvent event) {
             if(authenticate(usernameField.getValue(), passwordField.getValue())){
-
-           // if(this.authenticate(usernameField.getValue(), passwordField.getValue())){
                 VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
 
                 StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
                 ChallengeBoardPresenter challangeBoardPresenter = ChallengeBoardPresenter.getInstance();
-                //JournalPresenter journalPresenter = JournalLibraryPresenter.getInstance();
+                JournalPresenter journalPresenter = JournalLibraryPresenter.getInstance();
 
                 getUI().getNavigator().addView(MyUI.STARTPAGEVIEW, startpagePresenter.getStartView());
                 getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challangeBoardPresenter.getBoardView());
-                //getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter.getJournalView());
+                getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter.getJournalView());
 
                 UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
             }else{
                 Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
             }
     }
-
 
 
 }

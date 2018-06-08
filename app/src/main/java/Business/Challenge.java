@@ -10,6 +10,9 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class  Challenge extends Observable {
+
+    //region Properties
+
     @Id
     @GeneratedValue(strategy = AUTO)
     @Column(name = "challenge_id")
@@ -26,13 +29,9 @@ public class  Challenge extends Observable {
 
     private int levelOfAnxiety;
 
-    // TODO: Korrektes Level ChallengeState handling
-    public Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
-        this.title = title;
-        this.desc = desc;
-        this.challengeState = challengeState;
-        this.levelOfAnxiety = levelOfAnxiety;
-    }
+    //endregion
+
+    //region Getter & Setter
 
     public long getId() {
         return id;
@@ -81,7 +80,7 @@ public class  Challenge extends Observable {
     //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
-    Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety, Observer observer){
+    public Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety, Observer observer){
         this.title = title;
         this.desc = desc;
         this.challengeState = challengeState;
@@ -92,7 +91,6 @@ public class  Challenge extends Observable {
     //endregion
 
     //region Methoden
-
-    void change(){}
+    //endregion
 
 }

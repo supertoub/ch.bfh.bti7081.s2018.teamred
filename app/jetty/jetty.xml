@@ -9,7 +9,7 @@
             <New class="org.hsqldb.jdbc.JDBCDataSource">
                 <Set name="DatabaseName">file:target/social-anxiety-db</Set>
                 <Set name="User">sa</Set>
-                <Set name="Password"></Set>
+                <Set name="Password">password</Set>
             </New>
         </Arg>
     </New>
