@@ -19,6 +19,8 @@ public class ChallengePersistence extends GenericPersistence<Challenge, Long>{
     private static final Logger logger = LogManager.getLogger(ChallengePersistence.class);
     static ChallengePersistence singleton;
 
+    private ChallengePersistence(){};
+
     //returns the current instance of ChallengePersistence
     public static ChallengePersistence getInstance() {
         if (singleton == null) {

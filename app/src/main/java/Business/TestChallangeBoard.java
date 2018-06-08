@@ -2,11 +2,14 @@ package Business;
 
 import UserInterface.ChallengeBoard;
 import com.vaadin.ui.Button;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.Assert.assertThat;
 
 public class TestChallangeBoard {
 
@@ -35,6 +38,25 @@ public class TestChallangeBoard {
         assert patient.getLastEntryWritten() != null;
         patient.setLevelLibrary(new LevelLibrary(ChallengeBoardPresenter.getInstance()));
         assert patient.getLevelLibrary() != null;
+    }
+
+    @Test
+    public void testUser(){
+        List<Patient> patList = new ArrayList<>();
+        User us = new Arzt("Name", "Surname", "PWD", patList);
+        long id = us.getId();
+        assert us.getName().equals("Name");
+        assert us.getPwd().equals("PWD");
+        assert us.getSurname().equals("Surname");
+
+        us.setName("Name2");
+        assert us.getName().equals("Name2");
+        us.setPwd("PWD2");
+        assert us.getPwd().equals("PWD2");
+        us.setSurname("Surname2");
+        assert us.getSurname().equals("Surname2");
+        ((Arzt) us).getPatients();
+        ((Arzt) us).setPatients(patList);
     }
 
     //endregion
@@ -74,14 +96,9 @@ public class TestChallangeBoard {
         presenter.addChallengeDetails(new Challenge("Test", "Test", ChallengeState.closed, 1, ChallengeBoardPresenter.getInstance()));
         presenter.removeChallengeDetails();
         presenter.removeChallenges();
-        //presenter.detailsClick(new Button.ClickEvent(new Button()));
-        presenter.AddLevelButtonClick(new Button.ClickEvent(new Button()));
-        //presenter.AddLevelClick(new Button.ClickEvent(new Button()));
-        //presenter.BackClick(new Button.ClickEvent(new Button()));
-        //presenter.closeClick(new Button.ClickEvent(new Button()));
-        //presenter.NewChallClick(new Button.ClickEvent(new Button()));
-        //presenter.reOpenClick(new Button.ClickEvent(new Button()));
-        //presenter.buttonClick("Test", "Test Ch", "Desc Ch", 1);
+        presenter.detailsClick(new Button.ClickEvent(new Button()));
+        presenter.closeClick(new Button.ClickEvent(new Button()));
+        presenter.reOpenClick(new Button.ClickEvent(new Button()));
         presenter.update(new Level("Test", 1, presenter), new Object());
     }
 
@@ -97,17 +114,49 @@ public class TestChallangeBoard {
         assert lib.getLevels().get(0).getLevelState().equals(LevelState.open);
         lib.getLevels().get(0).setLevelState(LevelState.closed);
         assert lib.getLevels().get(0).getLevelState().equals(LevelState.closed);
+        lib.getId();
+        List<Level> lvls = new ArrayList<>();
+        Level obs = new Level();
+        lvls.add(obs);
+        lib.setLevels(lvls);
+        lib.update(obs, new Object());
+        lib.createNewLevel();
 
         Level currentLevel = new Level("Test", 1, lib);
         currentLevel.createChallenge("Test", "Test", "blabla", 1);
-
+        currentLevel.setLevelState(LevelState.closed);
+        assert currentLevel.getLevelState().equals(LevelState.closed);
+        assert currentLevel.isDone == false;
+        currentLevel.getLevelLabel();
+        currentLevel.getClosedChallengesCount();
+        currentLevel.getLevelDoneCount();
+        currentLevel.deleteChallenge(currentLevel.getChallenges().get(0));
+        currentLevel.getLevelCount();
+        currentLevel.getId();
+        List<Challenge> chList = new ArrayList<>();
+        currentLevel.setChallenges(chList);
+        currentLevel.setLevelLabel("test");
+        currentLevel.update(lib, new Object());
         List<Challenge> challenges = currentLevel.getChallenges();
-        assert challenges.size() == 1;
+        assert challenges.size() == 0;
     }
 
     //endregion
 
-    //region JournalLibrary Journal
+    //region JournalLibrary Journal Presenter
+
+    @Test
+    public void testJournalPresenter(){
+        JournalLibraryPresenter presenter = JournalLibraryPresenter.getInstance();
+        presenter.newWindowAddEntry();
+        presenter.addClick();
+        presenter.changeClick();
+        presenter.getJournalView();
+        presenter.backButtonClick(new Button.ClickEvent(new Button()));
+        presenter.newEntryButtonClick(new Button.ClickEvent(new Button()));
+        presenter.addJournalEntry("Test", "Test");
+        presenter.deleteClick(new JournalEntry());
+    }
 
     @Test
     public void testJournalLibrary(){
@@ -115,12 +164,38 @@ public class TestChallangeBoard {
         lib.createEntry();
 
         List<JournalEntry> entries = lib.getJournalEntries();
+        JournalLibrary newLib = new JournalLibrary(entries);
         assert lib.getJournalEntries().size() == 1;
         lib.createEntry();
         assert lib.getJournalEntries().size() == 2;
-        lib.deleteEntry(lib.getJournalEntries().get(1));
+        lib.deleteEntry(lib.getJournalEntries().get(0));
         assert lib.getJournalEntries().size() == 1;
-        assert lib.getId() > 0;
+        lib.getId();
+        List<JournalEntry> items = new ArrayList<JournalEntry>() {};
+        items.add(new JournalEntry());
+        lib.setJournalEntries(items);
+    }
+
+    //endregion
+
+    //region LoginView
+
+    @Test
+    public void testLoginViewPresenter(){
+        LoginViewPagePresenter presenter = LoginViewPagePresenter.getInstance();
+        presenter.getLoginView();
+    }
+
+    //endregion
+
+    //region StartPage
+
+    @Ignore("Vaadin components not loaded")
+    @Test
+    public void testStartPage(){
+        StartpagePresenter presenter = StartpagePresenter.getInstance();
+        presenter.getStartView();
+        presenter.buttonClick("Test");
     }
 
     //endregion

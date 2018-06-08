@@ -22,8 +22,6 @@ abstract class User {
     @Column(length = 128, nullable = false)
     private String pwd;
 
-    public User() {}
-
     public User(String name, String surname, String pwd) {
         this.name = name;
         this.surname = surname;
@@ -32,10 +30,6 @@ abstract class User {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

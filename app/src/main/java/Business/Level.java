@@ -58,10 +58,6 @@ public class Level extends Observable implements Observer{
         this.levelState = levelState;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setChallenges(List<Challenge> challenges) {
         this.challenges = challenges;
     }

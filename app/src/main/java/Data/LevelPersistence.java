@@ -17,7 +17,11 @@ public class LevelPersistence extends GenericPersistence<Level, Long>{
     //we inherit the basic CRUD operations from the GenericRepository
 
     private static final Logger logger = LogManager.getLogger(LevelPersistence.class);
-    static LevelPersistence singleton;
+    private static LevelPersistence singleton;
+
+    private LevelPersistence(){
+
+    }
 
     //returns the current instance of ChallengePersistence
     public static LevelPersistence getInstance() {
