@@ -43,13 +43,6 @@ public class LoginViewPagePresenter {
     //endregion
 
     //region Events
-/*
-    public void buttonClick(String buttonTitle) {
-        if(buttonTitle.equals("Login")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-    }
-*/
 
     //endregion
 
