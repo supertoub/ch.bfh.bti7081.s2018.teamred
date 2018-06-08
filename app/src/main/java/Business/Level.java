@@ -94,6 +94,9 @@ public class Level extends Observable implements Observer{
         this.addObserver(observer);
     }
 
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public Level(){}
+
     //endregion
 
     //region Methoden

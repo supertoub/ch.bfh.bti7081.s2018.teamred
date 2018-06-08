@@ -33,6 +33,9 @@ public class JournalEntry {
         this.date = date;
     }
 
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalEntry(){}
+
     public long getId() {
         return id;
     }

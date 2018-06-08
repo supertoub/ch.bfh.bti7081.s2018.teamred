@@ -103,6 +103,9 @@ public class  Challenge extends Observable {
         this.levelOfAnxiety = levelOfAnxiety;
     }
 
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public Challenge(){}
+
     //endregion
 
     //region Methoden

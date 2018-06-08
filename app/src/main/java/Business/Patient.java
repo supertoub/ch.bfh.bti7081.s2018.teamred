@@ -12,11 +12,11 @@ public class Patient extends User {
     //region Variablen
     private Date lastEntryWritten;
 
-    @OneToOne(mappedBy = "patient", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private LevelLibrary levelLibrary;
 
-    @OneToOne(mappedBy = "patient", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private JournalLibrary journalLibrary;
 
@@ -34,6 +34,9 @@ public class Patient extends User {
     public Patient(String name, String surname, String pwd) {
         super(name, surname, pwd);
     }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public Patient(){}
     //endregion
 
     //region Getter

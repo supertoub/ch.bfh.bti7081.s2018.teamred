@@ -28,7 +28,7 @@ public class LevelLibrary extends Observable implements Observer {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Level> levels;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private Patient patient;
 
@@ -70,6 +70,9 @@ public class LevelLibrary extends Observable implements Observer {
         this.levels = levels;
         this.addObserver(observer);
     }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public LevelLibrary(){}
 
     //endregion
 

@@ -30,6 +30,9 @@ public class JournalLibrary {
         this.patient = patient;
     }
 
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalLibrary(){}
+
     public long getId() {
         return id;
     }
