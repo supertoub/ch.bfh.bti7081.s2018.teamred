@@ -10,6 +10,7 @@ import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -127,19 +128,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     }
 
-    private void newWindowChangeChall(Challenge challenge) {
-        List<String> lvls = new ArrayList<>();
-        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-        }
-
-        ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
-
-        cC.addListener(this);
-        // Add it to the root component
-        UI.getCurrent().addWindow(cC);
-    }
-
     // TODO: Event in Level handeln
     private Level findClickedLevel(String buttonTitle) {
         try {
@@ -170,11 +158,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         } catch (NullPointerException e) {
             System.out.print("findChallenge: currentLevel cannot be null at this point");
         }
-        return null;
-    }
-
-    // TODO: Challenge Liste dem ChangeChallenge übergeben, damit der Titel nicht zweimal vorkommt
-    private List<Challenge> ChallengeLibrary() {
         return null;
     }
 
@@ -386,12 +369,12 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void reOpenClick(Button.ClickEvent event) {
         try {
-
-            findChallenge(event.getButton().getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            findChallenge(event.getButton().getParent().getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            removeChallengeDetails();
+            addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
         } catch (NullPointerException e) {
-            System.out.print("detailsClick: Could not find challenge");
+            System.out.print("reOpenClick: Could not find challenge");
         }
-
         removeChallenges();
         try {
             setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
@@ -412,7 +395,13 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void closeClick(Button.ClickEvent event) {
-        findChallenge(event.getButton().getParent().getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+        try {
+            findChallenge(event.getButton().getParent().getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            removeChallengeDetails();
+            addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+        } catch (NullPointerException e) {
+            System.out.print("reOpenClick: Could not find challenge");
+        }
         removeChallenges();
         try {
             setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
@@ -468,6 +457,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
                     "please try again", Notification.Type.ERROR_MESSAGE, 1500);
         }
     }
+
     @Override
     public void update(java.util.Observable o, Object arg) {
         if (o instanceof LevelLibrary) {
@@ -509,6 +499,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
 
     }
+
     public void deleteChallenge(Button.ClickEvent event) {
         try {
             findChallenge(event.getButton().getParent().getParent().getCaption());
