@@ -1,8 +1,6 @@
 package Business;
 
 import UserInterface.LoginView;
-import ch.bfh.MyUI;
-import com.vaadin.ui.*;
 
 public class LoginViewPagePresenter {
 
