@@ -1,8 +1,6 @@
 package Business;
 
 import UserInterface.LoginView;
-import ch.bfh.MyUI;
-import com.vaadin.ui.*;
 
 public class LoginViewPagePresenter {
 
@@ -19,13 +17,6 @@ public class LoginViewPagePresenter {
 
     public LoginView getLoginView() {
         return loginview;
-    }
-
-    public static LoginViewPagePresenter getInstance() {
-        if (instance == null) {
-            instance = new LoginViewPagePresenter();
-        }
-        return instance;
     }
 
     //endregion
@@ -50,13 +41,6 @@ public class LoginViewPagePresenter {
     //endregion
 
     //region Events
-/*
-    public void buttonClick(String buttonTitle) {
-        if(buttonTitle.equals("Login")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-    }
-*/
 
     //endregion
 
