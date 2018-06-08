@@ -22,7 +22,6 @@ public class LoginView extends LoginViewPage implements View {
     based on Login Example:
     source: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-login-example/
      */
-   // private Patient TestPatient = new Patient("RoccaroR","Roccaro","Roland","SavePW_1","","","");
 
     private String username = "RoccaroR";
     private String password = "SavePW_1";
@@ -47,24 +46,6 @@ public class LoginView extends LoginViewPage implements View {
         return username.equals(getUsername()) && password.equals(getPassword());
     }
 
-
-/* TODO, reuse this code to do the login using DB
-    public Boolean authenticate(String username, String password){
-      GenericDataFacade<Patient, String> userDao = new GenericDataFacadeJPA<>(Patient.class);
-      String DBpassword = userDao.get(username).getPwd();
-
-       if(password.equals(DBpassword)){
-
-        //if(true){
-            return true;
-        }else{
-            return false;
-
-        }
-    }
-*/
-    //TODO: method to get name/surname of username
-
     public void LoginbuttonClick(Button.ClickEvent event) {
             if(authenticate(usernameField.getValue(), passwordField.getValue())){
                 VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
@@ -82,7 +63,4 @@ public class LoginView extends LoginViewPage implements View {
                 Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
             }
     }
-
-
-
 }
