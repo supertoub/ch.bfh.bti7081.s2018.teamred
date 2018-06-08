@@ -1,32 +1,37 @@
 package Business;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name="journallibrary")
 public class JournalLibrary {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "journallibrary_id")
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="journalentry_id")
+    @OneToMany(mappedBy = "journalLibrary", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<JournalEntry> journalEntries;
 
-    public JournalLibrary() {}
-    public JournalLibrary(List<JournalEntry> journalEntries) {
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private Patient patient;
+
+    public JournalLibrary(List<JournalEntry> journalEntries, Patient patient) {
         this.journalEntries = journalEntries;
+        this.patient = patient;
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public List<JournalEntry> getJournalEntries() {
@@ -37,8 +42,11 @@ public class JournalLibrary {
         this.journalEntries = journalEntries;
     }
 
-    void createEntry(){}
+    public Patient getPatient() {
+        return patient;
+    }
 
-    void deleteEntry(JournalEntry entry){}
-
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }

@@ -7,14 +7,16 @@ import java.util.Observer;
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name="challenge")
 public class  Challenge extends Observable {
 
     //region Properties
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "challenge_id")
     private long id;
 
@@ -26,6 +28,10 @@ public class  Challenge extends Observable {
 
     @Enumerated
     private ChallengeState challengeState;
+
+    @ManyToOne
+    @JoinColumn(name="level_id")
+    private Level level;
 
     private int levelOfAnxiety;
 
@@ -80,12 +86,21 @@ public class  Challenge extends Observable {
     //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
-    public Challenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety, Observer observer){
+    public Challenge(String title, String desc, ChallengeState challengeState, Level level, int levelOfAnxiety, Observer observer){
         this.title = title;
         this.desc = desc;
         this.challengeState = challengeState;
+        this.level = level;
         this.levelOfAnxiety = levelOfAnxiety;
         this.addObserver(observer);
+    }
+
+    public Challenge(String title, String desc, ChallengeState challengeState, Level level, int levelOfAnxiety){
+        this.title = title;
+        this.desc = desc;
+        this.challengeState = challengeState;
+        this.level = level;
+        this.levelOfAnxiety = levelOfAnxiety;
     }
 
     //endregion

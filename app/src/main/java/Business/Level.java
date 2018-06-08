@@ -1,5 +1,8 @@
 package Business;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,22 +10,29 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
+@Table(name="level")
 public class Level extends Observable implements Observer{
 
     //region Variablen
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "level_id")
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="challenge_id")
+    @OneToMany(mappedBy = "level", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Challenge> challenges;
 
     @Enumerated(EnumType.STRING)
     private LevelState levelState;
+
+    @ManyToOne
+    @JoinColumn(name="levellibrary_id")
+    private LevelLibrary levelLibrary;
 
     private String levelLabel;
     private int levelDoneCount;
@@ -74,11 +84,12 @@ public class Level extends Observable implements Observer{
     //region Konstruktoren
 
     // TODO: Korrektes Level ChallengeState handling
-    public Level(String label, int count, Observer observer){
+    public Level(String label, int count, LevelLibrary levelLibrary, Observer observer){
         this.levelLabel = label;
         this.levelState = LevelState.open;
         this.challenges = new ArrayList<>();
         this.levelCount = count;
+        this.levelLibrary = levelLibrary;
         this.levelDoneCount = (count + 1) * 2;
         this.addObserver(observer);
     }
@@ -87,14 +98,15 @@ public class Level extends Observable implements Observer{
 
     //region Methoden
 
-    public void createChallenge(String level){
-        Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
-        challenges.add(newChallange);
-    }
+    /*public Challenge createChallenge(String level){
+        Challenge newChallenge = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
+        challenges.add(newChallenge);
+        return newChallenge;
+    }*/
 
-    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
+    /*public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
         challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
-    }
+    }*/
 
     //endregion
 
