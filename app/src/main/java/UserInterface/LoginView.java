@@ -2,6 +2,7 @@ package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
+import Business.Patient;
 import Business.StartpagePresenter;
 import Data.PatientPersistence;
 import ch.bfh.MyUI;

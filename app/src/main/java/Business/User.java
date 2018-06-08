@@ -32,6 +32,9 @@ abstract class User {
         this.pwd = pwd;
     }
 
+    protected User() {
+    }
+
     public long getId() {
         return id;
     }

@@ -100,7 +100,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         LevelLibraryPersistence.getInstance().getById(lvlLibrary.getId()).getLevels().forEach(level -> levels.add(level.getLevelLabel()));
 
         try {
-            ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
+            ChangeChallenge cC = new ChangeChallenge(levels, challenge);
 
             cC.addListener(this);
             // Add it to the root component
@@ -274,7 +274,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void addLevel(String levelLabel, LevelState state) {
-        Button level = new Button(levelLabel, this::addLevelClick);
+        Button level = new Button(levelLabel, this::addLevelButtonClick);
         level.setId("level");
         level.setWidth("100%");
 
