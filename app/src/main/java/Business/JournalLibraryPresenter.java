@@ -7,6 +7,7 @@ import com.vaadin.ui.*;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class JournalLibraryPresenter extends JournalViewPage implements View {
@@ -17,7 +18,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
     private JournalViewPage JournalViewPage;
     private JournalLibrary jourLibrary;
-    private JournalLibrary currentEntry;
+    private JournalEntry currentEntry;
     private Panel Details;
     private LocalDate selectedDate;
     //endregion
@@ -108,7 +109,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
     }
     private void updateJournalView(Date date) {
-        List<JournalEntry> entries = JournalLibrary.getJournalEntries().getDate().equals(date);
+        List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
         for (JournalEntry journalEntry : entries) {
             addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
         }
@@ -121,8 +122,8 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         // Add it to the root component
         UI.getCurrent().addWindow(aJ);
     }
-    private JournalEntry findJournalEntry(String panelName) {
-       return currentEntry.getJournalEntries().getDate().equals(panelName);
+    private JournalEntry findJournalEntry(String entryTitle) {
+       return (JournalEntry) jourLibrary.getJournalEntries().stream().filter(x -> x.getTitle().equals(entryTitle));
        /* for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
             if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
                 return currentLevel.getChallenges().get(i);
@@ -132,7 +133,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     }
     public void detailsClick(Button.ClickEvent event) {
         removeJournalDetails();
-        addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
+        addJournalDetails(findJournalEntry(currentEntry.getTitle()));
     }
 
 }
