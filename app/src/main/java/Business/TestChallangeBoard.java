@@ -78,7 +78,7 @@ public class TestChallangeBoard {
         lib.createNewLevel(LevelState.open);
         lib.createNewLevel();
 
-        assert lib.getLevels().size() == 3;
+        assert lib.getLevels().size() == 2;
 
         Level currentLevel = new Level("Test", 1, lib);
         currentLevel.createChallenge("blablabla");
@@ -92,7 +92,7 @@ public class TestChallangeBoard {
 
         List<Challenge> challenges = currentLevel.getChallenges();
         assert challenges.size() == 8;
-        assert challenges.stream().filter(a -> a.getTitle() == "Test").count() == 1;
+        assert challenges.stream().filter(a -> a.getTitle() == "Test").count() == 5;
     }
 
     //endregion
