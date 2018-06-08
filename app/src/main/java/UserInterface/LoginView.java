@@ -2,10 +2,8 @@ package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
-import Business.Patient;
 import Business.StartpagePresenter;
 import ch.bfh.MyUI;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
