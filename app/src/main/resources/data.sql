@@ -1,1 +1,1 @@
-INSERT INTO Patient (name, surname, pwd) VALUES ("Roccaro", "Roland","Pass");
+INSERT INTO Patient (username,name, surname, pwd) VALUES ("RoccaroR","Roccaro", "Roland","SavePW_1");

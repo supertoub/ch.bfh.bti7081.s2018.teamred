@@ -2,6 +2,7 @@ package Business;
 
 import UserInterface.StartView;
 import ch.bfh.MyUI;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
 public class StartpagePresenter {
@@ -24,7 +25,6 @@ public class StartpagePresenter {
         if (instance == null) {
             instance = new StartpagePresenter();
         }
-
         return instance;
     }
 
@@ -41,12 +41,17 @@ public class StartpagePresenter {
     //region Events
 
     public void buttonClick(String buttonTitle) {
-        if(buttonTitle.equals("Challenges")){
-            UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
+        try {
+            if (buttonTitle.equals("Challenges")) {
+                UI.getCurrent().getNavigator().navigateTo(MyUI.CHALLENGEVIEW);
+            } else if (buttonTitle.equals("Journal")) {
+                UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
+            }
         }
+        catch (NullPointerException e) {
+            System.out.print("The requestet page does not existe: " + buttonTitle);
+            Notification.show("Are you logged in?", "please login again", Notification.Type.ERROR_MESSAGE);
 
-        else if (buttonTitle.equals("Journal")){
-            UI.getCurrent().getNavigator().navigateTo(MyUI.JOURNALVIEW);
         }
     }
 
