@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
+
 @Entity
 public class Level extends Observable implements Observer{
 
@@ -72,9 +73,10 @@ public class Level extends Observable implements Observer{
     //endregion
 
     //region Konstruktoren
+    public Level() {}
 
     // TODO: Korrektes Level ChallengeState handling
-    public Level(String label, int count, Observer observer){
+    public Level(String label, int count, Observer observer) {
         this.levelLabel = label;
         this.levelState = LevelState.open;
         this.challenges = new ArrayList<>();
@@ -87,13 +89,17 @@ public class Level extends Observable implements Observer{
 
     //region Methoden
 
-    public void createChallenge(String level){
-        Challenge newChallange = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
+    public void createChallenge(String level) {
+        Challenge newChallange = new Challenge(level + " Challenge " + (challenges.size() + 1), "Go shopping at Migros and get all the answers the saleswoman asks. Also talk to a stranger and ask them if they know where the coffee is.", ChallengeState.open, 4, this);
         challenges.add(newChallange);
     }
 
-    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
-        challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
+    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
+        challenges.add(new Challenge(levelTitle + " " + cTitle, cDesc, ChallengeState.open, lOfAx, this));
+    }
+
+    public void deleteChallenge(Challenge challenge){
+        challenges.remove(challenge);
     }
 
     //endregion
