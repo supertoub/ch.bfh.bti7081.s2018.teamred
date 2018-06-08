@@ -1,6 +1,7 @@
 package Business;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -17,6 +18,7 @@ public class JournalLibrary {
     private List<JournalEntry> journalEntries;
 
     public JournalLibrary() {}
+
     public JournalLibrary(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
     }
@@ -25,11 +27,11 @@ public class JournalLibrary {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public List<JournalEntry> getJournalEntries() {
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
+
         return journalEntries;
     }
 
@@ -37,8 +39,19 @@ public class JournalLibrary {
         this.journalEntries = journalEntries;
     }
 
-    void createEntry(){}
+    public void createEntry(){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
+        journalEntries.add(new JournalEntry());
+    }
 
-    void deleteEntry(JournalEntry entry){}
+    void deleteEntry(JournalEntry entry){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+            return;
+        }
+        journalEntries.remove(entry);
+    }
 
 }
