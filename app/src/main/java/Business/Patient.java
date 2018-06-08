@@ -22,7 +22,7 @@ public class Patient extends User {
     //region Konstruktor
 
     public Patient(String userName,String name, String surname, String pwd, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
-        super(userName,name, surname, pwd);
+        super(name, surname, pwd);
         this.lastEntryWritten = lastEntryWritten;
         this.journalLibrary = journalLibrary;
         this.levelLibrary = levelLibrary;

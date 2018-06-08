@@ -18,12 +18,12 @@ public class TestChallangeBoard {
     @Test
     public void testArzt(){
         List<Patient> patienten = new ArrayList<>();
-        patienten.add(new Patient("Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
-        Arzt arzt = new Arzt("Test", "Arzt", "Test", patienten);
+        patienten.add(new Patient("UserName","Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
+        Arzt arzt = new Arzt("UserName","Test", "Arzt", "Test", patienten);
 
         assert arzt.getPatients().size() == 1;
 
-        patienten.add(new Patient("Test 2", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
+        patienten.add(new Patient("UserName","Test 2", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance())));
         arzt.setPatients(patienten);
 
         assert arzt.getPatients().size() == 2;
@@ -31,7 +31,7 @@ public class TestChallangeBoard {
 
     @Test
     public void testPatient(){
-        Patient patient = new Patient("Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance()));
+        Patient patient = new Patient("UserName","Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance()));
         patient.setJournalLibrary(new JournalLibrary());
         assert patient.getJournalLibrary() != null;
         patient.setLastEntryWritten(new Date());
@@ -43,7 +43,7 @@ public class TestChallangeBoard {
     @Test
     public void testUser(){
         List<Patient> patList = new ArrayList<>();
-        User us = new Arzt("Name", "Surname", "PWD", patList);
+        User us = new Arzt("UserName","Name", "Surname", "PWD", patList);
         long id = us.getId();
         assert us.getName().equals("Name");
         assert us.getPwd().equals("PWD");
@@ -126,7 +126,7 @@ public class TestChallangeBoard {
         currentLevel.createChallenge("Test", "Test", "blabla", 1);
         currentLevel.setLevelState(LevelState.closed);
         assert currentLevel.getLevelState().equals(LevelState.closed);
-        assert currentLevel.isDone == false;
+        assert !currentLevel.isDone;
         currentLevel.getLevelLabel();
         currentLevel.getClosedChallengesCount();
         currentLevel.getLevelDoneCount();

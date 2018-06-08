@@ -13,7 +13,7 @@ public class Arzt extends User {
     private List<Patient> patients;
 
     public Arzt(String userName, String name, String surname, String pwd, List<Patient> patients) {
-        super(userName,name, surname, pwd);
+        super(name, surname, pwd);
         this.patients = patients;
     }
 
