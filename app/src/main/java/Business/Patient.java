@@ -24,7 +24,7 @@ public class Patient extends User {
 
     //region Konstruktor
 
-    public Patient(String name, String surname, String pwd, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
+    public Patient(String userName,String name, String surname, String pwd, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
         super(name, surname, pwd);
         this.lastEntryWritten = lastEntryWritten;
         this.journalLibrary = journalLibrary;

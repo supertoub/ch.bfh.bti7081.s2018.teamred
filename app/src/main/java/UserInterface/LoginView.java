@@ -2,7 +2,6 @@ package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
-import Business.Patient;
 import Business.StartpagePresenter;
 import Data.PatientPersistence;
 import ch.bfh.MyUI;
@@ -22,9 +21,9 @@ public class LoginView extends LoginViewPage implements View {
     based on Login Example:
     source: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-login-example/
      */
-
+    
     public Boolean authenticate(String username, String password){
-        Patient patient = PatientPersistence.getInstance().getByName(username);
+       Patient patient = PatientPersistence.getInstance().getByName(username);
 
        if(password.equals(patient.getPwd())){
            return true;
@@ -35,8 +34,6 @@ public class LoginView extends LoginViewPage implements View {
 
     public void LoginbuttonClick(Button.ClickEvent event) {
             if(authenticate(usernameField.getValue(), passwordField.getValue())){
-
-           // if(this.authenticate(usernameField.getValue(), passwordField.getValue())){
                 VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
 
                 StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
@@ -52,7 +49,4 @@ public class LoginView extends LoginViewPage implements View {
                 Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
             }
     }
-
-
-
 }

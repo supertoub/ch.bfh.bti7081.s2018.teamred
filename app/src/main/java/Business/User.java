@@ -15,6 +15,9 @@ abstract class User {
     private long id;
 
     @Column(length = 64, nullable = false)
+    private String userName;
+
+    @Column(length = 64, nullable = false)
     private String name;
 
     @Column(length = 64, nullable = false)
@@ -22,8 +25,6 @@ abstract class User {
 
     @Column(length = 128, nullable = false)
     private String pwd;
-
-    public User() {}
 
     public User(String name, String surname, String pwd) {
         this.name = name;
@@ -39,9 +40,13 @@ abstract class User {
         this.id = id;
     }
 
+    public String getuserName(){ return userName; }
+
     public String getName() {
         return name;
     }
+
+    public void setUserName(String userName){ this.userName = userName;}
 
     public void setName(String name) {
         this.name = name;

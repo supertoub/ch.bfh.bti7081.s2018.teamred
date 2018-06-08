@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 
 /**
- * Class to manage Challenge objects on database layer
+ * Class to manage Level objects on database layer
  *
  * @date 01.06.2018
  *
@@ -20,9 +20,13 @@ public class LevelPersistence extends GenericPersistence<Level, Long>{
     //we inherit the basic CRUD operations from the GenericRepository
 
     private static final Logger logger = LogManager.getLogger(LevelPersistence.class);
-    static LevelPersistence singleton;
+    private static LevelPersistence singleton;
 
-    //returns the current instance of ChallengePersistence
+    private LevelPersistence(){
+
+    }
+
+    //returns the current instance of LevelPersistence
     public static LevelPersistence getInstance() {
         if (singleton == null) {
             singleton = new LevelPersistence();

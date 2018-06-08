@@ -49,10 +49,6 @@ public class LevelLibrary extends Observable implements Observer {
 
     //region Setter
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setLevels(List<Level> levels) {
         this.levels = levels;
     }
@@ -78,14 +74,14 @@ public class LevelLibrary extends Observable implements Observer {
 
     //region Methoden
 
-    Level createNewLevel() {
+    public Level createNewLevel() {
         int levelCount = levels.size();
         Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this, this);
         levels.add(newLevel);
         return newLevel;
     }
 
-    Level createNewLevel(LevelState levelState){
+    public Level createNewLevel(LevelState levelState){
         int levelCount = levels.size();
         Level newLevel = new Level("Level " + (levels.size()+1), levelCount, this,this);
         newLevel.setLevelState(levelState);
@@ -100,6 +96,12 @@ public class LevelLibrary extends Observable implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Level updatedLevel = (Level) o;
+
+        int levelCount = updatedLevel.getLevelCount();
+        if ((levelCount + 1) > (levels.size() - 1)){
+            return;
+        }
+
         Level nextLevel = levels.get(updatedLevel.getLevelCount() + 1);
         nextLevel.setLevelState(LevelState.open);
         this.setChanged();

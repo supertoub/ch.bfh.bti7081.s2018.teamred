@@ -1,5 +1,6 @@
 package UserInterface;
 
+import Business.Challenge;
 import com.vaadin.server.Page;
 import com.vaadin.server.UserError;
 import com.vaadin.shared.Position;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddChallenge extends Window  implements ChallengeBoard{
+public class ChangeChallenge extends Window  implements ChallengeBoard{
     //region Variablen
 
     private TextField tfTitle;
     private TextArea tADesc;
-    private ComboBox<String> select;
+    //private ComboBox<String> select;
     private RadioButtonGroup<String> rbglOA;
     private Label counterTitle;
     private Label counterDesc;
@@ -32,44 +33,46 @@ public class AddChallenge extends Window  implements ChallengeBoard{
 
     //region Konstruktoren
 
-    public AddChallenge(List<String> lvls) {
-        createWindow(lvls);
+    public ChangeChallenge(List<String> lvls, Challenge challenge) {
+        createWindow(lvls,challenge);
         this.center();
     }
+
+
     //endregion
 
     //region Methoden
-    private void createWindow(List<String> lvls){
+    private void createWindow(List<String> lvls,Challenge challenge){
         VerticalLayout subContent = new VerticalLayout();
         HorizontalLayout titleLayout = new HorizontalLayout();
         HorizontalLayout descLayout = new HorizontalLayout();
 
-        createTextField();
-        createTextArea();
-        createComboBox(lvls);
-        createRadioButton();
+        createTextField(challenge.getTitle());
+        createTextArea(challenge.getDesc());
+        //createComboBox(lvls);
+        createRadioButton(challenge.getLevelOfAnxiety());
 
         setContent(subContent);
-        subContent.addComponent(new Label("Add new challenge"));
-        subContent.addComponent(select);
+        subContent.addComponent(new Label("Change Challenge"));
+        //subContent.addComponent(select);
         subContent.addComponent(titleLayout);
-
         titleLayout.addComponent(tfTitle);
         titleLayout.addComponent(counterTitle);
         subContent.addComponent(descLayout);
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
         subContent.addComponent(rbglOA);
-        subContent.addComponent(new Button("Add Challenge", event -> buttonClick(event,select.getValue(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
+        subContent.addComponent(new Button("Save", event -> changeChallengeClick(event,challenge.getTitle(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
         subContent.addComponent(new Button("Close", event -> close()));
-        subContent.addComponent(selectL);
+        //subContent.addComponent(selectL);
 
     }
 
-    private void createTextField() {
+    private void createTextField(String title) {
         tfTitle = new TextField();
+        tfTitle.setValue(title);
         counterTitle = new Label();
-        tfTitle.setPlaceholder("Title");
+        //tfTitle.setPlaceholder("Title");
         tfTitle.setMaxLength(15);
         // Counter for input length
         counterTitle.setValue(tfTitle.getValue().length() +
@@ -82,8 +85,9 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         tfTitle.setValueChangeMode(ValueChangeMode.EAGER);
     }
 
-    private void createTextArea(){
+    private void createTextArea(String Desc){
         tADesc = new TextArea();
+        tADesc.setValue(Desc);
         counterDesc = new Label();
         tADesc.setPlaceholder("Description");
         tADesc.setMaxLength(200);
@@ -98,6 +102,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
             counterDesc.setValue(lenDesc + " of " + tADesc.getMaxLength());
         });
     }
+    /*
     private void createComboBox(List<String> lvls) {
         selectL = new Label();
         // Create a selection component with some items
@@ -109,12 +114,12 @@ public class AddChallenge extends Window  implements ChallengeBoard{
                 selectL.setValue(("Selected " +
                         event.getSelectedItem().orElse("none"))));
     }
-
-    private void createRadioButton(){
+*/
+    private void createRadioButton(Integer levelOfAnxiety){
         rbglOA =
                 new RadioButtonGroup<>("Level of Anxiety");
         rbglOA.setItems("1", "2", "3","4","5");
-        rbglOA.setSelectedItem("1");
+        rbglOA.setSelectedItem(levelOfAnxiety.toString());
     }
 
     private void createNotification(String mainMessage, String subMessage, Notification.Type notificationType, int ms) {
@@ -136,27 +141,30 @@ public class AddChallenge extends Window  implements ChallengeBoard{
 
     //region Events
 
-    public void buttonClick(Button.ClickEvent event, String levelTitle, String cTitle, String cDesc, int lOfAx) {
-        select.setComponentError(null);
+    public void changeChallengeClick(Button.ClickEvent event,String cTitleOld,String cTitle, String cDesc, int lOfAx) {
+
+        //select.setComponentError(null);
         tfTitle.setComponentError(null);
         tADesc.setComponentError(null);
-
+        /*
         if(levelTitle == null){
             createNotification("No Level Chosen","please select a level",Notification.Type.ERROR_MESSAGE, 2000);
             select.setComponentError(new UserError("No Level Chosen"));
         }
-        else if (cTitle == null || lenTitle < 1){
+        */
+        // TODO: elseif Abfrage erstellen, die überprüft ob es den Titel schon mal gibt
+        if (cTitle == null || cTitle.length()==0){
             createNotification("No Title Entered","please add title",Notification.Type.ERROR_MESSAGE, 2000);
             tfTitle.setComponentError(new UserError("No Title Entered"));
         }
-        else if (cDesc == null || lenDesc < 1){
+        else if (cDesc == null || cDesc.length()==0){
             createNotification("No Description Entered","please add description",Notification.Type.ERROR_MESSAGE, 2000);
             tADesc.setComponentError(new UserError("No Title Entered"));
         }
         else{
-            createNotification("Add challenge to "+levelTitle,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
+            createNotification("Changes saved",cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
             for (ChallengeBoardViewListener listener: listeners)
-                listener.newChallenge(levelTitle,cTitle,cDesc,lOfAx);
+                listener.changeChallengeClick(cTitleOld,cTitle,cDesc,lOfAx);
             close();
         }
 

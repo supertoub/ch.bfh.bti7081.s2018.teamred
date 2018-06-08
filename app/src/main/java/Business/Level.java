@@ -67,10 +67,6 @@ public class Level extends Observable implements Observer{
         this.levelState = levelState;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setChallenges(List<Challenge> challenges) {
         this.challenges = challenges;
     }
@@ -82,6 +78,7 @@ public class Level extends Observable implements Observer{
     //endregion
 
     //region Konstruktoren
+    public Level() {}
 
     // TODO: Korrektes Level ChallengeState handling
     public Level(String label, int count, LevelLibrary levelLibrary, Observer observer){
@@ -101,15 +98,18 @@ public class Level extends Observable implements Observer{
 
     //region Methoden
 
-    /*public Challenge createChallenge(String level){
-        Challenge newChallenge = new Challenge(level +" Challenge " + (challenges.size()+1),"test", ChallengeState.open,4, this);
-        challenges.add(newChallenge);
-        return newChallenge;
-    }*/
+    public void createChallenge(String level) {
+        Challenge newChallange = new Challenge(level + " Challenge " + (challenges.size() + 1), "Go shopping at Migros and get all the answers the saleswoman asks. Also talk to a stranger and ask them if they know where the coffee is.", ChallengeState.open, 4, this);
+        challenges.add(newChallange);
+    }
 
-    /*public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx){
-        challenges.add(new Challenge(levelTitle+ " " +cTitle, cDesc, ChallengeState.open,lOfAx, this));
-    }*/
+    public void createChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
+        challenges.add(new Challenge(levelTitle + " " + cTitle, cDesc, ChallengeState.open, lOfAx, this));
+    }
+
+    public void deleteChallenge(Challenge challenge){
+        challenges.remove(challenge);
+    }
 
     //endregion
 
@@ -126,5 +126,3 @@ public class Level extends Observable implements Observer{
     }
 
     //endregion
-
-}
