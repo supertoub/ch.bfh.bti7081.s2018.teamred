@@ -1,14 +1,17 @@
 package Business;
 
+import Data.ChallengePersistence;
+import Data.LevelLibraryPersistence;
 import Data.LevelPersistence;
+import Data.PatientPersistence;
 import UserInterface.AddChallenge;
 import UserInterface.ChallengeBoard;
-import UserInterface.ChallengeBoardView;
 import UserInterface.ChallengeBoardViewPage;
 import ch.bfh.MyUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -54,21 +57,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
         getNewChall().addClickListener(this::NewChallClick);
         getAddLevelButton().addClickListener(this::AddLevelButtonClick);
 
-        // Creates Levels for a example view
-        lvlLibrary = new LevelLibrary(this);
-        for (int i = 1; i <= 5; i++) {
-            if (i == 1) lvlLibrary.createNewLevel(LevelState.open);
-            else lvlLibrary.createNewLevel(LevelState.closed);
+        // Get patient from session and fetch it from persistence
+        Patient patient = PatientPersistence.getInstance().getByName(UI.getCurrent().getSession().getAttribute("user").toString());
 
-        }
-        lvlLibrary.getLevels().get(3).setLevelState(LevelState.closed);
-
-        //add 6 Challenges for each Level for example
-        for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
-            for (int j = 1; j < 7; j++) {
-                lvlLibrary.getLevels().get(i).createChallenge("lvl " + (i + 1) + ":");
-            }
-        }
+        // Fetch LevelLibrary by Id from persistence over patient instance
+        lvlLibrary = LevelLibraryPersistence.getInstance().getById(patient.getLevelLibrary().getId());
 
         updateLevelView();
     }
@@ -78,28 +71,18 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     //region Methoden
 
     private void newWindowAddChall() {
-        List<String> lvls = new ArrayList<>();
-        for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-            lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-        }
-        AddChallenge aC = new AddChallenge(lvls);
+        List<String> levels = new ArrayList<>();
+        LevelLibraryPersistence.getInstance().getById(lvlLibrary.getId()).getLevels().forEach(level -> levels.add(level.getLevelLabel()));
+
+        AddChallenge aC = new AddChallenge(levels);
 
         aC.addListener(this);
         // Add it to the root component
         UI.getCurrent().addWindow(aC);
     }
 
-    // TODO: Event in Level handeln
-    private Level findClickedLevel(String buttonTitle) {
-        for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
-            if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
-                return lvlLibrary.getLevels().get(i);
-            }
-        }
-        return null; //hier Exception machen falls es das LVL nicht findet
-    }
-
     // TODO: Event in Challange handeln
+    // TODO: Replace with methods from persistence
     private Challenge findChallenge(String panelName) {
         for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
             if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
@@ -287,7 +270,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
     }
 
     public void AddLevelClick(Button.ClickEvent event) {
-        currentLevel = findClickedLevel(event.getButton().getCaption());
+        currentLevel = LevelPersistence.getInstance().getByTitle(event.getButton().getCaption());
         removeChallenges();
 
         if (currentLevel == null) {
@@ -361,8 +344,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardViewPage implements O
 
     @Override
     public void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) {
-        Level level = findClickedLevel(levelTitle);
-        level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
+        Level level = LevelPersistence.getInstance().getByTitle(levelTitle);
+
+        Challenge challenge = new Challenge(levelTitle + cTitle, cDesc, ChallengeState.open, level, lOfAx, this);
+        ChallengePersistence.getInstance().persist(challenge);
+
         if (level.getLevelState()==LevelState.open) {
             removeChallenges();
             updateChallengeView(level);
