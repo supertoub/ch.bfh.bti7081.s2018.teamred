@@ -43,15 +43,9 @@ public class LoginViewPagePresenter {
     //endregion
 
     //region Events
-/*
-    public void newChallenge(String buttonTitle) {
-        if(buttonTitle.equals("Login")) {
-            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-        }
-    }
-*/
 
     //endregion
+
 
 }
 
