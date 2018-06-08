@@ -22,19 +22,6 @@ public class LoginView extends LoginViewPage implements View {
     based on Login Example:
     source: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-login-example/
      */
-//
-//    @PersistenceContext
-//    private EntityManager entityManager;
-//    @Test
-//    public void genericDAOShouldSaveAChallengeEntity() throws Exception {
-//        // Save a person
-//        GenericDataFacade<Patient, String> patientDao = new GenericDataFacadeJPA<>(Patient.class);
-//
-//        patientDao.setEntityManager(entityManager);
-//        Patient patient = new Patient("Roccaro", "Roland","Pass",null,null,null);
-//        patient = patientDao.save(patient);
-//        Patient anotherPatient = patientDao.get(patient.getName());
-//    }
 
     private String username = "RoccaroR";
     private String password = "SavePW_1";
@@ -59,26 +46,8 @@ public class LoginView extends LoginViewPage implements View {
         return username.equals(getUsername()) && password.equals(getPassword());
     }
 
-
-/* TODO, reuse this code to do the login using DB
-    public Boolean authenticate(String username, String password){
-      GenericDataFacade<Patient, String> userDao = new GenericDataFacadeJPA<>(Patient.class);
-      String DBpassword = userDao.get(username).getPwd();
-
-       if(password.equals(DBpassword)){
-
-        //if(true){
-            return true;
-        }else{
-            return false;
-
-        }
-    }
-*/
     public void LoginbuttonClick(Button.ClickEvent event) {
             if(authenticate(usernameField.getValue(), passwordField.getValue())){
-
-           // if(this.authenticate(usernameField.getValue(), passwordField.getValue())){
                 VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
 
                 StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
@@ -94,7 +63,4 @@ public class LoginView extends LoginViewPage implements View {
                 Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
             }
     }
-
-
-
 }
