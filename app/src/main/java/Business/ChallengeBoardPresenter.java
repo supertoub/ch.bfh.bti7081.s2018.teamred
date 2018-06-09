@@ -274,7 +274,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void addLevel(String levelLabel, LevelState state) {
-        Button level = new Button(levelLabel, this::addLevelButtonClick);
+        Button level = new Button(levelLabel, this::addLevelClick);
         level.setId("level");
         level.setWidth("100%");
 
@@ -384,7 +384,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
     }
 
-    public void AddLevelClick(Button.ClickEvent event) {
+    public void addLevelClick(Button.ClickEvent event) {
         currentLevel = LevelPersistence.getInstance().getByTitle(event.getButton().getCaption());
         removeChallenges();
         try {
