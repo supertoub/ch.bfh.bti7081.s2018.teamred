@@ -91,20 +91,17 @@ public class  Challenge extends Observable {
         this.addObserver(observer);
     }
 
-    public Challenge(String title, String desc, ChallengeState challengeState, Level level, int levelOfAnxiety){
-        this.title = title;
-        this.desc = desc;
-        this.challengeState = challengeState;
-        this.level = level;
-        this.levelOfAnxiety = levelOfAnxiety;
-    }
-
     // no-arg constructur needed by hibernate for object creation via reflection
     public Challenge(){}
 
     //endregion
 
     //region Methoden
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
     //endregion
 
 }
