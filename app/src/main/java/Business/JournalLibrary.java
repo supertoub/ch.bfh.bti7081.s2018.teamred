@@ -1,7 +1,11 @@
 package Business;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 import java.util.Date;
+=======
+import java.util.ArrayList;
+>>>>>>> master
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -20,6 +24,7 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
     private List<JournalEntry> journalEntries;
 
     public JournalLibrary() {}
+
     public JournalLibrary(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
     }
@@ -28,11 +33,11 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public List<JournalEntry> getJournalEntries() {
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
+
         return journalEntries;
     }
 
@@ -41,6 +46,7 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
     }
     //region Methoden
 
+<<<<<<< HEAD
     public void createJournalEntry(Date Date, String jTitle, String jDesc){
         journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc));
     }
@@ -49,5 +55,21 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
 
 
 
+=======
+    public void createEntry(){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
+        journalEntries.add(new JournalEntry());
+    }
+
+    void deleteEntry(JournalEntry entry){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+            return;
+        }
+        journalEntries.remove(entry);
+    }
+>>>>>>> master
 
 }

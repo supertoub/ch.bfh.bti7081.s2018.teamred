@@ -10,7 +10,7 @@ public class LoginPersistence extends GenericPersistence<Patient, Long>{
     //we inherit the basic CRUD operations from the GenericRepository
 
     private static final Logger logger = LogManager.getLogger(LoginPersistence.class);
-    static LoginPersistence singleton;
+    private static LoginPersistence singleton;
 
     //returns the current instance of ChallengePersistence
     public static LoginPersistence getInstance() {

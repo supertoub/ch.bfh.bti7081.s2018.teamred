@@ -60,6 +60,10 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     }
 
     public void backButtonClick(Button.ClickEvent event) {
+        if (UI.getCurrent() == null){
+            return;
+        }
+
         UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
     }
 
@@ -119,6 +123,9 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
         AddJournalEntry aJ = new AddJournalEntry(entrys);
 
+        if (UI.getCurrent() == null){
+            return;
+        }
         // Add it to the root component
         UI.getCurrent().addWindow(aJ);
     }
