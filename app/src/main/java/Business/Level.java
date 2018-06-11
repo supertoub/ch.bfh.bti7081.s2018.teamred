@@ -1,5 +1,7 @@
 package Business;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -17,6 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Level extends Observable implements Observer {
 
     //region Variablen
+    private static final Logger logger = LogManager.getLogger(Level.class);
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -90,9 +93,9 @@ public class Level extends Observable implements Observer {
     //endregion
 
     // TODO: Korrektes Level ChallengeState handling
-    public Level(String label, int count, LevelLibrary levelLibrary, Observer observer) {
+    public Level(String label, LevelState state, int count, LevelLibrary levelLibrary, Observer observer) {
         this.levelLabel = label;
-        this.levelState = LevelState.open;
+        this.levelState = state;
         this.challenges = new ArrayList<>();
         this.levelCount = count;
         this.levelLibrary = levelLibrary;
@@ -111,6 +114,8 @@ public class Level extends Observable implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        logger.debug("got level: " + this.getLevelLabel());
+        logger.debug("got challenges: " + this.challenges.toString());
         int countClosedChallanges = (int) this.challenges.stream().filter(ch -> ch.getChallengeState() == ChallengeState.closed).count();
         if (countClosedChallanges >= levelDoneCount) {
             this.isDone = true;
