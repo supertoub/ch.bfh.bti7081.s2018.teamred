@@ -1,11 +1,10 @@
 package Business;
 
 import javax.persistence.*;
-<<<<<<< HEAD
+
 import java.util.Date;
-=======
+
 import java.util.ArrayList;
->>>>>>> master
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,14 +15,16 @@ import static javax.persistence.GenerationType.AUTO;
 public class JournalLibrary /*extends Observable implements Observer*/ {
     @Id
     @GeneratedValue(strategy = AUTO)
-    @Column(name = "journallibrary_id")
+    //@Column(name = "journallibrary_id")
     private long id;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="journalentry_id")
+    //@JoinColumn(name="journalentry_id")
     private List<JournalEntry> journalEntries;
 
-    public JournalLibrary() {}
+    public JournalLibrary() {
+        this.journalEntries = new ArrayList<>();
+    }
 
     public JournalLibrary(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
@@ -46,22 +47,24 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
     }
     //region Methoden
 
-<<<<<<< HEAD
+
     public void createJournalEntry(Date Date, String jTitle, String jDesc){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
         journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc));
     }
-    void deleteEntry(JournalEntry entry){}
+
     //endregion
 
 
 
-=======
-    public void createEntry(){
+   /* public void createEntry(){
         if (journalEntries == null){
             journalEntries = new ArrayList<>();
         }
         journalEntries.add(new JournalEntry());
-    }
+    }*/
 
     void deleteEntry(JournalEntry entry){
         if (journalEntries == null){
@@ -70,6 +73,6 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
         }
         journalEntries.remove(entry);
     }
->>>>>>> master
+
 
 }

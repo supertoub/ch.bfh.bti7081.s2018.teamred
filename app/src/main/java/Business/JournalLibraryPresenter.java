@@ -44,6 +44,8 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
     private JournalLibraryPresenter() {
         super();
+        this.jourLibrary = new JournalLibrary();
+
         Date today = java.sql.Date.valueOf(LocalDate.now());
         JournalViewPage = new JournalViewPage();
         journalDate.setValue(LocalDate.now());
@@ -94,29 +96,26 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
 
     public void addJournalDetails(JournalEntry journal) {
         this.getDetails().setWidth("100%");
+        this.getDetails().setCaption(journal.getTitle());
         final VerticalLayout content = new VerticalLayout();
         content.setWidth("100%");
         this.getDetails().setContent(content);
         this.getJournalDetailsLayout().addComponent(this.getDetails());
         content.addComponent(new Label(journal.getTitle().toUpperCase()));
         content.addComponent(new Label(journal.getDate().toString()));
-        //content.addComponent(new Label(challenge.getDesc(), ContentMode.TEXT));
-        //content.addComponent(new Label(challenge.getChallengeState().toString()));
-        //String levelAnx = Integer.toString(challenge.getLevelOfAnxiety());
-        //content.addComponent(new Label("Level of Anxiety: "+levelAnx));
         Label Description = new Label(journal.getDesc());
         Description.setWidth("100%");
-        //Description.setHeight("100%");
         content.addComponent(Description);
-        //content.setExpandRatio(Description,2);
         this.getDetails().setDescription("Journal Entry Details");
 
     }
     private void updateJournalView(Date date) {
-        List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
-        for (JournalEntry journalEntry : entries) {
-            addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
-        }
+            addJournalEntry(java.sql.Date.valueOf(LocalDate.now()), "Test", "test");
+            List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
+
+                for (JournalEntry journalEntry : entries) {
+                    addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
+                }
     }
     public void newWindowAddEntry() {
         List<String> entrys = new ArrayList<>();
@@ -140,7 +139,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     }
     public void detailsClick(Button.ClickEvent event) {
         removeJournalDetails();
-        addJournalDetails(findJournalEntry(currentEntry.getTitle()));
+        addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
     }
 
 }

@@ -7,7 +7,6 @@ import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -19,11 +18,8 @@ public class AddJournalEntry extends Window  implements Journal{
     private TextField tfTitle;
     private InlineDateField idfDate;
     private TextArea tADesc;
-    private ComboBox<String> select;
-    //private RadioButtonGroup<String> rbglOA;
     private Label counterTitle;
     private Label counterDesc;
-  //  private Label selectL;
     private int lenTitle;
     private int lenDesc;
     private String selectedDate;
@@ -54,12 +50,11 @@ public class AddJournalEntry extends Window  implements Journal{
         createInlineDateField();
         createTextField();
         createTextArea();
-        //createComboBox(lvls);
-       // createRadioButton();
+
 
         setContent(subContent);
         subContent.addComponent(new Label("Add new Journal entry"));
-        //subContent.addComponent(select);
+
         subContent.addComponent(titleLayout);
         titleLayout.addComponent(tfTitle);
         titleLayout.addComponent(counterTitle);
@@ -67,10 +62,9 @@ public class AddJournalEntry extends Window  implements Journal{
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
         subContent.addComponent(idfDate);
-       // subContent.addComponent(rbglOA);
         subContent.addComponent(new Button("Add Entry", event -> buttonClick(event, selectedDate, tfTitle.getValue(),tADesc.getValue())));
         subContent.addComponent(new Button("Close", event -> close()));
-        //subContent.addComponent(selectL);
+
 
     }
 
@@ -113,34 +107,6 @@ public class AddJournalEntry extends Window  implements Journal{
             counterDesc.setValue(lenDesc + " of " + tADesc.getMaxLength());
         });
     }
-   /* private void createComboBox(List<String> lvls) {
-        selectL = new Label();
-        // Create a selection component with some items
-        select = new ComboBox<>("Select Level");
-        select.setEmptySelectionAllowed(false);
-        select.setItems(lvls);
-        // Handle selection event
-        select.addSelectionListener(event ->
-                selectL.setValue(("Selected " +
-                        event.getSelectedItem().orElse("none"))));
-    }
-*/
-   /*
-    private void createRadioButton(){
-        rbglOA =
-                new RadioButtonGroup<>("Level of Anxiety");
-        rbglOA.setItems("1", "2", "3","4","5");
-        rbglOA.setSelectedItem("1");
-    }
-
-    private void createNotification(String mainMessage, String subMessage, Notification.Type notificationType, int ms) {
-        Notification notif = new Notification(mainMessage,subMessage,notificationType);
-        notif.setDelayMsec(ms);
-        notif.setPosition(Position.MIDDLE_CENTER);
-        notif.show(Page.getCurrent());
-    }
-
-*/
     private List<JournalViewListener> listeners =
             new ArrayList<>();
 
@@ -160,14 +126,10 @@ public class AddJournalEntry extends Window  implements Journal{
 
     public void buttonClick(Button.ClickEvent event, String selectedDate, String cTitle, String cDesc) {
 
-        //select.setComponentError(null);
+
         tfTitle.setComponentError(null);
         tADesc.setComponentError(null);
 
-       /* if(levelTitle == null){
-            createNotification("No Level Chosen","please select a level",Notification.Type.ERROR_MESSAGE, 2000);
-            select.setComponentError(new UserError("No Level Chosen"));
-        }*/
          if (cTitle == null || lenTitle < 1){
             createNotification("No Title Entered","please add title",Notification.Type.ERROR_MESSAGE, 2000);
             tfTitle.setComponentError(new UserError("No Title Entered"));
@@ -177,7 +139,7 @@ public class AddJournalEntry extends Window  implements Journal{
             tADesc.setComponentError(new UserError("No Title Entered"));
         }
         else{
-            createNotification("Add challenge to "+selectedDate,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
+            createNotification("Add Journal entry to "+selectedDate,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
             for (JournalViewListener listener: listeners)
                 listener.buttonClick(selectedDate,cTitle,cDesc);
             close();
