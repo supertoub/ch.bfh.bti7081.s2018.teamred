@@ -74,21 +74,6 @@ public class LevelLibrary extends Observable implements Observer {
 
     //region Methoden
 
-    public Level createNewLevel() {
-        int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this, this);
-        levels.add(newLevel);
-        return newLevel;
-    }
-
-    public Level createNewLevel(LevelState levelState){
-        int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size()+1), levelCount, this,this);
-        newLevel.setLevelState(levelState);
-        levels.add(newLevel);
-        return newLevel;
-    }
-
     //endregion
 
     //region Events
