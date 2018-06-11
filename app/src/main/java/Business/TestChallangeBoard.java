@@ -1,4 +1,4 @@
-package Business;
+/*package Business;
 
 import UserInterface.ChallengeBoard;
 import com.vaadin.ui.Button;
@@ -201,3 +201,4 @@ public class TestChallangeBoard {
     //endregion
 
 }
+*/

@@ -1,4 +1,4 @@
-package UserInterface;
+/*package UserInterface;
 
 import Business.ChallengeBoardPresenter;
 import Business.JournalLibraryPresenter;
@@ -22,3 +22,4 @@ public class TestUserInterface {
         entry.buttonClick(new Button.ClickEvent(new Button()), "Level", "Test", "Test", 1);
     }
 }
+*/

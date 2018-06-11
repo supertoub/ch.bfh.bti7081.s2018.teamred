@@ -139,7 +139,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     }
     public void detailsClick(Button.ClickEvent event) {
         removeJournalDetails();
-        addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
+        addJournalDetails(findJournalEntry(currentEntry.getTitle()));
     }
 
 }
