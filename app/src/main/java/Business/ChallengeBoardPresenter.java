@@ -1,9 +1,6 @@
 package Business;
 
-import Data.ChallengePersistence;
-import Data.LevelLibraryPersistence;
-import Data.LevelPersistence;
-import Data.PatientPersistence;
+import Data.*;
 import UserInterface.AddChallenge;
 import UserInterface.ChangeChallenge;
 import UserInterface.ChallengeBoard;
@@ -15,6 +12,8 @@ import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     private LevelLibrary lvlLibrary;
 
     private Level currentLevel;
+
+    private static final Logger logger = LogManager.getLogger(ChallengeBoardPresenter.class);
 
     //endregion
 
@@ -66,6 +67,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
         // Fetch LevelLibrary by Id from persistence over patient instance
         lvlLibrary = LevelLibraryPersistence.getInstance().getById(patient.getLevelLibrary().getId());
+        lvlLibrary.addObserver(this);
 
         updateLevelView();
     }
@@ -144,6 +146,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         try {
             List<Level> levels = lvlLibrary.getLevels();
             for (Level level : levels) {
+                if (level.countObservers() == 0) level.addObserver(this.lvlLibrary);
                 addLevel(level.getLevelLabel(), level.getLevelState());
             }
         } catch (NullPointerException e) {
@@ -164,6 +167,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         try {
             List<Challenge> challenges = level.getChallenges();
             for (Challenge challenge : challenges) {
+                if (challenge.countObservers() == 0) challenge.addObserver(level);
                 addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
             }
         } catch (NullPointerException e) {
@@ -336,7 +340,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void addLevelButtonClick(Button.ClickEvent event) {
-        Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
+        LevelLibraryPersistence.getInstance().getEntityManager().refresh(lvlLibrary);
+        Level createdLevel = new Level("Level "+(this.lvlLibrary.getLevels().size() + 1), LevelState.closed, this.lvlLibrary.getLevels().size(), this.lvlLibrary, this.lvlLibrary);
+        LevelPersistence.getInstance().persist(createdLevel);
         this.addLevelToLevelView(createdLevel);
     }
 
@@ -441,13 +447,19 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     @Override
     public void newChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = LevelPersistence.getInstance().getByTitle(levelTitle);
+        logger.debug("got level from persistence: " +level.getLevelLabel());
 
         try {
-            Challenge challenge = new Challenge(levelTitle + cTitle, cDesc, ChallengeState.open, level, lOfAx, this);
-            ChallengePersistence.getInstance().persist(challenge);
+            Challenge challenge = new Challenge(levelTitle + cTitle, cDesc, ChallengeState.open, level, lOfAx, level);
+            challenge = ChallengePersistence.getInstance().persist(challenge);
+            LevelPersistence.getInstance().getEntityManager().refresh(level);
+            this.currentLevel = level;
+            logger.debug("peristed challenge: " + challenge.getTitle());
 
             if (level.getLevelState() == LevelState.open) {
                 removeChallenges();
+                logger.debug("update view with level: " + level.getLevelLabel());
+                logger.debug("about to add following challenges: " + level.getChallenges().toString());
                 updateChallengeView(level);
             }
         } catch (NullPointerException e) {
