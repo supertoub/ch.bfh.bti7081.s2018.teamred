@@ -8,6 +8,7 @@ import com.vaadin.ui.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,7 +23,10 @@ public class AddJournalEntry extends Window  implements Journal{
     private Label counterDesc;
     private int lenTitle;
     private int lenDesc;
-    private String selectedDate;
+    private LocalDate selectedDate;
+    private List<JournalViewListener> listeners =
+            new ArrayList<>();
+
     //endregion
 
     //region Getter
@@ -42,6 +46,7 @@ public class AddJournalEntry extends Window  implements Journal{
     //endregion
 
     //region Methoden
+
     private void createWindow(List<String> lvls){
         VerticalLayout subContent = new VerticalLayout();
         HorizontalLayout titleLayout = new HorizontalLayout();
@@ -50,7 +55,6 @@ public class AddJournalEntry extends Window  implements Journal{
         createInlineDateField();
         createTextField();
         createTextArea();
-
 
         setContent(subContent);
         subContent.addComponent(new Label("Add new Journal entry"));
@@ -62,17 +66,18 @@ public class AddJournalEntry extends Window  implements Journal{
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
         subContent.addComponent(idfDate);
-        subContent.addComponent(new Button("Add Entry", event -> buttonClick(event, selectedDate, tfTitle.getValue(),tADesc.getValue())));
+        subContent.addComponent(new Button("Add Entry", event -> buttonClick(event, selectedDate.toString(), tfTitle.getValue(),tADesc.getValue())));
         subContent.addComponent(new Button("Close", event -> close()));
 
 
     }
 
     private void createInlineDateField() {
-        idfDate = new InlineDateField();
-        idfDate.setValue(LocalDate.now());
-        idfDate.setLocale(new Locale("de", "DE"));
-        idfDate.addValueChangeListener(event -> selectedDate = (event.getValue().toString()));
+        this.idfDate = new InlineDateField();
+        this.idfDate.setValue(LocalDate.now());
+        this.idfDate.setLocale(new Locale("de", "DE"));
+        this.idfDate.addValueChangeListener(event -> selectedDate = (event.getValue()));
+        this.selectedDate = LocalDate.now();
     }
 
     private void createTextField() {
@@ -107,12 +112,11 @@ public class AddJournalEntry extends Window  implements Journal{
             counterDesc.setValue(lenDesc + " of " + tADesc.getMaxLength());
         });
     }
-    private List<JournalViewListener> listeners =
-            new ArrayList<>();
 
     public void addListener(JournalViewListener listener) {
         listeners.add(listener);
     }
+
     private void createNotification(String mainMessage, String subMessage, Notification.Type notificationType, int ms) {
         Notification notif = new Notification(mainMessage,subMessage,notificationType);
         notif.setDelayMsec(ms);
@@ -125,10 +129,9 @@ public class AddJournalEntry extends Window  implements Journal{
     //region Events
 
     public void buttonClick(Button.ClickEvent event, String selectedDate, String cTitle, String cDesc) {
-
-
         tfTitle.setComponentError(null);
         tADesc.setComponentError(null);
+        idfDate.setComponentError(null);
 
          if (cTitle == null || lenTitle < 1){
             createNotification("No Title Entered","please add title",Notification.Type.ERROR_MESSAGE, 2000);
@@ -138,13 +141,18 @@ public class AddJournalEntry extends Window  implements Journal{
             createNotification("No Description Entered","please add description",Notification.Type.ERROR_MESSAGE, 2000);
             tADesc.setComponentError(new UserError("No Title Entered"));
         }
-        else{
-            createNotification("Add Journal entry to "+selectedDate,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
-            for (JournalViewListener listener: listeners)
-                listener.buttonClick(selectedDate,cTitle,cDesc);
-            close();
-        }
-
+        else {
+             createNotification("Add Journal entry to " + selectedDate, cTitle, Notification.Type.HUMANIZED_MESSAGE, 1500);
+             try {
+                 for (JournalViewListener listener : listeners) {
+                     listener.buttonClick(selectedDate, cTitle, cDesc);
+                 }
+                 close();
+             }
+             catch (Exception ex){
+                 idfDate.setComponentError(new UserError(ex.getMessage()));
+             }
+         }
     }
 
 

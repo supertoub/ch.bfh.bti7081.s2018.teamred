@@ -2,21 +2,24 @@ package Business;
 
 import UserInterface.*;
 import ch.bfh.MyUI;
+import com.vaadin.event.ContextClickEvent;
 import com.vaadin.navigator.View;
 import com.vaadin.ui.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class JournalLibraryPresenter extends JournalViewPage implements View {
+public class JournalLibraryPresenter extends JournalViewPage implements View, Journal.JournalViewListener {
 
     //region Variablen
 
     private static JournalLibraryPresenter instance;
 
-    private JournalViewPage JournalViewPage;
+    private JournalViewPage journalViewPage;
     private JournalLibrary jourLibrary;
     private JournalEntry currentEntry;
     private Panel Details;
@@ -27,7 +30,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
     }
 
     public JournalViewPage getJournalView() {
-        return JournalViewPage;
+        return journalViewPage;
     }
 
     public static JournalLibraryPresenter getInstance() {
@@ -47,10 +50,12 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         this.jourLibrary = new JournalLibrary();
 
         Date today = java.sql.Date.valueOf(LocalDate.now());
-        JournalViewPage = new JournalViewPage();
-        journalDate.setValue(LocalDate.now());
-        journalDate.setLocale(new Locale("de", "DE"));
-        journalDate.addValueChangeListener(event -> selectedDate = (event.getValue()));
+        this.journalViewPage = new JournalViewPage();
+        this.journalViewPage.getJournalDate().setValue(LocalDate.now());
+        this.journalViewPage.getJournalDate().setDateFormat("yyyy-MM-dd");
+        this.journalViewPage.getJournalDate().setLocale(new Locale("de", "DE"));
+        this.journalViewPage.getJournalDate().addValueChangeListener(this::dateValueClick);
+        this.journalViewPage.getJournalDate().addContextClickListener(this::dateChangeClick);
         backButton.addClickListener(this::backButtonClick);
         newEntryButton.addClickListener(this::newEntryButtonClick);
         updateJournalView(today);
@@ -59,6 +64,27 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         //StartView.setHeight("100%");
         //StartView.setWidth("1000%");
 
+    }
+
+    public void dateChangeClick(ContextClickEvent event){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            this.updateJournalView(formatter.parse(this.journalViewPage.getJournalDate().getValue().toString()));
+        }
+        catch (Exception ex){
+            return;
+        }
+    }
+
+
+    public void dateValueClick(InlineDateField.ValueChangeEvent event){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            this.updateJournalView(formatter.parse(event.getValue().toString()));
+        }
+        catch (Exception ex){
+            return;
+        }
     }
 
     public void backButtonClick(Button.ClickEvent event) {
@@ -90,6 +116,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         details.setId("details");
         contentLayout.addComponent(details);
     }
+
     public void removeJournalDetails(){
         this.getJournalDetailsLayout().removeComponent(this.getDetails());
     }
@@ -109,18 +136,26 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         this.getDetails().setDescription("Journal Entry Details");
 
     }
-    private void updateJournalView(Date date) {
-            addJournalEntry(java.sql.Date.valueOf(LocalDate.now()), "Test", "test");
-            List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
 
-                for (JournalEntry journalEntry : entries) {
-                    addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
-                }
+    private void updateJournalView(Date date) {
+        //addJournalEntry(java.sql.Date.valueOf(LocalDate.now()), "Test", "test");
+
+        int jourCount = this.getJournalEntrysLayout().getComponentCount();
+        for (int i = --jourCount; i >= 0; i--){
+            this.getJournalEntrysLayout().removeComponent(this.getJournalEntrysLayout().getComponent(i));
+        }
+
+        List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
+        for (JournalEntry journalEntry : entries) {
+            addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
+        }
     }
+
     public void newWindowAddEntry() {
         List<String> entrys = new ArrayList<>();
 
         AddJournalEntry aJ = new AddJournalEntry(entrys);
+        aJ.addListener(this::buttonClick);
 
         if (UI.getCurrent() == null){
             return;
@@ -128,6 +163,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         // Add it to the root component
         UI.getCurrent().addWindow(aJ);
     }
+
     private JournalEntry findJournalEntry(String entryTitle) {
        return (JournalEntry) jourLibrary.getJournalEntries().stream().filter(x -> x.getTitle().equals(entryTitle));
        /* for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
@@ -137,9 +173,22 @@ public class JournalLibraryPresenter extends JournalViewPage implements View {
         }
         return null; //hier Exception machen falls es das challenge nicht findet */
     }
+
     public void detailsClick(Button.ClickEvent event) {
         removeJournalDetails();
         addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
     }
 
+    @Override
+    public void buttonClick(String selectedDate, String cTitle, String cDesc) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = formatter.parse(selectedDate);
+            jourLibrary.createJournalEntry(date, cTitle, cDesc);
+            this.updateJournalView(formatter.parse(selectedDate));
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
 }
