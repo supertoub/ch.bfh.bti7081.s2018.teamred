@@ -22,6 +22,19 @@ Date, Time | Attendance | Minutes 
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
 30.04.18, 20:30 | tba, fle, sth, iri, rro, fzu | 90
+04.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
+07.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 15
+09.05.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
+14.05.18, 20:30 | tba, sth, iri, rro, twe, fzu | 25
+18.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
+23.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
+25.05.18, 20:30 | tba, fle, sth, rro, twe, fzu | 15
+28.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 25
+01.06.18, 20:30 | tba, fle, iri, rro, twe, fzu | 90
+04.06.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
+06.06.18, 20:30 | tba, fle, sth, iri, rro, fzu | 20
+08.06.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
+11.06.18, 20:30 | tba, fle, sth, iri, fzu | 20
 
 ### Evaluation
 Task | Grade
@@ -30,7 +43,7 @@ Task 1 Design Thinking | 18/20
 Task 1 Design Thinking Presentation | 4/5
 Task 2 Requirements Specification Document | 10/15
 Task 3 Requirements Review | 4/5
-Task 4 | 
+Task 4 |
 **Total** | 81%
 
 #### 16.03.2018
@@ -163,7 +176,7 @@ Task 4 |
     - [x] (fle, twe) Finish domain model and sequence diagram
     - [x] (fzu) Create documentation
     - [x] (twe) Prepare presentation of diagrams
-    
+
 #### 30.04.2018
 - (team) Defined product backlog in product planing meeting with product owner
 - (team) Started sprint planning meeting and defined tasks for sprint 1
@@ -171,14 +184,206 @@ Task 4 |
 - Todo:
   - [x] (fzu) Update diary
   - [x] (team) Define product backlog with product owner
-  - [ ] (team) Finish sprint planning
-  - [ ] (team) Draw high-level UML component and deployment diagram
-  - [ ] (team) Draw detailed class diagram for main view
-  - [ ] (team) Prepare presentation
+  - [x] (team) Finish sprint planning
+  - [x] (team) Draw high-level UML component and deployment diagram
+  - [x] (team) Draw detailed class diagram for main view
+  - [x] (team) Prepare presentation
 
-### 02.05.2018
-   - [ ] (fle) Update Package diagram
-   - [ ] (twe) split storys in smaller taks
-   - [ ] (team) define team rolls
-   - [ ] (tba) update class diagram
+#### 02.05.2018
+- (team) Presentation and feedback for results of task6 + task6
+- (team) Discussed feedback and improvements with product owner
+   - [x] (fle) Update Package diagram
+   - [x] (twe) split storys in smaller taks
+   - [x] (team) define team roles
+   - [x] (tba) update class diagram
 
+#### 04.05.2018
+- (team) Started working on sprint 1
+- (team) Daily Scrum
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fle) create initial package and class structure
+  - [ ] (iri) create  challengeboard
+  - [ ] (fle) create levelboard
+
+#### 07.05.2018
+- (team) Daily scrum
+- (team) Updated descriptions for scrumbacklog
+- (fle) Created first draft for levelboard
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (iri) create  challengeboard
+  - [ ] (fle) create levelboard
+  - [ ] (tba) add challenges to challengeboard functionality
+
+#### 08.05.2018
+- (fle) Implemented levelboard in presenter
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fle) create levelboard
+  - [ ] (tba) add challenges to challengeboard functionality
+
+
+#### 09.05.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [ ] (iri) Generate sample challenges for each level
+  - [ ] (tba) Add challenges to challengeboard functionality
+  - [ ] (tba) Create listeners for event handling
+  - [ ] (tba) Basic challenge functionality
+
+#### 10.05.2018
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (iri) Generate sample challenges for each level
+  - [x] (tba) Add challenges to challengeboard functionality
+  - [ ] (tba) Create listeners for event handling
+  - [ ] (tba) Basic challenge functionality
+
+#### 11.05.2018
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (tba) Create listeners for event handling
+  - [x] (tba) Basic challenge functionality
+
+
+#### 14.05.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (iri) button behaviour in challengeboard
+  - [ ] (iri) open/close functionality in view for challenges
+  - [ ] (tba) refactor code for challengeboard
+  - [ ] (sth) review and merge challenge branch
+  - [ ] (fle) create login view functionality
+  - [ ] (rro) add login view
+  - [ ] (tba) create startpage buttons
+  - [ ] (sth) fix start and login view
+  - [ ] (fzu) add jdbc connector for hsqldb
+
+#### 18.05.2018
+- (team) Daily scrum and sprint review
+- (team) Sprint planning meeting
+- (team) Updated progress for scrumbacklog
+  - [x] (team) update scrum backlog after every daily sprint
+  - [x] (iri) open/close functionality in view for challenges
+  - [x] (tba) refactor code for challengeboard
+  - [x] (sth) review and merge challenge branch
+  - [x] (fle) create login view functionality
+  - [x] (rro) add login view
+  - [x] (tba) create startpage buttons
+  - [x] (sth) fix start and login view
+  - [x] (fzu) add jdbc connector for hsqldb
+  - [ ] (fle) remove unused imports in project
+  - [ ] (iri) update challengeboard
+  - [ ] (fle) add icons to levelview
+  - [ ] (fle) add buttons to levelview
+
+#### 23.05.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fle) remove unused imports in project
+  - [x] (iri) update challengeboard
+  - [x] (fle) add icons to levelview
+  - [x] (fle) add buttons to levelview
+  - [ ] (iri) user handling -> add exception
+  - [ ] (fle) update levelview with level details
+  - [ ] (iri) fix conflicts after last merge
+
+#### 25.05.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (iri) user handling -> add exception
+  - [x] (fle) update levelview with level details
+  - [x] (iri) fix conflicts after last merge
+  - [ ] (fzu) annotations for jpa persistence in model
+  - [ ] (iri) add method to get challenge by name
+  - [ ] (twe) update styling of startpage and overall look and feel
+  - [ ] (twe) refactor code
+  - [ ] (tba) update challenge details
+
+#### 28.05.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fzu) annotations for jpa persistence in model
+  - [x] (iri) add method to get challenge by name
+  - [x] (twe) update styling of startpage and overall look and feel
+  - [ ] (twe) refactor code
+  - [x] (tba) update challenge details
+  - [ ] (sth) prepare journal view
+  - [ ] (fzu) add class diagram
+  - [ ] (tba) switch contents from challengeboardview to challengepresenter
+
+#### 01.06.2018
+- (team) Daily scrum and sprint review
+- (team) Sprint planning meeting
+- (team) Updated progress for scrumbacklog
+  - [x] (team) update scrum backlog after every daily sprint
+  - [x] (twe) refactor code
+  - [x] (sth) prepare journal view
+  - [x] (fzu) add class diagram
+  - [x] (tba) switch contents from challengeboardview to challengepresenter
+  - [ ] (tba) add detail buttons to levels
+  - [ ] (sth) fix bugs in navigator
+  - [ ] (twe) update backlog
+  - [ ] (rro) set up login view with vadin session
+  - [ ] (fzu) rewrite persistence and add logging
+
+#### 04.06.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [ ] (tba) add detail buttons to levels
+  - [ ] (sth) fix bugs in navigator
+  - [ ] (twe) update backlog
+  - [ ] (rro) set up login view with vadin session
+  - [ ] (fzu) rewrite persistence and add logging
+  - [ ] (fle) add tests to project
+
+#### 06.06.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (tba) add detail buttons to levels
+  - [x] (sth) fix bugs in navigator
+  - [x] (twe) update backlog
+  - [x] (rro) set up login view with vadin session
+  - [ ] (fzu) rewrite persistence and add logging
+  - [x] (fle) add tests to project
+  - [ ] (fle) improve tests
+  - [ ] (tba) update challengeboard to display challenge details on panel click
+  - [ ] (twe) keep backlog up to date
+  - [ ] (iri) add exception handling
+
+#### 08.06.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fzu) rewrite persistence and add logging
+  - [x] (fle) improve tests
+  - [x] (tba) update challengeboard to display challenge details on panel click
+  - [x] (twe) keep backlog up to date
+  - [x] (iri) add exception handling
+  - [ ] (fzu) implement persistence methods in busniess classes
+  - [ ] (fzu) refactor code (constructors, getter, setter methods)
+  - [ ] (fzu) fix problems with observer when entitiy are fetched from db
+  - [ ] (tba) add sample data to inital sql script
+
+#### 11.06.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [x] (fzu) implement persistence methods in busniess classes
+  - [x] (fzu) refactor code (constructors, getter, setter methods)
+  - [x] (fzu) fix problems with observer when entitiy are fetched from db
+  - [x] (tba) add sample data to inital sql script
+
+#### 13.06.2018
+- (team) Daily scrum
+- (team) Updated progress for scrumbacklog
+  - [ ] (team) update scrum backlog after every daily sprint
+  - [ ] (fzu) refactor code (check for unused imports/methods, methods that do not implement persistence)
+  - [ ] (sth) integrate persistence into journal and finalize functionality
+  - [ ] (iri) prepare presentation
+  - [ ] (tba) create demo video
