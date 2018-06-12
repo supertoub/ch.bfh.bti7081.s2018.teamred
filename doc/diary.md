@@ -22,6 +22,19 @@ Date, Time | Attendance | Minutes 
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
 30.04.18, 20:30 | tba, fle, sth, iri, rro, fzu | 90
+04.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
+07.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 15
+09.05.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
+14.05.18, 20:30 | tba, sth, iri, rro, twe, fzu | 25
+18.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
+23.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
+25.05.18, 20:30 | tba, fle, sth, rro, twe, fzu | 15
+28.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 25
+01.06.18, 20:30 | tba, fle, iri, rro, twe, fzu | 90
+04.06.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
+06.06.18, 20:30 | tba, fle, sth, iri, rro, fzu | 20
+08.06.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
+11.06.18, 20:30 | tba, fle, sth, iri, fzu | 20
 
 ### Evaluation
 Task | Grade
@@ -328,7 +341,7 @@ Task 4 |
   - [ ] (fzu) rewrite persistence and add logging
   - [ ] (fle) add tests to project
 
-#### 06.08.2018
+#### 06.06.2018
 - (team) Daily scrum
 - (team) Updated progress for scrumbacklog
   - [ ] (team) update scrum backlog after every daily sprint
@@ -343,7 +356,7 @@ Task 4 |
   - [ ] (twe) keep backlog up to date
   - [ ] (iri) add exception handling
 
-#### 08.08.2018
+#### 08.06.2018
 - (team) Daily scrum
 - (team) Updated progress for scrumbacklog
   - [ ] (team) update scrum backlog after every daily sprint
