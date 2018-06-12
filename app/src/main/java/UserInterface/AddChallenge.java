@@ -70,7 +70,7 @@ public class AddChallenge extends Window  implements ChallengeBoard{
         tfTitle = new TextField();
         counterTitle = new Label();
         tfTitle.setPlaceholder("Title");
-        tfTitle.setMaxLength(15);
+        tfTitle.setMaxLength(24);
         // Counter for input length
         counterTitle.setValue(tfTitle.getValue().length() +
                 " of " + tfTitle.getMaxLength());

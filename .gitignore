@@ -21,6 +21,8 @@
 *.gls
 *.glsdefs
 
-
 # projectfiles
 .idea/
+
+# mac
+*.DS_Store

@@ -1,27 +1,38 @@
 package Business;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name="journallibrary")
 public class JournalLibrary {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "journallibrary_id")
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="journalentry_id")
+    @OneToMany(mappedBy = "journalLibrary", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<JournalEntry> journalEntries;
 
-    public JournalLibrary() {}
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private Patient patient;
 
-    public JournalLibrary(List<JournalEntry> journalEntries) {
+    public JournalLibrary(List<JournalEntry> journalEntries, Patient patient) {
         this.journalEntries = journalEntries;
+        this.patient = patient;
     }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalLibrary(){}
 
     public long getId() {
         return id;
@@ -39,19 +50,11 @@ public class JournalLibrary {
         this.journalEntries = journalEntries;
     }
 
-    public void createEntry(){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-        }
-        journalEntries.add(new JournalEntry());
+    public Patient getPatient() {
+        return patient;
     }
 
-    void deleteEntry(JournalEntry entry){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-            return;
-        }
-        journalEntries.remove(entry);
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
-
 }

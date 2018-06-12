@@ -5,11 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Column;
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @MappedSuperclass
 abstract class User {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "user_id")
     private long id;
 
@@ -29,6 +30,9 @@ abstract class User {
         this.name = name;
         this.surname = surname;
         this.pwd = pwd;
+    }
+
+    protected User() {
     }
 
     public long getId() {
