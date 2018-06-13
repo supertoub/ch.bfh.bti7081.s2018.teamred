@@ -13,7 +13,7 @@
         <!-- hsqldb config -->
         <properties>
             <!-- Configuring JDBC properties -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:target/social-anxiety-db" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
