@@ -24,15 +24,15 @@ public class Patient extends User {
 
     //region Konstruktor
 
-    public Patient(String userName,String name, String surname, String pwd, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
-        super(name, surname, pwd);
+    public Patient(String userName,String name, String surname, String pwd, String salt, Date lastEntryWritten, JournalLibrary journalLibrary, LevelLibrary levelLibrary) {
+        super(name, surname, pwd, salt);
         this.lastEntryWritten = lastEntryWritten;
         this.journalLibrary = journalLibrary;
         this.levelLibrary = levelLibrary;
     }
 
-    public Patient(String name, String surname, String pwd) {
-        super(name, surname, pwd);
+    public Patient(String name, String surname, String pwd, String salt) {
+        super(name, surname, pwd, salt);
     }
 
     // no-arg constructur needed by hibernate for object creation via reflection

@@ -1,5 +1,7 @@
 package Business;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -26,10 +28,14 @@ abstract class User {
     @Column(length = 128, nullable = false)
     private String pwd;
 
-    public User(String name, String surname, String pwd) {
+    @Column(length = 128, nullable = false)
+    private String salt;
+
+    public User(String name, String surname, String pwd, String salt) {
         this.name = name;
         this.surname = surname;
         this.pwd = pwd;
+        this.salt = salt;
     }
 
     protected User() {
@@ -39,9 +45,7 @@ abstract class User {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public long setId(long id) { return this.id = id; }
 
     public String getuserName(){ return userName; }
 
@@ -49,25 +53,23 @@ abstract class User {
         return name;
     }
 
-    public void setUserName(String userName){ this.userName = userName;}
+    public String setUserName(String userName){ return this.userName = userName; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String setName(String name) { return this.name = name; }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+    public String setSurname(String surname) { return this.surname = surname; }
 
     public String getPwd() {
         return pwd;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+    public String setPwd(String pwd) { return this.pwd = BCrypt.hashpw(pwd, salt); }
+
+    public String getSalt() { return salt; }
+
+    public String setSalt() { return this.salt = salt; }
 }
