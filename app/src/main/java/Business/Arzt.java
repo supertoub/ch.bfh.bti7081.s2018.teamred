@@ -10,8 +10,8 @@ public class Arzt extends User {
     @JoinColumn(name="patient_id")
     private List<Patient> patients;
 
-    public Arzt(String userName, String name, String surname, String pwd, List<Patient> patients) {
-        super(name, surname, pwd);
+    public Arzt(String userName, String name, String surname, String pwd, String salt, List<Patient> patients) {
+        super(name, surname, pwd, salt);
         this.patients = patients;
     }
 

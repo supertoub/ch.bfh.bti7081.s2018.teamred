@@ -67,7 +67,7 @@ public class TestChallangeBoard {
     @Test
     public void testUser(){
         List<Patient> patList = new ArrayList<>();
-        User us = new Arzt("UserName","Name", "Surname", "PWD", patList);
+        User us = new Arzt("UserName","Name", "Surname", "PWD", "salt", patList);
         long id = us.getId();
         assert us.getName().equals("Name");
         assert us.getPwd().equals("PWD");

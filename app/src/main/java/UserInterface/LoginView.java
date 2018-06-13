@@ -13,6 +13,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.NoResultException;
 
@@ -33,7 +34,7 @@ public class LoginView extends LoginViewPage implements View {
         try {
             Patient patient = PatientPersistence.getInstance().getByName(username);
 
-            if(password.equals(patient.getPwd())){
+            if(BCrypt.hashpw(password, patient.getSalt()).equals(patient.getPwd())){
                 return true;
             } else {
                 return false;
