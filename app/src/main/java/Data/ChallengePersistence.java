@@ -20,7 +20,7 @@ public class ChallengePersistence extends GenericPersistence<Challenge, Long>{
     //we inherit the basic CRUD operations from the GenericRepository
 
     private static final Logger logger = LogManager.getLogger(ChallengePersistence.class);
-    static ChallengePersistence singleton;
+    private static ChallengePersistence singleton;
 
     private ChallengePersistence(){};
 

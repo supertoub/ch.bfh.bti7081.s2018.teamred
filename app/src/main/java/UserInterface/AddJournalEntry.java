@@ -1,16 +1,16 @@
 package UserInterface;
 
-import com.vaadin.data.Binder;
-import com.vaadin.data.validator.StringLengthValidator;
-import com.vaadin.server.ErrorMessage;
 import com.vaadin.server.Page;
 import com.vaadin.server.UserError;
 import com.vaadin.shared.Position;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class AddJournalEntry extends Window  implements Journal{
@@ -19,13 +19,14 @@ public class AddJournalEntry extends Window  implements Journal{
     private TextField tfTitle;
     private InlineDateField idfDate;
     private TextArea tADesc;
-    private ComboBox<String> select;
-    private RadioButtonGroup<String> rbglOA;
     private Label counterTitle;
     private Label counterDesc;
-    private Label selectL;
     private int lenTitle;
     private int lenDesc;
+    private LocalDate selectedDate;
+    private List<JournalViewListener> listeners =
+            new ArrayList<>();
+
     //endregion
 
     //region Getter
@@ -41,10 +42,10 @@ public class AddJournalEntry extends Window  implements Journal{
         this.center();
     }
 
-
     //endregion
 
     //region Methoden
+
     private void createWindow(List<String> lvls){
         VerticalLayout subContent = new VerticalLayout();
         HorizontalLayout titleLayout = new HorizontalLayout();
@@ -53,28 +54,29 @@ public class AddJournalEntry extends Window  implements Journal{
         createInlineDateField();
         createTextField();
         createTextArea();
-        createComboBox(lvls);
-        createRadioButton();
 
         setContent(subContent);
         subContent.addComponent(new Label("Add new Journal entry"));
-        subContent.addComponent(select);
+
         subContent.addComponent(titleLayout);
         titleLayout.addComponent(tfTitle);
         titleLayout.addComponent(counterTitle);
         subContent.addComponent(descLayout);
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
-        subContent.addComponent(rbglOA);
-        subContent.addComponent(new Button("Add Entry", event -> buttonClick(event,select.getValue(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
+        subContent.addComponent(idfDate);
+        subContent.addComponent(new Button("Add Entry", event -> buttonClick(event, selectedDate.toString(), tfTitle.getValue(),tADesc.getValue())));
         subContent.addComponent(new Button("Close", event -> close()));
-        subContent.addComponent(selectL);
+
 
     }
 
     private void createInlineDateField() {
-        idfDate = new InlineDateField();
-
+        this.idfDate = new InlineDateField();
+        this.idfDate.setValue(LocalDate.now());
+        this.idfDate.setLocale(new Locale("de", "DE"));
+        this.idfDate.addValueChangeListener(event -> selectedDate = (event.getValue()));
+        this.selectedDate = LocalDate.now();
     }
 
     private void createTextField() {
@@ -109,23 +111,9 @@ public class AddJournalEntry extends Window  implements Journal{
             counterDesc.setValue(lenDesc + " of " + tADesc.getMaxLength());
         });
     }
-    private void createComboBox(List<String> lvls) {
-        selectL = new Label();
-        // Create a selection component with some items
-        select = new ComboBox<>("Select Level");
-        select.setEmptySelectionAllowed(false);
-        select.setItems(lvls);
-        // Handle selection event
-        select.addSelectionListener(event ->
-                selectL.setValue(("Selected " +
-                        event.getSelectedItem().orElse("none"))));
-    }
 
-    private void createRadioButton(){
-        rbglOA =
-                new RadioButtonGroup<>("Level of Anxiety");
-        rbglOA.setItems("1", "2", "3","4","5");
-        rbglOA.setSelectedItem("1");
+    public void addListener(JournalViewListener listener) {
+        listeners.add(listener);
     }
 
     private void createNotification(String mainMessage, String subMessage, Notification.Type notificationType, int ms) {
@@ -135,29 +123,16 @@ public class AddJournalEntry extends Window  implements Journal{
         notif.show(Page.getCurrent());
     }
 
-
-    private List<JournalViewListener> listeners =
-            new ArrayList<>();
-
-    public void addListener(JournalViewListener listener) {
-        listeners.add(listener);
-    }
-
     //endregion
 
     //region Events
 
-    public void buttonClick(Button.ClickEvent event, String levelTitle, String cTitle, String cDesc, int lOfAx) {
-
-        select.setComponentError(null);
+    public void buttonClick(Button.ClickEvent event, String selectedDate, String cTitle, String cDesc) {
         tfTitle.setComponentError(null);
         tADesc.setComponentError(null);
+        idfDate.setComponentError(null);
 
-        if(levelTitle == null){
-            createNotification("No Level Chosen","please select a level",Notification.Type.ERROR_MESSAGE, 2000);
-            select.setComponentError(new UserError("No Level Chosen"));
-        }
-        else if (cTitle == null || lenTitle < 1){
+         if (cTitle == null || lenTitle < 1){
             createNotification("No Title Entered","please add title",Notification.Type.ERROR_MESSAGE, 2000);
             tfTitle.setComponentError(new UserError("No Title Entered"));
         }
@@ -165,13 +140,18 @@ public class AddJournalEntry extends Window  implements Journal{
             createNotification("No Description Entered","please add description",Notification.Type.ERROR_MESSAGE, 2000);
             tADesc.setComponentError(new UserError("No Title Entered"));
         }
-        else{
-            createNotification("Add challenge to "+levelTitle,cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
-            for (JournalViewListener listener: listeners)
-                listener.buttonClick(levelTitle,cTitle,cDesc,lOfAx);
-            close();
-        }
-
+        else {
+             createNotification("Add Journal entry to " + selectedDate, cTitle, Notification.Type.HUMANIZED_MESSAGE, 1500);
+             try {
+                 for (JournalViewListener listener : listeners) {
+                     listener.buttonClick(selectedDate, cTitle, cDesc);
+                 }
+                 close();
+             }
+             catch (Exception ex){
+                 idfDate.setComponentError(new UserError(ex.getMessage()));
+             }
+         }
     }
 
 

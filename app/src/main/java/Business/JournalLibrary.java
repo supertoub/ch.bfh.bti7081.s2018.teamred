@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
@@ -56,5 +57,13 @@ public class JournalLibrary {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public void createJournalEntry(Date date, String title, String desc){
+        if (journalEntries == null){
+            journalEntries = new ArrayList<>();
+        }
+
+        journalEntries.add(new JournalEntry(date, title, desc));
     }
 }

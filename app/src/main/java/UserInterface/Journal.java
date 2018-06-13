@@ -2,11 +2,12 @@ package UserInterface;
 
 import com.vaadin.ui.Button;
 
+import java.text.ParseException;
+
 public interface Journal {
 
     interface JournalViewListener {
-        void buttonClick(Button button);
-        void buttonClick(String levelTitle, String cTitle, String cDesc, int lOfAx) ;
+        void buttonClick(String selectedDate, String cTitle, String cDesc) throws ParseException;
     }
     public void addListener(JournalViewListener listener);
 

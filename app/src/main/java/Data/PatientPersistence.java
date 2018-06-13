@@ -20,7 +20,7 @@ public class PatientPersistence extends GenericPersistence<Patient, Long>{
     //we inherit the basic CRUD operations from the GenericRepository
 
     private static final Logger logger = LogManager.getLogger(PatientPersistence.class);
-    static PatientPersistence singleton;
+    private static PatientPersistence singleton;
 
     //returns the current instance of PatientPersistence
     public static PatientPersistence getInstance() {

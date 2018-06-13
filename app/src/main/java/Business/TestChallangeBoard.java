@@ -174,12 +174,12 @@ public class TestChallangeBoard {
     public void testJournalPresenter(){
         JournalLibraryPresenter presenter = JournalLibraryPresenter.getInstance();
         presenter.newWindowAddEntry();
-        presenter.addClick();
-        presenter.changeClick();
-        presenter.getJournalView();
+        //presenter.addClick();
+        //presenter.changeClick();
+        //presenter.getJournalView();
         presenter.backButtonClick(new Button.ClickEvent(new Button()));
         presenter.newEntryButtonClick(new Button.ClickEvent(new Button()));
-        presenter.addJournalEntry("Test", "Test");
+        //presenter.addJournalEntry("Test", "Test");
         presenter.deleteClick(new JournalEntry());
     }
 
