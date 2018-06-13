@@ -1,5 +1,7 @@
-/*package Business;
+package Business;
 
+import Data.ChallengePersistence;
+import Data.LevelPersistence;
 import UserInterface.ChallengeBoard;
 import com.vaadin.ui.Button;
 import org.junit.Ignore;
@@ -12,9 +14,30 @@ import java.util.List;
 import static org.junit.Assert.assertThat;
 
 public class TestChallangeBoard {
+    // TODO: Rewrite tests with persistence methods
+    //region Challange
+    /*@Test
+    public void createChallenge(){
+        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
+        Challenge currentChallenge = new Challenge("", "Test", ChallengeState.open, 1, presenter);
+        currentChallenge = new Challenge("Test", "", ChallengeState.open, 1, presenter);
+        currentChallenge = new Challenge("Test", "Test", ChallengeState.open, 2147483647, presenter);
+        currentChallenge = new Challenge("Test", "Test", ChallengeState.open, -2147483647, presenter);
+    }*/
 
+    /*@Test
+    public void setChallengeState(){
+        ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
+        Challenge currentChallenge = new Challenge("Title", "Description", ChallengeState.closed, 1, presenter);
+        currentChallenge.setChallengeState(ChallengeState.open);
+        assert currentChallenge.getChallengeState() == ChallengeState.open;
+
+        currentChallenge.setChallengeState(ChallengeState.open);
+        assert currentChallenge.getChallengeState() == ChallengeState.open;
+    }*/
     //region User
 
+    /* Rewrite tests to work with persistence
     @Test
     public void testArzt(){
         List<Patient> patienten = new ArrayList<>();
@@ -27,8 +50,9 @@ public class TestChallangeBoard {
         arzt.setPatients(patienten);
 
         assert arzt.getPatients().size() == 2;
-    }
+    }*/
 
+    /* Rewrite tests to work with persistence
     @Test
     public void testPatient(){
         Patient patient = new Patient("UserName","Test", "Patient", "TestPWD", new Date(), new JournalLibrary(), new LevelLibrary(ChallengeBoardPresenter.getInstance()));
@@ -38,7 +62,7 @@ public class TestChallangeBoard {
         assert patient.getLastEntryWritten() != null;
         patient.setLevelLibrary(new LevelLibrary(ChallengeBoardPresenter.getInstance()));
         assert patient.getLevelLibrary() != null;
-    }
+    }*/
 
     @Test
     public void testUser(){
@@ -63,6 +87,7 @@ public class TestChallangeBoard {
 
     //region Challange
 
+    /* Rewrite tests to work with persistence
     @Test
     public void testChallange(){
         Level lvl = new Level("Test", 1, ChallengeBoardPresenter.getInstance());
@@ -81,12 +106,11 @@ public class TestChallangeBoard {
         assert currentChallenge.getLevelOfAnxiety() == 2;
         currentChallenge.setTitle("Test 2");
         assert currentChallenge.getTitle().equals("Test 2");
-    }
-
+    }*/
     //endregion
 
     //region ChallangeBoard ChallangeBoardPresenter
-
+    /* Rewrite tests to work with persistence
     @Test
     public void testChallengeBoardPresenter(){
         ChallengeBoardPresenter presenter = ChallengeBoardPresenter.getInstance();
@@ -96,15 +120,16 @@ public class TestChallangeBoard {
         presenter.addChallengeDetails(new Challenge("Test", "Test", ChallengeState.closed, 1, ChallengeBoardPresenter.getInstance()));
         presenter.removeChallengeDetails();
         presenter.removeChallenges();
+        presenter.clearLevels();
         presenter.detailsClick(new Button.ClickEvent(new Button()));
         presenter.closeClick(new Button.ClickEvent(new Button()));
         presenter.reOpenClick(new Button.ClickEvent(new Button()));
         presenter.update(new Level("Test", 1, presenter), new Object());
-    }
-
+    }*/
     //endregion
 
     //region LevelLibrary Level
+    /* Rewrite tests to work with persistence
 
     @Test
     public void levelHandling(){
@@ -139,7 +164,7 @@ public class TestChallangeBoard {
         currentLevel.update(lib, new Object());
         List<Challenge> challenges = currentLevel.getChallenges();
         assert challenges.size() == 0;
-    }
+    }*/
 
     //endregion
 
@@ -149,33 +174,33 @@ public class TestChallangeBoard {
     public void testJournalPresenter(){
         JournalLibraryPresenter presenter = JournalLibraryPresenter.getInstance();
         presenter.newWindowAddEntry();
-        //presenter.addClick();
-        //presenter.changeClick();
+        presenter.addClick();
+        presenter.changeClick();
         presenter.getJournalView();
         presenter.backButtonClick(new Button.ClickEvent(new Button()));
         presenter.newEntryButtonClick(new Button.ClickEvent(new Button()));
-        //presenter.addJournalEntry("Test", "Test");
-        //presenter.deleteClick(new JournalEntry());
+        presenter.addJournalEntry("Test", "Test");
+        presenter.deleteClick(new JournalEntry());
     }
 
-    @Ignore("Vaadin components not loaded")
+    /* Rewrite tests to work with persistence
     @Test
     public void testJournalLibrary(){
         JournalLibrary lib = new JournalLibrary();
-        //lib.createEntry();
+        lib.createEntry();
 
         List<JournalEntry> entries = lib.getJournalEntries();
         JournalLibrary newLib = new JournalLibrary(entries);
         assert lib.getJournalEntries().size() == 1;
-        //lib.createEntry();
+        lib.createEntry();
         assert lib.getJournalEntries().size() == 2;
         lib.deleteEntry(lib.getJournalEntries().get(0));
         assert lib.getJournalEntries().size() == 1;
         lib.getId();
         List<JournalEntry> items = new ArrayList<JournalEntry>() {};
-        //items.add(new JournalEntry());
+        items.add(new JournalEntry());
         lib.setJournalEntries(items);
-    }
+    }*/
 
     //endregion
 
@@ -202,4 +227,3 @@ public class TestChallangeBoard {
     //endregion
 
 }
-*/

@@ -1,8 +1,10 @@
 package Business;
 
+import Data.*;
 import UserInterface.AddChallenge;
 import UserInterface.ChangeChallenge;
 import UserInterface.ChallengeBoard;
+import UserInterface.ChallengeBoardViewPage;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.event.LayoutEvents;
@@ -10,6 +12,8 @@ import com.vaadin.event.MouseEvents;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 import com.vaadin.navigator.View;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     private LevelLibrary lvlLibrary;
 
     private Level currentLevel;
+
+    private static final Logger logger = LogManager.getLogger(ChallengeBoardPresenter.class);
 
     //endregion
 
@@ -56,22 +62,13 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         getNewChall().addClickListener(this::newChallClick);
         getAddLevelButton().addClickListener(this::addLevelButtonClick);
 
-        // Creates Levels for a example view
-        lvlLibrary = new LevelLibrary(this);
-        for (int i = 1; i <= 5; i++) {
-            if (i == 1) lvlLibrary.createNewLevel(LevelState.open);
-            else lvlLibrary.createNewLevel(LevelState.closed);
+        // Get patient from session and fetch it from persistence
+        Patient patient = PatientPersistence.getInstance().getByName(UI.getCurrent().getSession().getAttribute("user").toString());
 
-        }
-        lvlLibrary.getLevels().get(3).setLevelState(LevelState.closed);
+        // Fetch LevelLibrary by Id from persistence over patient instance
+        lvlLibrary = LevelLibraryPersistence.getInstance().getById(patient.getLevelLibrary().getId());
+        lvlLibrary.addObserver(this);
 
-        //add 6 Challenges for each Level for example
-        for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
-            for (int j = 1; j < 7; j++) {
-                //lvlLibrary.getLevels().get(i).createChallenge("lvl " + (i + 1) + ":");
-                lvlLibrary.getLevels().get(i).createChallenge("" + (i + 1));
-            }
-        }
         updateLevelView();
     }
 
@@ -80,14 +77,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     //region Methoden
 
     private void newWindowAddChall() {
+        List<String> levels = new ArrayList<>();
+        LevelLibraryPersistence.getInstance().getById(lvlLibrary.getId()).getLevels().forEach(level -> levels.add(level.getLevelLabel()));
 
         try {
-            List<String> lvls = new ArrayList<>();
-            for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-                lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-            }
-
-            AddChallenge aC = new AddChallenge(lvls);
+            AddChallenge aC = new AddChallenge(levels);
 
             aC.addListener(this);
             // Add it to the root component
@@ -104,14 +98,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     private void newWindowChangeChall(Challenge challenge) {
+        List<String> levels = new ArrayList<>();
+        LevelLibraryPersistence.getInstance().getById(lvlLibrary.getId()).getLevels().forEach(level -> levels.add(level.getLevelLabel()));
 
-        List<String> lvls = new ArrayList<>();
         try {
-            for (int i = 0; i < lvlLibrary.getLevels().size(); i++) {
-                lvls.add(lvlLibrary.getLevels().get(i).getLevelLabel());
-            }
-
-            ChangeChallenge cC = new ChangeChallenge(lvls, challenge);
+            ChangeChallenge cC = new ChangeChallenge(levels, challenge);
 
             cC.addListener(this);
             // Add it to the root component
@@ -128,24 +119,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     }
 
-    // TODO: Event in Level handeln
-    private Level findClickedLevel(String buttonTitle) {
-        try {
-            for (int i = 0; i <= lvlLibrary.getLevels().size(); i++) {
-                if (lvlLibrary.getLevels().get(i).getLevelLabel().equals(buttonTitle)) {
-                    return lvlLibrary.getLevels().get(i);
-                }
-            }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.print("findClickLevel: too much levels in list");
-        } catch (NullPointerException e) {
-            System.out.print("findClickLevel: lvlLibrary cannot be null at this point");
-        }
-
-        return null;
-    }
-
     // TODO: Event in Challange handeln
+    // TODO: Replace with methods from persistence
     private Challenge findChallenge(String panelName) {
         try {
             for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
@@ -171,6 +146,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         try {
             List<Level> levels = lvlLibrary.getLevels();
             for (Level level : levels) {
+                if (level.countObservers() == 0) level.addObserver(this.lvlLibrary);
                 addLevel(level.getLevelLabel(), level.getLevelState());
             }
         } catch (NullPointerException e) {
@@ -191,6 +167,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         try {
             List<Challenge> challenges = level.getChallenges();
             for (Challenge challenge : challenges) {
+                if (challenge.countObservers() == 0) challenge.addObserver(level);
                 addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
             }
         } catch (NullPointerException e) {
@@ -363,7 +340,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void addLevelButtonClick(Button.ClickEvent event) {
-        Level createdLevel = this.lvlLibrary.createNewLevel(LevelState.closed);
+        LevelLibraryPersistence.getInstance().getEntityManager().refresh(lvlLibrary);
+        Level createdLevel = new Level("Level "+(this.lvlLibrary.getLevels().size() + 1), LevelState.closed, this.lvlLibrary.getLevels().size(), this.lvlLibrary, this.lvlLibrary);
+        LevelPersistence.getInstance().persist(createdLevel);
         this.addLevelToLevelView(createdLevel);
     }
 
@@ -412,7 +391,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void addLevelClick(Button.ClickEvent event) {
-        currentLevel = findClickedLevel(event.getButton().getCaption());
+        currentLevel = LevelPersistence.getInstance().getByTitle(event.getButton().getCaption());
         removeChallenges();
         try {
             setLevelInfoLabel(currentLevel.getClosedChallengesCount(), currentLevel.getLevelDoneCount(), currentLevel.getChallenges().size());
@@ -467,12 +446,20 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     @Override
     public void newChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
-        Level level = findClickedLevel(levelTitle);
+        Level level = LevelPersistence.getInstance().getByTitle(levelTitle);
+        logger.debug("got level from persistence: " +level.getLevelLabel());
 
         try {
-            level.createChallenge(levelTitle, cTitle, cDesc, lOfAx);
+            Challenge challenge = new Challenge(levelTitle + cTitle, cDesc, ChallengeState.open, level, lOfAx, level);
+            challenge = ChallengePersistence.getInstance().persist(challenge);
+            LevelPersistence.getInstance().getEntityManager().refresh(level);
+            this.currentLevel = level;
+            logger.debug("peristed challenge: " + challenge.getTitle());
+
             if (level.getLevelState() == LevelState.open) {
                 removeChallenges();
+                logger.debug("update view with level: " + level.getLevelLabel());
+                logger.debug("about to add following challenges: " + level.getChallenges().toString());
                 updateChallengeView(level);
             }
         } catch (NullPointerException e) {
@@ -526,5 +513,3 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
 }
 //endregion
-
-

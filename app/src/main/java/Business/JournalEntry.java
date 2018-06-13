@@ -1,20 +1,16 @@
 package Business;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-import java.util.Observer;
-import java.util.Observable;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-class JournalEntry /*extends Observable implements Observer*/{
+@Table(name="journalentry")
+public class JournalEntry {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "journalentry_id")
     private long id;
 
@@ -24,39 +20,55 @@ class JournalEntry /*extends Observable implements Observer*/{
     @Column(length = 1024)
     private String desc;
 
+    @ManyToOne
+    @JoinColumn(name="journallibrary_id")
+    private JournalLibrary journalLibrary;
+
     private Date date;
 
+    public JournalEntry(String title, String desc, JournalLibrary journalLibrary, Date date) {
+        this.title = title;
+        this.desc = desc;
+        this.journalLibrary = journalLibrary;
+        this.date = date;
+    }
 
-//region Getter & Setter
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalEntry(){}
+
+    public long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
-    public long getId() {
-        return id;
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDesc() {
         return desc;
     }
 
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public JournalLibrary getJournalLibrary() {
+        return journalLibrary;
+    }
+
+    public void setJournalLibrary(JournalLibrary journalLibrary) {
+        this.journalLibrary = journalLibrary;
+    }
+
     public Date getDate() {
         return date;
     }
 
-    //endregion
-
-    //region Konstruktoren
-    public JournalEntry () {}
-
-    // TODO: Korrektes Level ChallengeState handling
-    public JournalEntry(Date date, String title, String desc){
-        this.title = title;
-        this.desc = desc;
+    public void setDate(Date date) {
         this.date = date;
-        //this.addObserver(observer);
     }
-
-    //endregion
-
-
 }

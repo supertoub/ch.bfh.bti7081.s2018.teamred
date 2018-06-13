@@ -1,5 +1,9 @@
 package Business;
 
+import Data.LevelLibraryPersistence;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,20 +11,27 @@ import java.util.Observable;
 import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name="levellibrary")
 public class LevelLibrary extends Observable implements Observer {
 
     //region Variablen
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "levellibrary_id")
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="level_id")
+    @OneToMany(mappedBy = "levelLibrary", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Level> levels;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private Patient patient;
+
 
     //endregion
 
@@ -46,29 +57,22 @@ public class LevelLibrary extends Observable implements Observer {
 
     //region Konstruktor
 
-    public LevelLibrary(Observer observer){
+    public LevelLibrary(List<Level> levels, Patient patient, Observer observer) {
+        this.levels = levels;
+        this.patient = patient;
         this.addObserver(observer);
-        this.levels = new ArrayList<>();
     }
+    public LevelLibrary(List<Level> levels, Observer observer) {
+        this.levels = levels;
+        this.addObserver(observer);
+    }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public LevelLibrary(){}
 
     //endregion
 
     //region Methoden
-
-    public Level createNewLevel() {
-        int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size() + 1), levelCount, this);
-        levels.add(newLevel);
-        return newLevel;
-    }
-
-    public Level createNewLevel(LevelState levelState){
-        int levelCount = levels.size();
-        Level newLevel = new Level("Level " + (levels.size()+1), levelCount, this);
-        newLevel.setLevelState(levelState);
-        levels.add(newLevel);
-        return newLevel;
-    }
 
     //endregion
 

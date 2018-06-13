@@ -1,34 +1,38 @@
 package Business;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-
-import java.util.Date;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class JournalLibrary /*extends Observable implements Observer*/ {
+@Table(name="journallibrary")
+public class JournalLibrary {
     @Id
-    @GeneratedValue(strategy = AUTO)
-    //@Column(name = "journallibrary_id")
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "journallibrary_id")
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name="journalentry_id")
+    @OneToMany(mappedBy = "journalLibrary", fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<JournalEntry> journalEntries;
 
-    public JournalLibrary() {
-        this.journalEntries = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private Patient patient;
+
+    public JournalLibrary(List<JournalEntry> journalEntries, Patient patient) {
+        this.journalEntries = journalEntries;
+        this.patient = patient;
     }
 
-    public JournalLibrary(List<JournalEntry> journalEntries) {
-        this.journalEntries = journalEntries;
-    }
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalLibrary(){}
 
     public long getId() {
         return id;
@@ -45,34 +49,12 @@ public class JournalLibrary /*extends Observable implements Observer*/ {
     public void setJournalEntries(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
     }
-    //region Methoden
 
-
-    public void createJournalEntry(Date Date, String jTitle, String jDesc){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-        }
-        journalEntries.add(new JournalEntry(Date, ""+jTitle, jDesc));
+    public Patient getPatient() {
+        return patient;
     }
 
-    //endregion
-
-
-
-   /* public void createEntry(){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-        }
-        journalEntries.add(new JournalEntry());
-    }*/
-
-    void deleteEntry(JournalEntry entry){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-            return;
-        }
-        journalEntries.remove(entry);
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
-
-
 }

@@ -1,21 +1,24 @@
 package Business;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="patient")
 public class Patient extends User {
 
     //region Variablen
-
     private Date lastEntryWritten;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="journallibrary_id")
-    private JournalLibrary journalLibrary;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="levellibrary_id")
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private LevelLibrary levelLibrary;
+
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private JournalLibrary journalLibrary;
 
     //endregion
 
@@ -28,6 +31,12 @@ public class Patient extends User {
         this.levelLibrary = levelLibrary;
     }
 
+    public Patient(String name, String surname, String pwd) {
+        super(name, surname, pwd);
+    }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public Patient(){}
     //endregion
 
     //region Getter
