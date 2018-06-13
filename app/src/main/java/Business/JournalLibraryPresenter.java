@@ -167,8 +167,8 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         try {
             Date date = formatter.parse(selectedDate);
             jourLibrary.createJournalEntry(date, cTitle, cDesc);
-            //this.updateJournalView(formatter.parse(selectedDate));
             this.getJournalDate().setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            this.updateJournalView(date);
         }
         catch(Exception ex){
             throw ex;

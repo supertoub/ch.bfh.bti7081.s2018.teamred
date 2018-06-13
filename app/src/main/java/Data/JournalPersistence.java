@@ -19,7 +19,7 @@ public class JournalPersistence extends GenericPersistence<JournalEntry, Long> {
 //we inherit the basic CRUD operations from the GenericRepository
 
         private static final Logger logger = LogManager.getLogger(JournalPersistence.class);
-        static JournalPersistence singleton;
+        private static JournalPersistence singleton;
 
         //returns the current instance of ChallengePersistence
         public static JournalPersistence getInstance() {
