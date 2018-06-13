@@ -18,7 +18,6 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     //region Variablen
 
     private static JournalLibraryPresenter instance;
-
     private JournalViewPage journalViewPage;
     private JournalLibrary jourLibrary;
     private JournalEntry currentEntry;
@@ -100,10 +99,10 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     }
 
     public void addJournalEntry(Date Date, String title, String desc) {
-        String stringDate = Date.toString();
-        Panel journal = new Panel(stringDate);
+        Panel journal = new Panel(title);
+        journal.setCaption(title);
         final VerticalLayout contentLayout = new VerticalLayout();
-        contentLayout.addComponent(new Label(title));
+        contentLayout.addComponent(new Label(Date.toString()));
         contentLayout.addComponent(new Label(desc));
         journal.setContent(contentLayout);
         journal.setHeight("100%");
@@ -164,19 +163,23 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         UI.getCurrent().addWindow(aJ);
     }
 
-    private JournalEntry findJournalEntry(String entryTitle) {
-       return (JournalEntry) jourLibrary.getJournalEntries().stream().filter(x -> x.getTitle().equals(entryTitle));
-       /* for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
-            if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
-                return currentLevel.getChallenges().get(i);
+    private JournalEntry findJournalEntry(String entryString) {
+        int jourCount = jourLibrary.getJournalEntries().size();
+        for (int i = 0; i < jourCount; i++){
+            if (jourLibrary.getJournalEntries().get(i).getTitle().equals(entryString)) {
+                return jourLibrary.getJournalEntries().get(i);
             }
+
         }
-        return null; //hier Exception machen falls es das challenge nicht findet */
+
+        return null;
     }
 
     public void detailsClick(Button.ClickEvent event) {
-        removeJournalDetails();
-        addJournalDetails(findJournalEntry(currentEntry.getTitle()));
+            removeJournalDetails();
+           // addJournalDetails(findJournalEntry(currentEntry.getTitle()));
+            addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
+
     }
 
     @Override

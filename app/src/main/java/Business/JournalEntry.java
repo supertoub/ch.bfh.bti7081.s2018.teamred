@@ -46,6 +46,7 @@ class JournalEntry /*extends Observable implements Observer*/{
     //endregion
 
     //region Konstruktoren
+    public JournalEntry () {}
 
     // TODO: Korrektes Level ChallengeState handling
     public JournalEntry(Date date, String title, String desc){
