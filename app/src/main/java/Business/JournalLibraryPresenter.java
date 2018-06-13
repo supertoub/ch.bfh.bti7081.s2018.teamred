@@ -27,12 +27,9 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     private JournalLibrary jourLibrary;
     private JournalEntry currentEntry;
     private InlineDateField dateField;
-    private Panel Details;
     private LocalDate selectedDate;
     //endregion
-    public Panel getDetails() {
-        return Details;
-    }
+
 
     public static JournalLibraryPresenter getInstance() {
         if (instance == null) {
@@ -82,8 +79,8 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     }
 
     public void addJournalEntry(Date Date, String title, String desc) {
-        String stringDate = Date.toString();
-        Panel journal = new Panel(stringDate);
+        Panel journal = new Panel(title);
+        journal.setCaption(title);
         final VerticalLayout contentLayout = new VerticalLayout();
         contentLayout.addComponent(new Label(title));
         contentLayout.addComponent(new Label(desc));
@@ -99,9 +96,6 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         contentLayout.addComponent(details);
     }
 
-    public void removeJournalDetails(){
-        this.getJournalDetailsLayout().removeComponent(this.getDetails());
-    }
 
     public void addJournalDetails(JournalEntry journal) {
         this.getDetails().setWidth("100%");
@@ -147,18 +141,22 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     }
 
     private JournalEntry findJournalEntry(String entryTitle) {
-       return (JournalEntry) jourLibrary.getJournalEntries().stream().filter(x -> x.getTitle().equals(entryTitle));
-       /* for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
-            if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
-                return currentLevel.getChallenges().get(i);
+        try {
+            for (int i = 0; i < jourLibrary.getJournalEntries().size(); i++) {
+                if (jourLibrary.getJournalEntries().get(i).getTitle().equals(entryTitle)) {
+                    return jourLibrary.getJournalEntries().get(i);
+                }
             }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.print("findChallenge: too much challenges in list");
+        } catch (NullPointerException e) {
+            System.out.print("findChallenge: currentLevel cannot be null at this point");
         }
-        return null; //hier Exception machen falls es das challenge nicht findet */
+        return null;
     }
 
     public void detailsClick(Button.ClickEvent event) {
-        removeJournalDetails();
-        addJournalDetails(findJournalEntry(currentEntry.getTitle()));
+        addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
     }
 
     @Override
