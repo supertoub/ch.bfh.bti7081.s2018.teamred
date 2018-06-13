@@ -42,7 +42,6 @@ public class AddJournalEntry extends Window  implements Journal{
         this.center();
     }
 
-
     //endregion
 
     //region Methoden

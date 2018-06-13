@@ -2,13 +2,19 @@ package Business;
 
 import UserInterface.*;
 import ch.bfh.MyUI;
+import com.vaadin.data.HasValue;
 import com.vaadin.event.ContextClickEvent;
+import com.vaadin.event.FieldEvents;
 import com.vaadin.navigator.View;
+import com.vaadin.shared.ui.datefield.AbstractDateFieldState;
 import com.vaadin.ui.*;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,19 +24,14 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
     //region Variablen
 
     private static JournalLibraryPresenter instance;
-
-    private JournalViewPage journalViewPage;
     private JournalLibrary jourLibrary;
     private JournalEntry currentEntry;
+    private InlineDateField dateField;
     private Panel Details;
     private LocalDate selectedDate;
     //endregion
     public Panel getDetails() {
         return Details;
-    }
-
-    public JournalViewPage getJournalView() {
-        return journalViewPage;
     }
 
     public static JournalLibraryPresenter getInstance() {
@@ -43,41 +44,22 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
     void deleteClick(Object sender){}
 
-
-
     private JournalLibraryPresenter() {
         super();
         this.jourLibrary = new JournalLibrary();
 
-        Date today = java.sql.Date.valueOf(LocalDate.now());
-        this.journalViewPage = new JournalViewPage();
-        this.journalViewPage.getJournalDate().setValue(LocalDate.now());
-        this.journalViewPage.getJournalDate().setDateFormat("yyyy-MM-dd");
-        this.journalViewPage.getJournalDate().setLocale(new Locale("de", "DE"));
-        this.journalViewPage.getJournalDate().addValueChangeListener(this::dateValueClick);
-        this.journalViewPage.getJournalDate().addContextClickListener(this::dateChangeClick);
         backButton.addClickListener(this::backButtonClick);
         newEntryButton.addClickListener(this::newEntryButtonClick);
+
+        this.getJournalDate().setValue(LocalDate.now());
+        this.getJournalDate().setLocale(new Locale("de", "DE"));
+        this.getJournalDate().addValueChangeListener(this::dateValueChange);
+
+        Date today = java.sql.Date.valueOf(LocalDate.now());
         updateJournalView(today);
-        //JournalView.addListener(this);
-        //JournalView.addButtons();
-        //StartView.setHeight("100%");
-        //StartView.setWidth("1000%");
-
     }
 
-    public void dateChangeClick(ContextClickEvent event){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            this.updateJournalView(formatter.parse(this.journalViewPage.getJournalDate().getValue().toString()));
-        }
-        catch (Exception ex){
-            return;
-        }
-    }
-
-
-    public void dateValueClick(InlineDateField.ValueChangeEvent event){
+    public void dateValueChange(HasValue.ValueChangeEvent<LocalDate> event){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             this.updateJournalView(formatter.parse(event.getValue().toString()));
@@ -185,7 +167,8 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         try {
             Date date = formatter.parse(selectedDate);
             jourLibrary.createJournalEntry(date, cTitle, cDesc);
-            this.updateJournalView(formatter.parse(selectedDate));
+            //this.updateJournalView(formatter.parse(selectedDate));
+            this.getJournalDate().setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         }
         catch(Exception ex){
             throw ex;
