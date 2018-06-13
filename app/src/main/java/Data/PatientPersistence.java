@@ -4,6 +4,7 @@ import Business.Patient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -34,7 +35,7 @@ public class PatientPersistence extends GenericPersistence<Patient, Long>{
         return super.getByID(id);
     }
 
-    public Patient getByName(String name) {
+    public Patient getByName(String name) throws NoResultException {
         logger.debug("Beginn transaction for getByTitle");
         super.getEntityManager().getTransaction().begin();
         Query q = super.getEntityManager().createQuery("SELECT p FROM Patient p WHERE p.name = :name");
