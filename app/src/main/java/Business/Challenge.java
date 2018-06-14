@@ -59,6 +59,10 @@ public class  Challenge extends Observable {
         this.desc = desc;
     }
 
+    public Level getLevel() { return level; }
+
+    public void setLevel(Level level) { this.level = level; }
+
     public ChallengeState getChallengeState() {
         return challengeState;
     }
