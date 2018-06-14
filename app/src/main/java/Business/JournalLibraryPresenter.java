@@ -1,5 +1,8 @@
 package Business;
 
+import Data.JournalLibraryPersistence;
+import Data.JournalPersistence;
+import Data.PatientPersistence;
 import UserInterface.*;
 import ch.bfh.MyUI;
 import com.vaadin.data.HasValue;
@@ -43,7 +46,11 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
     private JournalLibraryPresenter() {
         super();
-        this.jourLibrary = new JournalLibrary();
+        //this.jourLibrary = new JournalLibrary();
+        // Get patient from session and fetch it from persistence
+        Patient patient = PatientPersistence.getInstance().getByName(UI.getCurrent().getSession().getAttribute("user").toString());
+
+        this.jourLibrary = JournalLibraryPersistence.getInstance().getById(patient.getJournalLibrary().getId());
 
         backButton.addClickListener(this::backButtonClick);
         newEntryButton.addClickListener(this::newEntryButtonClick);
@@ -164,7 +171,10 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = formatter.parse(selectedDate);
-            jourLibrary.createJournalEntry(date, cTitle, cDesc);
+           // jourLibrary.createJournalEntry(date, cTitle, cDesc);
+            JournalEntry journalEntry = new JournalEntry(date, cTitle, cDesc, jourLibrary);
+            JournalPersistence.getInstance().persist(journalEntry);
+            JournalLibraryPersistence.getInstance().getEntityManager().refresh(jourLibrary);
             this.getJournalDate().setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             this.updateJournalView(date);
         }

@@ -59,11 +59,11 @@ public class JournalLibrary {
         this.patient = patient;
     }
 
-    public void createJournalEntry(Date date, String title, String desc){
+    /*public void createJournalEntry(Date date, String title, String desc){
         if (journalEntries == null){
             journalEntries = new ArrayList<>();
         }
 
         journalEntries.add(new JournalEntry(date, title, desc));
-    }
+    }*/
 }

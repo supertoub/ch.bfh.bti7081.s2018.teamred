@@ -26,10 +26,11 @@ public class JournalEntry {
 
     private Date date;
 
-    public JournalEntry(Date date, String title, String desc){
+    public JournalEntry(Date date, String title, String desc, JournalLibrary journalLibrary){
         this.date = date;
         this.title = title;
         this.desc = desc;
+        this.journalLibrary = journalLibrary;
     }
 
     // no-arg constructur needed by hibernate for object creation via reflection
