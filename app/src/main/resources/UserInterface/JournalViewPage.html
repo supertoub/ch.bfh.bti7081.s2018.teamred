@@ -6,26 +6,24 @@
   <meta name="vaadin-version" content="8.1.5">
  </head>
  <body>
-  <vaadin-horizontal-layout spacing="false" size-full>
-   <vaadin-vertical-layout size-auto _id="journalNavigationLayout">
-    <vaadin-inline-date-field _id="journalDate" :middle :center></vaadin-inline-date-field>
-    <vaadin-button width="150px" plain-text _id="newEntryButton" :middle :center>
+  <vaadin-horizontal-layout spacing="false" id="journalView" size-full>
+   <vaadin-css-layout id="journalMenu" width="300px" height-full _id="journalNavigationLayout">
+    <vaadin-inline-date-field responsive width-full _id="journalDate"></vaadin-inline-date-field>
+    <vaadin-button width-full plain-text _id="newEntryButton">
       Neuer Eintrag 
     </vaadin-button>
-    <vaadin-button enabled="false" width="150px" plain-text _id="statisticsButton" :middle :center>
+    <vaadin-button enabled="false" width-full plain-text _id="statisticsButton">
       Statistik 
     </vaadin-button>
-    <vaadin-button enabled="false" width="150px" plain-text _id="tippsButton" :middle :center>
+    <vaadin-button enabled="false" width-full plain-text _id="tippsButton">
       Tipps 
     </vaadin-button>
-    <vaadin-button width="150px" plain-text _id="backButton" :middle :center>
-      Back 
-    </vaadin-button>
-   </vaadin-vertical-layout>
-   <vaadin-vertical-layout size-auto _id="journalEntrysLayout"></vaadin-vertical-layout>
-   <vaadin-vertical-layout size-auto _id="journalDetailsLayout">
-    <vaadin-panel caption="Details" id="details" size-auto _id="details"></vaadin-panel>
-   </vaadin-vertical-layout>
+    <vaadin-button icon="fonticon://Vaadin-Icons/e907" width-full plain-text _id="backButton"></vaadin-button>
+   </vaadin-css-layout>
+   <vaadin-css-layout id="journalOverview" size-full _id="journalEntrysLayout"></vaadin-css-layout>
+   <vaadin-css-layout id="journalDetail" size-full _id="journalDetailsLayout">
+    <vaadin-panel caption="Details" id="details" size-full _id="details"></vaadin-panel>
+   </vaadin-css-layout>
   </vaadin-horizontal-layout>
  </body>
 </html>

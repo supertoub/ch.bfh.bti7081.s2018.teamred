@@ -14792,8 +14792,8 @@ div.v-layout.v-horizontal.v-widget {
 	white-space: normal;
 }
 
-.mytheme #challBoaLevelLayout {
-	border-right: solid 1px #666666;
+.mytheme #challBoaLevelLayout, .mytheme #journalMenu {
+	border-right: solid 3px #666666;
 	background: white;
 	-webkit-box-shadow: 5px 0 10px 0 #999999;
 	-moz-box-shadow: 5px 0 10px 0 #999999;
@@ -14803,6 +14803,7 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme #challBoaChallActiveLayout {
 	border-right: solid 1px #666666;
 	background: #efefef;
+	overflow-y: auto;
 }
 
 .mytheme #challBoaChallPassiveLayout {
@@ -14812,10 +14813,12 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme #challBoaChallDetailLayout {
 	background: #EEEEEE;
+	padding-left: 0;
+	padding-right: 0;
 }
 
-.mytheme #loginView, .mytheme #startView {
-	background: url("./images/background.png");
+.mytheme #loginView, .mytheme #startView, .mytheme #journalView {
+	background: url('./images/background.png');
 	background-size: 40%;
 }
 
@@ -14850,15 +14853,51 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme #journalImg {
-	background: url("./images/journal.png") center center no-repeat;
+	background: url('./images/journal.png') center center no-repeat;
 	background-size: 50%;
 }
 
 .mytheme #challengeImg {
-	background: url("./images/challenge.png") center center no-repeat;
+	background: url('./images/challenge.png') center center no-repeat;
 	background-size: 50%;
 }
 
 .mytheme #challengeButton, .mytheme #journalButton {
 	margin-top: 30px;
+}
+
+.mytheme #logoutWrapper {
+	text-align: center;
+	padding-top: 50px;
+}
+
+.mytheme #challBoaChallActiveLayout .v-panel, .mytheme #challBoaChallPassiveLayout .v-panel {
+	max-height: 150px;
+	margin-bottom: 20px;
+}
+
+.mytheme #challBoaChallDetailLayout .v-panel, .mytheme #journalDetail .v-panel {
+	max-height: initial;
+	margin-bottom: 0;
+}
+
+.mytheme #challBoaActiveLabel, .mytheme #challBoaPassivLabel, .mytheme #challBoaChallDetailsLabel, .mytheme #challBoaLevelLabel {
+	width: 100%;
+	text-align: center;
+	line-height: 5;
+}
+
+.mytheme #challBoaChallActiveLayout, .mytheme #challBoaChallPassiveLayout, .mytheme #challBoaLevelLayout, .mytheme #journalMenu, .mytheme #journalOverview {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.mytheme #challBoaLevelLayout .v-button, .mytheme #journalMenu .v-button {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.mytheme #lvlInfoLbl {
+	width: 100%;
+	text-align: center;
 }
