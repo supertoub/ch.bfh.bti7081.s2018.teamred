@@ -62,7 +62,7 @@ public class ChangeChallenge extends Window  implements ChallengeBoard{
         descLayout.addComponent(tADesc);
         descLayout.addComponent(counterDesc);
         subContent.addComponent(rbglOA);
-        subContent.addComponent(new Button("Save", event -> changeChallengeClick(event,challenge.getTitle(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
+        subContent.addComponent(new Button("Save", event -> changeChallengeClick(event, String.valueOf(challenge.getId()), challenge.getTitle(),tfTitle.getValue(),tADesc.getValue(),Integer.valueOf(rbglOA.getSelectedItem().get()))));
         subContent.addComponent(new Button("Close", event -> close()));
         //subContent.addComponent(selectL);
 
@@ -141,7 +141,7 @@ public class ChangeChallenge extends Window  implements ChallengeBoard{
 
     //region Events
 
-    public void changeChallengeClick(Button.ClickEvent event,String cTitleOld,String cTitle, String cDesc, int lOfAx) {
+    public void changeChallengeClick(Button.ClickEvent event, String cId,String cTitleOld,String cTitle, String cDesc, int lOfAx) {
 
         //select.setComponentError(null);
         tfTitle.setComponentError(null);
@@ -164,7 +164,7 @@ public class ChangeChallenge extends Window  implements ChallengeBoard{
         else{
             createNotification("Changes saved",cTitle,Notification.Type.HUMANIZED_MESSAGE, 1500);
             for (ChallengeBoardViewListener listener: listeners)
-                listener.changeChallengeClick(cTitleOld,cTitle,cDesc,lOfAx);
+                listener.changeChallengeClick(cId, cTitleOld,cTitle,cDesc,lOfAx);
             close();
         }
 
