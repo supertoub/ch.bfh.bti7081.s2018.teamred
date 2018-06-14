@@ -31,6 +31,42 @@ public class JournalViewPage extends HorizontalLayout {
     protected CssLayout journalDetailsLayout;
     protected Panel details;
 
+    public CssLayout getJournalNavigationLayout() {
+        return journalNavigationLayout;
+    }
+
+    public InlineDateField getJournalDate() {
+        return journalDate;
+    }
+
+    public Button getNewEntryButton() {
+        return newEntryButton;
+    }
+
+    public Button getStatisticsButton() {
+        return statisticsButton;
+    }
+
+    public Button getTippsButton() {
+        return tippsButton;
+    }
+
+    public Button getBackButton() {
+        return backButton;
+    }
+
+    public CssLayout getJournalEntrysLayout() {
+        return journalEntrysLayout;
+    }
+
+    public CssLayout getJournalDetailsLayout() {
+        return journalDetailsLayout;
+    }
+
+    public Panel getDetails() {
+        return details;
+    }
+
     public JournalViewPage() {
         Design.read(this);
     }

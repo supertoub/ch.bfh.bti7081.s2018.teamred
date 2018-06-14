@@ -14,6 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name="journallibrary")
 public class JournalLibrary {
+    //region Variablen
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "journallibrary_id")
@@ -26,15 +27,9 @@ public class JournalLibrary {
     @OneToOne
     @JoinColumn(name="user_id")
     private Patient patient;
+    //endregion
 
-    public JournalLibrary(List<JournalEntry> journalEntries, Patient patient) {
-        this.journalEntries = journalEntries;
-        this.patient = patient;
-    }
-
-    // no-arg constructur needed by hibernate for object creation via reflection
-    public JournalLibrary(){}
-
+    //region Getter
     public long getId() {
         return id;
     }
@@ -46,24 +41,32 @@ public class JournalLibrary {
 
         return journalEntries;
     }
+    public Patient getPatient() {
+        return patient;
+    }
+    //endregion
 
+    //region Setter
     public void setJournalEntries(List<JournalEntry> journalEntries) {
         this.journalEntries = journalEntries;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
 
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
-    /*public void createJournalEntry(Date date, String title, String desc){
-        if (journalEntries == null){
-            journalEntries = new ArrayList<>();
-        }
+    //endregion
 
-        journalEntries.add(new JournalEntry(date, title, desc));
-    }*/
+    //region Konstruktoren
+    public JournalLibrary(List<JournalEntry> journalEntries, Patient patient) {
+        this.journalEntries = journalEntries;
+        this.patient = patient;
+    }
+
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalLibrary(){}
+
+    //endregion
+
 }
