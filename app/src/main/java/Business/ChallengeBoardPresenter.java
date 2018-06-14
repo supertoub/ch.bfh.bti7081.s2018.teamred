@@ -4,7 +4,6 @@ import Data.*;
 import UserInterface.AddChallenge;
 import UserInterface.ChangeChallenge;
 import UserInterface.ChallengeBoard;
-import UserInterface.ChallengeBoardViewPage;
 import UserInterface.ChallengeBoardView;
 import ch.bfh.MyUI;
 import com.vaadin.event.LayoutEvents;
@@ -119,28 +118,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     }
 
-    // TODO: Event in Challange handeln
-    // TODO: Replace with methods from persistence
-    private Challenge findChallenge(String panelName) {
-        try {
-            for (int i = 0; i < currentLevel.getChallenges().size(); i++) {
-                if (currentLevel.getChallenges().get(i).getTitle().equals(panelName)) {
-                    return currentLevel.getChallenges().get(i);
-                }
-            }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.print("findChallenge: too much challenges in list");
-        } catch (NullPointerException e) {
-            System.out.print("findChallenge: currentLevel cannot be null at this point");
-        }
-        return null;
-    }
-
-    // TODO: Challenge Liste dem ChangeChallenge übergeben, damit der Titel nicht zweimal vorkommt
-    private List<Challenge> ChallengeLibrary() {
-        return null;
-    }
-
     private void updateLevelView() {
         clearLevels();
         try {
@@ -168,7 +145,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
             List<Challenge> challenges = level.getChallenges();
             for (Challenge challenge : challenges) {
                 if (challenge.countObservers() == 0) challenge.addObserver(level);
-                addChallenge(challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
+                addChallenge(challenge.getId(), challenge.getTitle(), challenge.getDesc(), challenge.getChallengeState(), challenge.getLevelOfAnxiety());
             }
         } catch (NullPointerException e) {
             System.out.print("updateChallengeView: level cannot be null at this point");
@@ -192,22 +169,19 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     public void addChallengeDetails(Challenge challenge) {
         ChallengeState challengeState = challenge.getChallengeState();
         this.getDetails().setCaption(challenge.getTitle());
+        this.getDetails().setId(String.valueOf(challenge.getId()));
         this.getDetails().setWidth("100%");
         final VerticalLayout content = new VerticalLayout();
         final HorizontalLayout buttons = new HorizontalLayout();
         content.setWidth("100%");
         this.getDetails().setContent(content);
         this.getChallBoaChallDetailLayout().addComponent(this.getDetails());
-        //content.addComponent(new Label(challenge.getTitle().toUpperCase()));
-        //content.addComponent(new Label(challenge.getDesc(), ContentMode.TEXT));
         content.addComponent(new Label("State: " + challenge.getChallengeState().toString()));
         String levelAnx = Integer.toString(challenge.getLevelOfAnxiety());
         content.addComponent(new Label("Level of Anxiety: " + levelAnx));
         Label Description = new Label(challenge.getDesc());
         Description.setWidth("100%");
-        //Description.setHeight("100%");
         content.addComponent(Description);
-        //content.setExpandRatio(Description,2);
         this.getDetails().setDescription("Challenge Details");
 
         Button changeChallenge = new Button("", this::changeChallenge);
@@ -216,14 +190,12 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
         if (challengeState == challengeState.closed) {
             Button reOpen = new Button("reopen", this::reOpenClick);
-            //content.addComponent(reOpen);
             buttons.addComponent(reOpen);
 
         }
 
         if (challengeState == challengeState.open) {
             Button close = new Button("close", this::closeClick);
-            //content.addComponent(close);
             buttons.addComponent(close);
 
         }
@@ -235,8 +207,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     }
 
-    public void addChallenge(String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
+    public void addChallenge(long id, String title, String desc, ChallengeState challengeState, int levelOfAnxiety) {
         Panel challenge = new Panel(title);
+        challenge.setId(String.valueOf(id));
         challenge.addClickListener(e -> challengeClick1(e));
         final VerticalLayout contentLayout = new VerticalLayout();
         contentLayout.addLayoutClickListener(e -> challengeClick(e));
@@ -348,9 +321,12 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void reOpenClick(Button.ClickEvent event) {
         try {
-            findChallenge(event.getButton().getParent().getParent().getParent().getCaption()).setChallengeState(ChallengeState.open);
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.parseLong(event.getButton().getParent().getParent().getParent().getId()));
+            challenge.setChallengeState(ChallengeState.open);
+            ChallengePersistence.getInstance().persist(challenge);
+
             removeChallengeDetails();
-            addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+            addChallengeDetails(challenge);
         } catch (NullPointerException e) {
             System.out.print("reOpenClick: Could not find challenge");
         }
@@ -367,7 +343,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     public void detailsClick(Button.ClickEvent event) {
         removeChallengeDetails();
         try {
-            addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getCaption()));
+            //addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getCaption()));
+            addChallengeDetails(ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getId())));
         } catch (NullPointerException e) {
             System.out.print("detailsClick: Could not find challenge");
         }
@@ -375,9 +352,13 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void closeClick(Button.ClickEvent event) {
         try {
-            findChallenge(event.getButton().getParent().getParent().getParent().getCaption()).setChallengeState(ChallengeState.closed);
+            logger.debug(event.getButton().getParent().getParent().getParent().getId());
+            logger.debug(event.getButton().getParent().getParent().getParent().getCaption());
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getParent().getId()));
+            challenge.setChallengeState(ChallengeState.closed);
+            ChallengePersistence.getInstance().persist(challenge);
             removeChallengeDetails();
-            addChallengeDetails(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+            addChallengeDetails(challenge);
         } catch (NullPointerException e) {
             System.out.print("reOpenClick: Could not find challenge");
         }
@@ -405,10 +386,11 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void challengeClick(LayoutEvents.LayoutClickEvent event) {
+        Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getComponent().getParent().getId()));
         removeChallengeDetails();
 
         try {
-            addChallengeDetails(findChallenge(event.getComponent().getParent().getCaption()));
+            addChallengeDetails(challenge);
         } catch (NullPointerException e) {
             System.out.print("challengeClick: could not find Challenge");
             this.createNotification("We cannot show your challenge",
@@ -417,9 +399,13 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void challengeClick1(MouseEvents.ClickEvent event) {
+        logger.debug("Got challengeClick1 event");
+        logger.debug("This is id: " + event.getComponent().getId());
+        logger.debug("This is caption: " + event.getComponent().getCaption());
+        Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getComponent().getId()));
         removeChallengeDetails();
         try {
-            addChallengeDetails(findChallenge(event.getComponent().getCaption()));
+            addChallengeDetails(challenge);
         } catch (NullPointerException e) {
             System.out.print("challengeClick: could not find Challenge");
             this.createNotification("We could not change your challenge",
@@ -429,7 +415,8 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void changeChallenge(Button.ClickEvent event) {
         try {
-            newWindowChangeChall(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getComponent().getParent().getId()));
+            newWindowChangeChall(challenge);
         } catch (NullPointerException e) {
             System.out.print("challengeClick: could not find Challenge");
             this.createNotification("We could not change your challenge",
@@ -447,10 +434,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     @Override
     public void newChallenge(String levelTitle, String cTitle, String cDesc, int lOfAx) {
         Level level = LevelPersistence.getInstance().getByTitle(levelTitle);
-        logger.debug("got level from persistence: " +level.getLevelLabel());
 
         try {
-            Challenge challenge = new Challenge(levelTitle + cTitle, cDesc, ChallengeState.open, level, lOfAx, level);
+            Challenge challenge = new Challenge(cTitle, cDesc, ChallengeState.open, level, lOfAx, level);
             challenge = ChallengePersistence.getInstance().persist(challenge);
             LevelPersistence.getInstance().getEntityManager().refresh(level);
             this.currentLevel = level;
@@ -470,15 +456,17 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     @Override
-    public void changeChallengeClick(String cTitleOld, String cTitle, String cDesc, int lOfAx) {
+    public void changeChallengeClick(String cId, String cTitleOld, String cTitle, String cDesc, int lOfAx) {
         try {
-            findChallenge(cTitleOld).setTitle(cTitle);
-            findChallenge(cTitle).setDesc(cDesc);
-            findChallenge(cTitle).setLevelOfAnxiety(lOfAx);
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(cId));
+            challenge.setTitle(cTitle);
+            challenge.setDesc(cDesc);
+            challenge.setLevelOfAnxiety(lOfAx);
+            ChallengePersistence.getInstance().persist(challenge);
             removeChallenges();
             updateChallengeView(currentLevel);
             removeChallengeDetails();
-            addChallengeDetails(findChallenge(cTitle));
+            addChallengeDetails(challenge);
         } catch (NullPointerException e) {
             System.out.print("Add Challenge: Level cannot be null at this point");
             this.createNotification("We could not save your challenge",
@@ -489,12 +477,10 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void deleteChallenge(Button.ClickEvent event) {
         try {
-            findChallenge(event.getButton().getParent().getParent().getCaption());
-            for (int i = 0; i <= lvlLibrary.getLevels().size() - 1; i++) {
-                for (int j = 1; j < 7; j++) {
-                    lvlLibrary.getLevels().get(i).deleteChallenge(findChallenge(event.getButton().getParent().getParent().getParent().getCaption()));
-                }
-            }
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getId()));
+            ChallengePersistence.getInstance().remove(challenge);
+            LevelPersistence.getInstance().getEntityManager().refresh(currentLevel);
+
         } catch (IndexOutOfBoundsException e) {
             System.out.print("deleteChallenge: too much levels in list");
             this.createNotification("We could delete your challengel",
