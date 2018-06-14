@@ -32,7 +32,7 @@ public class LoginView extends LoginViewPage implements View {
     based on Login Example:
     source: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-login-example/
      */
-    
+
     public Boolean authenticate(String username, String password){
         try {
             Patient patient = PatientPersistence.getInstance().getByName(username);
@@ -51,20 +51,22 @@ public class LoginView extends LoginViewPage implements View {
     }
 
     public void LoginbuttonClick(Button.ClickEvent event) {
-            if(authenticate(usernameField.getValue(), passwordField.getValue())){
-                VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
+        if(authenticate(usernameField.getValue(), passwordField.getValue())){
+            VaadinSession.getCurrent().setAttribute("user", usernameField.getValue());
+            usernameField.setValue("");
+            passwordField.setValue("");
 
-                StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
-                ChallengeBoardPresenter challengeBoardPresenter = ChallengeBoardPresenter.getInstance();
-                JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
+            StartpagePresenter startpagePresenter = StartpagePresenter.getInstance();
+            ChallengeBoardPresenter challengeBoardPresenter = ChallengeBoardPresenter.getInstance();
+            JournalLibraryPresenter journalPresenter = JournalLibraryPresenter.getInstance();
 
-                getUI().getNavigator().addView(MyUI.STARTPAGEVIEW, startpagePresenter.getStartView());
-                getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challengeBoardPresenter);
-                getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter);
+            getUI().getNavigator().addView(MyUI.STARTPAGEVIEW, startpagePresenter.getStartView());
+            getUI().getNavigator().addView(MyUI.CHALLENGEVIEW, challengeBoardPresenter);
+            getUI().getNavigator().addView(MyUI.JOURNALVIEW, journalPresenter);
 
-                UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
-            }else{
-                Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
-            }
+            UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
+        }else{
+            Notification.show("Invalid credentials", Notification.Type.ERROR_MESSAGE);
+        }
     }
 }

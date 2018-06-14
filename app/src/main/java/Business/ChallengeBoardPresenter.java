@@ -57,9 +57,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     private ChallengeBoardPresenter() {
         super();
-        getBack().addClickListener(this::backClick);
-        getNewChall().addClickListener(this::newChallClick);
-        getAddLevelButton().addClickListener(this::addLevelButtonClick);
+        this.back.addClickListener(this::backClick);
+        this.newChall.addClickListener(this::newChallClick);
+        this.addLevelButton.addClickListener(this::addLevelButtonClick);
 
         // Get patient from session and fetch it from persistence
         Patient patient = PatientPersistence.getInstance().getByName(UI.getCurrent().getSession().getAttribute("user").toString());
@@ -154,35 +154,35 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void removeChallenges() {
-        this.getChallBoaChallActiveLayout().removeAllComponents();
-        this.getChallBoaChallActiveLayout().addComponent(this.getChallBoaActiveLabel());
-        this.getChallBoaChallActiveLayout().setComponentAlignment(this.getChallBoaActiveLabel(), Alignment.TOP_CENTER);
-        this.getChallBoaChallPassiveLayout().removeAllComponents();
-        this.getChallBoaChallPassiveLayout().addComponent(this.getChallBoaPassivLabel());
-        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(), Alignment.TOP_CENTER);
+        this.challBoaChallActiveLayout.removeAllComponents();
+        this.challBoaChallActiveLayout.addComponent(this.challBoaActiveLabel);
+//        this.getChallBoaChallActiveLayout().setComponentAlignment(this.getChallBoaActiveLabel(), Alignment.TOP_CENTER);
+        this.challBoaChallPassiveLayout.removeAllComponents();
+        this.challBoaChallPassiveLayout.addComponent(this.challBoaPassivLabel);
+//        this.getChallBoaChallPassiveLayout().setComponentAlignment(getChallBoaPassivLabel(), Alignment.TOP_CENTER);
     }
 
     public void removeChallengeDetails() {
-        this.getChallBoaChallDetailLayout().removeComponent(this.getDetails());
+        this.challBoaChallDetailLayout.removeComponent(this.details);
     }
 
     public void addChallengeDetails(Challenge challenge) {
         ChallengeState challengeState = challenge.getChallengeState();
-        this.getDetails().setCaption(challenge.getTitle());
-        this.getDetails().setId(String.valueOf(challenge.getId()));
-        this.getDetails().setWidth("100%");
+        this.details.setCaption(challenge.getTitle());
+        this.details.setId(String.valueOf(challenge.getId()));
+        this.details.setWidth("100%");
         final VerticalLayout content = new VerticalLayout();
         final HorizontalLayout buttons = new HorizontalLayout();
         content.setWidth("100%");
-        this.getDetails().setContent(content);
-        this.getChallBoaChallDetailLayout().addComponent(this.getDetails());
+        this.details.setContent(content);
+        this.challBoaChallDetailLayout.addComponent(this.details);
         content.addComponent(new Label("State: " + challenge.getChallengeState().toString()));
         String levelAnx = Integer.toString(challenge.getLevelOfAnxiety());
         content.addComponent(new Label("Level of Anxiety: " + levelAnx));
         Label Description = new Label(challenge.getDesc());
         Description.setWidth("100%");
         content.addComponent(Description);
-        this.getDetails().setDescription("Challenge Details");
+        this.details.setDescription("Challenge Details");
 
         Button changeChallenge = new Button("", this::changeChallenge);
         changeChallenge.setIcon(VaadinIcons.EDIT);
@@ -222,7 +222,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
 
         if (challengeState == challengeState.closed) {
-            this.getChallBoaChallPassiveLayout().addComponent(challenge);
+            this.challBoaChallPassiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.setIcon(VaadinIcons.CLIPBOARD.CLIPBOARD_CHECK);
             challenge.addStyleName("captionPassive");
@@ -236,7 +236,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
 
         if (challengeState == challengeState.open) {
-            this.getChallBoaChallActiveLayout().addComponent(challenge);
+            this.challBoaChallActiveLayout.addComponent(challenge);
             challenge.setEnabled(true);
             challenge.setIcon(VaadinIcons.CLIPBOARD.CLIPBOARD_TEXT);
             challenge.addStyleName("captionActive");
@@ -263,14 +263,14 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
 
         // Getting index for new element
-        int compCount = this.getChallBoaLevelLayout().getComponentCount() - 1;
-        this.getChallBoaLevelLayout().addComponent(level, compCount);
+        int compCount = this.challBoaLevelLayout.getComponentCount() - 1;
+        this.challBoaLevelLayout.addComponent(level, compCount);
     }
 
     public void setLevelInfoLabel(int closedCount, int neededToBeClosed, int allCount) {
         Label newLabel = null;
-        for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
-            Component comp = this.getChallBoaLevelLayout().getComponent(i);
+        for (int i = this.challBoaLevelLayout.getComponentCount() - 1; i >= 0; i--) {
+            Component comp = this.challBoaLevelLayout.getComponent(i);
             if (comp.getId().equals("lvlInfoLbl")) {
                 newLabel = (Label) comp;
             }
@@ -284,15 +284,15 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
         }
 
         newLabel.setValue(labelText);
-        this.getChallBoaLevelLayout().addComponent(newLabel, 1);
+        this.challBoaLevelLayout.addComponent(newLabel, 1);
     }
 
     public void clearLevels() {
         try {
-            for (int i = this.getChallBoaLevelLayout().getComponentCount() - 1; i >= 0; i--) {
-                Component comp = this.getChallBoaLevelLayout().getComponent(i);
+            for (int i = this.challBoaLevelLayout.getComponentCount() - 1; i >= 0; i--) {
+                Component comp = this.challBoaLevelLayout.getComponent(i);
                 if (comp.getId().equals("level")) {
-                    this.getChallBoaLevelLayout().removeComponent(comp);
+                    this.challBoaLevelLayout.removeComponent(comp);
                 }
             }
         } catch (IndexOutOfBoundsException e) {
@@ -352,8 +352,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void closeClick(Button.ClickEvent event) {
         try {
-            logger.debug(event.getButton().getParent().getParent().getParent().getId());
-            logger.debug(event.getButton().getParent().getParent().getParent().getCaption());
             Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getParent().getId()));
             challenge.setChallengeState(ChallengeState.closed);
             ChallengePersistence.getInstance().persist(challenge);
@@ -399,9 +397,6 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
     }
 
     public void challengeClick1(MouseEvents.ClickEvent event) {
-        logger.debug("Got challengeClick1 event");
-        logger.debug("This is id: " + event.getComponent().getId());
-        logger.debug("This is caption: " + event.getComponent().getCaption());
         Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getComponent().getId()));
         removeChallengeDetails();
         try {
@@ -415,7 +410,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void changeChallenge(Button.ClickEvent event) {
         try {
-            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getComponent().getParent().getId()));
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getParent().getId()));
             newWindowChangeChall(challenge);
         } catch (NullPointerException e) {
             System.out.print("challengeClick: could not find Challenge");
@@ -440,12 +435,9 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
             challenge = ChallengePersistence.getInstance().persist(challenge);
             LevelPersistence.getInstance().getEntityManager().refresh(level);
             this.currentLevel = level;
-            logger.debug("peristed challenge: " + challenge.getTitle());
 
             if (level.getLevelState() == LevelState.open) {
                 removeChallenges();
-                logger.debug("update view with level: " + level.getLevelLabel());
-                logger.debug("about to add following challenges: " + level.getChallenges().toString());
                 updateChallengeView(level);
             }
         } catch (NullPointerException e) {
@@ -477,7 +469,7 @@ public class ChallengeBoardPresenter extends ChallengeBoardView implements Obser
 
     public void deleteChallenge(Button.ClickEvent event) {
         try {
-            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getId()));
+            Challenge challenge = ChallengePersistence.getInstance().getById(Long.valueOf(event.getButton().getParent().getParent().getParent().getId()));
             ChallengePersistence.getInstance().remove(challenge);
             LevelPersistence.getInstance().getEntityManager().refresh(currentLevel);
 

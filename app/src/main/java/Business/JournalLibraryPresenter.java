@@ -50,12 +50,12 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
         this.jourLibrary = JournalLibraryPersistence.getInstance().getById(patient.getJournalLibrary().getId());
 
-        backButton.addClickListener(this::backButtonClick);
-        newEntryButton.addClickListener(this::newEntryButtonClick);
+        this.backButton.addClickListener(this::backButtonClick);
+        this.newEntryButton.addClickListener(this::newEntryButtonClick);
 
-        this.getJournalDate().setValue(LocalDate.now());
-        this.getJournalDate().setLocale(new Locale("de", "DE"));
-        this.getJournalDate().addValueChangeListener(this::dateValueChange);
+        this.journalDate.setValue(LocalDate.now());
+        this.journalDate.setLocale(new Locale("de", "DE"));
+        this.journalDate.addValueChangeListener(this::dateValueChange);
 
         Date today = java.sql.Date.valueOf(LocalDate.now());
 
@@ -94,10 +94,9 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         contentLayout.addComponent(new Label(title));
         contentLayout.addComponent(new Label(desc));
         journal.setContent(contentLayout);
-        journal.setHeight("100%");
         journal.setWidth("100%");
 
-        this.getJournalEntrysLayout().addComponent(journal);
+        this.journalEntrysLayout.addComponent(journal);
         journal.setEnabled(true);
         journal.addStyleName("captionPassive");
         Button details = new Button("Details",this::detailsClick);
@@ -107,27 +106,27 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
 
     public void addJournalDetails(JournalEntry journal) {
-        this.getDetails().setWidth("100%");
-        this.getDetails().setCaption(journal.getTitle());
+        this.details.setWidth("100%");
+        this.details.setCaption(journal.getTitle());
         final VerticalLayout content = new VerticalLayout();
         content.setWidth("100%");
-        this.getDetails().setContent(content);
-        this.getJournalDetailsLayout().addComponent(this.getDetails());
+        this.details.setContent(content);
+        this.journalDetailsLayout.addComponent(this.details);
         content.addComponent(new Label(journal.getTitle().toUpperCase()));
         content.addComponent(new Label(journal.getDate().toString()));
         Label Description = new Label(journal.getDesc());
         Description.setWidth("100%");
         content.addComponent(Description);
-        this.getDetails().setDescription("Journal Entry Details");
+        this.details.setDescription("Journal Entry Details");
 
     }
 
     private void updateJournalView(Date date) {
         //addJournalEntry(java.sql.Date.valueOf(LocalDate.now()), "Test", "test");
 
-        int jourCount = this.getJournalEntrysLayout().getComponentCount();
+        int jourCount = this.journalEntrysLayout.getComponentCount();
         for (int i = --jourCount; i >= 0; i--){
-            this.getJournalEntrysLayout().removeComponent(this.getJournalEntrysLayout().getComponent(i));
+            this.journalEntrysLayout.removeComponent(this.journalEntrysLayout.getComponent(i));
         }
 
         List<JournalEntry> entries = this.jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
@@ -173,11 +172,16 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = formatter.parse(selectedDate);
+<<<<<<< HEAD
            // jourLibrary.createJournalEntry(date, cTitle, cDesc);
             JournalEntry journalEntry = new JournalEntry(date, cTitle, cDesc, jourLibrary);
             JournalPersistence.getInstance().persist(journalEntry);
             JournalLibraryPersistence.getInstance().getEntityManager().refresh(jourLibrary);
             this.getJournalDate().setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+=======
+            jourLibrary.createJournalEntry(date, cTitle, cDesc);
+            this.journalDate.setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+>>>>>>> master
             this.updateJournalView(date);
         }
         catch(Exception ex){
