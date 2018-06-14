@@ -28,6 +28,7 @@ public class StartView extends StartViewPage implements View {
         getUI().getNavigator().removeView(MyUI.STARTPAGEVIEW);
         getUI().getNavigator().removeView(MyUI.CHALLENGEVIEW);
         getUI().getNavigator().removeView(MyUI.JOURNALVIEW);
+        VaadinSession.getCurrent().setAttribute("name", "");
         UI.getCurrent().getNavigator().navigateTo(MyUI.LOGINVIEW);
     }
 }
