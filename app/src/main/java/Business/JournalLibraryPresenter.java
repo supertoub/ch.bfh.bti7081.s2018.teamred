@@ -28,9 +28,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
     private static JournalLibraryPresenter instance;
     private JournalLibrary jourLibrary;
-    private JournalEntry currentEntry;
-    private InlineDateField dateField;
-    private LocalDate selectedDate;
+
     //endregion
 
 
@@ -60,7 +58,11 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         this.getJournalDate().addValueChangeListener(this::dateValueChange);
 
         Date today = java.sql.Date.valueOf(LocalDate.now());
-        updateJournalView(today);
+
+            updateJournalView(today);
+
+
+
     }
 
     public void dateValueChange(HasValue.ValueChangeEvent<LocalDate> event){
@@ -128,7 +130,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
             this.getJournalEntrysLayout().removeComponent(this.getJournalEntrysLayout().getComponent(i));
         }
 
-        List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
+        List<JournalEntry> entries = this.jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
         for (JournalEntry journalEntry : entries) {
             addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
         }
