@@ -11,6 +11,9 @@ import com.vaadin.event.FieldEvents;
 import com.vaadin.navigator.View;
 import com.vaadin.shared.ui.datefield.AbstractDateFieldState;
 import com.vaadin.ui.*;
+import org.apache.commons.lang3.time.DateUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -25,6 +28,7 @@ import java.util.stream.Collectors;
 public class JournalLibraryPresenter extends JournalViewPage implements View, Journal.JournalViewListener {
 
     //region Variablen
+    private static final Logger logger = LogManager.getLogger(JournalLibraryPresenter.class);
 
     private static JournalLibraryPresenter instance;
     private JournalLibrary jourLibrary;
@@ -110,8 +114,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         for (int i = --jourCount; i >= 0; i--) {
             this.journalEntrysLayout.removeComponent(this.journalEntrysLayout.getComponent(i));
         }
-
-        List<JournalEntry> entries = this.jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
+        List<JournalEntry> entries = this.jourLibrary.getJournalEntries().stream().filter(x -> DateUtils.isSameDay(x.getDate(), date)).collect(Collectors.toList());
         for (JournalEntry journalEntry : entries) {
             addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
         }

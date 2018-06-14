@@ -39,8 +39,6 @@ INSERT INTO CHALLENGE VALUES(27,0,'Beisspieltext für eine Challenge. Dieser dar
 INSERT INTO CHALLENGE VALUES(28,0,'Beisspieltext für eine Challenge. Dieser darf maximal 200 Zeichen lang sein.',5,'Challenge XY 16',6)
 INSERT INTO CHALLENGE VALUES(29,0,'Beisspieltext für eine Challenge. Dieser darf maximal 200 Zeichen lang sein.',5,'Challenge XY 17',6)
 INSERT INTO CHALLENGE VALUES(30,0,'Beisspieltext für eine Challenge. Dieser darf maximal 200 Zeichen lang sein.',5,'Challenge XY 18',6)
-INSERT INTO JOURNALLIBRARY VALUES(1,2)
-INSERT INTO JOURNALENTRY VALUES(1,2)
 INSERT INTO TEST VALUES(1,'aaa','aaa')
 INSERT INTO TEST VALUES(1,'bbb','bbb')
 INSERT INTO TEST VALUES(1,'ccc','ccc')
