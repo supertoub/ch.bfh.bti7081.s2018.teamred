@@ -60,7 +60,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         this.newEntryButton.addClickListener(this::newEntryButtonClick);
 
         this.journalDate.setValue(LocalDate.now());
-        this.journalDate.setLocale(new Locale("de", "DE"));
+        this.journalDate.setLocale(new Locale("en", "UK"));
         this.journalDate.addValueChangeListener(this::dateValueChange);
 
         Date today = java.sql.Date.valueOf(LocalDate.now());
@@ -107,6 +107,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         this.details.setDescription("Journal Entry Details");
 
     }
+
 
     private void updateJournalView(Date date) {
 
