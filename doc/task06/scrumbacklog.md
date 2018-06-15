@@ -14,10 +14,10 @@ Jürgen Vogel, | | Product Owner
 ## Product Backlog
 ID | Storyname | Description | Priority | Effort plan original | Effort plan updated | Effort acutal | Status
 --- | --- | --- | --- | --- | --- | --- | ---
- 1 | Challenge Board | Als Patient möchte ich auf einer Seite eine Übersicht aller Challenges mit ihrer Beschreibung, ihrem Status und den verfügbaren Levels sehen, so dass er sich einen Überblick über alle seine Challenges machen kann. | High | 63 | - | - | Done
- 2 | Challenges verwalten | Als Patient möchte ich Möglichkeit haben neue Challenges für sich zu erfassen, bestehende Challenges zu bearbeiten oder abzuschliessen und zu bewerten, sodass der Patient lernt sich seinen Ängsten zu stellen . | High | 80  | - | - | Open
+ 1 | Challenge Board | Als Patient möchte ich auf einer Seite eine Übersicht aller Challenges mit ihrer Beschreibung, ihrem Status und den verfügbaren Levels sehen, so dass er sich einen Überblick über alle seine Challenges machen kann. | High | 63 | - | 63 | Done
+ 2 | Challenges verwalten | Als Patient möchte ich Möglichkeit haben neue Challenges für sich zu erfassen, bestehende Challenges zu bearbeiten oder abzuschliessen und zu bewerten, sodass der Patient lernt sich seinen Ängsten zu stellen . | High | 80  | - | 80 | Done
  3 | Journal | Als Patient möchte ich die Möglichkeit haben einen Journaleintrag zu einem Erlebnis oder einer Challenge zu erfassen, damit er seinen aktuellen Heilungsprozess dokumentieren kann. | Medium | 10 | - | - | Open
- 4 | Statistik | Als Arzt möchte ich die Möglichkeit haben eine Auswertung aller abgeschlossenen Challenges eines Patienten darzustellen, sodass er den aktuellen Fortschritt eines Patienten besser bewerten kann. | Low | 57 | - | - | Open
+ 4 | Statistik | Als Arzt möchte ich die Möglichkeit haben eine Auswertung aller abgeschlossenen Challenges eines Patienten darzustellen, sodass er den aktuellen Fortschritt eines Patienten besser bewerten kann. | Low | 57 | - | 57 | Done
 
 ## Backlog Sprint 1
 ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan original | Effort plan updated | Effort actual | Status
