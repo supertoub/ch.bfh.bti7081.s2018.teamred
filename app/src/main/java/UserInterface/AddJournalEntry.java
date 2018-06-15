@@ -74,7 +74,7 @@ public class AddJournalEntry extends Window  implements Journal{
     private void createInlineDateField() {
         this.idfDate = new InlineDateField();
         this.idfDate.setValue(LocalDate.now());
-        this.idfDate.setLocale(new Locale("de", "DE"));
+        this.idfDate.setLocale(new Locale("en", "UK"));
         this.idfDate.addValueChangeListener(event -> selectedDate = (event.getValue()));
         this.selectedDate = LocalDate.now();
     }

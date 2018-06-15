@@ -78,7 +78,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         Panel journal = new Panel(title);
         journal.setCaption(title);
         final VerticalLayout contentLayout = new VerticalLayout();
-        contentLayout.addComponent(new Label(title));
+        contentLayout.addComponent(new Label(Date.toString()));
         contentLayout.addComponent(new Label(desc));
         journal.setContent(contentLayout);
         journal.setWidth("100%");
