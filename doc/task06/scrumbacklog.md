@@ -78,23 +78,47 @@ ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan
 Task 1 | Projekt aufräumen | | | FLE | IRI | High | 2h | - | 2h | done
 Task 2 | Backlog Sprint 2 erstellen | | | TWE | IRI | High | 1h | - | 1h | done
 
+## Retro Sprint 2
+### Positiv
+- Sprint Goal erreicht
+- Merge funktioniert besser
+- Zeiten wurden besser erfasst
+
+### Negativ
+- Wenig Kommentare
 
 ## Backlog Sprint 3
 ID | Name | Description | Components | Owner | Reviewer | Priority | Effort plan original | Effort plan updated | Effort actual | Status
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-3.1 | Journal Eintrag erstellen | Als Patient möchte ich einen neuen Journaleintrag erstellen können, so dass ich dokumentieren kann wie es mir heute ergangen ist. | <ul><li>JournalView</li></ul> | STH |  | High| 4h | - | 4h | open
-3.2 | Persistenz: Challange | Die Challanges soll auf der Datenbank persistiert werden. |  | FZU |  | high | 4h | - | 4h | open
-3.3 | Persistenz: User | Der User soll aus der Datanbank gelesen werden. | | RRO | TWE | High | 2h | - | - | open
-3.4 | Persistenz: Journal | Die einzelnen Journaleinträge sollen auf der Datenbank persistiert werden. |  | FZU |  | High | 4h | - | 4h | open
-3.5 | Journal darstellen | Die aus der Datenbank gelesenen Journaleiträge sollen übersichtlich dargestellt werden. | <ul><li>JournalView</li></ul> | STH | | High | 4h | - | 4h | open
-3.6 | Challange bearbeiten | Als Patient möchte ich eine Challange bearbeiten können | <ul><li>Challengeboard</li></ul> | TBA |  | High | 4h |  | 4h | open
-3.7 | Darstellung Challange | Überarbeiten der Darstellung der Challanges | <ul><li>Challengeboard</li></ul> | TWE |  | High | 4h | - | 4h | open
-3.8 | Darstellung Journal | Journals sollen optisch ansprechend dargestellt werden | <ul><li>Journalview</li></ul> | TWE |  | High | 4h | - | 4h | open
-3.9 | Darstellung Challange Detail | Das Challange Detail soll optisch ansprechender aussehen. | <ul><li>Challangeboard</li></ul> | TWE |  | High | 4h | - | 4h | open
-3.10 | Login DB Integration | Als Benutzer möchte ich, dass ich mich mit meinem Passwort (aus der DB) einloggen kann, sodass nur ich und mein Therapeuten Zugriff auf meine Daten hat. | <ul><li>Loginview</li></ul> | RRO |  | High | 4h | - | 4h | open
-3.11 | Journaleintrag bearbeiten | Ein Journaleintrag soll bearbeitet werden können, so dass ich Dinge korrigieren oder ergänzen kann | <ul><li>Journalview</li></ul> | STH |  | High | 4h | - | 4h | open
-3.12 | Journaleintrag löschen | Als Patient möchte ich einen Journaleintrag löschen können, falls ich diesen versehentlich angelegt habe. | <ul><li>Journalview</li></ul> | STH |  | Low | 2h | - | 2h | open
-3.13 | Tests aufsetzten | Als Entwickler möchte ich eine Unittest Abdeckung von min. 60%, so dass zukünftige Entwicklungen den Aktuellen stand nicht beeinträchtigen|  | FLE |  | High | 8h | - | 8h | open
-3.14 | Logger integrieren | Als Entwickler möchte ich, dass die Applikation wichtige Erreignisse logged, so dass ich im Fehlerfall ein Log zur Fehleranalyse habe. |  | FZU | TWE | Low | 4h | - | 4h | open
-3.15 | Bug Fix Details | Fix Nullpointer Bug auf der Challangeview. | <ul><li>Challangeview</li></ul> | TBA |  | Hight | 2h | - | 2h | open
+3.1 | Journal Eintrag erstellen | Als Patient möchte ich einen neuen Journaleintrag erstellen können, so dass ich dokumentieren kann wie es mir heute ergangen ist. | <ul><li>JournalView</li></ul> | STH |  | High| 4h | - | 4h | done
+3.2 | Persistenz: Challange | Die Challanges soll auf der Datenbank persistiert werden. |  | FZU |  | high | 4h | - | 4h | done
+3.3 | Persistenz: User | Der User soll aus der Datanbank gelesen werden. | | RRO | TWE | High | 2h | - | 2h | done
+3.4 | Persistenz: Journal | Die einzelnen Journaleinträge sollen auf der Datenbank persistiert werden. |  | FZU |  | High | 4h | - | 4h | done
+3.5 | Journal darstellen | Die aus der Datenbank gelesenen Journaleiträge sollen übersichtlich dargestellt werden. | <ul><li>JournalView</li></ul> | STH | | High | 4h | - | 4h | done
+3.6 | Challange bearbeiten | Als Patient möchte ich eine Challange bearbeiten können | <ul><li>Challengeboard</li></ul> | TBA |  | High | 4h |  | 4h | done
+3.7 | Darstellung Challange | Überarbeiten der Darstellung der Challanges | <ul><li>Challengeboard</li></ul> | TWE |  | High | 4h | - | 4h | done
+3.8 | Darstellung Journal | Journals sollen optisch ansprechend dargestellt werden | <ul><li>Journalview</li></ul> | TWE |  | High | 4h | - | 4h | done
+3.9 | Darstellung Challange Detail | Das Challange Detail soll optisch ansprechender aussehen. | <ul><li>Challangeboard</li></ul> | TWE |  | High | 4h | - | 4h | done
+3.10 | Login DB Integration | Als Benutzer möchte ich, dass ich mich mit meinem Passwort (aus der DB) einloggen kann, sodass nur ich und mein Therapeuten Zugriff auf meine Daten hat. | <ul><li>Loginview</li></ul> | RRO |  | High | 4h | - | 4h | done
+3.11 | Journaleintrag bearbeiten | Ein Journaleintrag soll bearbeitet werden können, so dass ich Dinge korrigieren oder ergänzen kann | <ul><li>Journalview</li></ul> | STH |  | High | 4h | 6h | 4h | open
+3.12 | Journaleintrag löschen | Als Patient möchte ich einen Journaleintrag löschen können, falls ich diesen versehentlich angelegt habe. | <ul><li>Journalview</li></ul> | STH |  | Low | 2h | 4h | 2h | open
+3.13 | Tests aufsetzten | Als Entwickler möchte ich eine Unittest Abdeckung von min. 60%, so dass zukünftige Entwicklungen den Aktuellen stand nicht beeinträchtigen|  | FLE |  | High | 8h | - | 8h | done
+3.14 | Logger integrieren | Als Entwickler möchte ich, dass die Applikation wichtige Erreignisse logged, so dass ich im Fehlerfall ein Log zur Fehleranalyse habe. |  | FZU | TWE | Low | 4h | - | 4h | done
+3.15 | Bug Fix Details | Fix Nullpointer Bug auf der Challangeview. | <ul><li>Challangeview</li></ul> | TBA |  | Hight | 2h | - | 2h | done
 Task 1 | Backlog Sprint 3 erstellen | | | TWE |  | High | 1h | - | 1h | done
+
+## Final Retro
+### Positiv
+- Anwendung soweit fertig, dass sie brauchbar ist.
+
+### Negativ
+- Kommentare fehlen noch an einigen stellen.
+- Tests noch nicht ausgereift.
+- Persistenz zu spät implementiert.
+
+### Known issues
+- Anwendung nicht Multiuser fähig.
+- Sprache nicht konsistent.
+- Arzt nicht implementiert.
+- Lizenz nicht definiert.
+
