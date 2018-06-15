@@ -44,4 +44,5 @@ public class JournalPersistence extends GenericPersistence<JournalEntry, Long> {
                 logger.debug("Transaction completed for getByTitle");
                 return journalEntry;
         }
+
 }

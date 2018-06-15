@@ -1,5 +1,8 @@
 package Business;
 
+import Data.JournalLibraryPersistence;
+import Data.JournalPersistence;
+import Data.PatientPersistence;
 import UserInterface.*;
 import ch.bfh.MyUI;
 import com.vaadin.data.HasValue;
@@ -8,6 +11,9 @@ import com.vaadin.event.FieldEvents;
 import com.vaadin.navigator.View;
 import com.vaadin.shared.ui.datefield.AbstractDateFieldState;
 import com.vaadin.ui.*;
+import org.apache.commons.lang3.time.DateUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -22,15 +28,14 @@ import java.util.stream.Collectors;
 public class JournalLibraryPresenter extends JournalViewPage implements View, Journal.JournalViewListener {
 
     //region Variablen
+    private static final Logger logger = LogManager.getLogger(JournalLibraryPresenter.class);
 
     private static JournalLibraryPresenter instance;
     private JournalLibrary jourLibrary;
-    private JournalEntry currentEntry;
-    private InlineDateField dateField;
-    private LocalDate selectedDate;
+
     //endregion
 
-
+    //region Getter
     public static JournalLibraryPresenter getInstance() {
         if (instance == null) {
             instance = new JournalLibraryPresenter();
@@ -38,45 +43,36 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
         return instance;
     }
+    //endregion
 
-    void deleteClick(Object sender){}
+    //region Setter
+    //endregion
 
+    //region Konstruktoren
     private JournalLibraryPresenter() {
         super();
-        this.jourLibrary = new JournalLibrary();
+        // Get patient from session and fetch it from persistence
+        Patient patient = PatientPersistence.getInstance().getByName(UI.getCurrent().getSession().getAttribute("user").toString());
+
+        this.jourLibrary = JournalLibraryPersistence.getInstance().getById(patient.getJournalLibrary().getId());
 
         this.backButton.addClickListener(this::backButtonClick);
         this.newEntryButton.addClickListener(this::newEntryButtonClick);
 
         this.journalDate.setValue(LocalDate.now());
-        this.journalDate.setLocale(new Locale("de", "DE"));
+        this.journalDate.setLocale(new Locale("en", "UK"));
         this.journalDate.addValueChangeListener(this::dateValueChange);
 
         Date today = java.sql.Date.valueOf(LocalDate.now());
+
         updateJournalView(today);
-    }
 
-    public void dateValueChange(HasValue.ValueChangeEvent<LocalDate> event){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            this.updateJournalView(formatter.parse(event.getValue().toString()));
-        }
-        catch (Exception ex){
-            return;
-        }
-    }
 
-    public void backButtonClick(Button.ClickEvent event) {
-        if (UI.getCurrent() == null){
-            return;
-        }
-
-        UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
     }
+    //endregion
 
-    public void newEntryButtonClick(Button.ClickEvent event) {
-        newWindowAddEntry();
-    }
+    //region Methoden
+
 
     public void addJournalEntry(Date Date, String title, String desc) {
         Panel journal = new Panel(title);
@@ -90,7 +86,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         this.journalEntrysLayout.addComponent(journal);
         journal.setEnabled(true);
         journal.addStyleName("captionPassive");
-        Button details = new Button("Details",this::detailsClick);
+        Button details = new Button("Details", this::detailsClick);
         details.setId("details");
         contentLayout.addComponent(details);
     }
@@ -112,15 +108,14 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
 
     }
 
+
     private void updateJournalView(Date date) {
-        //addJournalEntry(java.sql.Date.valueOf(LocalDate.now()), "Test", "test");
 
         int jourCount = this.journalEntrysLayout.getComponentCount();
-        for (int i = --jourCount; i >= 0; i--){
+        for (int i = --jourCount; i >= 0; i--) {
             this.journalEntrysLayout.removeComponent(this.journalEntrysLayout.getComponent(i));
         }
-
-        List<JournalEntry> entries = jourLibrary.getJournalEntries().stream().filter(x -> x.getDate().equals(date)).collect(Collectors.toList());
+        List<JournalEntry> entries = this.jourLibrary.getJournalEntries().stream().filter(x -> DateUtils.isSameDay(x.getDate(), date)).collect(Collectors.toList());
         for (JournalEntry journalEntry : entries) {
             addJournalEntry(journalEntry.getDate(), journalEntry.getTitle(), journalEntry.getDesc());
         }
@@ -132,7 +127,7 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         AddJournalEntry aJ = new AddJournalEntry(entrys);
         aJ.addListener(this::buttonClick);
 
-        if (UI.getCurrent() == null){
+        if (UI.getCurrent() == null) {
             return;
         }
         // Add it to the root component
@@ -153,22 +148,51 @@ public class JournalLibraryPresenter extends JournalViewPage implements View, Jo
         }
         return null;
     }
+    //endregion
 
+    //region Events
     public void detailsClick(Button.ClickEvent event) {
         addJournalDetails(findJournalEntry(event.getButton().getParent().getParent().getCaption()));
     }
 
     @Override
     public void buttonClick(String selectedDate, String cTitle, String cDesc) throws ParseException {
+        //this event adds an new entry to JournalLibrary. It binds to the Add button in the new entry window
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = formatter.parse(selectedDate);
-            jourLibrary.createJournalEntry(date, cTitle, cDesc);
-            this.journalDate.setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+            JournalEntry journalEntry = new JournalEntry(date, cTitle, cDesc, jourLibrary);
+            JournalPersistence.getInstance().persist(journalEntry);
+            JournalLibraryPersistence.getInstance().getEntityManager().refresh(jourLibrary);
+            this.getJournalDate().setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             this.updateJournalView(date);
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             throw ex;
         }
     }
+    public void dateValueChange(HasValue.ValueChangeEvent<LocalDate> event) {
+        //this event updates Journalview everytime a new Date get's clicked in Inline Date Field
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            this.updateJournalView(formatter.parse(event.getValue().toString()));
+        } catch (Exception ex) {
+            return;
+        }
+    }
+
+    public void backButtonClick(Button.ClickEvent event) {
+        if (UI.getCurrent() == null) {
+            return;
+        }
+
+        UI.getCurrent().getNavigator().navigateTo(MyUI.STARTPAGEVIEW);
+    }
+
+    public void newEntryButtonClick(Button.ClickEvent event) {
+        newWindowAddEntry();
+    }
+    void deleteClick(Object sender) {
+    }
+    //endregion
 }

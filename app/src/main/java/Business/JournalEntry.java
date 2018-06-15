@@ -9,6 +9,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name="journalentry")
 public class JournalEntry {
+
+    //region Variablen
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "journalentry_id")
@@ -25,49 +27,47 @@ public class JournalEntry {
     private JournalLibrary journalLibrary;
 
     private Date date;
+    //endregion
 
-    public JournalEntry(Date date, String title, String desc){
-        this.date = date;
-        this.title = title;
-        this.desc = desc;
-    }
-
-    // no-arg constructur needed by hibernate for object creation via reflection
-    public JournalEntry(){}
-
+    //region Getter
     public long getId() {
         return id;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDesc() {
         return desc;
     }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public String getTitle() {
+        return title;
     }
-
+    public Date getDate() { return date; }
     public JournalLibrary getJournalLibrary() {
         return journalLibrary;
     }
+    //endregion
 
+    //region Setter
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
     public void setJournalLibrary(JournalLibrary journalLibrary) {
         this.journalLibrary = journalLibrary;
     }
+    public void setDate(Date date) { this.date = date; }
+    //endregion
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
+    //region Konstruktoren
+    public JournalEntry(Date date, String title, String desc, JournalLibrary journalLibrary){
         this.date = date;
+        this.title = title;
+        this.desc = desc;
+        this.journalLibrary = journalLibrary;
     }
+    // no-arg constructur needed by hibernate for object creation via reflection
+    public JournalEntry(){}
+
+    //endregion
+
 }
