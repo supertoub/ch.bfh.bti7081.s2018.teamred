@@ -22,19 +22,22 @@ Date, Time | Attendance | Minutes 
 23.04.18, 19:55 | tba, fle, sth, iri, rro, twe, fzu | 90
 27.04.18, 10:20 | tba, sth, iri, rro, twe, fzu | 45
 30.04.18, 20:30 | tba, fle, sth, iri, rro, fzu | 90
-04.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
-07.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 15
-09.05.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
-14.05.18, 20:30 | tba, sth, iri, rro, twe, fzu | 25
-18.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 90
-23.05.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
-25.05.18, 20:30 | tba, fle, sth, rro, twe, fzu | 15
-28.05.18, 20:30 | tba, fle, iri, rro, twe, fzu | 25
-01.06.18, 20:30 | tba, fle, iri, rro, twe, fzu | 90
-04.06.18, 20:30 | tba, fle, sth, iri, twe, fzu | 20
-06.06.18, 20:30 | tba, fle, sth, iri, rro, fzu | 20
-08.06.18, 20:30 | tba, fle, sth, iri, rro, twe, fzu | 15
-11.06.18, 20:30 | tba, fle, sth, iri, fzu | 20
+04.05.18, 10:50 | tba, fle, sth, iri, rro, twe, fzu | 90
+07.05.18, 19:55 | tba, fle, iri, rro, twe, fzu | 15
+09.05.18, 16:30 | tba, fle, sth, iri, twe, fzu | 20
+14.05.18, 19:55 | tba, sth, iri, rro, twe, fzu | 25
+18.05.18, 11:10 | tba, fle, sth, iri, rro, twe, fzu | 90
+23.05.18, 16:15 | tba, fle, sth, iri, rro, twe, fzu | 15
+25.05.18, 10:20 | tba, fle, sth, rro, twe, fzu | 15
+28.05.18, 19:55 | tba, fle, iri, rro, twe, fzu | 25
+01.06.18, 11:00 | tba, fle, iri, rro, twe, fzu | 90
+04.06.18, 19:55 | tba, fle, sth, iri, twe, fzu | 20
+06.06.18, 16:15 | tba, fle, sth, iri, rro, fzu | 20
+08.06.18, 10:20 | tba, fle, sth, iri, rro, twe, fzu | 15
+11.06.18, 19:55 | tba, fle, sth, iri, fzu | 20
+13.06.18, 18:00 | tba, fle, sth ,iri, fzu, twe | 15
+15.06.18, 10:00 | tba, fle, sth, iri, fzu, twe | 15
+
 
 ### Evaluation
 Task | Grade
@@ -382,8 +385,14 @@ Task 4 |
 #### 13.06.2018
 - (team) Daily scrum
 - (team) Updated progress for scrumbacklog
-  - [ ] (team) update scrum backlog after every daily sprint
-  - [ ] (fzu) refactor code (check for unused imports/methods, methods that do not implement persistence)
-  - [ ] (sth) integrate persistence into journal and finalize functionality
-  - [ ] (iri) prepare presentation
-  - [ ] (tba) create demo video
+  - [x] (team) update scrum backlog after every daily sprint
+  - [x] (fzu) refactor code (check for unused imports/methods, methods that do not implement persistence)
+  - [x] (sth) integrate persistence into journal and finalize functionality
+  - [x] (iri) prepare presentation
+  - [x] (tba) create demo video
+
+#### 15.06.2018
+- (team) Daily scrum
+- (team) Present final results
+ - [x] (tba) write summary, review and note known issues
+ - [x] (sth) finalize scrum backlog
